@@ -25,7 +25,7 @@ header {
   /* width: 200px; */
 }
 nav {
-  margin-left: 30px;
+  margin-left: 50px;
   gap: 30px;
 }
 nav a{
@@ -97,6 +97,9 @@ nav .nav-button button{
   }
   .navbar-button{
     margin-left: 200px;
+  }
+  nav .nav-button{
+    margin-right: -7px;
   }
 	header nav {
 		position: fixed;
