@@ -48,7 +48,12 @@ function Navbar() {
                  
       
           
-         
+          <button
+            className="nav-btn nav-close-btn"
+            onClick={showNavbar}>
+            <FaTimes />
+          </button>
+          
           <div className="nav-button">
                   <a href="www.google.com">
                     <button type="button">Login</button>
