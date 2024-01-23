@@ -24,10 +24,10 @@ header {
   width: 200px;
 }
 nav {
-  margin-left: 50px;
-  gap: 25px;
+  margin-left: 30px;
+  gap: 30px;
 }
-nav a {
+nav a{
 	color: var(--Red);
 	text-decoration: none;
   font-family: Roboto;
@@ -57,9 +57,9 @@ nav {
 	align-items: center;
 }
 nav .nav-button{
-  margin-right: -50px;
+  margin-right: -40px;
 }
-nav .nav-button a button{
+nav .nav-button button{
   margin: 6px;
   background-color:var(--Red);
   border: none;
@@ -75,6 +75,7 @@ nav .nav-button a button{
   font-family: Roboto;
   font-size: 16px;
   font-style: normal;
+  color: #FFF;
 }
 
 

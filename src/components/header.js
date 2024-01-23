@@ -44,14 +44,7 @@ function Navbar() {
             <a href="/#">Reed articles</a>
             <a href="/#">Contact us</a>
             
-                 <div className="nav-button">
-                  <a href="www.google.com">
-                    <button type="button">Login</button>
-                  </a>
-                  <a href="www.google.com">
-                    <button type="button">Sign up</button>
-                  </a>
-                 </div>
+                 
       
           
           <button
@@ -59,6 +52,15 @@ function Navbar() {
             onClick={showNavbar}>
             <FaTimes />
           </button>
+          
+          <div className="nav-button">
+                  <a href="www.google.com">
+                    <button type="button">Login</button>
+                  </a>
+                  <a href="www.google.com">
+                    <button type="button">Sign up</button>
+                  </a>
+                 </div>
         </nav>
         
       </div>
