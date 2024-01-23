@@ -24,7 +24,7 @@
 
 .sb_footer-add h6{
   margin-left: 55px;
-  color: #C1C7CD;
+  color: var(--textColor);
 }
 .socialmedia{
   display: flex;
@@ -49,14 +49,14 @@ hr{
 .sb_footer-copyright p{
   font-size: 14px;
   line-height: 15px;
-  color: rgb(255, 255, 255);
+  color: var(--textColor);
   font-weight: 600;
 }
 .sb_footer-below-links a{
     margin: 20px;
     font-size: 16px;
     font-weight: 500;
-    color: #fff;
+    color: var(--textColor);
 }
 
 
