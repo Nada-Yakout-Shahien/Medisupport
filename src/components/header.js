@@ -44,9 +44,6 @@ function Navbar() {
             <a href="/#">Reed articles</a>
             <a href="/#">Contact us</a>
             
-                 
-      
-          
           <button
             className="nav-btn nav-close-btn"
             onClick={showNavbar}>

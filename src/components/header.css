@@ -58,7 +58,7 @@ nav {
 	align-items: center;
 }
 nav .nav-button{
-  margin-right: -40px;
+  margin-right: -10px;
 }
 nav .nav-button button{
   margin: 6px;
@@ -85,8 +85,6 @@ nav .nav-button button{
   background-color: var(--secondaryColor);
   color: #fff;
 }
-
-
 
 @media only screen and (max-width: 1024px) {
 	header .nav-btn {
@@ -128,25 +126,4 @@ nav .nav-button button{
 	nav a {
 		font-size: 1.5rem;
 	}
-}
-
-@media only screen and (max-width: 735px) {
-  header .navbar-button{
-    position: fixed;
-		top: -100vh;
-		left: 0;
-		display: flex;
-		/* flex-direction: column; */
-		align-items: center;
-		justify-content: center;
-		gap: 1.5rem;
-		background-color: var(--Red);
-		transition: 1s;
-    color: #000;
-  }
-
-	.navbar-button a {
-		font-size: 1.5rem;
-	}
-
 }
