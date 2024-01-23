@@ -1,0 +1,130 @@
+.footer{
+  margin-top: 600px;
+  background-color:var(--Red);
+  color: aliceblue;
+}
+.section_padding{
+  padding: 3rem 4rem;
+}
+.sb_footer{
+  display: flex;
+  flex-direction:column;
+}
+.sb_footer-bef{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.sb_footer-add h4{
+  font-size: 25px;
+  color: #C1C7CD;
+}
+
+.sb_footer-add h6{
+  margin-left: 55px;
+  color: #C1C7CD;
+}
+.socialmedia{
+  display: flex;
+  flex-direction: row;
+  margin-left: 200px;
+}
+.socialmedia img{
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+}
+.sb_footer-below{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+hr{
+  color: white;
+  width: 100%;
+}
+.sb_footer-copyright p{
+  font-size: 14px;
+  line-height: 15px;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+.sb_footer-below-links a{
+    margin: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+}
+
+
+@media screen  and (max-width:850px){
+  .socialmedia img{
+    margin: 5px;
+    flex-direction: column;
+  }
+  .sb_footer-below{
+    flex-direction: column;
+    justify-content: left;
+  }
+  .sb_footer-below-links{
+    margin: 30px;
+  }
+  .sb_footer-below-links a{
+    margin: 9px;
+    flex-direction: row;
+  }
+}
+@media screen  and (max-width:600){
+  .socialmedia img{
+    flex-direction: column;
+  }
+  .sb_footer-below,
+  .sb_footer-bef{
+    flex-direction: column;
+    justify-content: left;
+  }
+  .sb_footer-below-links{
+    flex-direction: column;
+  }
+  .sb_footer-below-links a{
+    flex-direction: column;
+    margin: 1px;
+    
+  }
+}
+@media screen  and (max-width:500px){
+  .socialmedia img{
+    flex-direction: column;
+  }
+  .sb_footer-below,
+  .sb_footer-bef{
+    flex-direction: column;
+    justify-content: left;
+  }
+  .sb_footer-below-links{
+    flex-direction: column;
+  }
+  .sb_footer-below-links a{
+    margin-left: 1px;
+    flex-direction: column;
+  }
+}
+@media screen  and (max-width:400px){
+  .socialmedia img{
+    flex-direction: column;
+  }
+  .sb_footer-below,
+  .sb_footer-bef{
+    flex-direction: column;
+    justify-content: left;
+  }
+  .sb_footer-below-links{
+    flex-direction: column;
+  }
+  .sb_footer-below-links a{
+    margin-left: 1px;
+    flex-direction: column;
+  }
+}

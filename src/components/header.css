@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Arizonia&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Roboto+Condensed:wght@500&display=swap');
+a {
+  text-decoration: none;
+  color: var(--Red);
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 80px;
+	padding: 16px 20px 20px 50px;
+	background-color: var(--textColor);
+	color: var(--Red);
+}
+
+.Navbar h3{
+  font-family: Arizonia;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 200px;
+}
+nav {
+  margin-left: 50px;
+  gap: 25px;
+}
+nav a {
+	color: var(--Red);
+	text-decoration: none;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+nav a:hover {
+	color: var(--secondaryColor);
+}
+
+header .nav-btn {
+	padding: 5px;
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: var(--Red);
+	visibility: hidden;
+	opacity: 0;
+	font-size: 1.8rem;
+}
+
+header div,
+nav {
+	display: flex;
+	align-items: center;
+}
+nav .nav-button{
+  margin-right: -50px;
+}
+nav .nav-button a button{
+  margin: 6px;
+  background-color:var(--Red);
+  border: none;
+  font-weight: 600;
+  line-height: 25px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 105px;
+  height: 40px;
+  flex-shrink: 0;
+  color: var(--textColor);
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+}
+
+
+.navbar-button button:hover,
+.navbar-menu_container button:hover {
+  background-color: var(--secondaryColor);
+  color: #fff;
+}
+
+
+
+@media only screen and (max-width: 1024px) {
+	header .nav-btn {
+		visibility: visible;
+		opacity: 1;
+	}
+  nav{
+    margin-left: 0px;
+  }
+  .navbar-button{
+    margin-left: 200px;
+  }
+	header nav {
+		position: fixed;
+		top: -100vh;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1.5rem;
+		background-color: var(--textColor);
+		transition: 1s;
+	}
+
+	header .responsive_nav {
+		transform: translateY(100vh);
+	}
+
+	nav .nav-close-btn {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+	}
+
+	nav a {
+		font-size: 1.5rem;
+	}
+}
+
+@media only screen and (max-width: 735px) {
+  header .navbar-button{
+    position: fixed;
+		top: -100vh;
+		left: 0;
+		display: flex;
+		/* flex-direction: column; */
+		align-items: center;
+		justify-content: center;
+		gap: 1.5rem;
+		background-color: var(--Red);
+		transition: 1s;
+    color: #000;
+  }
+
+	.navbar-button a {
+		font-size: 1.5rem;
+	}
+
+}
