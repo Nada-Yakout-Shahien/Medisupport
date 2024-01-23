@@ -52,7 +52,7 @@ function Navbar() {
             onClick={showNavbar}>
             <FaTimes />
           </button>
-          
+
           <div className="nav-button">
                   <a href="www.google.com">
                     <button type="button">Login</button>
@@ -60,7 +60,7 @@ function Navbar() {
                   <a href="www.google.com">
                     <button type="button">Sign up</button>
                   </a>
-                 </div>
+          </div>
         </nav>
         
       </div>
