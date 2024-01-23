@@ -33,6 +33,7 @@ function Navbar() {
                  </svg>
                  support
         </h3>
+			 
         <nav ref={navRef}>
 
             <a href="/#">Home</a>
