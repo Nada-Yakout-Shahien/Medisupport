@@ -22,7 +22,7 @@ header {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  width: 200px;
+  /* width: 200px; */
 }
 nav {
   margin-left: 30px;
@@ -58,7 +58,7 @@ nav {
 	align-items: center;
 }
 nav .nav-button{
-  margin-right: -10px;
+  margin-right: -55px;
 }
 nav .nav-button button{
   margin: 6px;
