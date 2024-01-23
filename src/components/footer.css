@@ -18,7 +18,8 @@
 }
 .sb_footer-add h4{
   font-size: 25px;
-  color: #C1C7CD;
+  color: var(--textColor);
+  font-family: Arizonia;
 }
 
 .sb_footer-add h6{
