@@ -18,7 +18,11 @@ header {
   line-height: normal;
 }
 nav {
+<<<<<<< HEAD
   margin-left: 50px;
+=======
+  margin-left: 27px;
+>>>>>>> 6ad0dc6916d8e21a72057c41d7b048295e0f910d
   gap: 30px;
 }
 nav a{
@@ -119,3 +123,27 @@ nav .navbar-menu_container button:hover {
 		font-size: 1.5rem;
 	}
 }
+<<<<<<< HEAD
+=======
+
+@media only screen and (max-width: 735px) {
+  header .navbar-button{
+    position: fixed;
+		top: -100vh;
+		left: 0;
+		display: flex;
+		/* flex-direction: column; */
+		align-items: center;
+		justify-content: center;
+		gap: 1.5rem;
+		background-color: var(--Red);
+		transition: 1s;
+    color: #000;
+  }
+
+	.navbar-button a {
+		font-size: 1.5rem;
+	}
+
+}
+>>>>>>> 6ad0dc6916d8e21a72057c41d7b048295e0f910d
