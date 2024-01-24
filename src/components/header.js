@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "./header.css";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
 	const navRef = useRef();
@@ -36,14 +37,14 @@ function Navbar() {
 			 
         <nav ref={navRef}>
 
-            <a href="/#">Home</a>
-            <a href="/#">About us</a>
-            <a href="/#">Smart Health Metrics</a>
-            <a href="/#">Doctors</a>
-            <a href="/#">Booking</a>
-            <a href="/#">Daily reports</a>
-            <a href="/#">Reed articles</a>
-            <a href="/#">Contact us</a>
+            <NavLink to="/home">Home</NavLink>
+            <NavLink to="/Aboutus">About us</NavLink>
+            <NavLink to="/Smart Health Metrics">Smart Health Metrics</NavLink>
+            <NavLink to="/Doctors">Doctors</NavLink>
+            <NavLink to="/Booking">Booking</NavLink>
+            <NavLink to="/Daily reports">Daily reports</NavLink>
+            <NavLink to="/Reed articles">Reed articles</NavLink>
+            <NavLink to="/Contact us">Contact us</NavLink>
             
           <button
             className="nav-btn nav-close-btn"
@@ -52,12 +53,12 @@ function Navbar() {
           </button>
 
           <div className="nav-button">
-                  <a href="www.google.com">
+                  <NavLink href="www.google.com">
                     <button type="button">Login</button>
-                  </a>
-                  <a href="www.google.com">
+                  </NavLink>
+                  <NavLink href="www.google.com">
                     <button type="button">Sign up</button>
-                  </a>
+                  </NavLink>
           </div>
         </nav>
         

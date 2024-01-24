@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Arizonia&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Arizonia&family=Roboto+Condensed:wght@500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap');
 header {
 	display: flex;
 	align-items: center;
@@ -25,13 +24,13 @@ nav {
 nav a{
 	color: var(--Red);
 	text-decoration: none;
-  font-family: Roboto;
-  font-weight: 400;
+  font-family: 'Roboto', sans-serif;  font-weight: 400;
   font-size: 16px;
 }
 
 nav a:hover {
-	color: var(--secondaryColor);
+  font-size: 16px;
+  font-weight: 900;
 }
 
 header .nav-btn {
@@ -67,8 +66,7 @@ nav .nav-button button{
   height: 40px;
   flex-shrink: 0;
   color: var(--textColor);
-  font-family: Roboto;
-  font-size: 16px;
+  font-family: 'Roboto', sans-serif;  font-size: 16px;
   font-style: normal;
   color: #FFF;
 }
