@@ -7,7 +7,7 @@ const SmartHealthMetrics = () => {
   return (
     <>
     <Helmet>
-      <title>Smart health metrics</title>
+      <title>Smart health metrics ♥</title>
       <meta name="description" content="Smart_health_metrics" />
     </Helmet>
 

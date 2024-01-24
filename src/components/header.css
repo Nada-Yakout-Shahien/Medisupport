@@ -6,7 +6,7 @@ header {
 	justify-content: space-between;
 	height: 80px;
 	padding: 16px 20px 20px 50px;
-	background-color: var(--textColor);
+	background-color: var(--whiteColor);
 	color: var(--Red);
 }
 
@@ -66,7 +66,7 @@ nav .nav-button button{
   width: 105px;
   height: 40px;
   flex-shrink: 0;
-  color: var(--textColor);
+  color: var(--whiteColor);
   font-family: 'Roboto', sans-serif;  font-size: 16px;
   font-style: normal;
   color: #FFF;
@@ -101,7 +101,7 @@ nav .navbar-menu_container button:hover {
 		align-items: center;
 		justify-content: center;
 		gap: 1.5rem;
-		background-color: var(--textColor);
+		background-color: var(--whiteColor);
 		transition: 1s;
 	}
 

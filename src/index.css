@@ -4,14 +4,16 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;}
+  font-family: 'Roboto', sans-serif;
+}
 
 :root {
   --Red: #BE0202;
   --mainColorLight: #f90723;
   --secondaryColor: #ff00007e;
-  --textColor: #fff;
+  --whiteColor: #fff;
   --blackColor:#000000;
+  --graycolor:#1F1F1F;
 }
 a{
   text-decoration: none;
