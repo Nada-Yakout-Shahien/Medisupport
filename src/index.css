@@ -9,8 +9,9 @@
 :root {
   --Red: #BE0202;
   --mainColorLight: #f90723;
-  --secondaryColor: #ff003c;
+  --secondaryColor: #ff00007e;
   --textColor: #fff;
+  --blackColor:#000000;
 }
 a{
   text-decoration: none;
