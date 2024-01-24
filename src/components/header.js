@@ -38,13 +38,13 @@ function Navbar() {
         <nav ref={navRef}>
 
             <NavLink to="/home">Home</NavLink>
-            <NavLink to="/Aboutus">About us</NavLink>
-            <NavLink to="/Smart Health Metrics">Smart Health Metrics</NavLink>
+            <NavLink to="/About_us">About us</NavLink>
+            <NavLink to="/Smart_health_metrics">Smart Health Metrics</NavLink>
             <NavLink to="/Doctors">Doctors</NavLink>
             <NavLink to="/Booking">Booking</NavLink>
             <NavLink to="/Daily reports">Daily reports</NavLink>
             <NavLink to="/Reed articles">Reed articles</NavLink>
-            <NavLink to="/Contact us">Contact us</NavLink>
+            <NavLink to="/Contact_us">Contact us</NavLink>
             
           <button
             className="nav-btn nav-close-btn"

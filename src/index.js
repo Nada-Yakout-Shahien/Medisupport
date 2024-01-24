@@ -4,9 +4,9 @@ import "./index.css";
 import {HelmetProvider} from "react-helmet-async";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/home";
-import Aboutus from "./pages/Aboutus";
-// import Css from "./pages/css";
-// import Javascript from "./pages/javascript";
+import Aboutus from "./pages/About_us";
+import SmartHealthMetrics from "./pages/Smart_health_metrics";
+import Contactus from "./pages/Contact_us";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +20,18 @@ const router = createBrowserRouter([
     errorElement: <h1>Sorry......</h1>,
   },
   {
-    path: "/Aboutus",
+    path: "/About_us",
     element: <Aboutus />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/Smart_health_metrics",
+    element: <SmartHealthMetrics />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/Contact_us",
+    element: <Contactus />,
     errorElement: <h1>Sorry......</h1>,
   },
 ]);
