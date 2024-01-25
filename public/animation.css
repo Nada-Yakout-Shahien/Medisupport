@@ -27,7 +27,7 @@ h1 {
 @keyframes ltr {
   0% {
     transform: translateX(-100px);
-    color: cyan;
+    color: var(--Red);
   }
 
   50% {
