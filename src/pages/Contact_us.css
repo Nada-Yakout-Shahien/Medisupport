@@ -43,8 +43,8 @@ section {
 }
 
 .contact-form-hed {
-  margin-top: -40px;
-  margin-bottom: 48px;
+  margin-top: -45px;
+  margin-bottom: 40px;
 }
 
 .contact-form h2 {
@@ -137,6 +137,7 @@ section {
   .contact_img {
     margin-left: -25px;
   }
+
   .contact-form form .btn {
     width: 500px;
   }
@@ -151,7 +152,11 @@ section {
   }
 
 }
-
+@media screen and (max-width: 1100px) {
+.contact-form{
+  margin-left: -1cm;
+}
+}
 @media screen and (max-width: 1090px) {
   section {
     height: 0px;
@@ -213,5 +218,13 @@ section {
   }
   .contact-form {
     margin-top: 210px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .contact_img {
+    width: 180px;
+    height: 200px;
+    margin-top: 110px;
+    margin-left: 90px;
   }
 }

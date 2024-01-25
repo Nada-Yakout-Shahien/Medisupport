@@ -79,7 +79,27 @@ nav .navbar-menu_container button:hover {
   color: var(--Red);
 }
 
-
+@media screen and (max-width: 1340px) {
+  .Navbar h3{
+    font-size: 25px;
+    font-weight: 400;
+  }
+  nav a{ 
+    font-weight: 400;
+    font-size: 13.7px;
+  }  
+  .active{
+    font-size: 13.7px;
+  }
+  nav .nav-button button{
+    width: 80px;
+    height: 35px;
+    font-size: 12px;
+  }
+  .active{
+    font-size: 11px;
+  }
+}
 @media only screen and (max-width: 1198px) {
   .Navbar h3{
     font-size: 20px;
