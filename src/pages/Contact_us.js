@@ -19,10 +19,10 @@ const Contactus = () => {
           <img src={pic_contact} alt="contact-img" />
         </div>
         <div className="contact-form">
-            <div className="contact-form-hed">
+          <div className="contact-form-hed">
             <h2>Get In Touch</h2>
             <p>Rhoncus morbi et augue nec, in id ullamcorper at sit.</p>
-            </div>
+          </div>
           <form action="">
             <div className="name">
               <div>
@@ -51,7 +51,7 @@ const Contactus = () => {
               placeholder="Your Message"
               required
             ></textarea>
-            <input type="submit" name="" value="Send" className="btn"/>
+            <input type="submit" name="" value="Send" className="btn" />
           </form>
         </div>
       </section>

@@ -1,26 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Clicker+Script&family=Oswald:wght@500&family=Poppins:wght@100;200;300;400;500;600&family=Roboto:wght@100;300;400&family=Tajawal:wght@700&family=Ubuntu&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Agbalumo&family=Clicker+Script&family=Oswald:wght@500&family=Poppins:wght@100;200;300;400;500;600&family=Roboto:wght@100;300;400&family=Tajawal:wght@700&family=Ubuntu&display=swap");
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 :root {
-  --Red: #BE0202;
+  --Red: #be0202;
   --mainColorLight: #f90723;
   --secondaryColor: #ff00007e;
   --whiteColor: #fff;
-  --blackColor:#000000;
-  --graycolor:#1F1F1F;
+  --blackColor: #000000;
+  --graycolor: #1f1f1f;
 }
-a{
+a {
   text-decoration: none;
 }
 
-.active{
+.active {
   font-size: 16px;
   font-weight: 900;
 }
-
