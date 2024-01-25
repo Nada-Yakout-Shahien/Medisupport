@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Arizonia&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap');
+
 header {
 	display: flex;
 	align-items: center;
@@ -12,7 +13,7 @@ header {
 
 .Navbar h3{
   font-family: Arizonia;
-  font-size: 30px;
+  font-size: 32px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -78,8 +79,34 @@ nav .navbar-menu_container button:hover {
   color: var(--Red);
 }
 
+
+@media only screen and (max-width: 1198px) {
+  .Navbar h3{
+    font-size: 20px;
+    font-weight: 400;
+  }
+  nav a{ 
+    font-weight: 400;
+    font-size: 12px;
+  }
+  nav .nav-button button{
+    width: 80px;
+    height: 35px;
+    font-size: 12px;
+  }
+  .active{
+    font-size: 11px;
+  }
+}
 @media only screen and (max-width: 1024px) {
-	header .nav-btn {
+  .active{
+    font-size: 16px;
+  }
+  .Navbar h3{
+    font-size: 35px;
+    font-weight: 400;
+  }
+  header .nav-btn {
 		visibility: visible;
 		opacity: 1;
 	}

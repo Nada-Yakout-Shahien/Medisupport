@@ -14,9 +14,9 @@ section {
 }
 
 .name {
-  display: flex;
+  display:flex;
   justify-content: space-between;  
-  width: 613px; 
+  max-width: 613px; 
 }
 
 .name div {
@@ -36,7 +36,7 @@ section {
 
 .contact-form {
   display: flex;
-  width: 616px;
+  max-width: 616px;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
@@ -127,18 +127,28 @@ section {
   border: none;
 }
 /* Responsive design for smaller screens */
-@media screen and (max-width: 1570px) {
+@media screen and (max-width: 1400px) {
   section {
-    padding: 70px 3%;
+    padding: 80px 0%;
     transition: .2s;
     height: 0px;
   }
-  .contact-form h2{
-    font-size: 60px;
+  .contact_img {
+    margin-left: -25px;
+  }
+  .contact-form form .btn {
+    width: 500px;
   }
   .contact-form p{
     font-size: 15px;
   }
+  .contact-form form  {
+    max-width: 500px;
+  }
+  .name { 
+    max-width: 500px; 
+  }
+
 }
 
 @media screen and (max-width: 1090px) {
@@ -149,6 +159,24 @@ section {
     grid-gap: 2rem;
     transition: .3s;
   }
+  .contact_img {
+    margin-left: -25px;
+  }
+  .contact-form form .btn {
+    width: 400px;
+  }
+  .contact-form p{
+    font-size: 15px;
+  }
+  .contact-form form  {
+    max-width: 400px;
+  }
+  .name { 
+    max-width: 400px; 
+  }
+  .contact-form {
+    margin-left: -30px;
+  }
 }
 @media screen and (max-width: 1000px) {
   section{
@@ -156,6 +184,9 @@ section {
   }
   .contact{
     grid-template-columns: 1fr;
+  }
+  .contact-form {
+    margin-left: 50px;
   }
   .contact-form{
     order: 2;
@@ -167,5 +198,16 @@ section {
     text-align: center;
     margin-bottom: 30px;
     margin-top: -50px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .contact_img{
+    width: 200px;
+    height: 200px;
+    margin-top: 100px;
+    margin-left: 90px;
+  }
+  .contact-form{
+    margin-top: 210px;
   }
 }
