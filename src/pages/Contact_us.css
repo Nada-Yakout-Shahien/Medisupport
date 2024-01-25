@@ -16,11 +16,11 @@ section {
 .name {
   display: flex;
   justify-content: space-between;
-  max-width: 613px;
+  max-width: 615px;
 }
 
 .name div {
-  width: 48%;
+  width: 49%;
 }
 
 .contact_img {
