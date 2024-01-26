@@ -20,7 +20,7 @@ header {
   line-height: normal;
 }
 nav {
-  margin-left: 50px;
+  margin-left: 80px;
   gap: 30px;
 }
 nav a {
@@ -47,6 +47,7 @@ header .nav-btn {
   visibility: hidden;
   opacity: 0;
   font-size: 1.8rem;
+  display: none;
 }
 
 header div,
@@ -55,7 +56,7 @@ nav {
   align-items: center;
 }
 nav .nav-button {
-  margin-right: -55px;
+  margin-left: 17px;
 }
 nav .nav-button button {
   margin: 6px;
@@ -132,6 +133,7 @@ nav .navbar-menu_container button:hover {
   header .nav-btn {
     visibility: visible;
     opacity: 1;
+    display: flex;
   }
   nav {
     margin-left: 0px;
