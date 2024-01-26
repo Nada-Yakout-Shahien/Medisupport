@@ -6,17 +6,16 @@ header {
   align-items: center;
   justify-content: space-between;
   height: 80px;
-  padding: 15px 15px 15px 20px;
+  padding: 16px 20px 20px 50px;
   background-color: var(--whiteColor);
   color: var(--Red);
-  flex-wrap: wrap;
 }
 
 .Navbar h3 {
   font-family: Arizonia;
   font-size: 32px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: normal;
 }
 nav {
@@ -67,7 +66,7 @@ nav .nav-button button {
   outline: none;
   cursor: pointer;
   border-radius: 10px;
-  width: 100px;
+  width: 105px;
   height: 40px;
   flex-shrink: 0;
   color: var(--whiteColor);
