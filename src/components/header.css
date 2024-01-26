@@ -147,7 +147,7 @@ nav .navbar-menu_container button:hover {
   nav{
     gap: 29px;
   }
-}
+
 @media only screen and (max-width: 1198px) {
   .Navbar h3 {
     font-size: 25px;
