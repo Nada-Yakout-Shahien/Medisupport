@@ -87,12 +87,14 @@ nav .navbar-menu_container button:hover {
     font-size: 25px;
     font-weight: 400;
   }
-  /* nav{
-    gap: 30px;
-  } */
   nav a {
     font-weight: 400;
     font-size: 13.7px;
+  }
+  nav a:hover {
+    font-size: 13.7px;
+    font-weight: 900;
+    color: var(--secondaryColor);
   }
   .active {
     font-size: 14.7px;
@@ -101,9 +103,6 @@ nav .navbar-menu_container button:hover {
     width: 80px;
     height: 35px;
     font-size: 12px;
-  }
-  .active {
-    font-size: 11px;
   }
 }
 @media screen and (max-width: 1276px) {
