@@ -115,6 +115,7 @@ hr {
     justify-content: left;
   }
   .sb_footer-below-links a {
+    gap: 0px;
     font-size: 14px;
   }
 }
