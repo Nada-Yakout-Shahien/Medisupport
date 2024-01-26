@@ -93,8 +93,6 @@ nav .navbar-menu_container button:hover {
   }
   nav a:hover {
     font-size: 13.7px;
-    font-weight: 900;
-    color: var(--secondaryColor);
   }
   .active {
     font-size: 14.7px;
@@ -112,6 +110,9 @@ nav .navbar-menu_container button:hover {
   }
   nav a {
     font-weight: 400;
+    font-size: 13px;
+  }
+  nav a:hover {
     font-size: 13px;
   }
   .active {
@@ -158,6 +159,9 @@ nav .navbar-menu_container button:hover {
     font-weight: 400;
     font-size: 12px;
   }
+  nav a:hover {
+    font-size: 12px;
+  }
   nav .nav-button button {
     width: 55px;
     height: 35px;
@@ -185,6 +189,9 @@ nav .navbar-menu_container button:hover {
     font-weight: 400;
     font-size: 11px;
   }
+  nav a:hover {
+    font-size: 11px;
+  }
   nav .nav-button button {
     width: 55px;
     height: 35px;
@@ -207,6 +214,9 @@ nav .navbar-menu_container button:hover {
     font-weight: 400;
     font-size: 11px;
   }
+  nav a:hover {
+    font-size: 11px;
+  }
   nav .nav-button button {
     width: 55px;
     height: 35px;
@@ -226,6 +236,9 @@ nav .navbar-menu_container button:hover {
   }
   nav a {
     font-weight: 400;
+    font-size: 11px;
+  }
+  nav a:hover {
     font-size: 11px;
   }
   nav .nav-button button {
