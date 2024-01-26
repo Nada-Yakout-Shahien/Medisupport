@@ -88,12 +88,15 @@ nav .navbar-menu_container button:hover {
     font-size: 25px;
     font-weight: 400;
   }
+  /* nav{
+    gap: 30px;
+  } */
   nav a {
     font-weight: 400;
     font-size: 13.7px;
   }
   .active {
-    font-size: 13.7px;
+    font-size: 14.7px;
   }
   nav .nav-button button {
     width: 80px;
@@ -104,14 +107,17 @@ nav .navbar-menu_container button:hover {
     font-size: 11px;
   }
 }
-@media only screen and (max-width: 1198px) {
+@media screen and (max-width: 1276px) {
   .Navbar h3 {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 400;
   }
   nav a {
     font-weight: 400;
-    font-size: 12px;
+    font-size: 13px;
+  }
+  .active {
+    font-size: 13px;
   }
   nav .nav-button button {
     width: 80px;
@@ -119,6 +125,135 @@ nav .navbar-menu_container button:hover {
     font-size: 12px;
   }
   .active {
+    font-size: 11px;
+  }
+}
+@media screen and (max-width: 1247px) {
+  nav .nav-button button {
+    width: 70px;
+    height: 35px;
+    font-size: 12px;
+  }
+  nav{
+    gap: 27px;
+  }
+}
+@media screen and (max-width: 1204px) {
+  nav{
+    gap: 26px;
+  }
+}
+@media only screen and (max-width: 1191px) {
+  nav{
+    gap: 29px;
+  }
+}
+@media only screen and (max-width: 1198px) {
+  .Navbar h3 {
+    font-size: 25px;
+    font-weight: 400;
+  }
+  nav{
+    gap: 27px;
+  }
+  nav a {
+    font-weight: 400;
+    font-size: 12px;
+  }
+  nav .nav-button button {
+    width: 55px;
+    height: 35px;
+    font-size: 12px;
+  }
+  .active {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 1142px) {
+  .Navbar h3 {
+    font-size: 23px;
+    font-weight: 400;
+  }
+}
+@media only screen and (max-width: 1135px) {
+  .Navbar h3 {
+    font-size: 24px;
+    font-weight: 400;
+  }
+  nav{
+    gap: 28px;
+  }
+  nav a {
+    font-weight: 400;
+    font-size: 11px;
+  }
+  nav .nav-button button {
+    width: 55px;
+    height: 35px;
+    font-size: 12px;
+  }
+  .active {
+    font-size: 11px;
+  }
+}
+
+@media only screen and (max-width: 1108px) {
+  .Navbar h3 {
+    font-size: 22px;
+    font-weight: 400;
+  }
+  nav{
+    gap: 27px;
+  }
+  nav a {
+    font-weight: 400;
+    font-size: 11px;
+  }
+  nav .nav-button button {
+    width: 55px;
+    height: 35px;
+    font-size: 12px;
+  }
+  .active {
+    font-size: 11px;
+  }
+}
+@media only screen and (max-width: 1082px) {
+  .Navbar h3 {
+    font-size: 24px;
+    font-weight: 400;
+  }
+  nav{
+    gap: 23px;
+  }
+  nav a {
+    font-weight: 400;
+    font-size: 11px;
+  }
+  nav .nav-button button {
+    width: 55px;
+    height: 35px;
+    font-size: 12px;
+  }
+  .active {
+    font-size: 11px;
+  }
+}
+@media only screen and (max-width: 1068px) {
+  nav{
+    gap: 22px;
+  }
+  .Navbar h3 {
+    font-size: 20px;
+    font-weight: 400;
+  }
+  nav a {
+    font-weight: 400;
+    font-size: 11px;
+  }
+  nav .nav-button button {
+    width: 55px;
+    height: 35px;
     font-size: 11px;
   }
 }
