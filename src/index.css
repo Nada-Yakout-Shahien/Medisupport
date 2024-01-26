@@ -9,6 +9,7 @@
 
 :root {
   --Red: #be0202;
+  --blackred:rgba(190, 2, 2, 0.50);
   --mainColorLight: #f90723;
   --secondaryColor: #ff00007e;
   --whiteColor: #fff;
