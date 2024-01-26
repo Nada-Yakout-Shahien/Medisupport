@@ -1,5 +1,7 @@
 /* section 1 */
-
+.section{
+  width: 1446px;
+}
 .about-us-container .about-us-section h2 {
   color: var(--graycolor);
   font-family: "Roboto", sans-serif;
@@ -282,6 +284,9 @@
   .about-us-section2 .down-part p {
     font-size: 18px; 
   }
+  .about-us-section2 .down-part img{
+    margin-left: 30px;
+  }
 }
 @media (max-width: 600px) {
   .about-us-section{
@@ -290,4 +295,21 @@
   .about-us-section2{
     max-width: 90%;
   }
+  .about-us-section2{
+    align-items: center;
+    text-align: center;
+  }
 }
+
+/* section 3 */
+
+.about-us-hr{
+  /* width: 1446px; */
+  /* height: 0px; */
+  /* transform: rotate(0.158deg); */
+  /* flex-shrink: 0; */
+  /* stroke-width: 1px; */
+  /* stroke:var(--blackred); */
+}
+
+

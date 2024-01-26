@@ -76,12 +76,12 @@ const Aboutus = () => {
             <div>
               <h2>Your Health, Your Journey</h2>
               <p>
-                <span className="medi-text2">Medisupport</span> is more than just
-                an app; it's a partner in your health journey. Whether you're
-                proactively managing your well-being or dealing with specific
-                health concerns, we're here to support you every step of the
-                way. Welcome to a healthier, informed, and empowered life with{" "}
-                <span className="medi-text2">Medisupport</span>.
+                <span className="medi-text2">Medisupport</span> is more than
+                just an app; it's a partner in your health journey. Whether
+                you're proactively managing your well-being or dealing with
+                specific health concerns, we're here to support you every step
+                of the way. Welcome to a healthier, informed, and empowered life
+                with <span className="medi-text2">Medisupport</span>.
               </p>
               <p className="dparag">
                 Stay well, stay informed, and take control of your health with{" "}
@@ -91,6 +91,35 @@ const Aboutus = () => {
             <img src={pic_about_right2} alt="pic_about_right1" />
           </div>
         </section>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="100%"
+          height="6"
+          viewBox="0 0 1440 6"
+          fill="none"
+        >
+          <path
+            d="M0 1L1439.99 4.98339"
+            stroke="#BE0202"
+            stroke-opacity="0.5"
+          />
+        </svg>
+        <section className="about-us-section3">
+        
+        </section>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="100%"
+          height="6"
+          viewBox="0 0 1440 6"
+          fill="none"
+        >
+          <path
+            d="M0 1L1439.99 4.98339"
+            stroke="#BE0202"
+            stroke-opacity="0.5"
+          />
+        </svg>
       </div>
 
       <Footer />
