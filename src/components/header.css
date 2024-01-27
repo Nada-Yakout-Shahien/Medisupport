@@ -6,7 +6,7 @@ header {
   align-items: center;
   justify-content: space-between;
   height: 80px;
-  padding: 16px 20px 20px 50px;
+  padding: 2vh 3vh 3vh 5vh;
   background-color: var(--whiteColor);
   color: var(--Red);
 }
@@ -19,8 +19,8 @@ header {
   line-height: normal;
 }
 nav {
-  margin-left: 5vh;
-  gap: 3vh;
+  margin-left: 7vh;
+  gap: 5vh;
 }
 nav a {
   color: var(--Red);
