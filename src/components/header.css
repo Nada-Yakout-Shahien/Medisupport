@@ -5,8 +5,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
-  padding: 16px 20px 20px 50px;
+  height: 2.2cm;
+  padding: 2vh 3vh 3vh 5vh;
   background-color: var(--whiteColor);
   color: var(--Red);
 }
@@ -19,8 +19,8 @@ header {
   line-height: normal;
 }
 nav {
-  margin-left: 80px;
-  gap: 30px;
+  margin-left: 7vh;
+  gap: 5vh;
 }
 nav a {
   color: var(--Red);
@@ -103,7 +103,31 @@ nav .navbar-menu_container button:hover {
     font-size: 12px;
   }
 }
-@media screen and (max-width: 1276px) {
+@media screen and (max-width: 1288px) {
+  .Navbar h3 {
+    font-size: 25px;
+    font-weight: 400;
+  }
+  nav a {
+    font-weight: 400;
+    font-size: 13px;
+  }
+  nav a:hover {
+    font-size: 13px;
+  }
+  .active {
+    font-size: 13px;
+  }
+  nav .nav-button button {
+    width: 80px;
+    height: 35px;
+    font-size: 12px;
+  }
+  .active {
+    font-size: 11px;
+  }
+}
+@media screen and (max-width: 1280px) {
   .Navbar h3 {
     font-size: 24px;
     font-weight: 400;
@@ -133,7 +157,7 @@ nav .navbar-menu_container button:hover {
     height: 35px;
     font-size: 12px;
   }
-  nav{
+  nav {
     gap: 27px;
   }
 }
@@ -147,7 +171,7 @@ nav .navbar-menu_container button:hover {
     gap: 29px;
   }
 }
-@media only screen and (max-width: 1198px) {
+@media only screen and (max-width: 1200px) {
   .Navbar h3 {
     font-size: 25px;
     font-weight: 400;
@@ -171,18 +195,37 @@ nav .navbar-menu_container button:hover {
     font-size: 12px;
   }
 }
-@media only screen and (max-width: 1142px) {
+@media only screen and (max-width: 1191px) {
+  nav{
+    gap: 29px;
+  }
+}
+@media only screen and (max-width: 1177px) {
+  nav{
+    gap: 27px;
+  }
+}
+@media only screen and (max-width: 1160px) {
   .Navbar h3 {
     font-size: 23px;
     font-weight: 400;
   }
 }
-@media only screen and (max-width: 1135px) {
+@media only screen and (max-width: 1146px) {
+  .Navbar h3 {
+    font-size: 22px;
+    font-weight: 400;
+  }
+  nav{
+    gap: 26px;
+  }
+}
+@media only screen and (max-width: 1136px) {
   .Navbar h3 {
     font-size: 24px;
     font-weight: 400;
   }
-  nav{
+  nav {
     gap: 28px;
   }
   nav a {
@@ -207,7 +250,7 @@ nav .navbar-menu_container button:hover {
     font-size: 22px;
     font-weight: 400;
   }
-  nav{
+  nav {
     gap: 27px;
   }
   nav a {
@@ -226,12 +269,36 @@ nav .navbar-menu_container button:hover {
     font-size: 11px;
   }
 }
-@media only screen and (max-width: 1082px) {
+@media only screen and (max-width: 1091px) {
+  .Navbar h3 {
+    font-size: 22px;
+    font-weight: 400;
+  }
+  nav{
+    gap: 26px;
+  }
+  nav a {
+    font-weight: 400;
+    font-size: 11px;
+  }
+  nav a:hover {
+    font-size: 11px;
+  }
+  nav .nav-button button {
+    width: 55px;
+    height: 35px;
+    font-size: 12px;
+  }
+  .active {
+    font-size: 11px;
+  }
+}
+@media only screen and (max-width: 1086px) {
   .Navbar h3 {
     font-size: 24px;
     font-weight: 400;
   }
-  nav{
+  nav {
     gap: 23px;
   }
   nav a {
@@ -251,7 +318,7 @@ nav .navbar-menu_container button:hover {
   }
 }
 @media only screen and (max-width: 1068px) {
-  nav{
+  nav {
     gap: 22px;
   }
   .Navbar h3 {
@@ -266,6 +333,42 @@ nav .navbar-menu_container button:hover {
     width: 55px;
     height: 35px;
     font-size: 11px;
+  }
+}
+@media only screen and (max-width: 1041px) {
+  nav{
+    gap: 21px;
+  }
+  .Navbar h3 {
+    font-size: 19.1px;
+    font-weight: 400;
+  }
+  nav a {
+    font-weight: 400;
+    font-size: 11px;
+  }
+  nav .nav-button button {
+    width: 55px;
+    height: 35px;
+    font-size: 11px;
+  }
+}
+@media only screen and (max-width: 1028px) {
+  nav{
+    gap: 21px;
+  }
+  .Navbar h3 {
+    font-size: 19px;
+    font-weight: 400;
+  }
+  nav a {
+    font-weight: 400;
+    font-size: 11px;
+  }
+  nav .nav-button button {
+    width: 54px;
+    height: 35px;
+    font-size: 12px;
   }
 }
 @media only screen and (max-width: 1024px) {

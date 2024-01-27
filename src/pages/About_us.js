@@ -5,9 +5,14 @@ import React from "react";
 import pic_about_left from "../images/pic_about_left.png";
 import pic_about_right1 from "../images/pic_about_right1.png";
 import pic_about_right2 from "../images/pic_about_right2.png";
+//import { useState } from 'react';
+
 import "./About_us.css";
 
 const Aboutus = () => {
+
+  
+  
   return (
     <>
       <Helmet>
