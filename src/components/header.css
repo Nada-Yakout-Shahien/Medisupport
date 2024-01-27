@@ -6,7 +6,7 @@ header {
   align-items: center;
   justify-content: space-between;
   height: 2.2cm;
-  padding: 2vh 3vh 3vh 5vh;
+  padding: 2vh 3vh 3vh 1cm;
   background-color: var(--whiteColor);
   color: var(--Red);
 }
