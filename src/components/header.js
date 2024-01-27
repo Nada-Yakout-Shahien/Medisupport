@@ -39,8 +39,8 @@ function Navbar() {
           <NavLink to="/Smart_health_metrics">Smart Health Metrics</NavLink>
           <NavLink to="/Doctors">Doctors</NavLink>
           <NavLink to="/Booking">Booking</NavLink>
-          <NavLink to="/Daily reports">Daily reports</NavLink>
-          <NavLink to="/Reed articles">Reed articles</NavLink>
+          <NavLink to="/Daily_reports">Daily reports</NavLink>
+          <NavLink to="/Reed_articles">Reed articles</NavLink>
           <NavLink to="/Contact_us">Contact us</NavLink>
 
           <button className="nav-btn nav-close-btn" onClick={showNavbar}>
@@ -48,10 +48,10 @@ function Navbar() {
           </button>
 
           <div className="nav-button">
-            <NavLink href="www.google.com">
+            <NavLink to="/login">
               <button type="button">Login</button>
             </NavLink>
-            <NavLink href="www.google.com">
+            <NavLink to="/signup">
               <button type="button">Sign up</button>
             </NavLink>
           </div>
