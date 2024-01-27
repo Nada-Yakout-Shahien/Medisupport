@@ -5,7 +5,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 2cm;
+  height: 2.2cm;
   padding: 2vh 3vh 3vh 5vh;
   background-color: var(--whiteColor);
   color: var(--Red);
@@ -19,8 +19,8 @@ header {
   line-height: normal;
 }
 nav {
-  margin-left: 80px;
-  gap: 30px;
+  margin-left: 7vh;
+  gap: 5vh;
 }
 nav a {
   color: var(--Red);
