@@ -19,8 +19,8 @@ header {
   line-height: normal;
 }
 nav {
-  margin-left: 80px;
-  gap: 30px;
+  margin-left: 7vh;
+  gap: 5vh;
 }
 nav a {
   color: var(--Red);
