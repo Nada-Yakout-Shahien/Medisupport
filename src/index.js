@@ -7,6 +7,9 @@ import Home from "./pages/home";
 import Aboutus from "./pages/About_us";
 import SmartHealthMetrics from "./pages/Smart_health_metrics";
 import Contactus from "./pages/Contact_us";
+import Login from "./pages/login";
+import Signup from "./pages/sign_up";
+import Reedarticles from "./pages/Reed_articles";
 
 const router = createBrowserRouter([
   {
@@ -30,8 +33,23 @@ const router = createBrowserRouter([
     errorElement: <h1>Sorry......</h1>,
   },
   {
+    path: "/login",
+    element: <Login />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
     path: "/Contact_us",
     element: <Contactus />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/Reed_articles",
+    element: <Reedarticles />,
     errorElement: <h1>Sorry......</h1>,
   },
 ]);
