@@ -9,14 +9,13 @@ header {
   padding: 16px 20px 20px 50px;
   background-color: var(--whiteColor);
   color: var(--Red);
-  flex-wrap: wrap;
 }
 
 .Navbar h3 {
   font-family: Arizonia;
   font-size: 32px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: normal;
 }
 nav {
@@ -67,7 +66,7 @@ nav .nav-button button {
   outline: none;
   cursor: pointer;
   border-radius: 10px;
-  width: 100px;
+  width: 105px;
   height: 40px;
   flex-shrink: 0;
   color: var(--whiteColor);
@@ -134,17 +133,17 @@ nav .navbar-menu_container button:hover {
     height: 35px;
     font-size: 12px;
   }
-  nav{
+  nav {
     gap: 27px;
   }
 }
 @media screen and (max-width: 1204px) {
-  nav{
+  nav {
     gap: 26px;
   }
 }
 @media only screen and (max-width: 1191px) {
-  nav{
+  nav {
     gap: 29px;
   }
 }
@@ -153,7 +152,7 @@ nav .navbar-menu_container button:hover {
     font-size: 25px;
     font-weight: 400;
   }
-  nav{
+  nav {
     gap: 27px;
   }
   nav a {
@@ -183,7 +182,7 @@ nav .navbar-menu_container button:hover {
     font-size: 24px;
     font-weight: 400;
   }
-  nav{
+  nav {
     gap: 28px;
   }
   nav a {
@@ -208,7 +207,7 @@ nav .navbar-menu_container button:hover {
     font-size: 22px;
     font-weight: 400;
   }
-  nav{
+  nav {
     gap: 27px;
   }
   nav a {
@@ -232,7 +231,7 @@ nav .navbar-menu_container button:hover {
     font-size: 24px;
     font-weight: 400;
   }
-  nav{
+  nav {
     gap: 23px;
   }
   nav a {
@@ -252,7 +251,7 @@ nav .navbar-menu_container button:hover {
   }
 }
 @media only screen and (max-width: 1068px) {
-  nav{
+  nav {
     gap: 22px;
   }
   .Navbar h3 {
