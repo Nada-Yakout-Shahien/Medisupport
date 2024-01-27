@@ -161,23 +161,28 @@ nav .navbar-menu_container button:hover {
     gap: 27px;
   }
 }
-@media screen and (max-width: 1204px) {
+@media screen and (max-width: 1218px) {
   nav{
     gap: 26px;
   }
 }
-@media only screen and (max-width: 1191px) {
+@media screen and (max-width: 1208px) {
   nav{
-    gap: 29px;
+    gap: 26px;
+  }
+  nav .nav-button button {
+    width: 65px;
+    height: 35px;
+    font-size: 12px;
   }
 }
-@media only screen and (max-width: 1198px) {
+@media only screen and (max-width: 1200px) {
   .Navbar h3 {
     font-size: 25px;
     font-weight: 400;
   }
   nav{
-    gap: 27px;
+    gap: 30px;
   }
   nav a {
     font-weight: 400;
@@ -195,10 +200,29 @@ nav .navbar-menu_container button:hover {
     font-size: 12px;
   }
 }
-@media only screen and (max-width: 1146px) {
+@media only screen and (max-width: 1191px) {
+  nav{
+    gap: 29px;
+  }
+}
+@media only screen and (max-width: 1177px) {
+  nav{
+    gap: 27px;
+  }
+}
+@media only screen and (max-width: 1160px) {
   .Navbar h3 {
     font-size: 23px;
     font-weight: 400;
+  }
+}
+@media only screen and (max-width: 1146px) {
+  .Navbar h3 {
+    font-size: 22px;
+    font-weight: 400;
+  }
+  nav{
+    gap: 26px;
   }
 }
 @media only screen and (max-width: 1136px) {
