@@ -113,7 +113,7 @@ const Sign_up = () => {
           </div>
         </div>
 
-        <div classNEmail Addressame="flex2">
+        <div classNEmail className="flex2">
           <img src={sign} alt="sign_up" />
         </div>
       </div>
