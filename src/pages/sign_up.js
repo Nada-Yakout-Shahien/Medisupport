@@ -1,11 +1,10 @@
-
 import { Helmet } from "react-helmet-async";
 import "./sign_up.css";
 import React from "react";
-import sign from "../images/sign.png"
+import sign from "../images/sign.png";
 import { NavLink } from "react-router-dom";
 
-const Sign_up  = () => {
+const Sign_up = () => {
   return (
     <>
       <Helmet>
@@ -16,15 +15,14 @@ const Sign_up  = () => {
         <div className="flex1">
           <h2>Sign Up</h2>
           <div className="lbl">
-
-          <div className="name">
+            <div className="name">
               <div className="lbl1">
                 <label htmlFor="">First Name</label>
-                <input type="text" placeholder="FName" required id="nam"/>
+                <input type="text" placeholder="FName" required id="nam" />
               </div>
               <div className="lbl1">
                 <label htmlFor="">Last Name</label>
-                <input type="text" placeholder="LName" required  id="nam"/>
+                <input type="text" placeholder="LName" required id="nam" />
               </div>
             </div>
 
@@ -35,7 +33,6 @@ const Sign_up  = () => {
             <div className="lbl2">
               <label htmlFor="">Password</label>
               <input type="Password" className="inp" />
-            
             </div>
           </div>
 
@@ -46,7 +43,9 @@ const Sign_up  = () => {
                 for="custom-checkbox"
                 class="custom-checkbox-label"
               ></label>
-              <p className="tex">Vestibulum faucibus odio vitae arcu auctor lectus.</p>
+              <p className="tex">
+                Vestibulum faucibus odio vitae arcu auctor lectus.
+              </p>
             </label>
           </div>
           <input type="submit" name="" value="Sign Up" className="btn" />
@@ -105,7 +104,12 @@ const Sign_up  = () => {
           </div>
           <hr />
           <div className="sign">
-            <p>No account yet? <NavLink to="/login" id="nav">Log In</NavLink></p>
+            <p>
+              No account yet?{" "}
+              <NavLink to="/login" id="nav">
+                Log In
+              </NavLink>
+            </p>
           </div>
         </div>
 
@@ -118,4 +122,3 @@ const Sign_up  = () => {
 };
 
 export default Sign_up;
-

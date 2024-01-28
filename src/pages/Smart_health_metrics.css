@@ -1,40 +1,100 @@
 .disease{
-  padding: 7vh 9vh;
-  margin-bottom: -18cm;
+  padding: 7vh 9vh 0vh 9vh;
+  height: auto;
 }
 .disease h3{
   color: var(--Red);
   font-family: 'Roboto',sans-serif;
   font-size: 32px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
-  margin-bottom: 3vh;
+  margin-bottom: 5vh;
 }
 .child{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 .child .recording{
-  width: 316px;
-  height: 445px;
+  width: 100%;
+  max-width: 316px;
+  height: auto;
   flex-shrink: 0;
   border-radius: 10px;
-  margin:0 2vh 0 0;
+  margin:0 2vh 2vh 0;
   border: 1px solid #A4A2A2;
   transition: transform 0.3s, box-shadow 0.3s; 
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5); 
 }
 .child .recording:hover{
   width: 356px;
-  height: 502px;
+  height: auto;
   flex-shrink: 0;
   transform: scale(1.1); 
   box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75); 
 }
+.child .recording:hover img{
+  max-height: 39vh;
+  /* padding: 5% 0%  0% 10%; */
+}
+.child .recording img{
+  width: 100%;
+  height: auto;
+  max-height: 34vh;
+  padding: 5% 9%  0% 9%;
+}
+.inf{
+  padding: 0vh 2vh 0vh 3vh;
+}
+.child .recording h4{
+  color: var(--graycolor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 1vh;
+}
+.child .recording p{
+  color: var(--darkgraycolor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  /* line-height: normal; */
+  margin-bottom: 2vh;
+}
+.child .recording .btn{
+  display: flex;
+  padding: 3% 19%;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--Red);
+  border: none;
+  color: var(--whiteColor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; 
+  letter-spacing: 0.5px;
+  margin-bottom: 2vh;
+}
 
 
+@media (max-width: 768px) {
+  .disease h3 {
+    font-size: 24px;
+    margin-bottom: 3vh;
+  }
 
-@media (max-width: 500px) {
+  .child .recording {
+    max-width: 100%; 
+    margin-bottom: 2vh;
+  }
 
+  .child .recording .btn {
+    padding: 3% 10%;
+  }
 }
