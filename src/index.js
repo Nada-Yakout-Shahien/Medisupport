@@ -10,6 +10,7 @@ import Contactus from "./pages/Contact_us";
 import Login from "./pages/login";
 import Signup from "./pages/sign_up";
 import Reedarticles from "./pages/Reed_articles";
+import Doctors from "./pages/doctors";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,11 @@ const router = createBrowserRouter([
   {
     path: "/Reed_articles",
     element: <Reedarticles />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/Doctors",
+    element: <Doctors />,
     errorElement: <h1>Sorry......</h1>,
   },
 ]);
