@@ -106,7 +106,9 @@ section {
   display: inline-block;
   background-color: var(--Red);
   color: var(--whiteColor);
-  width: 616px;
+  /* width: 616px; */
+  padding: 0vw 16.7vw;
+  /* padding: 0.1cm 6.7cm; */
   height: 48px;
   justify-content: center;
   align-items: center;
