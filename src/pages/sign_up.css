@@ -2,14 +2,17 @@
   display: flex;
   flex-direction: row;
 }
-.name{
-  gap: 8px;
+.flex1 .name{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
 }
-
-#nam{
+.flex1 #nam{
   display: flex;
   height: 48px;
   padding: 0px 7.6vw 0px 2vh;
+  width: 100%;
   align-items: center;
   align-self: stretch;
   border-radius: 10px;
