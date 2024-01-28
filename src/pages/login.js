@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet-async";
 import "./login.css";
 import React from "react";
@@ -32,18 +31,21 @@ const Login = () => {
           </div>
 
           <div class="forget">
-            <label for="">
+            <div class="checkbox-container">
               <input type="checkbox" id="custom-checkbox" />
               <label
                 for="custom-checkbox"
                 class="custom-checkbox-label"
               ></label>
-              Remember Me
-              <NavLink to="#" id="for">
-                Forget Password?
-              </NavLink>
-            </label>
+              <label for="custom-checkbox">
+                Remember Me
+              </label>
+            </div>
+            <NavLink to="#" id="for">
+              Forget Password?
+            </NavLink>
           </div>
+
           <input type="submit" name="" value="Log In" className="btn" />
 
           <div className="btn-log">
@@ -79,7 +81,7 @@ const Login = () => {
               </button>
             </div>
             <div>
-              <button className="blog" id="face">
+              <button className="blog">
                 <div className="svg">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -100,15 +102,20 @@ const Login = () => {
           </div>
           <hr />
           <div className="sign">
-            <p>No account yet? <NavLink to="/signup" id="nav"> Sign Up</NavLink></p>
+            <p>
+              No account yet?{" "}
+              <NavLink to="/signup" id="nav">
+                {" "}
+                Sign Up
+              </NavLink>
+            </p>
           </div>
         </div>
 
-        <div classNEmail Addressame="flex2">
+        <div classNEmail className="flex2">
           <img src={log} alt="log_in" />
         </div>
       </div>
-  
     </>
   );
 };
