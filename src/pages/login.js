@@ -112,7 +112,7 @@ const Login = () => {
           </div>
         </div>
 
-        <div classNEmail className="flex2">
+        <div classNEmail Addressame="flex2">
           <img src={log} alt="log_in" />
         </div>
       </div>
