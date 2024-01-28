@@ -104,8 +104,8 @@ const Login = () => {
           </div>
         </div>
 
-        <div classNEmail Addressame="flex2">
-          <img src={log} alt="log_in" />
+        <div classNEmail="flex2">
+          <img className="resp" src={log} alt="log_in" />
         </div>
       </div>
   
