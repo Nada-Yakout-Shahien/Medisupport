@@ -1,0 +1,172 @@
+.log {
+  display: flex;
+  flex-direction: row;
+}
+.flex1 {
+  max-width: 50%;
+  display: flex;
+  padding: 80px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 48px;
+  flex: 1 0 0;
+  justify-content: center;
+}
+
+.flex2 {
+  max-width: 50%;
+}
+
+h2 {
+  color: var(--Red);
+  /* Heading/2 */
+  font-family: Roboto;
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%; /* 46.2px */
+}
+
+.lbl {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
+}
+
+.label {
+  color: #1f1f1f;
+
+  /* Body/S */
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 19.6px */
+}
+
+.field {
+  display: flex;
+  height: 48px;
+  padding: 12px 16px;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+}
+
+.lbl1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  align-self: stretch;
+  margin-bottom: 16px;
+}
+.lbl2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  align-self: stretch;
+}
+
+label {
+  color: #1f1f1f;
+
+  /* Body/S */
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 19.6px */
+  max-width: 100%;
+  height: auto;
+}
+
+.inp {
+  display: flex;
+  height: 48px;
+  padding: 12px 16px;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  border-radius: 10px;
+  border: 1px solid #be0202;
+}
+
+.disc {
+  color: #353535;
+
+  /* Body/XS */
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 16.8px */
+}
+
+.parent {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lbl3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.check {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #be0202;
+}
+
+#check {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border: 1px solid #BE0202;
+}
+
+#check:checked{
+  accent-color: #be0202;
+}
+#check:checked label{
+  color: #be0202;
+}
+.rem {
+  color: #be0202;
+
+  /* Body/S */
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 19.6px */
+}
+
+.forget {
+  flex: 1 0 0;
+  color: #be0202;
+  text-align: right;
+
+  /* Body/S */
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 19.6px */
+}
