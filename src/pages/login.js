@@ -100,7 +100,7 @@ const Login = () => {
           </div>
           <hr />
           <div className="sign">
-            <p>No account yet? <NavLink id="nav"> Sign Up</NavLink></p>
+            <p>No account yet? <NavLink to="/signup" id="nav"> Sign Up</NavLink></p>
           </div>
         </div>
 
