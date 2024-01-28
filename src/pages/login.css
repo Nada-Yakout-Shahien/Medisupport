@@ -117,49 +117,43 @@ label {
   gap: 8px;
 }
 
-.forget{
-  margin: -16px 0 0 ;
+.forget {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: -16px 0 0;
   font-size: .9em;
+  width: 100%;
 }
 
-.forget label {
+.checkbox-container {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.checkbox-container label {
   color: var(--Red);
-  font-family: 'Roboto',sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: 140%; 
 }
-.forget label #for{
-  color: var(--Red);
-  text-decoration: none;
-  margin-left: auto;
-  margin-right: 0;
-  text-align: right;
-  font-family: 'Roboto',sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%; 
-  display: block;
-}
-.forget label #for:hover{
-  opacity: 0.7;
-}
+
 #custom-checkbox {
   display: none;
 }
+
 .custom-checkbox-label {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   width: 16px;
   height: 16px;
   border: 1px solid var(--Red);
   cursor: pointer;
   position: relative;
 }
+
 #custom-checkbox:checked + .custom-checkbox-label::after {
   content: "";
   position: absolute;
@@ -170,7 +164,20 @@ label {
   border: solid var(--secondaryColor);
   border-width: 0 2.5px 2.5px 0;
   transform: rotate(45deg);
+}
 
+#for {
+  color: var(--Red);
+  text-decoration: none;
+  font-family: 'Roboto',sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; 
+}
+
+#for:hover {
+  opacity: 0.7;
 }
 
 .flex1 .btn {
@@ -204,38 +211,29 @@ label {
 
 .btn-log{
   display: flex;
+  justify-content: center;
+  gap: 20px;
 }
-.btn-log div {
-  max-width: 100%;
-}
-.blog .svg{
-  margin-left: -1vh;
-}
+
 .blog {
   display: flex;
   height: 48px;
-  padding: 0 4.9vh ;
-  justify-content: center;
   align-items: center;
-  flex: 1 0 0;
+  justify-content: center;
   border-radius: 10px;
   background-color: var(--whiteColor);
   border: 2px solid var(--Red);
   display: flex;
+  width: 100%;
+}
 
-}
-#face{
-  margin-left: 3vh;
-}
 .text{
   display: flex;
-  padding: 0vh 2vh;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
-  font-size: 3vw;
+  font-size: 1em;
   font-style: normal;
   font-weight: 500;
   line-height: 100%;
@@ -298,7 +296,27 @@ hr{
     font-size: 4em;
   }
 }
+@media (max-width: 600px) {
+  .btn-log {
+    flex-direction: column; 
+    
+  }
 
+  .text {
+    font-size: 14px;
+  }
+
+  .blog {
+    padding: 0 10px;
+  }
+  .btn-log div {
+    max-width: none; 
+  }
+
+  .blog .svg {
+  
+  }
+}
 @media (max-width: 480px) {
   .forget label #for {
     margin-left: 10vw; 
