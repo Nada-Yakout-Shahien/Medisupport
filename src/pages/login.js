@@ -112,13 +112,8 @@ const Login = () => {
           </div>
         </div>
 
-<<<<<<<<< Temporary merge branch 1
-        <div classNEmail="flex2">
-          <img className="resp" src={log} alt="log_in" />
-=========
         <div classNEmail className="flex2">
           <img src={log} alt="log_in" />
->>>>>>>>> Temporary merge branch 2
         </div>
       </div>
     </>
