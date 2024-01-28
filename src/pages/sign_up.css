@@ -197,10 +197,12 @@ label {
   border: none;
 }
 
-
 .btn-log{
   display: flex;
+  justify-content: center;
+  gap: 20px;
 }
+
 .btn-log div {
   max-width: 100%;
 }
