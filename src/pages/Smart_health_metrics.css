@@ -1,0 +1,40 @@
+.disease{
+  padding: 7vh 9vh;
+  margin-bottom: -18cm;
+}
+.disease h3{
+  color: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 3vh;
+}
+.child{
+  display: flex;
+  flex-direction: row;
+}
+.child .recording{
+  width: 316px;
+  height: 445px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  margin:0 2vh 0 0;
+  border: 1px solid #A4A2A2;
+  transition: transform 0.3s, box-shadow 0.3s; 
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5); 
+}
+.child .recording:hover{
+  width: 356px;
+  height: 502px;
+  flex-shrink: 0;
+  transform: scale(1.1); 
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75); 
+}
+
+
+
+@media (max-width: 500px) {
+
+}
