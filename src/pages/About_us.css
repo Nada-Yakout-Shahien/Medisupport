@@ -211,7 +211,7 @@
 .arrow.left{
   /* margin-left: 2vw; */
 }
-.arrow-container:hover svg {
+.arrow-container:hover img {
   transform: scale(1.2);
 }
 
