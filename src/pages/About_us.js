@@ -12,13 +12,19 @@ import "./About_us.css";
 const Aboutus = () => {
   const [scrollX, setScrollX] = useState(0);
 
+  const maxScrollLeft = 0;
+  const maxScrollRight = -1230;
+
   const scrollRight = () => {
-    setScrollX(scrollX - 374);
+    setScrollX(scrollX - 374 > maxScrollRight ? scrollX - 374 : maxScrollRight);
   };
 
   const scrollLeft = () => {
-    setScrollX(scrollX + 374);
+    setScrollX(scrollX + 374 < maxScrollLeft ? scrollX + 374 : maxScrollLeft);
   };
+
+  const showRightArrow = scrollX > maxScrollRight;
+  const showLeftArrow = scrollX < maxScrollLeft;
 
   return (
     <>
@@ -121,88 +127,95 @@ const Aboutus = () => {
             <img src={line} alt="" />
             <h3>Our Features</h3>
           </div>
-          <div
-            className="Ourfeatures"
-            style={{ transform: `translateX(${scrollX}px)` }}
-          >
-            {scrollX < 0 && (
-            <button className="arrow left" onClick={scrollLeft}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="54"
-                height="107"
-                viewBox="0 0 54 107"
-                fill="none"
-              >
-                <path
-                  d="M44.3173 105.781L44.3098 105.781C43.2504 105.785 42.2038 105.551 41.2466 105.097C40.2897 104.643 39.4466 103.981 38.7793 103.158C38.7792 103.158 38.7791 103.158 38.7789 103.158L2.11633 57.6141L2.11308 57.6101C1.07015 56.3414 0.5 54.7499 0.5 53.1075C0.5 51.4655 1.06981 49.8745 2.11216 48.6059C2.11247 48.6055 2.11277 48.6051 2.11308 48.6048L40.0652 3.0623L40.0656 3.06181C41.2693 1.61361 42.999 0.702897 44.8741 0.530009C46.7493 0.357121 48.6163 0.936224 50.0645 2.13992C51.5127 3.34362 52.4235 5.07331 52.5963 6.94848C52.7692 8.82351 52.1902 10.6904 50.9867 12.1386C50.9866 12.1387 50.9865 12.1388 50.9864 12.1389L17.0559 52.8252L16.7933 53.14L17.0506 53.4592L49.843 94.1461L49.843 94.1462L49.8482 94.1524C50.7153 95.1932 51.266 96.4606 51.4354 97.8047C51.6047 99.1488 51.3855 100.513 50.8036 101.737C50.2218 102.96 49.3017 103.991 48.1522 104.708C47.0027 105.425 45.6719 105.797 44.3173 105.781Z"
-                  fill="white"
-                  stroke="#BE0202"
-                />
-              </svg>
-            </button>
-            )}
-            <div className="feature">
-              <p>
-                Monitoring the health status of patients with hypertension and
-                diabetes by entering some data about the disease and displaying
-                the results in the form of diagrams. Additionally, determining
-                the patient's BMI by entering their weight and height and
-                providing medical advice to assist them.
-              </p>
+          <div className="container">
+            <div className="arrow-container">
+              {showLeftArrow && (
+                <button className="arrow left" onClick={scrollLeft}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="54"
+                    height="107"
+                    viewBox="0 0 54 107"
+                    fill="none"
+                  >
+                    <path
+                      d="M44.3173 105.781L44.3098 105.781C43.2504 105.785 42.2038 105.551 41.2466 105.097C40.2897 104.643 39.4466 103.981 38.7793 103.158C38.7792 103.158 38.7791 103.158 38.7789 103.158L2.11633 57.6141L2.11308 57.6101C1.07015 56.3414 0.5 54.7499 0.5 53.1075C0.5 51.4655 1.06981 49.8745 2.11216 48.6059C2.11247 48.6055 2.11277 48.6051 2.11308 48.6048L40.0652 3.0623L40.0656 3.06181C41.2693 1.61361 42.999 0.702897 44.8741 0.530009C46.7493 0.357121 48.6163 0.936224 50.0645 2.13992C51.5127 3.34362 52.4235 5.07331 52.5963 6.94848C52.7692 8.82351 52.1902 10.6904 50.9867 12.1386C50.9866 12.1387 50.9865 12.1388 50.9864 12.1389L17.0559 52.8252L16.7933 53.14L17.0506 53.4592L49.843 94.1461L49.843 94.1462L49.8482 94.1524C50.7153 95.1932 51.266 96.4606 51.4354 97.8047C51.6047 99.1488 51.3855 100.513 50.8036 101.737C50.2218 102.96 49.3017 103.991 48.1522 104.708C47.0027 105.425 45.6719 105.797 44.3173 105.781Z"
+                      fill="white"
+                      stroke="#BE0202"
+                    />
+                  </svg>
+                </button>
+              )}
             </div>
-            <div className="feature">
-              <p>
-                Assess your heart health using PPG camera technology, where the
-                patient places their finger on the rear camera to measure
-                heartbeats. To benefit from this feature, download our dedicated
-                app.
-              </p>
+            <div className="Ourfeatures"
+              style={{ transform: `translateX(${scrollX}px)` }}
+            >
+              <div className="feature">
+                <p>
+                  Monitoring the health status of patients with hypertension and
+                  diabetes by entering some data about the disease and
+                  displaying the results in the form of diagrams. Additionally,
+                  determining the patient's BMI by entering their weight and
+                  height and providing medical advice to assist them.
+                </p>
+              </div>
+              <div className="feature">
+                <p>
+                  Assess your heart health using PPG camera technology, where
+                  the patient places their finger on the rear camera to measure
+                  heartbeats. To benefit from this feature, download our
+                  dedicated app.
+                </p>
+              </div>
+              <div className="feature">
+                <p>
+                  Reminder the patient of their medication schedule. However,
+                  this feature is available in our dedicated application. Please
+                  download it to benefit from this feature.
+                </p>
+              </div>
+              <div className="feature">
+                <p>
+                  Providing specialized doctors where patients can book
+                  appointments online or visit the doctor by providing their
+                  address and phone number. Additionally, there is a private
+                  chat for communication between the doctor and the patient.
+                </p>
+              </div>
+              <div className="feature">
+                <p>
+                  Providing medical articles for patients to read, helping them
+                  to become more aware and informed about their medical
+                  condition.
+                </p>
+              </div>
+              <div className="feature">
+                <p>
+                  Predicting heart disease using artificial intelligence by
+                  inputting specific patient data.
+                </p>
+              </div>
+              
             </div>
-            <div className="feature">
-              <p>
-                Reminder the patient of their medication schedule. However, this
-                feature is available in our dedicated application. Please
-                download it to benefit from this feature.
-              </p>
+            <div className="arrow-container">
+              {showRightArrow && (
+                <button className="arrow right" onClick={scrollRight}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="55"
+                    height="109"
+                    viewBox="0 0 55 109"
+                    fill="none"
+                  >
+                    <path
+                      d="M7.7662 107.842L7.75069 107.841L7.73516 107.841C6.04759 107.845 4.41215 107.257 3.11273 106.18C2.38143 105.574 1.77692 104.829 1.33382 103.989C0.890707 103.149 0.617722 102.229 0.530504 101.283C0.443285 100.337 0.543549 99.3833 0.825549 98.4761C1.10755 97.5689 1.56574 96.7263 2.17389 95.9965L36.7704 54.6042L37.0333 54.2896L36.7763 53.9702L3.41497 12.5001L3.41352 12.4983C2.81358 11.7596 2.36555 10.9095 2.0952 9.997C1.82484 9.08451 1.7375 8.12758 1.83817 7.18122C1.93885 6.23486 2.22556 5.31773 2.68184 4.48254C3.13811 3.64735 3.75495 2.91057 4.4969 2.31455L4.50564 2.30753L4.51405 2.30013C5.26134 1.64261 6.13646 1.14666 7.08451 0.843391C8.03256 0.540123 9.03306 0.436092 10.0232 0.537821C11.0134 0.639549 11.9718 0.944844 12.8384 1.43455C13.705 1.92425 14.461 2.58778 15.059 3.38351L15.064 3.39017L15.0692 3.39666L52.369 49.7319L52.3723 49.7359C53.4346 51.0282 54.0153 52.6493 54.0153 54.3222C54.0153 55.9947 53.4349 57.6154 52.3731 58.9076C52.3728 58.9079 52.3726 58.9082 52.3723 58.9085L13.7617 105.241L13.7609 105.242C13.0364 106.116 12.116 106.807 11.0744 107.259C10.0328 107.711 8.89945 107.911 7.7662 107.842Z"
+                      fill="white"
+                      stroke="#BE0202"
+                    />
+                  </svg>
+                </button>
+              )}
             </div>
-            <div className="feature">
-              <p>
-                Providing specialized doctors where patients can book
-                appointments online or visit the doctor by providing their
-                address and phone number. Additionally, there is a private chat
-                for communication between the doctor and the patient.
-              </p>
-            </div>
-            <div className="feature">
-              <p>
-                Providing medical articles for patients to read, helping them to
-                become more aware and informed about their medical condition.
-              </p>
-            </div>
-            <div className="feature">
-              <p>
-                Predicting heart disease using artificial intelligence by
-                inputting specific patient data.
-              </p>
-            </div>
-            {scrollX < 0 && (
-            <button className="arrow right" onClick={scrollRight}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="55"
-                height="109"
-                viewBox="0 0 55 109"
-                fill="none"
-              >
-                <path
-                  d="M7.7662 107.842L7.75069 107.841L7.73516 107.841C6.04759 107.845 4.41215 107.257 3.11273 106.18C2.38143 105.574 1.77692 104.829 1.33382 103.989C0.890707 103.149 0.617722 102.229 0.530504 101.283C0.443285 100.337 0.543549 99.3833 0.825549 98.4761C1.10755 97.5689 1.56574 96.7263 2.17389 95.9965L36.7704 54.6042L37.0333 54.2896L36.7763 53.9702L3.41497 12.5001L3.41352 12.4983C2.81358 11.7596 2.36555 10.9095 2.0952 9.997C1.82484 9.08451 1.7375 8.12758 1.83817 7.18122C1.93885 6.23486 2.22556 5.31773 2.68184 4.48254C3.13811 3.64735 3.75495 2.91057 4.4969 2.31455L4.50564 2.30753L4.51405 2.30013C5.26134 1.64261 6.13646 1.14666 7.08451 0.843391C8.03256 0.540123 9.03306 0.436092 10.0232 0.537821C11.0134 0.639549 11.9718 0.944844 12.8384 1.43455C13.705 1.92425 14.461 2.58778 15.059 3.38351L15.064 3.39017L15.0692 3.39666L52.369 49.7319L52.3723 49.7359C53.4346 51.0282 54.0153 52.6493 54.0153 54.3222C54.0153 55.9947 53.4349 57.6154 52.3731 58.9076C52.3728 58.9079 52.3726 58.9082 52.3723 58.9085L13.7617 105.241L13.7609 105.242C13.0364 106.116 12.116 106.807 11.0744 107.259C10.0328 107.711 8.89945 107.911 7.7662 107.842Z"
-                  fill="white"
-                  stroke="#BE0202"
-                />
-              </svg>
-            </button>
-            )}
           </div>
         </div>
         <svg

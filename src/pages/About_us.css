@@ -146,73 +146,79 @@
   line-height: 110%; 
 }
 
-.Ourfeatures{
+.Ourfeatures {
   position: relative;
   width: 100%;
   display: flex;
   gap: 40px;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
   align-items: flex-start;
   padding: 20px;
-  position: relative;
-  display: flex;
-  transition: transform 0.3s ease-in-out;
 }
-.Ourfeatures .feature{
+
+.Ourfeatures .feature {
   flex: 0 0 auto;
-  flex-wrap: wrap;
-  max-width:374px;
+  max-width: 374px;
   min-height: 359px;
-  flex-shrink: 0;
   border-radius: 20px;
   border: 1px solid var(--Red);
-  background: linear-gradient(90deg, rgba(190, 2, 2, 0.51) 0%, rgba(190, 2, 2, 0.51) 100%);
+  background: linear-gradient(90deg, var(--blackred) 0%, var(--blackred) 100%);
 }
-.about-us-section3 .Ourfeatures .feature p{
+
+.about-us-section3 .Ourfeatures .feature p {
   color: var(--whiteColor);
-  font-family: 'Roboto',sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 110%;
   padding: 3vh;
 }
-
-.Ourfeatures .arrow {
+.container{
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  scroll-behavior: smooth;
+  transition: transform 0.3s ease-in-out;
+}
+.container .arrow-container {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #BE0202;
-  color: white;
+  color: var(--whiteColor);
   border: none;
   cursor: pointer;
   padding: 10px;
   border-radius: 50%;
+  z-index: 10000;
+}
+.container .arrow-container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--whiteColor);
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
   z-index: 100;
 }
-
-.arrow.left {
-  left: 10px;
-}
-
+.arrow.left,
 .arrow.right {
-  right: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
-
-
-.arrow:hover {
-  background-color: #a10202;
+.arrow.right{
+  margin-left: 85vw;
 }
-.Ourfeatures:hover svg {
-  transform: scale(1.2); 
+.arrow.left{
+  /* margin-left: 2vw; */
+}
+.arrow-container:hover svg {
+  transform: scale(1.2);
 }
 
 .Ourfeatures:hover .feature {
-  transform: scale(1.05); 
+  transform: scale(1.05);
   transition: transform 0.3s ease;
 }
-
 
 
 
