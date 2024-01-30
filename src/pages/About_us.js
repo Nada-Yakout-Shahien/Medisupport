@@ -8,27 +8,27 @@ import pic_about_right2 from "../images/pic_about_right2.png";
 import line from "../images/line-about-ourfeatures.png";
 import right from "../images/right-arrow.png";
 import left from "../images/left-arrow.png";
-
-import { useState } from "react";
+import { useRef,useEffect} from "react";
 import "./About_us.css";
 
 const Aboutus = () => {
-  const [scrollX, setScrollX] = useState(0);
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  const ourFeaturesRef = useRef(null);
 
-  const maxScrollLeft = 0;
-  const maxScrollRight = -1230;
-
-  const scrollRight = () => {
-    setScrollX(scrollX - 374 > maxScrollRight ? scrollX - 374 : maxScrollRight);
+  const handlePrevClick = () => {
+    if (ourFeaturesRef.current) {
+      ourFeaturesRef.current.scrollLeft -= 374;
+    }
   };
 
-  const scrollLeft = () => {
-    setScrollX(scrollX + 374 < maxScrollLeft ? scrollX + 374 : maxScrollLeft);
+  const handleNextClick = () => {
+    if (ourFeaturesRef.current) {
+      ourFeaturesRef.current.scrollLeft += 374;
+    }
   };
 
-  const showRightArrow = scrollX > maxScrollRight;
-  const showLeftArrow = scrollX < maxScrollLeft;
-
+  
   return (
     <>
       <Helmet>
@@ -131,17 +131,16 @@ const Aboutus = () => {
             <h3>Our Features</h3>
           </div>
           <div className="container">
-            <div className="arrow-container">
-              {showLeftArrow && (
-                <button className="arrow left" onClick={scrollLeft}>
-                  <img src={left} alt="" />
-                </button>
-              )}
-            </div>
-            <div
-              className="Ourfeatures"
-              style={{ transform: `translateX(${scrollX}px)` }}
-            >
+            {/* {showLeftArrow && */}
+            <img
+              src={left}
+              alt="arrow left"
+              className="control prev"
+              ref={prevRef}
+              onClick={handlePrevClick}
+            />
+            {/* }  */}
+            <div className="Ourfeatures" ref={ourFeaturesRef}>
               <div className="feature">
                 <p>
                   Monitoring the health status of patients with hypertension and
@@ -188,13 +187,15 @@ const Aboutus = () => {
                 </p>
               </div>
             </div>
-            <div className="arrow-container">
-              {showRightArrow && (
-                <button className="arrow right" onClick={scrollRight}>
-                  <img src={right} alt="" />
-                </button>
-              )}
-            </div>
+            {/* {showRightArrow && */}
+            <img
+              src={right}
+              alt="arrow right"
+              className="control next"
+              ref={nextRef}
+              onClick={handleNextClick}
+            />
+            {/* } */}
           </div>
         </div>
         <svg
