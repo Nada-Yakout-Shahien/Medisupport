@@ -4,7 +4,7 @@ import React from "react";
 import sign from "../images/sign.png";
 import { NavLink } from "react-router-dom";
 
-const Sign_up = () => {
+function Sign_up(){
   return (
     <>
       <Helmet>
@@ -83,7 +83,7 @@ const Sign_up = () => {
               </button>
             </div>
             <div>
-              <button className="blog" id="face">
+              <button className="blog">
                 <div className="svg">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

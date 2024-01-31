@@ -5,14 +5,55 @@ import React from "react";
 import pic_about_left from "../images/pic_about_left.png";
 import pic_about_right1 from "../images/pic_about_right1.png";
 import pic_about_right2 from "../images/pic_about_right2.png";
-//import { useState } from 'react';
-
+import line from "../images/line-about-ourfeatures.png";
+import right from "../images/right-arrow.png";
+import left from "../images/left-arrow.png";
+import app from "../images/app.png";
+import google from "../images/google.png";
+import { useRef, useEffect, useState } from "react";
 import "./About_us.css";
 
-const Aboutus = () => {
+function Aboutus(){
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  const ourFeaturesRef = useRef(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(false);
 
-  
-  
+  const checkArrowsVisibility = () => {
+    if (ourFeaturesRef.current) {
+      const container = ourFeaturesRef.current;
+      setShowLeftArrow(container.scrollLeft > 0);
+      setShowRightArrow(container.scrollLeft < 1200);
+    }
+  };
+
+  useEffect(() => {
+    const container = ourFeaturesRef.current;
+    if (container) {
+      container.addEventListener("scroll", checkArrowsVisibility);
+      checkArrowsVisibility();
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("scroll", checkArrowsVisibility);
+      }
+    };
+  }, []);
+
+  const handlePrevClick = () => {
+    if (ourFeaturesRef.current) {
+      ourFeaturesRef.current.scrollLeft -= 374;
+    }
+  };
+
+  const handleNextClick = () => {
+    if (ourFeaturesRef.current) {
+      ourFeaturesRef.current.scrollLeft += 374;
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -23,7 +64,7 @@ const Aboutus = () => {
       <Header />
 
       <div className="about-us-container">
-        <section className="about-us-section">
+        <div className="about-us-section">
           <div className="left-part">
             <h2>About Us</h2>
             <p>
@@ -49,8 +90,8 @@ const Aboutus = () => {
               daily life.
             </p>
           </div>
-        </section>
-        <section className="about-us-section2">
+        </div>
+        <div className="about-us-section2">
           <div className="parent">
             <h2>What Sets Us Apart</h2>
             <p>
@@ -95,7 +136,7 @@ const Aboutus = () => {
             </div>
             <img src={pic_about_right2} alt="pic_about_right1" />
           </div>
-        </section>
+        </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="100%"
@@ -109,9 +150,87 @@ const Aboutus = () => {
             stroke-opacity="0.5"
           />
         </svg>
-        <section className="about-us-section3">
-        
-        </section>
+        <div className="about-us-section3">
+          <div className="title">
+            <img src={line} alt="" />
+            <h3>Our Features</h3>
+          </div>
+          <div className="container">
+            {showLeftArrow && (
+              <img
+                src={left}
+                alt="arrow left"
+                className="control prev"
+                ref={prevRef}
+                onClick={handlePrevClick}
+              />
+            )}
+            <div className="Ourfeatures" ref={ourFeaturesRef}>
+              <div className="feature">
+                <p>
+                  Monitoring the health status of patients with hypertension and
+                  diabetes by entering some data about the disease and
+                  displaying the results in the form of diagrams. Additionally,
+                  determining the patient's BMI by entering their weight and
+                  height and providing medical advice to assist them.
+                </p>
+              </div>
+              <div className="feature">
+                <p>
+                  Assess your heart health using PPG camera technology, where
+                  the patient places their finger on the rear camera to measure
+                  heartbeats. To benefit from this feature, download our
+                  dedicated app.
+                </p>
+                <div className="img-btn">
+                  <img src={app} alt="" />
+                  <img src={google} alt="" />
+                </div>
+              </div>
+              <div className="feature">
+                <p>
+                  Reminder the patient of their medication schedule. However,
+                  this feature is available in our dedicated application. Please
+                  download it to benefit from this feature.
+                </p>
+                <div className="img-btn">
+                  <img src={app} alt="" />
+                  <img src={google} alt="" />
+                </div>
+              </div>
+              <div className="feature">
+                <p>
+                  Providing specialized doctors where patients can book
+                  appointments online or visit the doctor by providing their
+                  address and phone number. Additionally, there is a private
+                  chat for communication between the doctor and the patient.
+                </p>
+              </div>
+              <div className="feature">
+                <p>
+                  Providing medical articles for patients to read, helping them
+                  to become more aware and informed about their medical
+                  condition.
+                </p>
+              </div>
+              <div className="feature">
+                <p>
+                  Predicting heart disease using artificial intelligence by
+                  inputting specific patient data.
+                </p>
+              </div>
+            </div>
+            {showRightArrow && (
+              <img
+                src={right}
+                alt="arrow right"
+                className="control next"
+                ref={nextRef}
+                onClick={handleNextClick}
+              />
+            )}
+          </div>
+        </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="100%"
@@ -125,6 +244,194 @@ const Aboutus = () => {
             stroke-opacity="0.5"
           />
         </svg>
+        <div className="about-us-section4">
+          <div className="title">
+            <img src={line} alt="" />
+            <h3>Our Developer</h3>
+          </div>
+          <div className="Ourdevelopers">
+            <div className="developer">
+              <h4>UI/UX Team</h4>
+              <div className="names">
+                <p>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                  </svg>{" "}
+                  Rokaia Shereet
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Sara Elbadry
+                </p>
+                </div>
+            </div>
+            <div className="developer">
+              <h4>Front-end Team</h4>
+              <div className="names">
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                  </svg>{" "} Rofayda Mohammed
+                </p>
+              <p>
+              <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+              </svg>{" "} Nada Sobhy
+              </p>
+              <p>
+              <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+              </svg>{" "} Nada Yakout
+              </p>
+              <p>
+              <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+              </svg>{" "} Hossam Ezzat
+              </p>
+              </div>
+            </div>
+            <div className="developer">
+              <h4>Mobile Team</h4>
+              <div className="names">
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Mostafa Salim
+                </p>
+              </div>
+            </div>
+            <div className="developer">
+              <h4>Back-end Team</h4>
+              <div className="names">
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Asmaa Gamal
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Nada El-habrouk
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Alaa Mekhimer
+                </p>
+              </div>
+            </div>
+            <div className="developer" id="ai">
+              <h4 >AI Team </h4>
+              <div className="names">
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Alaa Mekhimer
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Nada Yakout
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Mostafa Salim
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Hossam Ezzat
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <Footer />

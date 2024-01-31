@@ -5,7 +5,7 @@ import "./Contact_us.css";
 import React from "react";
 import pic_contact from "../images/pic_contact.png";
 
-const Contactus = () => {
+function Contactus(){
   return (
     <>
       <Helmet>
@@ -14,7 +14,7 @@ const Contactus = () => {
       </Helmet>
 
       <Header />
-      <section className="contact">
+      <div className="contact">
         <div className="contact_img">
           <img src={pic_contact} alt="contact-img" />
         </div>
@@ -25,11 +25,11 @@ const Contactus = () => {
           </div>
           <form action="">
             <div className="name">
-              <div>
+              <div className="lbl1">
                 <label htmlFor="">First Name</label>
                 <input type="text" placeholder="F Name" required />
               </div>
-              <div>
+              <div className="lbl1">
                 <label htmlFor="">Last Name</label>
                 <input type="text" placeholder="L Name" required />
               </div>
@@ -54,7 +54,7 @@ const Contactus = () => {
             <input type="submit" name="" value="Send" className="btn" />
           </form>
         </div>
-      </section>
+      </div>
       <Footer />
     </>
   );

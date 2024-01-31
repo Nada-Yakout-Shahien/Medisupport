@@ -1,16 +1,17 @@
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { Helmet } from "react-helmet-async";
-import "./Reed_articles.css";
+import "./BMI.css";
 import React from "react";
 
-function Reed_articles(){
+function BMI(){
   return (
     <>
       <Helmet>
-        <title>Reed articles ♥</title>
-        <meta name="description" content="Reed articles" />
+        <title>BMI ♥</title>
+        <meta name="description" content="BMI" />
       </Helmet>
+
       <Header />
       
       <Footer />
@@ -18,6 +19,4 @@ function Reed_articles(){
   );
 };
 
-export default Reed_articles;
-
-
+export default BMI;
