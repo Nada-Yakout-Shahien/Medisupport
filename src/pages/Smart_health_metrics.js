@@ -7,6 +7,7 @@ import heartrate from "../images/heart-rate.png";
 import bloodpressure from "../images/blood-pressure.png";
 import bloodsugar from "../images/blood-sugar.png";
 import bmi from "../images/bmi.png";
+import { NavLink } from "react-router-dom";
 
 const SmartHealthMetrics = () => {
   return (
@@ -30,7 +31,7 @@ const SmartHealthMetrics = () => {
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
                 nisi ut{" "}
               </p>
-              <input type="submit" name="" value="Recording Now" className="btn" />
+              <NavLink to="/heart_rate" className="btn">Recording Now</NavLink>
             </div>
           </div>
           <div className="recording">
@@ -43,7 +44,7 @@ const SmartHealthMetrics = () => {
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
                 nisi ut{" "}
               </p>
-              <input type="submit" name="" value="Recording Now" className="btn" />
+              <NavLink to="/blood_pressure" className="btn">Recording Now</NavLink>
             </div>
           </div>
           <div className="recording">
@@ -56,7 +57,7 @@ const SmartHealthMetrics = () => {
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
                 nisi ut{" "}
               </p>
-              <input type="submit" name="" value="Recording Now" className="btn" />
+              <NavLink to="/blood_sugar" className="btn">Recording Now</NavLink>
             </div>
           </div>
           <div className="recording">
@@ -69,7 +70,7 @@ const SmartHealthMetrics = () => {
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
                 nisi ut{" "}
               </p>
-              <input type="submit" name="" value="Recording Now" className="btn" />
+              <NavLink to="/bmi" className="btn">Recording Now</NavLink>
             </div>
           </div>
         </div>

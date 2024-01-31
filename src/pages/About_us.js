@@ -6,12 +6,54 @@ import pic_about_left from "../images/pic_about_left.png";
 import pic_about_right1 from "../images/pic_about_right1.png";
 import pic_about_right2 from "../images/pic_about_right2.png";
 import line from "../images/line-about-ourfeatures.png";
-//import { useState } from 'react';
-
+import right from "../images/right-arrow.png";
+import left from "../images/left-arrow.png";
+import app from "../images/app.png";
+import google from "../images/google.png";
+import { useRef, useEffect, useState } from "react";
 import "./About_us.css";
 
 const Aboutus = () => {
-  
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  const ourFeaturesRef = useRef(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(false);
+
+  const checkArrowsVisibility = () => {
+    if (ourFeaturesRef.current) {
+      const container = ourFeaturesRef.current;
+      setShowLeftArrow(container.scrollLeft > 0);
+      setShowRightArrow(container.scrollLeft < 1200);
+    }
+  };
+
+  useEffect(() => {
+    const container = ourFeaturesRef.current;
+    if (container) {
+      container.addEventListener("scroll", checkArrowsVisibility);
+      checkArrowsVisibility();
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("scroll", checkArrowsVisibility);
+      }
+    };
+  }, []);
+
+  const handlePrevClick = () => {
+    if (ourFeaturesRef.current) {
+      ourFeaturesRef.current.scrollLeft -= 374;
+    }
+  };
+
+  const handleNextClick = () => {
+    if (ourFeaturesRef.current) {
+      ourFeaturesRef.current.scrollLeft += 374;
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -113,23 +155,17 @@ const Aboutus = () => {
             <img src={line} alt="" />
             <h3>Our Features</h3>
           </div>
-          <div className="Ourfeatures-wrapper">
-            <button className="scroll-left">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="55"
-                height="109"
-                viewBox="0 0 55 109"
-                fill="none"
-              >
-                <path
-                  d="M7.7662 107.842L7.75069 107.841L7.73516 107.841C6.04759 107.845 4.41215 107.257 3.11273 106.18C2.38143 105.574 1.77692 104.829 1.33382 103.989C0.890707 103.149 0.617722 102.229 0.530504 101.283C0.443285 100.337 0.543549 99.3833 0.825549 98.4761C1.10755 97.5689 1.56574 96.7263 2.17389 95.9965L36.7704 54.6042L37.0333 54.2896L36.7763 53.9702L3.41497 12.5001L3.41352 12.4983C2.81358 11.7596 2.36555 10.9095 2.0952 9.997C1.82484 9.08451 1.7375 8.12758 1.83817 7.18122C1.93885 6.23486 2.22556 5.31773 2.68184 4.48254C3.13811 3.64735 3.75495 2.91057 4.4969 2.31455L4.50564 2.30753L4.51405 2.30013C5.26134 1.64261 6.13646 1.14666 7.08451 0.843391C8.03256 0.540123 9.03306 0.436092 10.0232 0.537821C11.0134 0.639549 11.9718 0.944844 12.8384 1.43455C13.705 1.92425 14.461 2.58778 15.059 3.38351L15.064 3.39017L15.0692 3.39666L52.369 49.7319L52.3723 49.7359C53.4346 51.0282 54.0153 52.6493 54.0153 54.3222C54.0153 55.9947 53.4349 57.6154 52.3731 58.9076C52.3728 58.9079 52.3726 58.9082 52.3723 58.9085L13.7617 105.241L13.7609 105.242C13.0364 106.116 12.116 106.807 11.0744 107.259C10.0328 107.711 8.89945 107.911 7.7662 107.842Z"
-                  fill="white"
-                  stroke="#BE0202"
-                />
-              </svg>
-            </button>
-            <div className="Ourfeatures">
+          <div className="container">
+            {showLeftArrow && (
+              <img
+                src={left}
+                alt="arrow left"
+                className="control prev"
+                ref={prevRef}
+                onClick={handlePrevClick}
+              />
+            )}
+            <div className="Ourfeatures" ref={ourFeaturesRef}>
               <div className="feature">
                 <p>
                   Monitoring the health status of patients with hypertension and
@@ -146,6 +182,10 @@ const Aboutus = () => {
                   heartbeats. To benefit from this feature, download our
                   dedicated app.
                 </p>
+                <div className="img-btn">
+                  <img src={app} alt="" />
+                  <img src={google} alt="" />
+                </div>
               </div>
               <div className="feature">
                 <p>
@@ -153,6 +193,10 @@ const Aboutus = () => {
                   this feature is available in our dedicated application. Please
                   download it to benefit from this feature.
                 </p>
+                <div className="img-btn">
+                  <img src={app} alt="" />
+                  <img src={google} alt="" />
+                </div>
               </div>
               <div className="feature">
                 <p>
@@ -176,21 +220,15 @@ const Aboutus = () => {
                 </p>
               </div>
             </div>
-            <button className="scroll-right">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="55"
-                height="109"
-                viewBox="0 0 55 109"
-                fill="none"
-              >
-                <path
-                  d="M7.7662 107.842L7.75069 107.841L7.73516 107.841C6.04759 107.845 4.41215 107.257 3.11273 106.18C2.38143 105.574 1.77692 104.829 1.33382 103.989C0.890707 103.149 0.617722 102.229 0.530504 101.283C0.443285 100.337 0.543549 99.3833 0.825549 98.4761C1.10755 97.5689 1.56574 96.7263 2.17389 95.9965L36.7704 54.6042L37.0333 54.2896L36.7763 53.9702L3.41497 12.5001L3.41352 12.4983C2.81358 11.7596 2.36555 10.9095 2.0952 9.997C1.82484 9.08451 1.7375 8.12758 1.83817 7.18122C1.93885 6.23486 2.22556 5.31773 2.68184 4.48254C3.13811 3.64735 3.75495 2.91057 4.4969 2.31455L4.50564 2.30753L4.51405 2.30013C5.26134 1.64261 6.13646 1.14666 7.08451 0.843391C8.03256 0.540123 9.03306 0.436092 10.0232 0.537821C11.0134 0.639549 11.9718 0.944844 12.8384 1.43455C13.705 1.92425 14.461 2.58778 15.059 3.38351L15.064 3.39017L15.0692 3.39666L52.369 49.7319L52.3723 49.7359C53.4346 51.0282 54.0153 52.6493 54.0153 54.3222C54.0153 55.9947 53.4349 57.6154 52.3731 58.9076C52.3728 58.9079 52.3726 58.9082 52.3723 58.9085L13.7617 105.241L13.7609 105.242C13.0364 106.116 12.116 106.807 11.0744 107.259C10.0328 107.711 8.89945 107.911 7.7662 107.842Z"
-                  fill="white"
-                  stroke="#BE0202"
-                />
-              </svg>
-            </button>
+            {showRightArrow && (
+              <img
+                src={right}
+                alt="arrow right"
+                className="control next"
+                ref={nextRef}
+                onClick={handleNextClick}
+              />
+            )}
           </div>
         </div>
         <svg
@@ -206,6 +244,194 @@ const Aboutus = () => {
             stroke-opacity="0.5"
           />
         </svg>
+        <div className="about-us-section4">
+          <div className="title">
+            <img src={line} alt="" />
+            <h3>Our Developer</h3>
+          </div>
+          <div className="Ourdevelopers">
+            <div className="developer">
+              <h4>UI/UX Team</h4>
+              <div className="names">
+                <p>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                  </svg>{" "}
+                  Rokaia Shereet
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Sara Elbadry
+                </p>
+                </div>
+            </div>
+            <div className="developer">
+              <h4>Front-end Team</h4>
+              <div className="names">
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                  </svg>{" "} Rofayda Mohammed
+                </p>
+              <p>
+              <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+              </svg>{" "} Nada Sobhy
+              </p>
+              <p>
+              <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+              </svg>{" "} Nada Yakout
+              </p>
+              <p>
+              <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+              </svg>{" "} Hossam Ezzat
+              </p>
+              </div>
+            </div>
+            <div className="developer">
+              <h4>Mobile Team</h4>
+              <div className="names">
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Mostafa Salim
+                </p>
+              </div>
+            </div>
+            <div className="developer">
+              <h4>Back-end Team</h4>
+              <div className="names">
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Asmaa Gamal
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Nada El-habrouk
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Alaa Mekhimer
+                </p>
+              </div>
+            </div>
+            <div className="developer" id="ai">
+              <h4 >AI Team </h4>
+              <div className="names">
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Alaa Mekhimer
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Nada Yakout
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Mostafa Salim
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Hossam Ezzat
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <Footer />

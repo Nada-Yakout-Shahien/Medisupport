@@ -34,7 +34,6 @@
 }
 .child .recording:hover img{
   max-height: 39vh;
-  /* padding: 5% 0%  0% 10%; */
 }
 .child .recording img{
   width: 100%;
@@ -60,7 +59,7 @@
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
-  /* line-height: normal; */
+  line-height: normal;
   margin-bottom: 2vh;
 }
 .child .recording .btn{
@@ -74,14 +73,17 @@
   border: none;
   color: var(--whiteColor);
   font-family: 'Roboto',sans-serif;
-  font-size: 24px;
+  font-size: 1.5em;
   font-style: normal;
   font-weight: 500;
   line-height: 100%; 
-  letter-spacing: 0.5px;
+  letter-spacing: 0.02em;
   margin-bottom: 2vh;
 }
-
+.child .recording .btn:hover{
+  background-color: var(--secondaryColor);
+  color: var(--Red);
+}
 
 @media (max-width: 768px) {
   .disease h3 {
