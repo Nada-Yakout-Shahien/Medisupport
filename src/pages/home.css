@@ -65,3 +65,8 @@
   line-height: 100%;
   letter-spacing: 0.5px;
 }
+.rightpart .btn:hover{
+  background-color: var(--secondaryColor);
+  color: var(--Red);
+  border: none;
+}
