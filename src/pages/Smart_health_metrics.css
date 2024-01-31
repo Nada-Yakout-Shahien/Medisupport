@@ -34,7 +34,6 @@
 }
 .child .recording:hover img{
   max-height: 39vh;
-  /* padding: 5% 0%  0% 10%; */
 }
 .child .recording img{
   width: 100%;
@@ -81,7 +80,10 @@
   letter-spacing: 0.02em;
   margin-bottom: 2vh;
 }
-
+.child .recording .btn:hover{
+  background-color: var(--secondaryColor);
+  color: var(--Red);
+}
 
 @media (max-width: 768px) {
   .disease h3 {
