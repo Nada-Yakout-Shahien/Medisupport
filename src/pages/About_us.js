@@ -383,7 +383,7 @@ const Aboutus = () => {
             </div>
             <div className="developer" id="ai">
               <h4 >AI Team </h4>
-              <div className="names" >
+              <div className="names">
                 <p>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

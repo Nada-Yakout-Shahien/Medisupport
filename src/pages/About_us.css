@@ -214,9 +214,6 @@
 
 
 
-.about-us-section4{
-  /* margin-bottom: 4%; */
-}
 .about-us-section4 .title{
   display: flex;
   justify-content: center;
@@ -247,6 +244,7 @@
   scroll-behavior: smooth;
   padding: 20px;
   overflow-x: hidden;
+  flex-wrap: wrap;
 }
 .Ourdevelopers .developer {
   flex: 0 0 auto;
@@ -283,18 +281,20 @@
   stroke:var(--Red);
 }
 
+#ai{
+  /* min-width: 14vw; */
+}
 
 
 
 
 
 
-
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .container .Ourfeatures .feature {
     min-width: 300px;
   }
-}
+} */
 
 
 

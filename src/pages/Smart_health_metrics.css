@@ -60,7 +60,7 @@
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
-  /* line-height: normal; */
+  line-height: normal;
   margin-bottom: 2vh;
 }
 .child .recording .btn{
@@ -74,11 +74,11 @@
   border: none;
   color: var(--whiteColor);
   font-family: 'Roboto',sans-serif;
-  font-size: 24px;
+  font-size: 1.5em;
   font-style: normal;
   font-weight: 500;
   line-height: 100%; 
-  letter-spacing: 0.5px;
+  letter-spacing: 0.02em;
   margin-bottom: 2vh;
 }
 

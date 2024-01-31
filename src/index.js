@@ -11,6 +11,10 @@ import Login from "./pages/login";
 import Signup from "./pages/sign_up";
 import Reedarticles from "./pages/Reed_articles";
 import Doctors from "./pages/doctors";
+import HeartRate from "./pages/Heart_rate";
+import Bloodpressure from "./pages/Blood_pressure";
+import Bloodsugar from "./pages/Blood_sugar";
+import BMI from "./pages/BMI";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +60,26 @@ const router = createBrowserRouter([
   {
     path: "/Doctors",
     element: <Doctors />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/heart_rate",
+    element: <HeartRate />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/blood_pressure",
+    element: <Bloodpressure />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/blood_sugar",
+    element: <Bloodsugar />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/bmi",
+    element: <BMI />,
     errorElement: <h1>Sorry......</h1>,
   },
 ]);
