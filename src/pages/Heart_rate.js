@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import "./Heart_rate.css";
 import React from "react";
 
-const HeartRate = () => {
+function HeartRate(){
   return (
     <>
       <Helmet>

@@ -3,7 +3,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import "./header.css";
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+function Navbar(){
   const navRef = useRef();
 
   const showNavbar = () => {

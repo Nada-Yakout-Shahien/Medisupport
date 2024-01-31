@@ -5,7 +5,7 @@ import "./Contact_us.css";
 import React from "react";
 import pic_contact from "../images/pic_contact.png";
 
-const Contactus = () => {
+function Contactus(){
   return (
     <>
       <Helmet>

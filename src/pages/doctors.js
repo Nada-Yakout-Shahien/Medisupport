@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import "./doctors.css";
 import React from "react";
 
-const Doctors = () => {
+function Doctors(){
   return (
     <>
       <Helmet>

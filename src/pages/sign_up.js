@@ -4,7 +4,7 @@ import React from "react";
 import sign from "../images/sign.png";
 import { NavLink } from "react-router-dom";
 
-const Sign_up = () => {
+function Sign_up(){
   return (
     <>
       <Helmet>

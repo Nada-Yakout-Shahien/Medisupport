@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import "./BMI.css";
 import React from "react";
 
-const BMI = () => {
+function BMI(){
   return (
     <>
       <Helmet>
