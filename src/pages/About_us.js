@@ -13,7 +13,7 @@ import google from "../images/google.png";
 import { useRef, useEffect, useState } from "react";
 import "./About_us.css";
 
-function Aboutus(){
+const Aboutus = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const ourFeaturesRef = useRef(null);

@@ -9,7 +9,7 @@ import bloodsugar from "../images/blood-sugar.png";
 import bmi from "../images/bmi.png";
 import { NavLink } from "react-router-dom";
 
-function SmartHealthMetrics(){
+const SmartHealthMetrics = () => {
   return (
     <>
       <Helmet>
