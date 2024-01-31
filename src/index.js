@@ -15,6 +15,7 @@ import HeartRate from "./pages/Heart_rate";
 import Bloodpressure from "./pages/Blood_pressure";
 import Bloodsugar from "./pages/Blood_sugar";
 import BMI from "./pages/BMI";
+import welcome from "./pages/Welcome";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,11 @@ const router = createBrowserRouter([
   {
     path: "/bmi",
     element: <BMI />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/welcome",
+    element: <welcome />,
     errorElement: <h1>Sorry......</h1>,
   },
 ]);
