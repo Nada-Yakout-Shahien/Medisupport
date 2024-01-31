@@ -12,7 +12,7 @@ const Reed_articles = () => {
         <meta name="description" content="Reed articles" />
       </Helmet>
       <Header />
-      
+        
       <Footer />
     </>
   );
