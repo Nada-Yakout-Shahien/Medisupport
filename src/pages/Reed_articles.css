@@ -1,0 +1,67 @@
+* {
+  box-sizing: border-box;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+}
+
+.article1 {
+  max-width: 98vw;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
+.article2 {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3em;
+  padding: 2vw 0vw 0vw 3vw;
+}
+
+.word {
+  color: #be0202;
+  font-family: "Roboto", sans-serif;
+  font-size: 2.2em; /* font-size: clamp(22px, 4em, 35px); */
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.diss {
+  gap: 30px;
+}
+.dis {
+  display: flex;
+  border: 1px #be0202 solid;
+  width: 89vw;
+  height: 15vh;
+  flex-shrink: 0;
+  border-radius: 0.7em;
+  align-items: center;
+}
+
+.diseases {
+  display: flex;
+  width: 88vw;
+  height: 6vh;
+  align-items: center;
+  padding-left: 2vw;
+  flex-shrink: 0;
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  p {
+    color: #1f1f1f;
+    font-family: Roboto;
+    font-size: 1.5em;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
