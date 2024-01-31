@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import "./Blood_sugar.css";
 import React from "react";
 
-function Bloodsugar(){
+const Bloodsugar = () => {
   return (
     <>
       <Helmet>

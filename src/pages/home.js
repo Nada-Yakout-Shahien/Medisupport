@@ -5,7 +5,7 @@ import heart from "../images/heart.png";
 import { NavLink } from "react-router-dom";
 import "./home.css";
 
-function Home() {
+const Home = () => {
   return (
     <>
       <Helmet>

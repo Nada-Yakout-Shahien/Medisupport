@@ -4,7 +4,7 @@ import React from "react";
 import log from "../images/logIn.png";
 import { NavLink } from "react-router-dom";
 
-function Login(){
+const Login = () => {
   return (
     <>
       <Helmet>

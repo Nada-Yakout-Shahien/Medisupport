@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import "./Reed_articles.css";
 import React from "react";
 
-function Reed_articles(){
+const Reed_articles = () => {
   return (
     <>
       <Helmet>
