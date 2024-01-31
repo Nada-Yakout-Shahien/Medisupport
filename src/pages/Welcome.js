@@ -8,7 +8,7 @@ const Welcome = () => {
     <>
       <Helmet>
         <title>Welcome Medisupport ♥</title>
-        <meta name="description" content="HOME" />
+        <meta name="description" content="Welcome" />
       </Helmet>
 
       <Header />
