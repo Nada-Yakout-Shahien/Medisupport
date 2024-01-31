@@ -15,7 +15,7 @@ import HeartRate from "./pages/Heart_rate";
 import Bloodpressure from "./pages/Blood_pressure";
 import Bloodsugar from "./pages/Blood_sugar";
 import BMI from "./pages/BMI";
-import welcome from "./pages/Welcome";
+import Welcome from "./pages/Welcome";
 
 const router = createBrowserRouter([
   {
@@ -85,7 +85,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/welcome",
-    element: <welcome />,
+    element: <Welcome />,
     errorElement: <h1>Sorry......</h1>,
   },
 ]);
