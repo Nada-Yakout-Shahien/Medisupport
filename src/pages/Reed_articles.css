@@ -1,12 +1,11 @@
 * {
   box-sizing: border-box;
 }
-
 .article {
   display: flex;
   flex-direction: column;
-}
 
+}
 .article1 {
   max-width: 98vw;
   justify-content: center;
@@ -21,11 +20,11 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 3em;
-  padding: 2vw 0vw 0vw 3vw;
+  padding: 2vw 0vw 3vw 3vw;
 }
 
 .word {
-  color: #be0202;
+  color: var(--Red);
   font-family: "Roboto", sans-serif;
   font-size: 2.2em; /* font-size: clamp(22px, 4em, 35px); */
   font-style: normal;
@@ -37,7 +36,7 @@
 }
 .dis {
   display: flex;
-  border: 1px #be0202 solid;
+  border: 1px var(--Red) solid;
   width: 89vw;
   height: 15vh;
   flex-shrink: 0;
@@ -57,8 +56,8 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   p {
-    color: #1f1f1f;
-    font-family: Roboto;
+    color: var(--graycolor);
+    font-family: 'Roboto',sans-serif;
     font-size: 1.5em;
     font-style: normal;
     font-weight: 400;
