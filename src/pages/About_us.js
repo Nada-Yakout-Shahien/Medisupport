@@ -8,13 +8,39 @@ import pic_about_right2 from "../images/pic_about_right2.png";
 import line from "../images/line-about-ourfeatures.png";
 import right from "../images/right-arrow.png";
 import left from "../images/left-arrow.png";
-import { useRef,useEffect} from "react";
+import app from "../images/app.png";
+import google from "../images/google.png";
+import { useRef, useEffect, useState } from "react";
 import "./About_us.css";
 
 const Aboutus = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const ourFeaturesRef = useRef(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(false);
+
+  const checkArrowsVisibility = () => {
+    if (ourFeaturesRef.current) {
+      const container = ourFeaturesRef.current;
+      setShowLeftArrow(container.scrollLeft > 0);
+      setShowRightArrow(container.scrollLeft < 1200);
+    }
+  };
+
+  useEffect(() => {
+    const container = ourFeaturesRef.current;
+    if (container) {
+      container.addEventListener("scroll", checkArrowsVisibility);
+      checkArrowsVisibility();
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("scroll", checkArrowsVisibility);
+      }
+    };
+  }, []);
 
   const handlePrevClick = () => {
     if (ourFeaturesRef.current) {
@@ -28,7 +54,6 @@ const Aboutus = () => {
     }
   };
 
-  
   return (
     <>
       <Helmet>
@@ -131,15 +156,15 @@ const Aboutus = () => {
             <h3>Our Features</h3>
           </div>
           <div className="container">
-            {/* {showLeftArrow && */}
-            <img
-              src={left}
-              alt="arrow left"
-              className="control prev"
-              ref={prevRef}
-              onClick={handlePrevClick}
-            />
-            {/* }  */}
+            {showLeftArrow && (
+              <img
+                src={left}
+                alt="arrow left"
+                className="control prev"
+                ref={prevRef}
+                onClick={handlePrevClick}
+              />
+            )}
             <div className="Ourfeatures" ref={ourFeaturesRef}>
               <div className="feature">
                 <p>
@@ -157,6 +182,10 @@ const Aboutus = () => {
                   heartbeats. To benefit from this feature, download our
                   dedicated app.
                 </p>
+                <div className="img-btn">
+                  <img src={app} alt="" />
+                  <img src={google} alt="" />
+                </div>
               </div>
               <div className="feature">
                 <p>
@@ -164,6 +193,10 @@ const Aboutus = () => {
                   this feature is available in our dedicated application. Please
                   download it to benefit from this feature.
                 </p>
+                <div className="img-btn">
+                  <img src={app} alt="" />
+                  <img src={google} alt="" />
+                </div>
               </div>
               <div className="feature">
                 <p>
@@ -187,15 +220,15 @@ const Aboutus = () => {
                 </p>
               </div>
             </div>
-            {/* {showRightArrow && */}
-            <img
-              src={right}
-              alt="arrow right"
-              className="control next"
-              ref={nextRef}
-              onClick={handleNextClick}
-            />
-            {/* } */}
+            {showRightArrow && (
+              <img
+                src={right}
+                alt="arrow right"
+                className="control next"
+                ref={nextRef}
+                onClick={handleNextClick}
+              />
+            )}
           </div>
         </div>
         <svg
@@ -211,6 +244,194 @@ const Aboutus = () => {
             stroke-opacity="0.5"
           />
         </svg>
+        <div className="about-us-section4">
+          <div className="title">
+            <img src={line} alt="" />
+            <h3>Our Developer</h3>
+          </div>
+          <div className="Ourdevelopers">
+            <div className="developer">
+              <h4>UI/UX Team</h4>
+              <div className="names">
+                <p>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                  </svg>{" "}
+                  Rokaia Shereet
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Sara Elbadry
+                </p>
+                </div>
+            </div>
+            <div className="developer">
+              <h4>Front-end Team</h4>
+              <div className="names">
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                  </svg>{" "} Rofayda Mohammed
+                </p>
+              <p>
+              <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+              </svg>{" "} Nada Sobhy
+              </p>
+              <p>
+              <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+              </svg>{" "} Nada Yakout
+              </p>
+              <p>
+              <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+              </svg>{" "} Hossam Ezzat
+              </p>
+              </div>
+            </div>
+            <div className="developer">
+              <h4>Mobile Team</h4>
+              <div className="names">
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Mostafa Salim
+                </p>
+              </div>
+            </div>
+            <div className="developer">
+              <h4>Back-end Team</h4>
+              <div className="names">
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Asmaa Gamal
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Nada El-habrouk
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Alaa Mekhimer
+                </p>
+              </div>
+            </div>
+            <div className="developer" id="ai">
+              <h4 >AI Team </h4>
+              <div className="names" >
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Alaa Mekhimer
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Nada Yakout
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Mostafa Salim
+                </p>
+                <p>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="2"
+                    viewBox="0 0 12 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H12" stroke="#BE0202" />
+                </svg>{" "} Hossam Ezzat
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <Footer />
