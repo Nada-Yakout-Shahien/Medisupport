@@ -1,0 +1,36 @@
+.welcome{
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+.wel{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3vh;
+  font-family: 'Roboto', sans-serif;
+}
+.link{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.welcome .wel h3{
+  color: var(--Red);
+  font-weight: 800;
+  font-size:2em ;
+  font-family: "Roboto", sans-serif;
+}
+.welcome .wel .pre{
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+.welcome .wel .link{
+  color: var(--Red);
+  font-weight: 800;
+  cursor: pointer;
+}

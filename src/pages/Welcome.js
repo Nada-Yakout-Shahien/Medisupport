@@ -12,16 +12,18 @@ const Welcome = () => {
         <meta name="description" content="Welcome" />
       </Helmet>
           
-      <Header />
-      <div className="wel">
-          <h3>Welcome</h3>
-          <p>We will help you check on your heart</p>
-          <div className="link">
-            <p>Get started </p>
-            <img src={riarrow} alt="" />
+      {/* <Header /> */}
+      <div className="welcome">
+        <div className="wel">
+            <h3>Welcome</h3>
+            <p className="par">We will help you check on your heart</p>
+            <div className="link">
+              <p>Get started </p>
+              <img src={riarrow} alt="" />
+            </div>
           </div>
-        </div>
-      <Footer />
+      </div>
+      {/* <Footer /> */}
     </>
   );
 }
