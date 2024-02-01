@@ -28,6 +28,7 @@
 .welcome .wel .pre{
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  color: var(--darkgraycolor);
 }
 .welcome .wel .link{
   color: var(--Red);
