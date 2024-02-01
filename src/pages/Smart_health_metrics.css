@@ -32,15 +32,15 @@
   transform: scale(1.1); 
   box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75); 
 }
-.child .recording:hover img{
-  max-height: 39vh;
-  /* padding: 5% 0%  0% 10%; */
-}
 .child .recording img{
   width: 100%;
   height: auto;
   max-height: 34vh;
-  padding: 5% 9%  0% 9%;
+  padding: 1vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex: 1 0 0;
 }
 .inf{
   padding: 0vh 2vh 0vh 3vh;
@@ -65,23 +65,25 @@
 }
 .child .recording .btn{
   display: flex;
-  padding: 3% 19%;
+  padding: 1vw 1vw;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  border-radius: 10px;
+  border-radius: 0.4em;
   background: var(--Red);
-  border: none;
   color: var(--whiteColor);
   font-family: 'Roboto',sans-serif;
-  font-size: 1.5em;
+  font-size: 1.6vw;
   font-style: normal;
   font-weight: 500;
   line-height: 100%; 
   letter-spacing: 0.02em;
   margin-bottom: 2vh;
 }
-
+.child .recording .btn:hover{
+  background-color: var(--secondaryColor);
+  color: var(--Red);
+}
 
 @media (max-width: 768px) {
   .disease h3 {
