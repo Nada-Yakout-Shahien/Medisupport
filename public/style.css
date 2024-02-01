@@ -36,8 +36,8 @@
 }
 
 .main-link:hover,  .main-link.active{
-  color: cyan;
-  box-shadow: 0 0 5px cyan;
+  color: var(--Red);
+  box-shadow: 0 0 5px var(--Red);
   border-radius: 5px;
 }
 
@@ -47,17 +47,13 @@
 
 .sub-ul {
   display: none;
-
   position: absolute;
   top: 69px;
   left: -15px;
-  border-top: 1px solid cyan;
-
+  border-top: 1px solid var(--Red);
   background-color: #1b1b1b;
-
   border-radius: 5px;
   padding: 5px;
-
   width: 155px;
 }
 
@@ -72,7 +68,7 @@
 }
 
 .sub-ul li a:hover {
-  color: cyan;
+  color: var(--Red);
   font-weight: bold;
 }
 
@@ -89,7 +85,7 @@
   top: 80px;
   left: 153px;
 
-  border-top: 1px solid cyan;
+  border-top: 1px solid var(--Red);
 
   background-color: #1b1b1b;
 
