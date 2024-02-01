@@ -14,12 +14,12 @@ const Home = () => {
       </Helmet>
 
       <Header />
-
+{/*
       <div className="homesec1">
         <div className="leftpart">
           <img src={heart} alt="" />
         </div>
-
+        
         <div className="rightpart">
           <h2>Welcome to <span className="medi">MediSupport</span> Website</h2>
           <h3>Heart disease prediction</h3>
@@ -34,7 +34,7 @@ const Home = () => {
           </NavLink>
         </div>
       </div>
-
+  */}
       <Footer />
     </>
   );
