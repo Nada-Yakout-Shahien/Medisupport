@@ -17,7 +17,7 @@ const SmartHealthMetrics = () => {
         <meta name="description" content="Smart_health_metrics" />
       </Helmet>
 
-      <Header />
+      {/* <Header /> */}
       <div className="disease">
         <h3>Smart Health Metrics</h3>
         <div className="child">
@@ -75,7 +75,7 @@ const SmartHealthMetrics = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
