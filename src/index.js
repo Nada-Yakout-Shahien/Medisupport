@@ -23,6 +23,7 @@ import ArBmi from "./pages/ar_bmi";
 import ArHeart from "./pages/ar_heart";
 import Activity from "./pages/Activity";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
