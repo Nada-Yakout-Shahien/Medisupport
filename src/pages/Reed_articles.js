@@ -39,7 +39,7 @@ const Reed_articles = () => {
           <div className="dis">
             <div className="diseases">
               <p>BMI</p>
-              <NavLink to="/bmi">
+              <NavLink to="/ABmi">
               <img src={arrow} alt=""/>
               </NavLink>            </div>
           </div>
