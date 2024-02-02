@@ -74,30 +74,27 @@
 
 .smarthealth-sec{
   width: 100%;
-  max-width:100vw;
+  /* max-width:100vw; */
   /* height: 38.9375vh; */
   background: linear-gradient(90deg, rgba(190, 2, 2, 0.09) 0%, rgba(190, 2, 2, 0.5) 46.81%, rgba(190, 2, 2, 0.09) 100%);
 }
 
-.name{
-  padding: 1.44rem 2.75rem 1.62rem 2.75rem;
+.nameh{
+  padding: 1.5vw 5vw 0vw 4.5vw;
   display: flex;
-  max-width:88vw;
   align-items: center;
-  padding-left: 2vw;
+  justify-content: space-between;
   align-content: center;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;
 }
-.name .trans{
+.nameh .trans{
   gap: 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.name h3{
-  /* padding: 1em; */
+.nameh h3{
   font-family: 'Roboto',sans-serif;
   color: var(--graycolor);
   font-size: 2rem;
@@ -105,128 +102,147 @@
   font-weight: 700;
   line-height: normal;
 }
-.name p{
+.nameh .trans p{
   font-family: 'Roboto',sans-serif;
-  color: #1F1F1F;
+  color: var(--graycolor);
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 
-/* .name svg{
-  font-family: 'Roboto',sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 6em;
-  line-height: 110%;
-  flex-shrink: 0;
-} */
 
-
-/* .child{
+.childh{
+  padding: 2vw 0vw 5vw 0vw;
   width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  flex-wrap: 1;
+  gap: 1.5em;
+  flex-grow: 1;
   justify-content: center;
   align-items: center;
 }
-.child .recordingh{
+
+
+.infh{
+  padding: 0vw 2vw 2vw 2vw;
+  gap: 0.9vw;
+  display: flex;
+  flex-direction: column;
+}
+.childh .recording{
+  padding: 1vw 0 1vw 0;
+  width: 100%;
   width: 19.3rem;
-  height: 25.125rem;
   flex-shrink: 0;
-  max-width: 60rem;
+  max-width: 70em;
   border-radius: 10px;
-  margin:0 2vh 1vh 0;
   border: 1px solid #A4A2A2;
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5); 
   background-color: white;
+  margin: 0 1vh 1vh 0;
 }
-.child .recordingh img{
+
+.childh .recording img{
   width: 100%;
   height: auto;
   max-height: 34vh;
-  padding: 5% 9%  0% 9%;
+  padding: 5% 5%  0% 5%;
 }
-.child .recordingh h4{
+.childh .recording .infh h4{
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
-  font-size: 20px;
+  font-size: 1.5625rem;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   line-height: normal;
-  margin-top: 4vh;
-  padding-bottom: 2rem;
 }
-.ex{
-  color: red;
-} */
+.childh .recording .infh .num{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.childh .recording:hover{
+  height: auto;
+  transform: scale(1.1); 
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75); 
+}
+.childh .recording .infh .num h3{
+  color: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.childh .recording .infh .num .ex{
+  color: var(--graycolor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
                           /* Articles */
 .articles-sec {
   display: flex;
   flex-direction: column;
-  width: 90rem;
+  /* width: 90rem;
   height: 36.5625rem;
-  flex-shrink: 0;
-  padding: 2rem 0 0 2rem;
+  flex-shrink: 0; */
+  gap: 2em;
+  padding: 2rem 0 0 3rem;
+  margin-bottom: 3%;
 }
-.word {
-  color: #1F1F1F;
-  font-size: 32px;
-  font-family: Roboto;
-  font-weight: 700;
-  word-wrap: break-word;
+.articles-sec .trans{
+  gap: 1rem;
   display: flex;
-  width: 82.375rem;
-  align-items: flex-start;
-  gap: 66rem;
+  flex-direction: row;
+  align-items: center;
 }
-.word h5{
+.articles-sec .word {
+  color: var(--graycolor);
+  padding: 0 3vw 0vw 0vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.articles-sec .word p{
   font-family: 'Roboto',sans-serif;
-  color: #1F1F1F;
+  color: var(--graycolor);
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-top: -2vh;
 }
-.word svg{
-  font-family: 'Roboto',sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 2em;
-  line-height: 110%;
-  padding-top: 2vh;
-  margin-left: 2vh;
-  flex-shrink: 0;
-}
+
+
 .diss {
-  gap: 8rem;
-}
-.dis {
   display: flex;
   border: 1px var(--Red) solid;
-  width: 89vw;
-  height: 15vh;
+  width: 92vw;
+  height: 10vh;
   flex-shrink: 0;
   border-radius: 0.7em;
   align-items: center;
 }
-.diseases {
+.diss .disease {
   display: flex;
-  width: 88vw;
+  width: 92vw;
   height: 6vh;
   align-items: center;
-  padding-left: 2vw;
+  padding: 2vw;
   flex-shrink: 0;
   align-content: center;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
 }
-.diseases p {
+.disease p {
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
   font-size: 1.25rem;

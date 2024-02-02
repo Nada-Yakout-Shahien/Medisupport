@@ -6,7 +6,7 @@ import heartrate from "../images/heart-rate.png";
 import bloodpressure from "../images/blood-pressure.png";
 import bloodsugar from "../images/blood-sugar.png";
 import bmi from "../images/bmi.png";
-import arrow from "../images/right-arrow.png";
+import arrow from "../images/ri-arrow-for-article.svg";
 import { NavLink } from "react-router-dom";
 import "./home.css";
 
@@ -20,12 +20,14 @@ const Home = () => {
 
       {/* <Header /> */}
       {/* homesec1 */}
-      {/* <div className="welcome-sec">
+      <div className="welcome-sec">
         <div className="leftpart">
           <img src={heart} alt="" />
         </div>
         <div className="rightpart">
-          <h2>Welcome to <span className="medi">MediSupport</span> Website</h2>
+          <h2>
+            Welcome to <span className="medi">MediSupport</span> Website
+          </h2>
           <h3>Heart disease prediction</h3>
           <p>
             Proin quis cras euismod sit et metus risus ut. Semper nam vel morbi
@@ -37,10 +39,10 @@ const Home = () => {
             Record Now
           </NavLink>
         </div>
-      </div> */}
+      </div>
       {/* homesec2*/}
       <div className="smarthealth-sec">
-        <div className="name">
+        <div className="nameh">
           <h3>Smart Health Metrics</h3>
           <NavLink to="/Smart_health_metrics" className="trans">
             <p>See all</p>
@@ -65,82 +67,109 @@ const Home = () => {
             </svg>
           </NavLink>
         </div>
-        {/* <div className="child">
-          <div className="recordingh">
-            <div className="inf">
+        <div className="childh">
+          <div className="recording">
+            <div className="infh">
               <h4>Heart Rate</h4>
-              <h3>
-                65<span className="ex">PBM</span>
-              </h3>
+              <div className="num">
+                <h3>65</h3>
+                <p className="ex">PBM</p>
+              </div>
             </div>
             <img src={heartrate} alt="" />
           </div>
-          <div className="recordingh">
-            <div className="inf">
+          <div className="recording">
+            <div className="infh">
               <h4>Blood Pressure</h4>
-              <h3>
-                140/90<span className="ex">mmHg</span>
-              </h3>
+              <div className="num">
+                <h3>140/90</h3>
+                <p className="ex">mmHg</p>
+              </div>
             </div>
             <img src={bloodpressure} alt="" />
           </div>
-          <div className="recordingh">
-            <div className="inf">
+          <div className="recording">
+            <div className="infh">
               <h4>Blood Sugar</h4>
-              <h3>
-                120<span className="ex">mg/dl</span>
-              </h3>
+              <div className="num">
+                <h3>120</h3>
+                <p className="ex">mg/dl</p>
+              </div>
             </div>
             <img src={bloodsugar} alt="" />
           </div>
-          <div className="recordingh">
-            <div className="inf">
+          <div className="recording">
+            <div className="infh">
               <h4>BMI</h4>
-              <h3>
-                80<span className="ex">Kg</span>
-              </h3>
+              <div className="num">
+                <h3>80</h3>
+                <p className="ex">kg</p>
+              </div>
             </div>
             <img src={bmi} alt="" />
           </div>
-        </div> */}
+        </div>
       </div>
       {/* homesec3 */}
-      {/* <div className="articles-sec">
-        <div className="word">Articles<NavLink to="/Read-articles"><h5>See all<svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none"><g clip-path="url(#clip0_1_2137)"><path d="M27.6272 18.3333L18.4637 9.39329L20.8793 7.03662L34.1667 20L20.8793 32.9633L18.4637 30.6066L27.6272 21.6666H6.83337V18.3333H27.6272Z" fill="#1F1F1F"/></g><defs><clipPath id="clip0_1_2137"><rect width="41" height="40" fill="white"/></clipPath></defs></svg></h5></NavLink>
+      <div className="articles-sec">
+        <div className="word">
+          Articles
+          <NavLink to="/Reed_articles" className="trans">
+            <p>See all</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="31"
+              height="40"
+              viewBox="0 0 41 40"
+              fill="none"
+            >
+              <g clip-path="url(#clip0_1_2137)">
+                <path
+                  d="M27.6272 18.3333L18.4637 9.39329L20.8793 7.03662L34.1667 20L20.8793 32.9633L18.4637 30.6066L27.6272 21.6666H6.83337V18.3333H27.6272Z"
+                  fill="#1F1F1F"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_1_2137">
+                  <rect width="41" height="40" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </NavLink>
         </div>
-          <div className="dis">
-            <div className="diseases">
-              <p>Blood pressure</p>
-              <NavLink to="/pressure">
-              <img src={arrow} alt=""/>
-              </NavLink>
-            </div>
+        <div className="diss">
+          <div className="disease">
+            <p>Blood pressure</p>
+            <NavLink to="/pressure">
+              <img src={arrow} alt="" />
+            </NavLink>
           </div>
-        <div className="dis">
-          <div className="diseases">
+        </div>
+        <div className="diss">
+          <div className="disease">
             <p>Blood sugar</p>
             <NavLink to="/sugar">
-              <img src={arrow} alt=""/>
+              <img src={arrow} alt="" />
             </NavLink>
           </div>
         </div>
-        <div className="dis">
-          <div className="diseases">
+        <div className="diss">
+          <div className="disease">
             <p>BMI</p>
             <NavLink to="/bmi">
-              <img src={arrow} alt=""/>
+              <img src={arrow} alt="" />
             </NavLink>
           </div>
         </div>
-        <div className="dis">
-          <div className="diseases">
+        <div className="diss">
+          <div className="disease">
             <p>Heart</p>
-              <NavLink to="/heart">
-                <img src={arrow} alt=""/>
-              </NavLink>
+            <NavLink to="/heart">
+              <img src={arrow} alt="" />
+            </NavLink>
           </div>
         </div>
-      </div> */}
+      </div>
       {/* <Footer /> */}
     </>
   );

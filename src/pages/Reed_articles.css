@@ -28,9 +28,9 @@
   font-weight: 700;
   line-height: normal;
 }
-.diss {
+/* .diss {
   gap: 30px;
-}
+} */
 .dis {
   display: flex;
   border: 1px var(--Red) solid;
