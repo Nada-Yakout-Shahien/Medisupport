@@ -5,6 +5,7 @@ import "./Reed_articles.css";
 import React from "react";
 import article from "../images/article.jpg";
 import arrow from "../images/ri-arrow-for-article.svg";
+import { NavLink } from "react-router-dom";
 
 const Reed_articles = () => {
   return (
@@ -23,26 +24,31 @@ const Reed_articles = () => {
           <div className="dis">
             <div className="diseases">
               <p>Blood pressure</p>
-              <img src={arrow} alt="" />
-            </div>
+              <NavLink to="/pressure">
+              <img src={arrow} alt=""/>
+              </NavLink>            </div>
           </div>
           <div className="dis">
             <div className="diseases">
               <p>Blood sugar</p>
-              <img src={arrow} alt="" />
+              <NavLink to="/sugar">
+              <img src={arrow} alt=""/>
+              </NavLink>
             </div>
           </div>
           <div className="dis">
             <div className="diseases">
               <p>BMI</p>
-              <img src={arrow} alt="" />
-            </div>
+              <NavLink to="/bmi">
+              <img src={arrow} alt=""/>
+              </NavLink>            </div>
           </div>
           <div className="dis">
             <div className="diseases">
               <p>Heart</p>
-              <img src={arrow} alt="" />
-            </div>
+              <NavLink to="/heart">
+              <img src={arrow} alt=""/>
+              </NavLink>            </div>
           </div>
         </div>
       </div>
