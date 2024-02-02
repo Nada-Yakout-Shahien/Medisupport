@@ -12,15 +12,17 @@ header {
 }
 
 .Navbar h3 {
-  font-family: Arizonia;
+  font-family: 'Arizonia',sans-serif;
   font-size: 2rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
+.Navbar{
+  gap: 3vw;
+}
 nav {
-  margin-left: 1rem;
-  gap: 3rem;
+  gap: 2.4rem;
 }
 nav a {
   color: var(--Red);
@@ -56,11 +58,10 @@ nav {
   align-content: flex-end;
 }
 nav {
-  margin-left: 3rem;
   gap: 1.5rem;
 }
 nav .nav-button {
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
 }
 nav .nav-button button {
   margin: 6px;
