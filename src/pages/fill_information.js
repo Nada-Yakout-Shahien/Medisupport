@@ -227,7 +227,7 @@ const FillInformation = () => {
             <div className="infolbl">
               <label htmlFor="input11">Thalassemia</label>
               <input type="text" id="input11" placeholder="Your Thalassemia" />
-              <NavLink to="/home" onClick={handleNextClick} className="btn">{currentStep < totalSteps ? "Next" : "Result"}</NavLink>
+              <NavLink to="/res" onClick={handleNextClick} className="btn">{currentStep < totalSteps ? "Next" : "Result"}</NavLink>
             </div>
           )}
         </div>
