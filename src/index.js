@@ -16,6 +16,11 @@ import Bloodpressure from "./pages/Blood_pressure";
 import Bloodsugar from "./pages/Blood_sugar";
 import BMI from "./pages/BMI";
 import Welcome from "./pages/Welcome";
+import FillInformation from "./pages/fill_information";
+import ArPressure from "./pages/ar_pressure";
+import ArSugar from "./pages/ar_sugar";
+import ArBmi from "./pages/ar_bmi";
+import ArHeart from "./pages/ar_heart";
 
 
 const router = createBrowserRouter([
@@ -87,6 +92,29 @@ const router = createBrowserRouter([
   {
     path: "/welcome",
     element: <Welcome />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/fillinfo",
+    element: <FillInformation />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/pressure",
+    element: <ArPressure />,
+    errorElement: <h1>Sorry......</h1>,
+  },  {
+    path: "/sugar",
+    element: <ArSugar />,
+    errorElement: <h1>Sorry......</h1>,
+  },  {
+    path: "/ABmi",
+    element: <ArBmi />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/heart",
+    element: <ArHeart />,
     errorElement: <h1>Sorry......</h1>,
   },
 ]);

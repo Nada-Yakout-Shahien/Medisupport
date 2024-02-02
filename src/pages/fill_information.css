@@ -1,0 +1,96 @@
+.info{
+  display: flex;
+  flex-direction: column;
+  padding: 3vw 3vw 0vw 3vw;
+}
+.info h3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--graycolor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 4vh;
+}
+.info .infolbl{
+  font-weight: 400;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  margin-bottom: 4vh;
+}
+.info input{
+  display: flex;
+  border: 1px var(--Red) solid;
+  width: 100%;
+  min-width: 40vw;
+  min-height: 5vh;
+  flex-shrink: 0;
+  border-radius: 0.7em;
+  align-items: center;
+  padding: 1vw;
+}
+.info label{
+  color: var(--graycolor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.forms{
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+}
+.form1 .form2{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.form3{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+.info .btn{
+  background-color: var(--Red);
+  color: var(--whiteColor);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 0.625rem;
+  padding: 0.8vh;
+  border: 2px solid var(--Red);
+  font-family: "Roboto", sans-serif;
+  line-height: 100%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-top: 1vh;
+}
+.form3 .btn:hover{
+  cursor: pointer;
+  background-color: var(--secondaryColor);
+  color: var(--Red);
+  border: none;
+}
+@media (max-width: 768px) {
+  .forms, .form1, .form2, .form3 {
+    flex-direction: column;
+    width: 100%;
+  }
+  .info input, .info label {
+    min-width: auto;
+  }
+}

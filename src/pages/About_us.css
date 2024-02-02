@@ -1,14 +1,13 @@
-
 .about-us-container {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   padding: 7vh 9vh 0vh 9vh;
-  height: auto;  
-  width: 100%; 
+  height: auto;
+  width: 100%;
 }
 
-.about-us-container .about-us-section h2 ,
-.about-us-section2 h2{
+.about-us-container .about-us-section h2,
+.about-us-section2 h2 {
   color: var(--graycolor);
   font-family: "Roboto", sans-serif;
   font-size: 32px;
@@ -43,17 +42,16 @@
 .right-part img {
   border-radius: 8px;
   max-width: 100%;
-  height: auto; 
+  height: auto;
   flex-shrink: 0;
 }
 
-.left-part p{
+.left-part p {
   max-width: 649px;
   height: 160px;
 }
-.right-part p{
+.right-part p {
   max-width: 605px;
-
 }
 
 .left-part p,
@@ -67,8 +65,9 @@
   line-height: 110%;
 }
 
-
-.medi-text, .medi-text2, .medi-text3 {
+.medi-text,
+.medi-text2,
+.medi-text3 {
   color: var(--Red);
   font-family: "Roboto", sans-serif;
   font-weight: 900;
@@ -87,75 +86,73 @@
   font-weight: 700;
 }
 
-.about-us-section2 .parent{
+.about-us-section2 .parent {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
   margin-bottom: 4%;
 }
-.about-us-section2 .parent p{
+.about-us-section2 .parent p {
   max-width: 1276px;
 }
-.about-us-section2 .parent hr{
+.about-us-section2 .parent hr {
   margin: 20px;
   border: 1px solid transparent;
 }
 
-.about-us-section2 .down-part{
+.about-us-section2 .down-part {
   flex-direction: row;
   display: flex;
 }
-.about-us-section2 .down-part h2{
+.about-us-section2 .down-part h2 {
   margin-bottom: 4%;
 }
-.about-us-section2 .down-part p{
+.about-us-section2 .down-part p {
   margin-bottom: 65px;
   max-width: 647px;
 }
 
-.about-us-section2 .down-part .dparag{
-  max-width:814px;
-  font-family: 'Roboto',sans-serif;
+.about-us-section2 .down-part .dparag {
+  max-width: 814px;
+  font-family: "Roboto", sans-serif;
   font-size: 22px;
   font-style: normal;
   font-weight: 700;
-  line-height: 110%; 
+  line-height: 110%;
 }
-.about-us-section3{
+.about-us-section3 {
   margin-bottom: 4%;
 }
-.about-us-section3 .title{
+.about-us-section3 .title {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 100%; 
-  margin-top: 20px; 
+  width: 100%;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
-.about-us-section3 .title img{
-  margin-right: 10px; 
+.about-us-section3 .title img {
+  margin-right: 10px;
 }
-.about-us-section3 .title h3{
+.about-us-section3 .title h3 {
   color: var(--Red);
-  font-family: 'Roboto',sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 700;
-  line-height: 110%; 
+  line-height: 110%;
 }
 
-
-
-.container{
+.container {
   position: relative;
   width: 100%;
   display: flex;
 }
 .container .Ourfeatures {
   position: relative;
-  width: 100%; 
+  width: 100%;
   display: inline-flex;
   gap: 40px;
   align-items: flex-start;
@@ -171,7 +168,7 @@
   border: 1px solid var(--Red);
   background: linear-gradient(90deg, var(--blackred) 0%, var(--blackred) 100%);
 }
-.container .control{
+.container .control {
   position: relative;
   cursor: pointer;
   top: 50%;
@@ -181,22 +178,22 @@
   max-height: 106.282px;
   flex-shrink: 0;
 }
-.container .prev{
+.container .prev {
   left: 4em;
   top: 20vh;
 }
-.container .next{
+.container .next {
   right: 0em;
   top: 20vh;
 }
 .about-us-section3 .Ourfeatures .feature p {
   color: var(--whiteColor);
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 24px;
   line-height: 110%;
   padding: 3vh;
 }
-.img-btn{
+.img-btn {
   padding: 3vh;
   display: flex;
   gap: 16px;
@@ -212,93 +209,82 @@
   transition: transform 0.3s ease;
 }
 
-
-
-.about-us-section4 .title{
+.about-us-section4 .title {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 100%; 
-  margin-top: 20px; 
+  width: 100%;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
-.about-us-section4 .title img{
-  margin-right: 10px; 
+.about-us-section4 .title img {
+  margin-right: 10px;
 }
-.about-us-section4 .title h3{
+.about-us-section4 .title h3 {
   color: var(--Red);
-  font-family: 'Roboto',sans-serif;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 110%; 
-}
-
-.Ourdevelopers {
-  position: relative;
-  width: 100%; 
-  display: inline-flex;
-  gap: 40px;
-  align-items: flex-start;
-  scroll-behavior: smooth;
-  padding: 20px;
-  overflow-x: hidden;
-  flex-wrap: wrap;
-}
-.Ourdevelopers .developer {
-  flex: 0 0 auto;
-  max-width: 374px;
-  min-height: auto;
-  border-radius: 20px;
-  border: 1px solid var(--Red);
-}
-.Ourdevelopers .developer h4{
-  color: var(--graycolor);
-  font-family: 'Roboto',sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 700;
   line-height: 110%;
-  padding: 16px; 
 }
-.Ourdevelopers .developer p{
+
+.Ourdevelopers {
+  position: relative;
+  width: 100%;
+  display: inline-flex;
+  gap: 1.2em;
+  scroll-behavior: smooth;
+  padding: 2vw 0vh; /* overflow-x: hidden; */ /* flex-wrap: nowrap; */
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+.Ourdevelopers .developer {
+  /* flex: 0 0 auto; */
+  width: 37vh;
+  min-height: auto;
+  border-radius: 20px;
+  border: 1px solid var(--Red);
+}
+.Ourdevelopers .developer h4 {
+  color: var(--graycolor);
+  font-family: "Roboto", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%;
+  padding: 16px;
+}
+.Ourdevelopers .developer p {
   display: flex;
   align-items: center;
   gap: 3px;
   padding-left: 1vw;
   color: var(--Red);
 }
-.Ourdevelopers .developer .names{
+.Ourdevelopers .developer .names {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
   margin-bottom: 1vh;
 }
-.Ourdevelopers .developer .img{
+.Ourdevelopers .developer .img {
   stroke-width: 1px;
-  stroke:var(--Red);
+  stroke: var(--Red);
 }
 
-#ai{
+#ai {
   /* min-width: 14vw; */
 }
-
-
-
-
-
 
 /* @media (max-width: 768px) {
   .container .Ourfeatures .feature {
     min-width: 300px;
   }
 } */
-
-
-
-
 
 /* @media (max-width: 1400px) {
   .about-us-section,
