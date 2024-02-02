@@ -233,7 +233,7 @@ const FillInformation = () => {
         </div>
         
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
