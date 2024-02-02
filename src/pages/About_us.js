@@ -61,7 +61,7 @@ const Aboutus = () => {
         <meta name="description" content="Aboutus" />
       </Helmet>
 
-      <Header />
+      {/* <Header /> */}
 
       <div className="about-us-container">
         <div className="about-us-section">
@@ -91,7 +91,7 @@ const Aboutus = () => {
             </p>
           </div>
         </div>
-        <div className="about-us-section2">
+        {/* <div className="about-us-section2">
           <div className="parent">
             <h2>What Sets Us Apart</h2>
             <p>
@@ -431,10 +431,10 @@ const Aboutus = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
