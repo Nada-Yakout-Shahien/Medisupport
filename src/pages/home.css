@@ -71,25 +71,38 @@
   border: none;
 }
                         /* smart health */
+
 .smarthealth-sec{
   background: linear-gradient(90deg, rgba(190, 2, 2, 0.09) 0%, rgba(190, 2, 2, 0.5) 46.81%, rgba(190, 2, 2, 0.09) 100%);
 }
+
 .name{
+  padding: 1.44rem 2.75rem 1.62rem 2.75rem;
   display: flex;
-  width: 84rem;
-  align-items: flex-start;
-  gap: 53rem;
+  max-width:88vw;
+  align-items: center;
+  padding-left: 2vw;
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.name .trans{
+  gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .name h3{
-  padding: 1em;
+  /* padding: 1em; */
   font-family: 'Roboto',sans-serif;
-  color: #1F1F1F;
+  color: var(--graycolor);
   font-size: 2rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
 }
-.name h5{
+.name p{
   font-family: 'Roboto',sans-serif;
   color: #1F1F1F;
   font-size: 1.25rem;
@@ -98,15 +111,17 @@
   line-height: normal;
 }
 
-.name svg{
+/* .name svg{
   font-family: 'Roboto',sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 6em;
   line-height: 110%;
   flex-shrink: 0;
-}
-.child{
+} */
+
+
+/* .child{
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -144,7 +159,7 @@
 }
 .ex{
   color: red;
-}
+} */
                           /* Articles */
 .articles-sec {
   display: flex;

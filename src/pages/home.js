@@ -18,9 +18,9 @@ const Home = () => {
         <meta name="description" content="HOME" />
       </Helmet>
 
-      <Header />
-                        {/* homesec1 */}
-      <div className="welcome-sec">
+      {/* <Header /> */}
+      {/* homesec1 */}
+      {/* <div className="welcome-sec">
         <div className="leftpart">
           <img src={heart} alt="" />
         </div>
@@ -37,39 +37,75 @@ const Home = () => {
             Record Now
           </NavLink>
         </div>
-      </div>
-                        {/* homesec2*/}
+      </div> */}
+      {/* homesec2*/}
       <div className="smarthealth-sec">
-        <div className="name"><h3>Smart Health Metrics</h3><NavLink to="/Smart_health_metrics"><h5>See all<svg xmlns="http://www.w3.org/2000/svg" width="31" height="40" viewBox="0 0 41 40" fill="none"><g clip-path="url(#clip0_1_2137)"><path d="M27.6272 18.3333L18.4637 9.39329L20.8793 7.03662L34.1667 20L20.8793 32.9633L18.4637 30.6066L27.6272 21.6666H6.83337V18.3333H27.6272Z" fill="#1F1F1F"/></g><defs><clipPath id="clip0_1_2137"><rect width="41" height="40" fill="white"/></clipPath></defs></svg></h5></NavLink></div>
-        <div className="child">
+        <div className="name">
+          <h3>Smart Health Metrics</h3>
+          <NavLink to="/Smart_health_metrics" className="trans">
+            <p>See all</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="31"
+              height="40"
+              viewBox="0 0 41 40"
+              fill="none"
+            >
+              <g clip-path="url(#clip0_1_2137)">
+                <path
+                  d="M27.6272 18.3333L18.4637 9.39329L20.8793 7.03662L34.1667 20L20.8793 32.9633L18.4637 30.6066L27.6272 21.6666H6.83337V18.3333H27.6272Z"
+                  fill="#1F1F1F"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_1_2137">
+                  <rect width="41" height="40" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </NavLink>
+        </div>
+        {/* <div className="child">
           <div className="recordingh">
-          <div className="inf">
-              <h4>Heart Rate</h4><h3>65<span className="ex">PBM</span></h3>
+            <div className="inf">
+              <h4>Heart Rate</h4>
+              <h3>
+                65<span className="ex">PBM</span>
+              </h3>
             </div>
             <img src={heartrate} alt="" />
           </div>
           <div className="recordingh">
-          <div className="inf">
-              <h4>Blood Pressure</h4><h3>140/90<span className="ex">mmHg</span></h3>
+            <div className="inf">
+              <h4>Blood Pressure</h4>
+              <h3>
+                140/90<span className="ex">mmHg</span>
+              </h3>
             </div>
             <img src={bloodpressure} alt="" />
           </div>
           <div className="recordingh">
-          <div className="inf">
-              <h4>Blood Sugar</h4><h3>120<span className="ex">mg/dl</span></h3>
+            <div className="inf">
+              <h4>Blood Sugar</h4>
+              <h3>
+                120<span className="ex">mg/dl</span>
+              </h3>
             </div>
             <img src={bloodsugar} alt="" />
           </div>
           <div className="recordingh">
-          <div className="inf">
-              <h4>BMI</h4><h3>80<span className="ex">Kg</span></h3>
+            <div className="inf">
+              <h4>BMI</h4>
+              <h3>
+                80<span className="ex">Kg</span>
+              </h3>
             </div>
             <img src={bmi} alt="" />
           </div>
-        </div>
+        </div> */}
       </div>
-                            {/* homesec3 */}
-      <div className="articles-sec">
+      {/* homesec3 */}
+      {/* <div className="articles-sec">
         <div className="word">Articles<NavLink to="/Read-articles"><h5>See all<svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none"><g clip-path="url(#clip0_1_2137)"><path d="M27.6272 18.3333L18.4637 9.39329L20.8793 7.03662L34.1667 20L20.8793 32.9633L18.4637 30.6066L27.6272 21.6666H6.83337V18.3333H27.6272Z" fill="#1F1F1F"/></g><defs><clipPath id="clip0_1_2137"><rect width="41" height="40" fill="white"/></clipPath></defs></svg></h5></NavLink>
         </div>
           <div className="dis">
@@ -104,10 +140,10 @@ const Home = () => {
               </NavLink>
           </div>
         </div>
-      </div>
-      <Footer />
+      </div> */}
+      {/* <Footer /> */}
     </>
   );
-}
+};
 
 export default Home;
