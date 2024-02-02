@@ -15,7 +15,7 @@ const Home = () => {
 
       <Header />
 
-      {/* <div className="homesec1">
+      <div className="homesec1">
         <div className="leftpart">
           <img src={heart} alt="" />
         </div>
@@ -33,9 +33,9 @@ const Home = () => {
             Record Now
           </NavLink>
         </div>
-      </div> */}
+      </div>
 
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
