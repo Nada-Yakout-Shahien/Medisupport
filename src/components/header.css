@@ -57,12 +57,7 @@ nav {
   justify-content: space-around;
   align-content: flex-end;
 }
-nav {
-  gap: 1.5rem;
-}
-nav .nav-button {
-  /* margin-left: 1rem; */
-}
+
 nav .nav-button button {
   margin: 6px;
   background-color: var(--Red);
