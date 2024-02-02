@@ -39,7 +39,7 @@ function Navbar(){
           <NavLink to="/Smart_health_metrics">Smart Health Metrics</NavLink>
           <NavLink to="/Doctors">Doctors</NavLink>
           <NavLink to="/Booking">Booking</NavLink>
-          <NavLink to="/Daily_reports">Daily reports</NavLink>
+          <NavLink to="/Activity">Activity</NavLink>
           <NavLink to="/Reed_articles">Reed articles</NavLink>
           <NavLink to="/Contact_us">Contact us</NavLink>
 
