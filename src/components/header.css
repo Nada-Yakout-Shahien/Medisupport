@@ -13,7 +13,7 @@ header {
 
 .Navbar h3 {
   font-family: 'Arizonia',sans-serif;
-  font-size: 2vw;
+  font-size: 2.1vw;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -22,7 +22,7 @@ header {
   gap: 3vw;
 }
 nav {
-  gap: 3vw;
+  gap: 3.2vw;
 }
 nav a {
   color: var(--Red);
