@@ -7,8 +7,8 @@
   max-width: 98vw;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  flex: 1 0 0;
+  gap: 0.625rem;
+  flex: 1 0 0 auto;
   align-self: stretch;
 }
 
@@ -17,7 +17,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 3em;
-  padding: 2vw 0vw 3vw 3vw;
+  padding: 2vw 0 3vw 3vw;
 }
 
 .word {
@@ -52,12 +52,12 @@
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-  p {
-    color: var(--graycolor);
-    font-family: 'Roboto',sans-serif;
-    font-size: 1.5em;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
+}
+.diseases p {
+  color: var(--graycolor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

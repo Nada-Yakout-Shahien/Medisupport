@@ -1,7 +1,7 @@
 .info{
   display: flex;
   flex-direction: column;
-  padding: 4vw;
+  padding: 3vw 3vw 0vw 3vw;
 }
 .info h3{
   display: flex;

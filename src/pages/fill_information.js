@@ -23,7 +23,7 @@ const FillInformation = () => {
         <meta name="description" content="Fill Information" />
       </Helmet>
 
-      {/* <Header /> */}
+      <Header />
       <div className="info">
         <h3>Please fill in the information</h3>
         <div className="forms">
@@ -231,11 +231,9 @@ const FillInformation = () => {
             </div>
           )}
         </div>
-        {/* <button type="button" onClick={handleNextClick} className="nrbtn">
-          {currentStep < totalSteps ? "Next" : "Result"}
-        </button> */}
+        
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
