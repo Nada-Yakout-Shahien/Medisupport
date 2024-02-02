@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import React from "react";
 import pic_about_left from "../images/pic_about_left.png";
 import pic_about_right1 from "../images/pic_about_right1.png";
-import pic_about_right2 from "../images/pic_about_right2.png";
+//import pic_about_right2 from "../images/pic_about_right2.png";
 import line from "../images/line-about-ourfeatures.png";
 import right from "../images/right-arrow.png";
 import left from "../images/left-arrow.png";
@@ -91,7 +91,7 @@ const Aboutus = () => {
             </p>
           </div>
         </div>
-        {/* <div className="about-us-section2">
+        <div className="about-us-section2">
           <div className="parent">
             <h2>What Sets Us Apart</h2>
             <p>
@@ -119,7 +119,7 @@ const Aboutus = () => {
             </p>
           </div>
           <div className="down-part">
-            <div>
+            <div className="txt">
               <h2>Your Health, Your Journey</h2>
               <p>
                 <span className="medi-text2">Medisupport</span> is more than
@@ -133,11 +133,11 @@ const Aboutus = () => {
                 Stay well, stay informed, and take control of your health with{" "}
                 <span className="medi-text3">Medisupport.</span>
               </p>
+              <div className="backimg"></div>
             </div>
-            <img src={pic_about_right2} alt="pic_about_right1" />
           </div>
         </div>
-        <svg
+        {/* <svg
           xmlns="http://www.w3.org/2000/svg"
           width="100%"
           height="6"
