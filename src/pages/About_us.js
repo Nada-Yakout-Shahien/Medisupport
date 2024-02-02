@@ -133,8 +133,8 @@ const Aboutus = () => {
                 Stay well, stay informed, and take control of your health with{" "}
                 <span className="medi-text3">Medisupport.</span>
               </p>
-              <div className="backimg"></div>
             </div>
+            <div className="backimg"></div>
           </div>
         </div>
         {/* <svg

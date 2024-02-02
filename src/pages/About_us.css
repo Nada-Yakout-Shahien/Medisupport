@@ -106,24 +106,32 @@
   max-width: 40.4375rem;
 }
 .about-us-section2 .down-part{
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 31.25rem;
+  overflow: hidden;
 }
 .about-us-section2 .down-part .txt{
   width: 100%;
+  z-index: 2;
+  position: relative;
 }
 .about-us-section2 .down-part .backimg{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center; 
+  /* position: absolute; */
+  /* display: flex;
+  justify-content: flex-end;
+  align-items: center;  */
   background: url(../images/pic_about_right2.png) no-repeat right center / cover rgb(255, 255, 255) ;
   width: 50%;
   height: 100%;
-  position: absolute;
+  /* position: absolute; */
   background-size: 31.25rem ;
   height: 31.25rem;
+
+
+  
   opacity: 1; 
   z-index: -1;
 }
