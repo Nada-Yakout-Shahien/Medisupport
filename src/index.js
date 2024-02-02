@@ -7,7 +7,7 @@ import Home from "./pages/home";
 import Aboutus from "./pages/About_us";
 import SmartHealthMetrics from "./pages/Smart_health_metrics";
 import Contactus from "./pages/Contact_us";
-
+import Doctors from "./pages/doctors";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,6 +32,11 @@ const router = createBrowserRouter([
   {
     path: "/Contact_us",
     element: <Contactus />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/Doctors",
+    element: <Doctors />,
     errorElement: <h1>Sorry......</h1>,
   },
 ]);

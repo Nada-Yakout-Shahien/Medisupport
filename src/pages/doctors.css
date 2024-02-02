@@ -1,0 +1,150 @@
+.section{
+  width: 1446px;
+}
+
+.search-box {
+  position: relative;
+  background: rgba(252, 252, 252, 1);
+  
+  width: 582px;
+height: 651px;
+top: -50px;
+left: 700px;
+
+  border-radius: 15px;
+  box-shadow: 5px 5px 30px rgba(252, 252, 252, 1);
+  
+}
+
+.search-box input[type="text"] {
+  width: 582.29px;
+  padding: 10px 30px 10px 30px;    
+  border: 1px solid rgba(190, 2, 2, 1);
+  border-radius: 10px;
+  font-family: Roboto;
+font-size: 20px;
+font-weight: 400;
+line-height: 23px;
+letter-spacing: 0em;
+height: 61px;
+top: 120px;
+left: 808.71px;
+}
+
+
+.fa-solid {
+  position: absolute;
+  left: -491px;   
+  top: 5%;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  transform:     translateY(-50%);
+  font-size: 18px;
+  padding-left: 500px;
+}
+  
+
+.far{
+  color: rgba(250, 143, 33, 1);
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+  width: 36px;
+  font-size: 30px;
+  border-radius: 5px;
+  padding-top: 5px;
+}
+
+.fa-thin{
+  position: absolute;
+  
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  transform:     translateY(-50%);
+  font-size: 15px;
+  
+}
+
+.search-box img{
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  width:  200px;
+  height:  200px;
+  
+  object-fit: contain;
+top: 189px;
+left: 824px;
+border-radius: 4px;
+gap: 10px;
+
+}
+
+.doctors-details{
+  display: flex;
+  align-items: center;
+  width: 582px;
+height: 194px;
+top: 300px;
+left: 809px;
+border: 1px solid rgba(190, 2, 2, 1);
+border-radius: 15px;
+
+}
+
+.rot{
+  width: 269px;
+height: 178px;
+flex-shrink: 0;
+}
+
+.doctors-details h2  {
+  color: #1E1E1E;
+font-family: Roboto;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+
+
+  
+}
+
+.bot{
+  display: inline-flex;
+  padding: 0px 16px 3.958px 0px;
+  align-items: flex-start;
+  gap: 3px;
+}
+
+.got{
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 6px;
+  width: 114px;
+height: 40.091px;
+flex-shrink: 0;
+}
+
+.doctors-details h6{
+  color: #1F1F1F;
+font-family: Roboto;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
+height: 35px;
+
+}
+
+.doctors-details img{
+  width: Fixed (150px);
+height: Fixed (172px);
+top: 189px;
+left: 824px;
+border-radius: 4px;
+gap: 10px;
+
+}
