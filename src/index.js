@@ -17,6 +17,7 @@ import Bloodsugar from "./pages/Blood_sugar";
 import BMI from "./pages/BMI";
 import Welcome from "./pages/Welcome";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
