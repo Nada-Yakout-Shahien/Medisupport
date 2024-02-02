@@ -2,23 +2,22 @@
   display: flex;
   flex-direction: column;
   padding: 4vw;
-  gap: 1vh;
 }
 .info h3{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 5vh;
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  margin-bottom: 4vh;
 }
 .info .infolbl{
   font-weight: 400;
-  font-size: 10em;
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
   gap: 2vh;
@@ -46,8 +45,7 @@
 .forms{
   display: flex;
   justify-content: space-between;
-  /* max-width: 100%; */
-  padding: 0.5vw;
+  max-width: 100%;
 }
 .form1 .form2{
   display: flex;
@@ -62,7 +60,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .info .btn{
   background-color: var(--Red);
   color: var(--whiteColor);
@@ -80,10 +77,20 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  margin-top: 1vh;
 }
-.form3 .nrbtn:hover{
+.form3 .btn:hover{
   cursor: pointer;
   background-color: var(--secondaryColor);
   color: var(--Red);
   border: none;
+}
+@media (max-width: 768px) {
+  .forms, .form1, .form2, .form3 {
+    flex-direction: column;
+    width: 100%;
+  }
+  .info input, .info label {
+    min-width: auto;
+  }
 }
