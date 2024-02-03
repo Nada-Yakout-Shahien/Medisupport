@@ -12,7 +12,6 @@ const Contactus = () => {
         <title>Contact us ♥</title>
         <meta name="description" content="Contact_us" />
       </Helmet>
-
       <Header />
       <div className="contact">
         <div className="contact_img">
