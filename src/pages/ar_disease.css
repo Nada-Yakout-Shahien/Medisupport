@@ -1,0 +1,21 @@
+.bg_article{
+  display: flex;
+  flex-direction: column;
+  max-width: 90%;
+  padding: 3vh 0vw 0vw 4.81vw;
+  gap: 5vh;
+}
+
+
+.address {
+  color: #be0202;
+  font-family: Roboto;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.P_img{
+  max-width: 100vw;
+}
