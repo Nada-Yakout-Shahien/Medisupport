@@ -12,7 +12,15 @@ const ArSugar = () => {
         <meta name="description" content="Article Sugar" />
       </Helmet>
       <Header />
-      
+      <div className="bg_article">
+        <h3 className="address">Blood Sugar</h3>
+        <img className="P_img" src="" alt="" />
+        <div className="topic">
+          <p className="s_topic"></p>
+          <p className="s_topic"></p>
+          <p className="s_topic"></p>
+        </div>
+      </div>
       <Footer />
     </>
   );

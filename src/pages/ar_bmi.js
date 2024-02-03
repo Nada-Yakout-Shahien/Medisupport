@@ -12,7 +12,15 @@ const ArBmi = () => {
         <meta name="description" content="Article Bmi" />
       </Helmet>
       <Header />
-      
+      <div className="bg_article">
+        <h3 className="address">Bmi</h3>
+        <img className="P_img" src="" alt="" />
+        <div className="topic">
+          <p className="s_topic"></p>
+          <p className="s_topic"></p>
+          <p className="s_topic"></p>
+        </div>
+      </div>
       <Footer />
     </>
   );
