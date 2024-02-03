@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import "./doctors.css";
 import React from "react";
 import doctors from "../images/doctors.png";
-import doctors2 from "../images/doctors2.png";
+
 
 
 
@@ -19,11 +19,25 @@ const Doctors = ({count, rating, color, onRating}) => {
 
       <Header />
       <div className="doctor-container">
+
         <section className="doctor-section">
+          <div className="coat">
+            <h1>Our doctors</h1>
+          </div>
           <div className="search-box">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search" ></input>
+            <div className="nod">
             
+              <svg  xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+  <g clip-path="url(#clip0_1_6191)">
+    <path d="M11.7383 2C16.7063 2 20.7383 6.032 20.7383 11C20.7383 15.968 16.7063 20 11.7383 20C6.77028 20 2.73828 15.968 2.73828 11C2.73828 6.032 6.77028 2 11.7383 2ZM11.7383 18C15.6053 18 18.7383 14.867 18.7383 11C18.7383 7.132 15.6053 4 11.7383 4C7.87028 4 4.73828 7.132 4.73828 11C4.73828 14.867 7.87028 18 11.7383 18ZM20.2233 18.071L23.0523 20.899L21.6373 22.314L18.8093 19.485L20.2233 18.071Z" fill="#1F1F1F"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_1_6191">
+      <rect width="24" height="24" fill="white" transform="translate(0.738281)"/>
+    </clipPath>
+  </defs>
+</svg><input type="text" placeholder="Search" ></input>
+            </div>
               <div className="doctors-details">
                 <img  src={doctors} alt="doctors"/>
                 <div className="rot">
@@ -88,8 +102,8 @@ const Doctors = ({count, rating, color, onRating}) => {
           </div>
           <div className="right-part">
           <img src={doctors} alt="doctors" />
-            <img src={doctors2} alt="doctors2" />
-            <h2>Our Mission</h2>
+            
+            
             <p>
               
             </p>
@@ -99,35 +113,12 @@ const Doctors = ({count, rating, color, onRating}) => {
           
         
         </section>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="100%"
-          height="6"
-          viewBox="0 0 1440 6"
-          fill="none"
-        >
-          <path
-            d="M0 1L1439.99 4.98339"
-            stroke="#BE0202"
-            stroke-opacity="0.5"
-          />
-        </svg>
+        
+          
         <section className="about-us-section3">
         
         </section>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="100%"
-          height="6"
-          viewBox="0 0 1440 6"
-          fill="none"
-        >
-          <path
-            d="M0 1L1439.99 4.98339"
-            stroke="#BE0202"
-            stroke-opacity="0.5"
-          />
-        </svg>
+        
       </div>
 
       <Footer />
