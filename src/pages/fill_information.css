@@ -1,6 +1,8 @@
 .info{
   display: flex;
+  flex: 1;
   flex-direction: column;
+  justify-content: center;
   padding: 3vw 3vw 0vw 3vw;
 }
 .info h3{
@@ -34,7 +36,11 @@
   align-items: center;
   padding: 1vw;
 }
-
+input::placeholder {
+  font-size: 1.3rem; 
+  color: #b1aeae; 
+  font-style: italic; 
+}
 .info label{
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;

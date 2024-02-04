@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet-async";
 import React from "react";
 import pic_about_left from "../images/pic_about_left.png";
 import pic_about_right1 from "../images/pic_about_right1.png";
-//import pic_about_right2 from "../images/pic_about_right2.png";
 import line from "../images/line-about-ourfeatures.png";
 import right from "../images/right-arrow.png";
 import left from "../images/left-arrow.png";
@@ -24,7 +23,7 @@ const Aboutus = () => {
     if (ourFeaturesRef.current) {
       const container = ourFeaturesRef.current;
       setShowLeftArrow(container.scrollLeft > 0);
-      setShowRightArrow(container.scrollLeft < 1200);
+      setShowRightArrow(container.scrollLeft + container.clientWidth < container.scrollWidth);
     }
   };
 
@@ -61,7 +60,7 @@ const Aboutus = () => {
         <meta name="description" content="Aboutus" />
       </Helmet>
 
-      {/* <Header /> */}
+      <Header />
 
       <div className="about-us-container">
         <div className="about-us-section">
@@ -133,11 +132,12 @@ const Aboutus = () => {
                 Stay well, stay informed, and take control of your health with{" "}
                 <span className="medi-text3">Medisupport.</span>
               </p>
+              <div className="backimg"></div>
             </div>
-            <div className="backimg"></div>
+            
           </div>
         </div>
-        {/* <svg
+        <svg
           xmlns="http://www.w3.org/2000/svg"
           width="100%"
           height="6"
@@ -219,6 +219,7 @@ const Aboutus = () => {
                   inputting specific patient data.
                 </p>
               </div>
+              <div className="feature-end-space"></div>
             </div>
             {showRightArrow && (
               <img
@@ -274,7 +275,8 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-                </svg>{" "} Sara Elbadry
+                </svg>{" "} 
+                  Sara Elbadry
                 </p>
                 </div>
             </div>
@@ -290,7 +292,7 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-                  </svg>{" "} Rofayda Mohammed
+                </svg>{" "} Rofayda Mohammed
                 </p>
               <p>
               <svg
@@ -381,7 +383,7 @@ const Aboutus = () => {
                 </p>
               </div>
             </div>
-            <div className="developer" id="ai">
+            <div className="developer">
               <h4 >AI Team </h4>
               <div className="names">
                 <p>
@@ -431,10 +433,10 @@ const Aboutus = () => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
 
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
