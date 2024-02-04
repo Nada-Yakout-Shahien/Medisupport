@@ -36,7 +36,8 @@
   align-items: center;
   padding: 1.1vh;
 }
-.info .infolbl select{
+
+.info .infolbl .menu{
   display: flex;
   border: 1px var(--Red) solid;
   width: 100%;
@@ -47,24 +48,60 @@
   align-items: center;
   padding: 1.1vh;
   font-size: 1.3em; 
+  position: relative;
+  justify-content: space-between;
+  gap: 1.5rem;
+  cursor: pointer;
 }
-.info .infolbl select option {
-  padding: 10px; 
-  color: var(--Red);
+.info .infolbl .menu .txt{
+  /* font-size: 1em;  */
+  /* color: #b1aeae;  */
+  /* font-style: italic; */
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.45019rem; 
+}
+
+.info .infolbl .menu .dropdown-content  {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
   background-color: var(--whiteColor);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  border-radius: 0.5rem;
+  width: 100%;
 }
-.info .infolbl select option:checked{
+
+.info .infolbl .menu .dropdown-content div {
+  color: black;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: block;
+}
+.info .infolbl .menu .dropdown-content {
+  display: block;
+}
+
+.info .infolbl .menu .dropdown-content div {
+  color: var(--Red);
+  padding: 0.5rem;
+  text-decoration: none;
+  display: block;
+}
+
+.info .infolbl .menu .dropdown-content div:hover {
+  border-radius: 0.5rem;
   color: var(--whiteColor);
-  background-color: var(--Red);
+  background-color: var(--graycolor);
 }
-.optionsel{
-  font-size: 1em; 
-  color: #b1aeae; 
-  font-style: italic; 
-}
-select option[value=""][disabled] {
-  color: var(--Red);  
-}
+
+
 input::placeholder {
   font-size: 1em; 
   color: #b1aeae; 
