@@ -4,7 +4,9 @@
   padding: 7vh 9vh 0vh 9vh;
 }
 .leftpart  ,.rightpart{
-  max-width: 50%;
+  max-width: 39rem;
+  min-height: 25.5625rem;
+  width: 50%;
   display: flex;
   padding: 5%;
   flex-direction: column;
@@ -20,7 +22,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: 110%;
-  min-width: 30vw;
+  /* max-width: 350rem; */
 }
 .rightpart .medi{
   color: var(--Red);
@@ -49,17 +51,18 @@
 }
 .rightpart .btn{
   display: flex;
-  min-height: 5vh;
-  max-width: 13vw;
+  min-height:5vh;
+  width: 9em;
+  height: 3.5rem;
   padding: 1rem;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   border: 2px solid var(--Red);
   background: var(--Red);
   color: var(--whiteColor);
   font-family: 'Roboto',sans-serif;
-  font-size: 1.5vw;
+  font-size: 1.5em;
   font-style: normal;
   font-weight: 500;
   line-height: 100%;
@@ -69,4 +72,15 @@
   background-color: var(--secondaryColor);
   color: var(--Red);
   border: none;
+}
+
+@media (max-width: 768px) {
+  .homesec1{
+    flex-direction: column;
+  }
+  .leftpart  ,.rightpart{
+    width: 100%;
+    gap: 1%;
+
+  }
 }
