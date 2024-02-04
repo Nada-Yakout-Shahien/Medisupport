@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { Helmet } from "react-helmet-async";
 import { eachDayOfInterval, format } from "date-fns";
 import "./Blood_sugar.css";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from "recharts";
+//import { Line } from 'react-chartjs-2';
+
+//diagram
+
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -53,22 +48,7 @@ const Bloodsugar = () => {
     setSelectedDay(fullDate);
   };
 
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    // استبدل هذه الوظيفة بالوظيفة الفعلية لجلب البيانات من مصدرك
-    const fetchData = async () => {
-      // مثال على بيانات محاكاة
-      const mockData = [
-        { category: "قياس 1", sugarLevel: 110 },
-        { category: "قياس 2", sugarLevel: 95 },
-        // يمكن إضافة المزيد
-      ];
-      setData(mockData);
-    };
-
-    fetchData();
-  }, []); // الفارغ [] يضمن أن هذا يتم مرة واحدة فقط عند تحميل المكون
+  //diagram
 
   return (
     <>
@@ -128,24 +108,11 @@ const Bloodsugar = () => {
           ))}
         </div>
         <div className="diagram">
-          {/* <LineChart
-            width={600}
-            height={300}
-            data={data}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="sugarLevel"
-              stroke="#8884d8"
-              activeDot={{ r: 8 }}
-            />
-          </LineChart> */}
+          <div className="measure">
+            <p className="num">120</p>
+            <p>mg/dl</p>
+          </div>
+           
         </div>
         <div className="btn"></div>
       </div>
