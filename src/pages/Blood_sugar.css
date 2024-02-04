@@ -83,7 +83,7 @@
   overflow-x: auto;
   align-items: flex-start;
   gap: 40px;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   scrollbar-width: none;
 }
 .date::-webkit-scrollbar {
@@ -131,31 +131,34 @@
 
 /* diagram */
 .diagram {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
   min-width: 100.1875rem;
   min-height: 23rem;
   flex-shrink: 0;
   border-radius: 0.625rem;
-  background: #FFF;
+  background: var(--whiteColor);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   display: flex;
   overflow-x: auto;
-  /* align-items:center ; */
   margin-bottom: 2rem;
   scrollbar-width: none;
   
 }
 .diagram .measure{
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   /* align-items: center; */
-  text-align: center;
+  /* text-align: center; */
   flex-direction: row;
   font-family: 'Roboto',sans-serif;
   font-size: 2rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  padding: 2rem;
+  /* padding: 2rem; */
 }
 .diagram .measure .num{
   color: var(--Red);
