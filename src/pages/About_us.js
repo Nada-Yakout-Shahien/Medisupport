@@ -23,7 +23,7 @@ const Aboutus = () => {
     if (ourFeaturesRef.current) {
       const container = ourFeaturesRef.current;
       setShowLeftArrow(container.scrollLeft > 0);
-      setShowRightArrow(container.scrollLeft < 1200);
+      setShowRightArrow(container.scrollLeft + container.clientWidth < container.scrollWidth);
     }
   };
 
@@ -60,7 +60,7 @@ const Aboutus = () => {
         <meta name="description" content="Aboutus" />
       </Helmet>
 
-      {/* <Header /> */}
+      <Header />
 
       <div className="about-us-container">
         <div className="about-us-section">
@@ -219,6 +219,7 @@ const Aboutus = () => {
                   inputting specific patient data.
                 </p>
               </div>
+              <div className="feature-end-space"></div>
             </div>
             {showRightArrow && (
               <img
@@ -244,7 +245,7 @@ const Aboutus = () => {
             stroke-opacity="0.5"
           />
         </svg>
-        {/* <div className="about-us-section4">
+        <div className="about-us-section4">
           <div className="title">
             <img src={line} alt="" />
             <h3>Our Developer</h3>
@@ -274,7 +275,8 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-                </svg>{" "} Sara Elbadry
+                </svg>{" "} 
+                  Sara Elbadry
                 </p>
                 </div>
             </div>
@@ -290,7 +292,7 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-                  </svg>{" "} Rofayda Mohammed
+                </svg>{" "} Rofayda Mohammed
                 </p>
               <p>
               <svg
@@ -381,7 +383,7 @@ const Aboutus = () => {
                 </p>
               </div>
             </div>
-            <div className="developer" id="ai">
+            <div className="developer">
               <h4 >AI Team </h4>
               <div className="names">
                 <p>
@@ -431,10 +433,10 @@ const Aboutus = () => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
 
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
