@@ -20,37 +20,37 @@
   display: flex;
   gap: 4rem;
 }
-.left-part,
-.right-part {
+.about-us-section .left-part,
+.about-us-section .right-part {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1.5rem;
 }
 
-.left-part,
-.right-part {
+.about-us-section .left-part,
+.about-us-section .right-part {
   flex: 1;
   box-sizing: border-box;
   display: inline-flex;
 }
-.left-part img,
-.right-part img {
+.about-us-section .left-part img,
+.about-us-section .right-part img {
   max-width: 100%;
   height: auto;
   flex-shrink: 0;
 }
 
-.left-part p {
+.about-us-section .left-part p {
   max-width: 40.5625rem;
   min-height: 10rem;
 }
-.right-part p {
+.about-us-section .right-part p {
   max-width: 37.8125rem;
 }
 
-.left-part p,
-.right-part p,
+.about-us-section .left-part p,
+.about-us-section .right-part p,
 .about-us-section2 .parent p,
 .about-us-section2 .down-part p {
   color: var(--darkgraycolor);
@@ -152,12 +152,9 @@
   align-items: center;
   text-align: center;
   width: 100%;
-  /* margin-top: 20px; */
   margin-bottom: 1.5rem;
 }
-/* .about-us-section3 .title{
-  gap: 1rem;
-} */
+
 .about-us-section3 .title h3 {
   color: var(--Red);
   font-family: "Roboto", sans-serif;

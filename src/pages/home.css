@@ -3,7 +3,7 @@
   flex-direction: row;
   padding: 7vh 9vh 0vh 9vh;
 }
-.leftpart  ,.rightpart{
+.homesec1 .leftpart  ,.homesec1 .rightpart{
   max-width: 39rem;
   min-height: 25.5625rem;
   width: 50%;
@@ -12,10 +12,10 @@
   flex-direction: column;
   gap: 5%;
 }
-.rightpart{
+.homesec1 .rightpart{
   margin-top: 6.2vh;
 }
-.rightpart h2{
+.homesec1 .rightpart h2{
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
   font-size: 3em;
@@ -24,14 +24,14 @@
   line-height: 110%;
   /* max-width: 350rem; */
 }
-.rightpart .medi{
+.homesec1 .rightpart .medi{
   color: var(--Red);
   font-family: 'Roboto',sans-serif;
   font-style: normal;
   font-weight: 700;
   line-height: 110%;
 }
-.rightpart h3{
+.homesec1 .rightpart h3{
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
   font-size: 2em;
@@ -40,7 +40,7 @@
   font-weight: 700;
   line-height: 110%; 
 }
-.rightpart p{
+.homesec1 .rightpart p{
   color: var(--darkgraycolor);
   font-family: 'Roboto',sans-serif;
   font-size: 1em;
@@ -49,7 +49,7 @@
   line-height: 140%; 
   margin-bottom: 5vh;
 }
-.rightpart .btn{
+.homesec1 .rightpart .btn{
   display: flex;
   min-height:5vh;
   width: 9em;
@@ -68,7 +68,7 @@
   line-height: 100%;
   letter-spacing: 0.5px;
 }
-.rightpart .btn:hover{
+.homesec1 .rightpart .btn:hover{
   background-color: var(--secondaryColor);
   color: var(--Red);
   border: none;
@@ -78,7 +78,7 @@
   .homesec1{
     flex-direction: column;
   }
-  .leftpart  ,.rightpart{
+  .homesec1 .leftpart  ,.homesec1 .rightpart{
     width: 100%;
     gap: 1%;
 
