@@ -32,9 +32,9 @@
   min-width: 40vw;
   min-height: 5vh;
   flex-shrink: 0;
-  border-radius: 0.7em;
+  border-radius:0.625rem;
   align-items: center;
-  padding: 1vw;
+  padding: 1.1vh;
 }
 input::placeholder {
   font-size: 1em; 
@@ -75,8 +75,8 @@ input::placeholder {
   align-items: center;
   width: 100%;
   border-radius: 0.625rem;
-  padding: 0.8vh;
-  border: 2px solid var(--Red);
+  padding: 1vh;
+  border: 1px solid var(--Red);
   font-family: "Roboto", sans-serif;
   line-height: 100%;
   cursor: pointer;
