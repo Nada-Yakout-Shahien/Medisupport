@@ -46,7 +46,25 @@ const FillInformation = () => {
             {currentStep >= 2 && (
               <div className="infolbl">
                 <label htmlFor="input2">SEX</label>
-                <input type="text" id="input2" placeholder="Your SEX" />
+                {/* <input type="text" id="input2" placeholder="Your SEX" /> */}
+                <select
+                  id="genderSelect"
+                  name="gender"
+                  defaultValue=""
+                  onChange={(e) => console.log(e.target.value)}
+                  //style={{ color: '#999'  }}
+                >
+                  <option
+                    value=""
+                    disabled
+                    selected
+                    className="optionsel"
+                  >
+                    Your SEX
+                  </option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
                 {currentStep === 2 && (
                   <button
                     type="button"
@@ -227,11 +245,12 @@ const FillInformation = () => {
             <div className="infolbl">
               <label htmlFor="input11">Thalassemia</label>
               <input type="text" id="input11" placeholder="Your Thalassemia" />
-              <NavLink to="/res" onClick={handleNextClick} className="btn">{currentStep < totalSteps ? "Next" : "Result"}</NavLink>
+              <NavLink to="/res" onClick={handleNextClick} className="btn">
+                {currentStep < totalSteps ? "Next" : "Result"}
+              </NavLink>
             </div>
           )}
         </div>
-        
       </div>
       <Footer />
     </>

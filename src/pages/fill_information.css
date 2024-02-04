@@ -36,6 +36,35 @@
   align-items: center;
   padding: 1.1vh;
 }
+.info .infolbl select{
+  display: flex;
+  border: 1px var(--Red) solid;
+  width: 100%;
+  min-width: 40vw;
+  min-height: 5.9vh;
+  flex-shrink: 0;
+  border-radius:0.625rem;
+  align-items: center;
+  padding: 1.1vh;
+  font-size: 1.3em; 
+}
+.info .infolbl select option {
+  padding: 10px; 
+  color: var(--Red);
+  background-color: var(--whiteColor);
+}
+.info .infolbl select option:checked{
+  color: var(--whiteColor);
+  background-color: var(--Red);
+}
+.optionsel{
+  font-size: 1em; 
+  color: #b1aeae; 
+  font-style: italic; 
+}
+select option[value=""][disabled] {
+  color: var(--Red);  
+}
 input::placeholder {
   font-size: 1em; 
   color: #b1aeae; 
