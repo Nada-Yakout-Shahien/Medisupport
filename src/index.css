@@ -23,7 +23,8 @@ html, body, #root {
   --whiteColor: #fff;
   --blackColor: #000000;
   --graycolor: #1f1f1f;
-  --darkgraycolor:#353535
+  --darkgraycolor:#353535;
+  
 }
 a {
   text-decoration: none;
