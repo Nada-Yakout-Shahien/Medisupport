@@ -1,18 +1,17 @@
-import Header from "../components/header";
-import Footer from "../components/footer";
 import { Helmet } from "react-helmet-async";
 import "./ar_disease.css";
 import React from "react";
 import Pimg from "../images/ar_img_p.png";
+import Layout from '../components/Layout';
+
 
 const ArPressure = () => {
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>Article Pressure ♥</title>
         <meta name="description" content="Article Pressure" />
       </Helmet>
-      <Header />
       <div className="bg_article">
         <h3 className="address">Blood pressure</h3>
         <img className="P_img" src={Pimg} alt="" />
@@ -75,8 +74,7 @@ const ArPressure = () => {
           </p>
         </div>
       </div>
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

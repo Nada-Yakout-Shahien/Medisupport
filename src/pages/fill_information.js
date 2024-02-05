@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import Header from "../components/header";
-import Footer from "../components/footer";
 import { Helmet } from "react-helmet-async";
 import "./fill_information.css";
 import { NavLink } from "react-router-dom";
+import Layout from '../components/Layout';
 
 const FillInformation = () => {
   const totalSteps = 11;
@@ -29,13 +28,12 @@ const FillInformation = () => {
   };
 
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>Fill Information ♥</title>
         <meta name="description" content="Fill Information" />
       </Helmet>
 
-      <Header />
       <div className="info">
         <h3>Please fill in the information</h3>
         <div className="forms">
@@ -272,8 +270,7 @@ const FillInformation = () => {
           )}
         </div>
       </div>
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

@@ -1,18 +1,17 @@
-import Header from "../components/header";
-import Footer from "../components/footer";
 import { Helmet } from "react-helmet-async";
 import "./ar_disease.css";
 import React from "react";
 import Pimg from "../images/ar_img_p.png";
+import Layout from '../components/Layout';
 
 const ArSugar = () => {
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>Article Sugar ♥</title>
         <meta name="description" content="Article Sugar" />
       </Helmet>
-      <Header />
+
       <div className="bg_article">
         <h3 className="address">Blood sugar</h3>
         <img className="P_img" src={Pimg} alt="" />
@@ -75,8 +74,8 @@ const ArSugar = () => {
           </p>
         </div>
       </div>
-      <Footer />
-    </>
+
+    </Layout>
   );
 };
 

@@ -1,5 +1,3 @@
-import Header from "../components/header";
-import Footer from "../components/footer";
 import { Helmet } from "react-helmet-async";
 import React from "react";
 import pic_about_left from "../images/pic_about_left.png";
@@ -11,6 +9,7 @@ import app from "../images/app.png";
 import google from "../images/google.png";
 import { useRef, useEffect, useState } from "react";
 import "./About_us.css";
+import Layout from '../components/Layout';
 
 const Aboutus = () => {
   const prevRef = useRef(null);
@@ -54,13 +53,12 @@ const Aboutus = () => {
   };
 
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>About us ♥</title>
         <meta name="description" content="Aboutus" />
       </Helmet>
 
-      <Header />
 
       <div className="about-us-container">
         <div className="about-us-section">
@@ -436,8 +434,7 @@ const Aboutus = () => {
         </div>
       </div>
 
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

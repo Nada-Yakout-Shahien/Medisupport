@@ -1,19 +1,17 @@
-import Header from "../components/header";
-import Footer from "../components/footer";
 import { Helmet } from "react-helmet-async";
 import heart from "../images/heart.png";
 import { NavLink } from "react-router-dom";
 import "./home.css";
+import Layout from '../components/Layout';
 
 const Home = () => {
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>Medisupport HOME ♥</title>
         <meta name="description" content="HOME" />
       </Helmet>
 
-      <Header />
 
       <div className="homesec1">
         <div className="leftpart">
@@ -35,8 +33,7 @@ const Home = () => {
         </div>
       </div>
 
-      <Footer />
-    </>
+    </Layout>
   );
 }
 

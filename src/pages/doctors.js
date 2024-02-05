@@ -1,13 +1,12 @@
-import Header from "../components/header";
-import Footer from "../components/footer";
 import { Helmet } from "react-helmet-async";
 import "./doctors.css";
 import React from "react";
 import doctors from "../images/doctors.png";
+import Layout from '../components/Layout';
 
 const Doctors = ({ count, rating, color, onRating }) => {
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>Doctors ♥</title>
         <meta name="description" content="Doctors" />
@@ -20,7 +19,6 @@ const Doctors = ({ count, rating, color, onRating }) => {
         />
       </Helmet>
 
-      <Header />
       <div className="doctor-container">
         <section className="doctor-section">
           <div className="coat">
@@ -222,8 +220,7 @@ const Doctors = ({ count, rating, color, onRating }) => {
 
         <section className="about-us-section3"></section> */}
       </div>
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

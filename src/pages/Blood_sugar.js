@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-//import Header from "../components/header";
-//import Footer from "../components/footer";
 import { Helmet } from "react-helmet-async";
 import { eachDayOfInterval, format } from "date-fns";
 import "./Blood_sugar.css";

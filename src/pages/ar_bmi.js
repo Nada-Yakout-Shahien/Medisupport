@@ -1,18 +1,16 @@
-import Header from "../components/header";
-import Footer from "../components/footer";
 import { Helmet } from "react-helmet-async";
 import "./ar_disease.css";
 import React from "react";
 import Pimg from "../images/ar_img_p.png";
+import Layout from '../components/Layout';
 
 const ArBmi = () => {
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>Article Bmi ♥</title>
         <meta name="description" content="Article Bmi" />
       </Helmet>
-      <Header />
       <div className="bg_article">
         <h3 className="address">BMI</h3>
         <img className="P_img" src={Pimg} alt="" />
@@ -75,8 +73,7 @@ const ArBmi = () => {
           </p>
         </div>
       </div>
-      <Footer />
-    </>
+    </Layout>
   );
 };
 
