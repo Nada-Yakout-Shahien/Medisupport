@@ -4,8 +4,21 @@ import { eachDayOfInterval, format } from "date-fns";
 import "./Blood_sugar.css";
 import Layout from "../components/Layout";
 
-//import { Line } from 'react-chartjs-2';
+//diagram
+const generateRedBars = (count, start = 0, step = 2) => {
+  return Array.from({ length: count }, (v, i) => ({
+    id: i + 1,
+    left: `${start + i * step}em`,
+  }));
+};
 
+const generateMarks = (steps, texts) => {
+  return steps.map((left, index) => ({
+    id: index + 1,
+    left: `${left}em`,
+    text: texts[index] || "",
+  }));
+};
 //diagram
 
 //date show
@@ -46,36 +59,10 @@ const Bloodsugar = () => {
     setSelectedDay(fullDate);
   };
 
-  //diagram
-  const redBars = [
-    { id: 1, left: "0em" },
-    { id: 2, left: "4em" },
-    { id: 3, left: "6em" },
-    { id: 4, left: "8em" },
-    { id: 5, left: "10em" },
-    { id: 6, left: "12em" },
-    { id: 7, left: "14em" },
-    { id: 8, left: "16em" },
-    { id: 9, left: "18em" },
-    { id: 10, left: "22em" },
-    { id: 11, left: "24em" },
-    { id: 12, left: "26em" },
-    { id: 13, left: "28em" },
-    { id: 14, left: "30em" },
-    { id: 15, left: "32em" },
-    { id: 16, left: "34em" },
-    { id: 17, left: "36em" },
-    { id: 18, left: "38em" },
-  ];
+  //diagram  
+  const redBars = generateRedBars(170);
+  const marks = generateMarks([2, 20, 40, 60, 80, 100,120,140,160,180,200,220,240,260,280,300,320,340], ["115", "120", "125", "130", "135", "140","145","150","155","160","165","170","175","180","185","190","195","200"]);
 
-  const marks = [
-    { id: 1, left: "2em", text: "115" },
-    { id: 2, left: "20em", text: "120" },
-    { id: 3, left: "40em", text: "125" },
-    { id: 4, left: "60em", text: "130" },
-    { id: 5, left: "80em", text: "135" },
-    { id: 6, left: "100em", text: "140" },
-  ];
   return (
     <Layout>
       <Helmet>
