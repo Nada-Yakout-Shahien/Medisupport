@@ -141,9 +141,7 @@
   border-radius: 0.625rem;
   background: var(--whiteColor);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  overflow-x: auto;
   margin-bottom: 2.5rem;
-  scrollbar-width: none;
 }
 .diagram::-webkit-scrollbar {
   display: none;
@@ -161,24 +159,53 @@
 .diagram .measure .num {
   color: var(--Red);
 }
+.dig{
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.dig::-webkit-scrollbar {
+  display: none;
+}
 .container {
   display: flex;
   position: relative;
   width: 100%;
-  min-height: 250px; /* Adjusted for visualization */
+  min-width: 100.1875rem;
+  min-height:15.625rem; 
+  background-color: var(--whiteColor);
+  overflow-x: auto;
+  scrollbar-width: none;
 }
-.bar {
-  width: 15px;
-  height: 100%; /* Height will be adjusted dynamically */
-  background: var(--Red);
-  margin-right: 5px; /* Space between bars */
+.container::-webkit-scrollbar {
+  display: none;
 }
-.label {
+
+.mark ,.red-bar{
   position: absolute;
-  color: #1F1F1F;
-  font-size: 16px;
-  font-family: 'Roboto', sans-serif;
+  bottom: 0;
+}
+.red-bar {
+  width: 0.9375rem;
+  height: 8.56013rem;
+  flex-shrink: 0;
+  background-color: var(--Red);
+  top: 5.5rem;
+}
+
+.mark-bar {
+  width: 1rem;
+  height: 13.5625rem;
+  flex-shrink: 0; 
+  background-color: var(--Red);
+}
+
+.mark-text {
+  margin-top: 0.45em;
+  transform: translateX(-25%);
+  color: var(--graycolor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1rem;
+  font-style: normal;
   font-weight: 500;
-  word-wrap: break-word;
-  bottom: -30px; /* Adjust based on your design */
+  line-height: normal;
 }
