@@ -4,12 +4,14 @@ import { eachDayOfInterval, format } from "date-fns";
 import "./Blood_sugar.css";
 import Layout from "../components/Layout";
 
+//import { Line } from 'react-chartjs-2';
+
 //diagram
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
   const endDate = new Date(startDate.getTime());
-  endDate.setDate(startDate.getDate() + numberOfDays - 1);
+  endDate.setDate(startDate.getDate() + numberOfDays - 1); 
   return eachDayOfInterval({ start: startDate, end: endDate }).map((day) => ({
     day: format(day, "EEE"),
     date: format(day, "d"),
@@ -45,15 +47,35 @@ const Bloodsugar = () => {
   };
 
   //diagram
-  const bars = [
-    { height: 120, label: '115', position: 22 },
-    { height: 120, label: '120', position: 334 },
-    { height: 120, label: '125', position: 646 },
-    { height: 120, label: '130', position: 958},
-    { height: 120, label: '135', position: 1.270 },
-    { height: 120, label: '140', position: 1.582},  
+  const redBars = [
+    { id: 1, left: "0em" },
+    { id: 2, left: "4em" },
+    { id: 3, left: "6em" },
+    { id: 4, left: "8em" },
+    { id: 5, left: "10em" },
+    { id: 6, left: "12em" },
+    { id: 7, left: "14em" },
+    { id: 8, left: "16em" },
+    { id: 9, left: "18em" },
+    { id: 10, left: "22em" },
+    { id: 11, left: "24em" },
+    { id: 12, left: "26em" },
+    { id: 13, left: "28em" },
+    { id: 14, left: "30em" },
+    { id: 15, left: "32em" },
+    { id: 16, left: "34em" },
+    { id: 17, left: "36em" },
+    { id: 18, left: "38em" },
   ];
 
+  const marks = [
+    { id: 1, left: "2em", text: "115" },
+    { id: 2, left: "20em", text: "120" },
+    { id: 3, left: "40em", text: "125" },
+    { id: 4, left: "60em", text: "130" },
+    { id: 5, left: "80em", text: "135" },
+    { id: 6, left: "100em", text: "140" },
+  ];
   return (
     <Layout>
       <Helmet>
@@ -115,20 +137,23 @@ const Bloodsugar = () => {
             <p className="num">120</p>
             <p>mg/dl</p>
           </div>
-          <div className="container">
-            {bars.map((bar, index) => (
-              <React.Fragment key={index}>
+          <div className="dig">
+            <div className="container">
+              {redBars.map((bar) => (
                 <div
-                  className="bar"
-                  style={{ height: `${bar.height}px` }}
+                  key={bar.id}
+                  className="red-bar"
+                  style={{ left: bar.left }}
                 ></div>
-                {bar.label && (
-                  <div className="label" style={{ left: `${bar.position}px` }}>
-                    {bar.label}
-                  </div>
-                )}
-              </React.Fragment>
-            ))}
+              ))}
+
+              {marks.map((mark) => (
+                <div key={mark.id} className="mark" style={{ left: mark.left }}>
+                  <div className="mark-bar"></div>
+                  <div className="mark-text">{mark.text}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         <div className="btn"></div>
