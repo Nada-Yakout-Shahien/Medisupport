@@ -23,14 +23,15 @@ const Reed_articles = () => {
             <div className="diseases">
               <p>Blood pressure</p>
               <NavLink to="/pressure">
-              <img src={arrow} alt=""/>
-              </NavLink>            </div>
+                <img src={arrow} alt="" />
+              </NavLink>{" "}
+            </div>
           </div>
           <div className="dis">
             <div className="diseases">
               <p>Blood sugar</p>
               <NavLink to="/sugar">
-              <img src={arrow} alt=""/>
+                <img src={arrow} alt="" />
               </NavLink>
             </div>
           </div>
@@ -38,15 +39,17 @@ const Reed_articles = () => {
             <div className="diseases">
               <p>BMI</p>
               <NavLink to="/ABmi">
-              <img src={arrow} alt=""/>
-              </NavLink>            </div>
+                <img src={arrow} alt="" />
+              </NavLink>{" "}
+            </div>
           </div>
           <div className="dis">
             <div className="diseases">
               <p>Heart</p>
               <NavLink to="/heart">
-              <img src={arrow} alt=""/>
-              </NavLink>            </div>
+                <img src={arrow} alt="" />
+              </NavLink>{" "}
+            </div>
           </div>
         </div>
       </div>
