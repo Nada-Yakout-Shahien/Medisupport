@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { HelmetProvider } from "react-helmet-async";
@@ -22,6 +22,8 @@ import ArSugar from "./pages/ar_sugar";
 import ArBmi from "./pages/ar_bmi";
 import ArHeart from "./pages/ar_heart";
 import Activity from "./pages/Activity";
+
+
 
 const router = createBrowserRouter([
   {
@@ -132,3 +134,20 @@ root.render(
     </HelmetProvider>
   </React.StrictMode>
 );
+
+const App = () => {
+  useEffect(() => {
+    const unlisten = router.listen(({ location, action }) => {
+      if (action === 'PUSH') {
+        window.scrollTo(0, 0);
+      }
+    });
+    return () => unlisten();
+  }, []);
+
+  return (
+    <RouterProvider router={router} />
+  );
+};
+
+export default App;
