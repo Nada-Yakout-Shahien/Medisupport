@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import Header from "../components/header";
-import Footer from "../components/footer";
+//import Header from "../components/header";
+//import Footer from "../components/footer";
 import { Helmet } from "react-helmet-async";
 import { eachDayOfInterval, format } from "date-fns";
 import "./Blood_sugar.css";
+import Layout from '../components/Layout';
+
 //import { Line } from 'react-chartjs-2';
 
 //diagram
@@ -51,12 +53,12 @@ const Bloodsugar = () => {
   //diagram
 
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>Blood Sugar ♥</title>
         <meta name="description" content="Manage your blood sugar levels" />
       </Helmet>
-      <Header />
+      {/* <Header /> */}
       <div className="bloodsugar">
         <div className="stb">
           <h3>Blood Sugar</h3>
@@ -116,8 +118,8 @@ const Bloodsugar = () => {
         </div>
         <div className="btn"></div>
       </div>
-      <Footer />
-    </>
+      {/* <Footer /> */}
+    </Layout>
   );
 };
 

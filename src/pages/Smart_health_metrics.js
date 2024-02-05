@@ -1,5 +1,3 @@
-import Header from "../components/header";
-import Footer from "../components/footer";
 import { Helmet } from "react-helmet-async";
 import React from "react";
 import "./Smart_health_metrics.css";
@@ -8,16 +6,15 @@ import bloodpressure from "../images/blood-pressure.png";
 import bloodsugar from "../images/blood-sugar.png";
 import bmi from "../images/bmi.png";
 import { NavLink } from "react-router-dom";
+import Layout from '../components/Layout';
 
 const SmartHealthMetrics = () => {
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>Smart health metrics ♥</title>
         <meta name="description" content="Smart_health_metrics" />
       </Helmet>
-
-      <Header />
       <div className="disease">
         <h3>Smart Health Metrics</h3>
         <div className="child">
@@ -75,8 +72,7 @@ const SmartHealthMetrics = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </>
+    </Layout>
   );
 };
 
