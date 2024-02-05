@@ -162,7 +162,7 @@
 .dig::-webkit-scrollbar {
   display: none;
 }
-.container {
+.diagram .container {
   position: relative;
   width: 100%;
   min-width: 100.1875rem;
