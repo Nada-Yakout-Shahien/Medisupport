@@ -11,8 +11,7 @@ import Layout from "../components/Layout";
 //date show
 const generateDays = (startDate, numberOfDays) => {
   const endDate = new Date(startDate.getTime());
-  endDate.setDate(startDate.getDate() + numberOfDays - 1); // نقص 1 لأننا نشمل يوم البداية
-
+  endDate.setDate(startDate.getDate() + numberOfDays - 1); 
   return eachDayOfInterval({ start: startDate, end: endDate }).map((day) => ({
     day: format(day, "EEE"),
     date: format(day, "d"),
