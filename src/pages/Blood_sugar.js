@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { eachDayOfInterval, format } from "date-fns";
 import "./Blood_sugar.css";
@@ -19,7 +19,7 @@ const generateMarks = (steps, texts) => {
     text: texts[index] || "",
   }));
 };
-//diagram
+
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -49,8 +49,8 @@ const Bloodsugar = () => {
   };
 
   //days
-  const startDate = new Date(2024, 2, 21);
-  const days = generateDays(startDate, 29);
+  const startDate = new Date(2024, 5, 1);
+  const days = generateDays(startDate, 100);
 
   //on click day
   const [selectedDay, setSelectedDay] = useState(null);
@@ -62,6 +62,34 @@ const Bloodsugar = () => {
   //diagram  
   const redBars = generateRedBars(170);
   const marks = generateMarks([2, 20, 40, 60, 80, 100,120,140,160,180,200,220,240,260,280,300,320,340], ["115", "120", "125", "130", "135", "140","145","150","155","160","165","170","175","180","185","190","195","200"]);
+
+  const [currentNum, setCurrentNum] = useState('120'); //default num
+  
+  //scroll location tracking
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handleScroll = (e) => {
+    const containerScrollPosition = e.target.scrollLeft;
+    setScrollPosition(containerScrollPosition);
+    updateCurrentNum(containerScrollPosition);
+  };
+  
+  //Update number based on scroll location
+  const updateCurrentNum = (scrollPos) => {
+    let closestMark = null;
+    let minDiff = Number.MAX_SAFE_INTEGER;
+    marks.forEach(mark => {
+      const diff = Math.abs(parseFloat(mark.left) - scrollPos);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestMark = mark;
+      }
+    });
+
+    if (closestMark) {
+      setCurrentNum(closestMark.text);
+    }
+  };
 
   return (
     <Layout>
@@ -121,10 +149,10 @@ const Bloodsugar = () => {
         </div>
         <div className="diagram">
           <div className="measure">
-            <p className="num">120</p>
+            <p className="num">{currentNum}</p>
             <p>mg/dl</p>
           </div>
-          <div className="dig">
+          <div className="dig" onScroll={handleScroll}>
             <div className="container">
               {redBars.map((bar) => (
                 <div
