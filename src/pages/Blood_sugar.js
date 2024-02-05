@@ -112,7 +112,7 @@ const Bloodsugar = () => {
             <p className="num">120</p>
             <p>mg/dl</p>
           </div>
-           k;lkvn;alskdmv;la
+           
         </div>
         <div className="btn"></div>
       </div>
