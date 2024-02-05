@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { HelmetProvider } from "react-helmet-async";
@@ -135,19 +135,3 @@ root.render(
   </React.StrictMode>
 );
 
-const App = () => {
-  useEffect(() => {
-    const unlisten = router.listen(({ location, action }) => {
-      if (action === 'PUSH') {
-        window.scrollTo(0, 0);
-      }
-    });
-    return () => unlisten();
-  }, []);
-
-  return (
-    <RouterProvider router={router} />
-  );
-};
-
-export default App;
