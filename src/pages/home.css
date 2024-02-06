@@ -1,4 +1,4 @@
-.welcome-sec {
+.homesec1 {
   display: flex;
   flex-direction: row;
   padding: 7vh 9vh 0vh 9vh;
@@ -73,6 +73,8 @@
   color: var(--Red);
   border: none;
 }
+
+
                         /* smart health */
 
 .smarthealth-sec{
@@ -255,5 +257,14 @@
 }
 
 
+@media (max-width: 768px) {
+  .homesec1{
+    flex-direction: column;
+  }
+  .homesec1 .leftpart  ,.homesec1 .rightpart{
+    width: 100%;
+    gap: 1%;
 
+  }
+}
 
