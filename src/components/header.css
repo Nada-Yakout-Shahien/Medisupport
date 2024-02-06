@@ -1,35 +1,39 @@
 @import url("https://fonts.googleapis.com/css2?family=Arizonia&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap");
-
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 header {
   display: flex;
-  max-width: 100vw;
-  padding: 1rem 1.05756rem 1.25rem 1rem;
+  /* max-width: 100vw; */
+  width: 100%;
+  padding: 1rem;
   background-color: var(--whiteColor);
   color: var(--Red);
   align-items: center;
-  justify-content: center;
+   justify-content:center;
 }
 
 .Navbar h3 {
   font-family: 'Arizonia',sans-serif;
-  font-size: 2.1vw;
-  font-style: normal;
+  font-size: 2.5vw;
   font-weight: 400;
-  line-height: normal;
 }
-.Navbar{
+.Navbar, nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
   gap: 3vw;
 }
-nav {
-  gap: 3.2vw;
-}
+
 nav a {
   color: var(--Red);
   text-decoration: none;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 1vw;
+  font-size: 0.90em;
 }
 
 nav a:hover {
@@ -52,6 +56,7 @@ header .nav-btn {
 
 header div,
 nav {
+  max-width: 98vw;
   display: flex; 
   align-items: center;
   justify-content: space-around;
@@ -63,18 +68,22 @@ nav .nav-button button {
   background-color: var(--Red);
   border: none;
   font-weight: 600;
-  line-height: 2vw;
+  /* line-height: 2vw; */
   outline: none;
   cursor: pointer;
   border-radius: 0.625rem;
-  min-width: 6.5625vw;
-  min-height: 4.9vh;
+  padding: 0.5rem 1rem;
+  /* min-width: 6.5625vw;
+  min-height: 4.9vh; */
   flex-shrink: 0;
   color: var(--whiteColor);
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   font-style: normal;
-  color: #fff;
+  color: var(--whiteColor);
+}
+nav a:last-child, nav .nav-button:last-child {
+  margin-right: 0; 
 }
 
 nav .nav-button button:hover,

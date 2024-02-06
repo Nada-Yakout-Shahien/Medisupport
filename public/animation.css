@@ -1,9 +1,3 @@
-/* ==============================
-     Animation for bigger screen
-=============================== */
-
- 
-
 
 
 @keyframes down {
@@ -72,10 +66,7 @@ span {
     opacity: 1;
   }
 }
-
-/* ==============================
-     Animation for mobile
-=============================== */
+/* mob */
 
 .show-on-click,
 .sub-div,

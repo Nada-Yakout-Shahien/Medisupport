@@ -1,5 +1,3 @@
-import Header from "../components/header";
-import Footer from "../components/footer";
 import { Helmet } from "react-helmet-async";
 import heart from "../images/heart.png";
 import heartrate from "../images/heart-rate.png";
@@ -9,18 +7,20 @@ import bmi from "../images/bmi.png";
 import arrow from "../images/ri-arrow-for-article.svg";
 import { NavLink } from "react-router-dom";
 import "./home.css";
+import Layout from '../components/Layout';
 
 const Home = () => {
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>Medisupport HOME ♥</title>
         <meta name="description" content="HOME" />
       </Helmet>
 
-      {/* <Header /> */}
       {/* homesec1 */}
       <div className="welcome-sec">
+
+      <div className="homesec1">
         <div className="leftpart">
           <img src={heart} alt="" />
         </div>
@@ -170,8 +170,8 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
-    </>
+    </div>
+    </Layout>
   );
 };
 

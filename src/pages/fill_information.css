@@ -1,6 +1,8 @@
 .info{
   display: flex;
+  flex: 1;
   flex-direction: column;
+  justify-content: center;
   padding: 3vw 3vw 0vw 3vw;
 }
 .info h3{
@@ -30,29 +32,100 @@
   min-width: 40vw;
   min-height: 5vh;
   flex-shrink: 0;
-  border-radius: 0.7em;
+  border-radius:0.625rem;
   align-items: center;
-  padding: 1vw;
+  padding: 1.1vh;
+}
+
+.info .infolbl .menu{
+  display: flex;
+  border: 1px var(--Red) solid;
+  width: 100%;
+  min-width: 40vw;
+  min-height: 5.9vh;
+  flex-shrink: 0;
+  border-radius:0.625rem;
+  align-items: center;
+  padding: 1.1vh;
+  font-size: 1.3em; 
+  position: relative;
+  justify-content: space-between;
+  gap: 1.5rem;
+  cursor: pointer;
+}
+.info .infolbl .menu .txt{
+  /* font-size: 1em;  */
+  /* color: #b1aeae;  */
+  /* font-style: italic; */
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.45019rem; 
+}
+
+.info .infolbl .menu .dropdown-content  {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background-color: var(--whiteColor);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.info .infolbl .menu .dropdown-content div {
+  color: black;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: block;
+}
+.info .infolbl .menu .dropdown-content {
+  display: block;
+}
+
+.info .infolbl .menu .dropdown-content div {
+  color: var(--Red);
+  padding: 0.5rem;
+  text-decoration: none;
+  display: block;
+}
+
+.info .infolbl .menu .dropdown-content div:hover {
+  border-radius: 0.5rem;
+  color: var(--whiteColor);
+  background-color: var(--graycolor);
+}
+
+
+.info .forms input::placeholder {
+  font-size: 1em; 
+  color: #b1aeae; 
+  font-style: italic; 
 }
 .info label{
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
-.forms{
+.info .forms{
   display: flex;
   justify-content: space-between;
   max-width: 100%;
 }
-.form1 .form2{
+.info .form1 .form2{
   display: flex;
   flex-direction: column;
   width: 50%;
 }
-.form3{
+.info .form3{
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -68,8 +141,8 @@
   align-items: center;
   width: 100%;
   border-radius: 0.625rem;
-  padding: 0.8vh;
-  border: 2px solid var(--Red);
+  padding: 1vh;
+  border: 1px solid var(--Red);
   font-family: "Roboto", sans-serif;
   line-height: 100%;
   cursor: pointer;
@@ -79,7 +152,7 @@
   line-height: normal;
   margin-top: 1vh;
 }
-.form3 .btn:hover{
+.info .form3 .btn:hover{
   cursor: pointer;
   background-color: var(--secondaryColor);
   color: var(--Red);
