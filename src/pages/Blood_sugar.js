@@ -1,30 +1,13 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { eachDayOfInterval, format } from "date-fns";
 import "./Blood_sugar.css";
 import Layout from "../components/Layout";
 
-//diagram
-const generateRedBars = (count, start = 0, step = 2) => {
-  return Array.from({ length: count }, (v, i) => ({
-    id: i + 1,
-    left: `${start + i * step}em`,
-  }));
-};
-
-const generateMarks = (steps, texts) => {
-  return steps.map((left, index) => ({
-    id: index + 1,
-    left: `${left}em`,
-    text: texts[index] || "",
-  }));
-};
-
-
 //date show
 const generateDays = (startDate, numberOfDays) => {
   const endDate = new Date(startDate.getTime());
-  endDate.setDate(startDate.getDate() + numberOfDays - 1); 
+  endDate.setDate(startDate.getDate() + numberOfDays - 1);
   return eachDayOfInterval({ start: startDate, end: endDate }).map((day) => ({
     day: format(day, "EEE"),
     date: format(day, "d"),
@@ -59,37 +42,62 @@ const Bloodsugar = () => {
     setSelectedDay(fullDate);
   };
 
-  //diagram  
-  const redBars = generateRedBars(170);
-  const marks = generateMarks([2, 20, 40, 60, 80, 100,120,140,160,180,200,220,240,260,280,300,320,340], ["115", "120", "125", "130", "135", "140","145","150","155","160","165","170","175","180","185","190","195","200"]);
+  //diagram
+  const generateBars = (
+    count,
+    markSteps,
+    start = 0,
+    step = 2,
+    initialMarkValue = 110,
+    markStepValue = 5
+  ) => {
+    const marksSet = new Set(markSteps);
+    let bars = [];
+    let markValue = initialMarkValue;
 
-  const [currentNum, setCurrentNum] = useState('120'); //default num
-  
-  //scroll location tracking
-  const [scrollPosition, setScrollPosition] = useState(0);
+    for (let i = 0; i < count; i++) {
+      const left = start + i * step;
+      const isMark = marksSet.has(i + 1);
 
-  const handleScroll = (e) => {
-    const containerScrollPosition = e.target.scrollLeft;
-    setScrollPosition(containerScrollPosition);
-    updateCurrentNum(containerScrollPosition);
-  };
-  
-  //Update number based on scroll location
-  const updateCurrentNum = (scrollPos) => {
-    let closestMark = null;
-    let minDiff = Number.MAX_SAFE_INTEGER;
-    marks.forEach(mark => {
-      const diff = Math.abs(parseFloat(mark.left) - scrollPos);
-      if (diff < minDiff) {
-        minDiff = diff;
-        closestMark = mark;
+      if (isMark) {
+        bars.push({
+          id: i + 1,
+          left: `${left}em`,
+          type: "mark-bar",
+          value: markValue,
+        });
+        markValue += markStepValue;
+      } else {
+        bars.push({
+          id: i + 1,
+          left: `${left}em`,
+          type: "red-bar",
+          value: null,
+        });
       }
-    });
-
-    if (closestMark) {
-      setCurrentNum(closestMark.text);
     }
+
+    return bars;
   };
+  const Bar = ({ id, type, left, value }) => {
+    return (
+      <div className={`${type}`} style={{ left }} data-value={value}>
+        {value !== null && <div className="number">{value}</div>}
+      </div>
+    );
+  };
+  const marksLocations = [
+    2, 13, 23, 33, 43, 53, 63, 73, 83, 93, 103, 113, 123, 133, 143, 153, 163,
+    173, 183, 193, 203,
+  ];
+
+  const items = generateBars(213, marksLocations);
+
+  
+
+
+
+  
 
   return (
     <Layout>
@@ -149,24 +157,20 @@ const Bloodsugar = () => {
         </div>
         <div className="diagram">
           <div className="measure">
-            <p className="num">{currentNum}</p>
+            <p className="num">120</p>
             <p>mg/dl</p>
           </div>
-          <div className="dig" onScroll={handleScroll}>
+          <div className="dig">
             <div className="container">
-              {redBars.map((bar) => (
-                <div
-                  key={bar.id}
-                  className="red-bar"
-                  style={{ left: bar.left }}
-                ></div>
-              ))}
-
-              {marks.map((mark) => (
-                <div key={mark.id} className="mark" style={{ left: mark.left }}>
-                  <div className="mark-bar"></div>
-                  <div className="mark-text">{mark.text}</div>
-                </div>
+              {items.map((item, index) => (
+                <Bar
+                  key={index}
+                  id={item.id}
+                  type={item.type}
+                  left={item.left}
+                  value={item.value}
+                  data-value={item.value}
+                />
               ))}
             </div>
           </div>
