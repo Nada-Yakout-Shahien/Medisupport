@@ -1,17 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { eachDayOfInterval, format } from "date-fns";
 import "./Blood_sugar.css";
 import Layout from "../components/Layout";
 
-//import { Line } from 'react-chartjs-2';
-
-//diagram
-
 //date show
 const generateDays = (startDate, numberOfDays) => {
   const endDate = new Date(startDate.getTime());
-  endDate.setDate(startDate.getDate() + numberOfDays - 1); 
+  endDate.setDate(startDate.getDate() + numberOfDays - 1);
   return eachDayOfInterval({ start: startDate, end: endDate }).map((day) => ({
     day: format(day, "EEE"),
     date: format(day, "d"),
@@ -36,8 +32,8 @@ const Bloodsugar = () => {
   };
 
   //days
-  const startDate = new Date(2024, 2, 21);
-  const days = generateDays(startDate, 29);
+  const startDate = new Date(2024, 5, 1);
+  const days = generateDays(startDate, 100);
 
   //on click day
   const [selectedDay, setSelectedDay] = useState(null);
@@ -47,35 +43,62 @@ const Bloodsugar = () => {
   };
 
   //diagram
-  const redBars = [
-    { id: 1, left: "0em" },
-    { id: 2, left: "4em" },
-    { id: 3, left: "6em" },
-    { id: 4, left: "8em" },
-    { id: 5, left: "10em" },
-    { id: 6, left: "12em" },
-    { id: 7, left: "14em" },
-    { id: 8, left: "16em" },
-    { id: 9, left: "18em" },
-    { id: 10, left: "22em" },
-    { id: 11, left: "24em" },
-    { id: 12, left: "26em" },
-    { id: 13, left: "28em" },
-    { id: 14, left: "30em" },
-    { id: 15, left: "32em" },
-    { id: 16, left: "34em" },
-    { id: 17, left: "36em" },
-    { id: 18, left: "38em" },
+  const generateBars = (
+    count,
+    markSteps,
+    start = 0,
+    step = 2,
+    initialMarkValue = 110,
+    markStepValue = 5
+  ) => {
+    const marksSet = new Set(markSteps);
+    let bars = [];
+    let markValue = initialMarkValue;
+
+    for (let i = 0; i < count; i++) {
+      const left = start + i * step;
+      const isMark = marksSet.has(i + 1);
+
+      if (isMark) {
+        bars.push({
+          id: i + 1,
+          left: `${left}em`,
+          type: "mark-bar",
+          value: markValue,
+        });
+        markValue += markStepValue;
+      } else {
+        bars.push({
+          id: i + 1,
+          left: `${left}em`,
+          type: "red-bar",
+          value: null,
+        });
+      }
+    }
+
+    return bars;
+  };
+  const Bar = ({ id, type, left, value }) => {
+    return (
+      <div className={`${type}`} style={{ left }} data-value={value}>
+        {value !== null && <div className="number">{value}</div>}
+      </div>
+    );
+  };
+  const marksLocations = [
+    2, 13, 23, 33, 43, 53, 63, 73, 83, 93, 103, 113, 123, 133, 143, 153, 163,
+    173, 183, 193, 203,
   ];
 
-  const marks = [
-    { id: 1, left: "2em", text: "115" },
-    { id: 2, left: "20em", text: "120" },
-    { id: 3, left: "40em", text: "125" },
-    { id: 4, left: "60em", text: "130" },
-    { id: 5, left: "80em", text: "135" },
-    { id: 6, left: "100em", text: "140" },
-  ];
+  const items = generateBars(213, marksLocations);
+
+  
+
+
+
+  
+
   return (
     <Layout>
       <Helmet>
@@ -139,19 +162,15 @@ const Bloodsugar = () => {
           </div>
           <div className="dig">
             <div className="container">
-              {redBars.map((bar) => (
-                <div
-                  key={bar.id}
-                  className="red-bar"
-                  style={{ left: bar.left }}
-                ></div>
-              ))}
-
-              {marks.map((mark) => (
-                <div key={mark.id} className="mark" style={{ left: mark.left }}>
-                  <div className="mark-bar"></div>
-                  <div className="mark-text">{mark.text}</div>
-                </div>
+              {items.map((item, index) => (
+                <Bar
+                  key={index}
+                  id={item.id}
+                  type={item.type}
+                  left={item.left}
+                  value={item.value}
+                  data-value={item.value}
+                />
               ))}
             </div>
           </div>
