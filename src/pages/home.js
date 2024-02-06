@@ -19,7 +19,6 @@ const Home = () => {
 
       {/* homesec1 */}
       <div className="welcome-sec">
-
       <div className="homesec1">
         <div className="leftpart">
           <img src={heart} alt="" />
@@ -39,6 +38,7 @@ const Home = () => {
             Record Now
           </NavLink>
         </div>
+      </div>
       </div>
       {/* homesec2*/}
       <div className="smarthealth-sec">
@@ -170,7 +170,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </div>
+
     </Layout>
   );
 };
