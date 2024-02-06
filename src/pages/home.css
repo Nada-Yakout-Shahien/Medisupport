@@ -197,7 +197,7 @@
   height: 36.5625rem;
   flex-shrink: 0; */
   gap: 2em;
-  padding: 2rem 0 0 3rem;
+  padding: 2rem 2rem 1rem 3rem;
   margin-bottom: 3%;
 }
 .articles-sec .trans{
@@ -208,7 +208,7 @@
 }
 .articles-sec .word {
   color: var(--graycolor);
-  padding: 0 3vw 0vw 0vw;
+  padding: 0 3vw 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -229,22 +229,18 @@
 .diss {
   display: flex;
   border: 1px var(--Red) solid;
-  width: 92vw;
-  height: 10vh;
-  flex-shrink: 0;
+  max-width: 92vw;
+  max-height: 10vh;
   border-radius: 0.7em;
   align-items: center;
 }
 .diss .disease {
   display: flex;
-  width: 92vw;
-  height: 6vh;
+  min-width: 92vw;
   align-items: center;
-  padding: 2vw;
-  flex-shrink: 0;
+  padding: 2rem;
   align-content: center;
   flex-direction: row;
-  flex-wrap: nowrap;
   justify-content: space-between;
 }
 .disease p {
@@ -267,4 +263,8 @@
 
   }
 }
-
+@media (max-width: 450px) {
+  .homesec1 .rightpart h2{
+    font-size: 2.5em;
+  }
+}
