@@ -19,6 +19,14 @@
   max-width: 100vw;
 }
 
+.topic{
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
 .s_topic {
   color: #353535;
   font-family: Roboto;

@@ -102,7 +102,7 @@
 }
 
 
-input::placeholder {
+.info .forms input::placeholder {
   font-size: 1em; 
   color: #b1aeae; 
   font-style: italic; 
@@ -115,17 +115,17 @@ input::placeholder {
   font-weight: 400;
   line-height: normal;
 }
-.forms{
+.info .forms{
   display: flex;
   justify-content: space-between;
   max-width: 100%;
 }
-.form1 .form2{
+.info .form1 .form2{
   display: flex;
   flex-direction: column;
   width: 50%;
 }
-.form3{
+.info .form3{
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -152,7 +152,7 @@ input::placeholder {
   line-height: normal;
   margin-top: 1vh;
 }
-.form3 .btn:hover{
+.info .form3 .btn:hover{
   cursor: pointer;
   background-color: var(--secondaryColor);
   color: var(--Red);

@@ -16,7 +16,9 @@ const Home = () => {
         <title>Medisupport HOME ♥</title>
         <meta name="description" content="HOME" />
       </Helmet>
-                      {/* homesec1 */}
+
+                    {/* homesec1 */}
+      <div className="welcome-sec">
       <div className="homesec1">
         <div className="leftpart">
           <img src={heart} alt="" />
@@ -37,9 +39,8 @@ const Home = () => {
           </NavLink>
         </div>
       </div>
-
-                            {/* homesec2*/}
-
+      </div>
+                  {/* homesec2*/}
       <div className="smarthealth-sec">
         <div className="nameh">
           <h3>Smart Health Metrics</h3>
@@ -169,40 +170,8 @@ const Home = () => {
           </div>
         </div>
       </div>
-      
-                            {/* homesec4 */}
-      
-      <div className="doc-sec">
-        <div className="deff">
-          <h3>Meet our doctors</h3>
-          <NavLink to="/doctors" className="trans">
-            <p>See all</p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="31"
-              height="40"
-              viewBox="0 0 41 40"
-              fill="none"
-            >
-            <g clip-path="url(#clip0_1_2137)">
-              <path
-                d="M27.6272 18.3333L18.4637 9.39329L20.8793 7.03662L34.1667 20L20.8793 32.9633L18.4637 30.6066L27.6272 21.6666H6.83337V18.3333H27.6272Z"
-                fill="#1F1F1F"
-              />
-            </g>
-            <defs>
-              <clipPath id="clip0_1_2137">
-                <rect width="41" height="40" fill="white" />
-              </clipPath>
-            </defs>
-            </svg>
-          </NavLink>
-        </div>
-      </div>
 
-
-
-    </layout>
+  </Layout>
   );
 };
 

@@ -89,7 +89,6 @@
 .date::-webkit-scrollbar {
   display: none;
 }
-
 .day-container {
   flex: 0 0 auto;
   display: flex;
@@ -162,7 +161,7 @@
 .dig::-webkit-scrollbar {
   display: none;
 }
-.diagram .container {
+.diagram .dig .container {
   position: relative;
   width: 100%;
   min-width: 100.1875rem;
@@ -175,32 +174,32 @@
   display: none;
 }
 
-.mark ,.red-bar{
+.mark-bar ,.red-bar{
   position: absolute;
-  bottom: 0;
+  bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .red-bar {
   width: 0.9375rem;
   height: 8.56013rem;
-  flex-shrink: 0;
   background-color: var(--Red);
-  top: 5.5rem;
 }
-
 .mark-bar {
   width: 1rem;
   height: 13.5625rem;
-  flex-shrink: 0; 
   background-color: var(--Red);
 }
-
-.mark-text {
-  margin-top: 0.45em;
-  transform: translateX(-25%);
+.mark-bar .number {
+  position: absolute;
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
   font-size: 1rem;
-  font-style: normal;
+  bottom: -1.5em;
+  z-index: 1;
   font-weight: 500;
-  line-height: normal;
-}
+} 
+/* .red-bar .number{
+  display: none;
+} */
