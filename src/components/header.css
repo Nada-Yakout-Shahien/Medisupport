@@ -125,7 +125,7 @@ nav .navbar-menu_container button:hover {
     justify-content: center;
     gap: 1rem;
     background-color: var(--whiteColor);
-    transition: transform 0.7s ease , visibility 0.7s ease;
+    transition: transform 1s ease , visibility 1s ease;
     transform-origin: top;
     transform: scale(0);
     z-index: 11;
