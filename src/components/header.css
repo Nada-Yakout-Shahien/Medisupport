@@ -13,13 +13,14 @@ header {
   background-color: var(--whiteColor);
   color: var(--Red);
   align-items: center;
-   justify-content:center;
+  justify-content:space-between;
 }
 
 .Navbar h3 {
   font-family: 'Arizonia',sans-serif;
-  font-size: 2.5vw;
+  font-size: 2.7vw;
   font-weight: 400;
+  cursor: pointer;
 }
 .Navbar, nav {
   display: flex;
@@ -33,7 +34,7 @@ nav a {
   text-decoration: none;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 0.90em;
+  font-size: 0.98vw;
 }
 
 nav a:hover {
@@ -56,7 +57,7 @@ header .nav-btn {
 
 header div,
 nav {
-  max-width: 98vw;
+  /* max-width: 98vw; */
   display: flex; 
   align-items: center;
   justify-content: space-around;
@@ -72,7 +73,7 @@ nav .nav-button button {
   outline: none;
   cursor: pointer;
   border-radius: 0.625rem;
-  padding: 0.5rem 1rem;
+  padding: 0.6em 2em;
   /* min-width: 6.5625vw;
   min-height: 4.9vh; */
   flex-shrink: 0;
