@@ -22,7 +22,7 @@ import ArSugar from "./pages/ar_sugar";
 import ArBmi from "./pages/ar_bmi";
 import ArHeart from "./pages/ar_heart";
 import Activity from "./pages/Activity";
-
+import DetailsBS from "./pages/details-bloodsuger";
 
 
 const router = createBrowserRouter([
@@ -122,6 +122,11 @@ const router = createBrowserRouter([
   {
     path: "/Activity",
     element: <Activity />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/DetailsBS",
+    element: <DetailsBS />,
     errorElement: <h1>Sorry......</h1>,
   },
 ]);

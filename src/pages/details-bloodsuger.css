@@ -1,0 +1,122 @@
+.bloodsugard {
+  position: relative;
+  padding: 1rem 2rem 2.5em 2rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+.bloodsugard .stb{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.bloodsugard .stb h3 {
+  color: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+}
+/* date */
+.bloodsugard .date {
+  width: 100%;
+  height: auto;
+  display: flex;
+  overflow-x: auto;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 2.5rem;
+  scrollbar-width: none;
+}
+.bloodsugard .dated::-webkit-scrollbar {
+  display: none;
+}
+.bloodsugard .day-container {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+.bloodsugard .day-name {
+  color: #1F1F1F;
+  font-size: 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+.bloodsugard .date-container {
+  width: 72px;
+  height: 72px;
+  position: relative;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+.bloodsugard .date-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+.bloodsugard .selected {
+  opacity: 0.6;
+}
+/* diagram */
+
+
+/* inf-det */
+.bloodsugard .inf-det{
+  max-width: 84.375rem;
+  min-height: 16rem;
+  
+}
+.bloodsugard .inf-det h3{
+  color: var(--graycolor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.bloodsugard .inf-det h4{
+  
+}
+.bloodsugard .inf-det p{
+  
+}
+
+/* btn */
+.bloodsugard .btn{
+  display: flex;
+  justify-content: center;
+}
+.bloodsugard .btn .addrec{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  max-height: 3rem;
+  padding: 1rem 0.75rem;
+  align-items: center;
+  flex: 0.3;
+  color: var(--whiteColor);
+  border-radius: 0.625rem;
+  background: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; 
+  letter-spacing: 0.03125rem;
+}
+.bloodsugard .btn .addrec:hover{
+  background-color: var(--secondaryColor);
+  color: var(--Red);
+}
