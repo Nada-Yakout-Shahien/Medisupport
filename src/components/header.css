@@ -115,10 +115,10 @@ nav .navbar-menu_container button:hover {
   }
   header nav {
     position: fixed;
-    top: 5vh;
+    top: 4vh;
     right: 0;
-    height: 50%;
-    width: 30%;
+    height: auto;
+    width: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -131,6 +131,7 @@ nav .navbar-menu_container button:hover {
     z-index: 11;
     border-radius: 1rem;
     visibility: hidden;
+    padding: 1em;
   }
   header nav.responsive_nav {
     transform: scale(1); 
@@ -148,7 +149,7 @@ nav .navbar-menu_container button:hover {
     font-size: 1rem;
   }
   nav .nav-button button {
-    font-size: 1.3vw;
+    font-size: 0.9em;
   }
 }
 
