@@ -50,7 +50,6 @@
   z-index: 1;
   border-radius: 0.5rem;
 }
-
 .dropdown-content div {
   color: black;
   padding: 0.5rem 1rem;
@@ -60,22 +59,18 @@
 .bloodsugar .dropdown-content {
   display: block;
 }
-
 .dropdown-content div {
   color: black;
   padding: 0.5rem;
   text-decoration: none;
   display: block;
 }
-
 .dropdown-content div:hover {
   border-radius: 0.5rem;
   color: var(--whiteColor);
   background-color: var(--Red);
 }
-
 /* date */
-
 .date {
   width: 100%;
   height: auto;
@@ -97,7 +92,6 @@
   align-items: center;
   gap: 1.2rem;
 }
-
 .day-name {
   color: #1F1F1F;
   font-size: 2rem;
@@ -105,7 +99,6 @@
   font-weight: 400;
   word-wrap: break-word;
 }
-
 .date-container {
   width: 72px;
   height: 72px;
@@ -113,7 +106,6 @@
   border-radius: 3rem;
   cursor: pointer;
 }
-
 .date-text {
   position: absolute;
   left: 50%;
@@ -127,7 +119,6 @@
 .selected {
   opacity: 0.6;
 }
-
 /* diagram */
 .diagram {
   display: flex;
@@ -173,7 +164,6 @@
 .container::-webkit-scrollbar {
   display: none;
 }
-
 .mark-bar ,.red-bar{
   position: absolute;
   bottom: 1.5rem;
@@ -203,3 +193,4 @@
 .red-bar .number{
   display: none;
 }
+/* btn */

@@ -48,8 +48,8 @@ const Bloodsugar = () => {
     markSteps,
     start = 0,
     step = 2,
-    initialMarkValue = 8,
-    markStepValue = 1
+    initialMarkValue = 9.5,
+    markStepValue = 0.5
   ) => {
     let bars = [];
     let currentValue = initialMarkValue;
@@ -78,8 +78,8 @@ const Bloodsugar = () => {
     );
   };
   const marksLocations = [
-    2, 13, 23, 33, 43, 53, 63, 73, 83, 93, 103, 113, 123, 133, 143, 153, 163,
-    173, 183, 193, 203, 213, 223, 233, 243, 253, 263, 273, 283, 293,303,313,323,333,343,353,363,373,383,393,403,413,423,433,443,453,463,473,483,493
+    2, 12, 22, 32, 42, 52, 62, 72, 82, 92, 102, 112, 122, 132, 142, 152, 162,
+    172, 182, 192, 202, 212, 222, 232, 242, 252, 262, 272, 282, 292,302,312,322,332,342,352,362,372,382,392,402,412,422,432,442,452,462,472,482,492
   ];
   const items = generateBars(500, marksLocations);
   const [averageValue, setAverageValue] = useState(0);
