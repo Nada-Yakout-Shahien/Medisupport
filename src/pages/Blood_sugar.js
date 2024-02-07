@@ -48,33 +48,24 @@ const Bloodsugar = () => {
     markSteps,
     start = 0,
     step = 2,
-    initialMarkValue = 110,
-    markStepValue = 5
+    initialMarkValue = 8,
+    markStepValue = 1
   ) => {
-    const marksSet = new Set(markSteps);
     let bars = [];
-    let markValue = initialMarkValue;
+    let currentValue = initialMarkValue;
 
     for (let i = 0; i < count; i++) {
       const left = start + i * step;
-      const isMark = marksSet.has(i + 1);
+      const isMark = markSteps.includes(i + 1);
 
-      if (isMark) {
-        bars.push({
-          id: i + 1,
-          left: `${left}em`,
-          type: "mark-bar",
-          value: markValue,
-        });
-        markValue += markStepValue;
-      } else {
-        bars.push({
-          id: i + 1,
-          left: `${left}em`,
-          type: "red-bar",
-          value: null,
-        });
-      }
+      bars.push({
+        id: i + 1,
+        left: `${left}em`,
+        type: isMark ? "mark-bar" : "red-bar",
+        value: currentValue,
+      });
+
+      currentValue += markStepValue;
     }
 
     return bars;
@@ -88,16 +79,41 @@ const Bloodsugar = () => {
   };
   const marksLocations = [
     2, 13, 23, 33, 43, 53, 63, 73, 83, 93, 103, 113, 123, 133, 143, 153, 163,
-    173, 183, 193, 203,
+    173, 183, 193, 203, 213, 223, 233, 243, 253, 263, 273, 283, 293,303,313,323,333,343,353,363,373,383,393,403,413,423,433,443,453,463,473,483,493
   ];
+  const items = generateBars(500, marksLocations);
+  const [averageValue, setAverageValue] = useState(0);
+  const digRef = useRef(null);
+  useEffect(() => {
+    let running = true;
 
-  const items = generateBars(213, marksLocations);
+    const calculateAverage = () => {
+      if (!running) return;
 
-  
+      let visibleBars = 0;
+      let totalValue = 0;
 
+      const bars = digRef.current.querySelectorAll(".mark-bar, .red-bar");
+      bars.forEach((bar) => {
+        const barRect = bar.getBoundingClientRect();
+        if (barRect.left < window.innerWidth && barRect.right > 0) {
+          visibleBars += 1;
+          totalValue += parseFloat(bar.getAttribute("data-value")) || 0;
+        }
+      });
 
+      const average = visibleBars > 0 ? totalValue / visibleBars : 0;
+      setAverageValue(average);
 
-  
+      requestAnimationFrame(calculateAverage);
+    };
+
+    requestAnimationFrame(calculateAverage);
+
+    return () => {
+      running = false; 
+    };
+  }, []);
 
   return (
     <Layout>
@@ -157,10 +173,10 @@ const Bloodsugar = () => {
         </div>
         <div className="diagram">
           <div className="measure">
-            <p className="num">120</p>
+            <p className="num">{averageValue.toFixed(2)}</p>
             <p>mg/dl</p>
           </div>
-          <div className="dig">
+          <div className="dig" ref={digRef}>
             <div className="container">
               {items.map((item, index) => (
                 <Bar

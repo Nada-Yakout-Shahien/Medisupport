@@ -200,6 +200,6 @@
   z-index: 1;
   font-weight: 500;
 } 
-/* .red-bar .number{
+.red-bar .number{
   display: none;
-} */
+}
