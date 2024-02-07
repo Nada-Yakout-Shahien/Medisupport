@@ -1,19 +1,16 @@
-import Header from "../components/header";
-import Footer from "../components/footer";
 import { Helmet } from "react-helmet-async";
 import "./Contact_us.css";
 import React from "react";
 import pic_contact from "../images/pic_contact.png";
+import Layout from '../components/Layout';
 
 const Contactus = () => {
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>Contact us ♥</title>
         <meta name="description" content="Contact_us" />
       </Helmet>
-
-      <Header />
       <div className="contact">
         <div className="contact_img">
           <img src={pic_contact} alt="contact-img" />
@@ -55,8 +52,7 @@ const Contactus = () => {
           </form>
         </div>
       </div>
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

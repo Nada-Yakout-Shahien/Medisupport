@@ -1,20 +1,18 @@
-import Header from "../components/header";
-import Footer from "../components/footer";
 import { Helmet } from "react-helmet-async";
 import "./Reed_articles.css";
 import React from "react";
 import article from "../images/article.jpg";
 import arrow from "../images/ri-arrow-for-article.svg";
 import { NavLink } from "react-router-dom";
+import Layout from '../components/Layout';
 
 const Reed_articles = () => {
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>Reed articles ♥</title>
         <meta name="description" content="Reed articles" />
       </Helmet>
-      <Header />
       <div className="article">
         <div>
           <img className="article1" src={article} alt="" />
@@ -55,8 +53,7 @@ const Reed_articles = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </>
+    </Layout>
   );
 };
 

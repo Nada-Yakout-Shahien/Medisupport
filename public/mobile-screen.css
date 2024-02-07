@@ -1,8 +1,6 @@
 
 
-/* ====================================
-    1. Font Awesom hamburger menu
-======================================= */
+
 .absolute {
   position: absolute;
   top: 0;
@@ -24,9 +22,7 @@ input {
   right: 10vw;
 }
 
-/* ====================================
-    2. show on click
-======================================= */
+
 
 .show-on-click {
   display: none;
@@ -37,12 +33,11 @@ input {
   display: block;
 }
 
-label{
+/* label{
   font-size: 22px;
-  /* border: 2px solid red; */
   display: block;
   padding: 20px;
-}
+} */
 
 label:hover,
 .fa-bars:hover,
@@ -64,9 +59,6 @@ label:hover .fas
   border-bottom: 2px solid black;
 }
 
-/* ====================================
-    3. sub of div
-======================================= */
 
 .sub-div {
   display: none;
@@ -85,10 +77,6 @@ label:hover .fas
 }
 
 
-
-/* ====================================
-    3. sub sub of css
-======================================= */
 .sub-sub-div{
   display: none;
   margin-top: 17px;

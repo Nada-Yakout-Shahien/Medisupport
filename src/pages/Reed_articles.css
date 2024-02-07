@@ -1,23 +1,26 @@
 .article {
   display: flex;
   flex-direction: column;
-
+  align-items: center;
 }
 .article1 {
-  max-width: 98vw;
+  max-width: 100vw;
+  display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.625rem;
-  flex: 1 0 0 auto;
+  flex: 1 0;
   align-self: stretch;
 }
+
+
 
 .article2 {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 3em;
-  padding: 2vw 0 3vw 3vw;
+  padding: 2vw 0 3vw 0vw;
 }
 
 .word {

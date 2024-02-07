@@ -7,6 +7,14 @@
   font-family: "Roboto", sans-serif;
 }
 
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 :root {
   --Red: #be0202;
   --blackred:rgba(190, 2, 2, 0.50);
@@ -15,7 +23,8 @@
   --whiteColor: #fff;
   --blackColor: #000000;
   --graycolor: #1f1f1f;
-  --darkgraycolor:#353535
+  --darkgraycolor:#353535;
+  
 }
 a {
   text-decoration: none;
