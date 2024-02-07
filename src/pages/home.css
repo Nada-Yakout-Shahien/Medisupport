@@ -1,4 +1,4 @@
-.welcome-sec {
+.homesec1 {
   display: flex;
   flex-direction: row;
   padding: 7vh 9vh 0vh 9vh;
@@ -73,9 +73,19 @@
   color: var(--Red);
   border: none;
 }
-                        /* smart health */
+@media (max-width: 768px) {
+  .homesec1{
+    flex-direction: column;
+  }
+  .homesec1 .leftpart  ,.homesec1 .rightpart{
+    width: 100%;
+    gap: 1%;
 
-.smarthealth-sec{
+  }
+}
+                          /* smart health */
+
+ .smarthealth-sec{
   width: 100%;
   /* max-width:100vw; */
   /* height: 38.9375vh; */
@@ -83,11 +93,10 @@
 }
 
 .nameh{
-  padding: 1.5vw 5vw 0vw 4.5vw;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  align-content: center;
+  align-items: flex-start;
+  gap: 54rem;
+  padding: 1rem 0 0 2rem;
   flex-direction: row;
   flex-wrap: nowrap;
 }
@@ -97,6 +106,7 @@
   flex-direction: row;
   align-items: center;
 }
+
 .nameh h3{
   font-family: 'Roboto',sans-serif;
   color: var(--graycolor);
@@ -105,6 +115,7 @@
   font-weight: 700;
   line-height: normal;
 }
+
 .nameh .trans p{
   font-family: 'Roboto',sans-serif;
   color: var(--graycolor);
@@ -114,19 +125,17 @@
   line-height: normal;
 }
 
-
 .childh{
   padding: 2vw 0vw 5vw 0vw;
   width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 1.5em;
+  gap: 1em;
   flex-grow: 1;
   justify-content: center;
   align-items: center;
 }
-
 
 .infh{
   padding: 0vw 2vw 2vw 2vw;
@@ -134,8 +143,9 @@
   display: flex;
   flex-direction: column;
 }
+
 .childh .recording{
-  padding: 1vw 0 1vw 0;
+  padding: 1vw 0 2vw 0;
   width: 100%;
   width: 19.3rem;
   flex-shrink: 0;
@@ -153,6 +163,7 @@
   max-height: 34vh;
   padding: 5% 5%  0% 5%;
 }
+
 .childh .recording .infh h4{
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
@@ -161,16 +172,19 @@
   font-weight: 600;
   line-height: normal;
 }
+
 .childh .recording .infh .num{
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+
 .childh .recording:hover{
   height: auto;
   transform: scale(1.1); 
   box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75); 
 }
+
 .childh .recording .infh .num h3{
   color: var(--Red);
   font-family: 'Roboto',sans-serif;
@@ -179,6 +193,7 @@
   font-weight: 600;
   line-height: normal;
 }
+
 .childh .recording .infh .num .ex{
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
@@ -187,8 +202,9 @@
   font-weight: 600;
   line-height: normal;
 }
-                          /* Articles */
-.articles-sec {
+
+                             /* Articles */
+ .articles-sec {
   display: flex;
   flex-direction: column;
   /* width: 90rem;
@@ -198,12 +214,14 @@
   padding: 2rem 0 0 3rem;
   margin-bottom: 3%;
 }
+
 .articles-sec .trans{
   gap: 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+
 .articles-sec .word {
   color: var(--graycolor);
   padding: 0 3vw 0vw 0vw;
@@ -214,6 +232,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
 }
+
 .articles-sec .word p{
   font-family: 'Roboto',sans-serif;
   color: var(--graycolor);
@@ -222,7 +241,6 @@
   font-weight: 400;
   line-height: normal;
 }
-
 
 .diss {
   display: flex;
@@ -233,6 +251,7 @@
   border-radius: 0.7em;
   align-items: center;
 }
+
 .diss .disease {
   display: flex;
   width: 92vw;
@@ -245,6 +264,7 @@
   flex-wrap: nowrap;
   justify-content: space-between;
 }
+
 .disease p {
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
@@ -253,10 +273,6 @@
   font-weight: 400;
   line-height: normal;
 }
-
-
-
-
 
 @media (max-width: 768px) {
   .homesec1{
@@ -267,4 +283,59 @@
     gap: 1%;
 
   }
+}
+
+ /* doctors */
+
+ .doc-sec{
+  display: inline-flex;
+  padding: 1.5rem 0rem 5.3125rem 2.9375rem;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 98vh; 
+  background: linear-gradient(90deg, rgba(190, 2, 2, 0.09) 0%, rgba(190, 2, 2, 0.5) 46.81%, rgba(190, 2, 2, 0.09) 100%);
+  gap: 2.5rem;
+}
+
+.doc-sec .deff{
+  display: flex;
+  align-items: flex-start;
+  gap: 57rem;
+  padding: 0 0 0 0.1rem;
+  flex-direction: row;
+}
+
+.doc-sec .deff .trans{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.doc-sec .deff h3{
+  font-family: 'Roboto',sans-serif;
+  color: var(--graycolor);
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.doc-sec .deff .trans p{
+  font-family: 'Roboto',sans-serif;
+  color: var(--graycolor);
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.doctors{
+  display: flex;
+  width: 202vh;
+  height: 36.375rem;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-shrink: 0;
 }
