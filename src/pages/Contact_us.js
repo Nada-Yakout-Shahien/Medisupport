@@ -22,32 +22,36 @@ const Contactus = () => {
           </div>
           <form action="">
             <div className="name">
-              <div className="lbl1">
+              <div className="lblc">
                 <label htmlFor="">First Name</label>
                 <input type="text" placeholder="F Name" required />
               </div>
-              <div className="lbl1">
+              <div className="lblc">
                 <label htmlFor="">Last Name</label>
                 <input type="text" placeholder="L Name" required />
               </div>
             </div>
-            <label htmlFor="">Email</label>
-            <input
-              type="email"
-              name="email"
-              id=""
-              placeholder="Your Email"
-              required
-            />
-            <label htmlFor="">Message</label>
-            <textarea
-              name=""
-              id=""
-              cols="30"
-              rows="10"
-              placeholder="Your Message"
-              required
-            ></textarea>
+            <div className="lblc">
+              <label htmlFor="">Email</label>
+              <input
+                type="email"
+                name="email"
+                id=""
+                placeholder="Your Email"
+                required
+              />
+            </div>
+            <div className="lblc">
+              <label htmlFor="">Message</label>
+              <textarea
+                name=""
+                id=""
+                cols="30"
+                rows="10"
+                placeholder="Your Message"
+                required
+              ></textarea>
+            </div>
             <input type="submit" name="" value="Send" className="btn" />
           </form>
         </div>
