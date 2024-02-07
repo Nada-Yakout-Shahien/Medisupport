@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { eachDayOfInterval, format } from "date-fns";
 import "./Blood_sugar.css";
 import Layout from "../components/Layout";
+import { NavLink } from "react-router-dom";
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -191,7 +192,9 @@ const Bloodsugar = () => {
             </div>
           </div>
         </div>
-        <div className="btn"></div>
+        <div className="btn">
+        <NavLink to="/" className="addrec">Add To Record</NavLink>
+        </div>
       </div>
     </Layout>
   );
