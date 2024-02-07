@@ -7,7 +7,6 @@
 }
 header {
   display: flex;
-  /* max-width: 100vw; */
   width: 100%;
   padding: 1rem;
   background-color: var(--whiteColor);
@@ -69,17 +68,14 @@ nav .nav-button button {
   background-color: var(--Red);
   border: none;
   font-weight: 600;
-  /* line-height: 2vw; */
   outline: none;
   cursor: pointer;
   border-radius: 0.625rem;
-  padding: 0.6em 2em;
-  /* min-width: 6.5625vw;
-  min-height: 4.9vh; */
+  padding: 0.6vw 2vw;
   flex-shrink: 0;
   color: var(--whiteColor);
   font-family: "Roboto", sans-serif;
-  font-size: 1rem;
+  font-size: 1vw;
   font-style: normal;
   color: var(--whiteColor);
 }
@@ -93,6 +89,7 @@ nav .navbar-menu_container button:hover {
   color: var(--Red);
 }
 
+/* responsive design */
 @media only screen and (max-width: 1024px) {
   .active {
     font-size: 16px;
@@ -118,30 +115,40 @@ nav .navbar-menu_container button:hover {
   }
   header nav {
     position: fixed;
-    top: -100vh;
-    left: 0;
-    height: 100%;
-    width: 100%;
+    top: 5vh;
+    right: 0;
+    height: 50%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1rem;
     background-color: var(--whiteColor);
-    transition: 1s;
+    transition: transform 0.7s ease , visibility 0.7s ease;
+    transform-origin: top;
+    transform: scale(0);
+    z-index: 11;
+    border-radius: 1rem;
+    visibility: hidden;
   }
-
-  header .responsive_nav {
+  header nav.responsive_nav {
+    transform: scale(1); 
+    visibility: visible;
+  }
+  /* header .responsive_nav {
     transform: translateY(100vh);
-  }
-
+  } */
   nav .nav-close-btn {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
+    top: -2rem;
+    right: -1rem;
   }
-
   nav a {
-    font-size: 1.5rem;
+    font-size: 1rem;
+  }
+  nav .nav-button button {
+    font-size: 1.3vw;
   }
 }
+
