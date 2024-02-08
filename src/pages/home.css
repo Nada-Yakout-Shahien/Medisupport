@@ -74,6 +74,22 @@
   border: none;
 }
 
+@media (max-width: 768px) {
+  .homesec1{
+    flex-direction: column;
+  }
+  .homesec1 .leftpart  ,.homesec1 .rightpart{
+    width: 100%;
+    gap: 1%;
+
+  }
+}
+@media (max-width: 450px) {
+  .homesec1 .rightpart h2{
+    font-size: 2.5em;
+  }
+}
+
                           /* smart health */
 
  .smarthealth-sec{
@@ -195,6 +211,7 @@
 }
 
                              /* Articles */
+                             
  .articles-sec {
   display: flex;
   flex-direction: column;
@@ -261,18 +278,286 @@
   line-height: normal;
 }
 
-@media (max-width: 768px) {
-  .homesec1{
-    flex-direction: column;
-  }
-  .homesec1 .leftpart  ,.homesec1 .rightpart{
-    width: 100%;
-    gap: 1%;
 
-  }
+
+                            /*Doctors*/
+.doc-sec{
+  width: 100%;
+  height: 105vh;
+  display: inline-flex;
+  padding: 2.0625rem 0rem 5.3125rem 2.9375rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
+  background: linear-gradient(90deg, rgba(190, 2, 2, 0.22) 1.84%, rgba(190, 2, 2, 0.54) 50.92%, rgba(190, 2, 2, 0.22) 100%);
 }
-@media (max-width: 450px) {
-  .homesec1 .rightpart h2{
-    font-size: 2.5em;
-  }
+
+.doc-sec .title{
+  display: flex;
+  gap: 56rem;
+  font-family: 'Roboto',sans-serif;
+  color: #1E1E1E;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.doc-sec .trans{
+  gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.doc-sec .title p{
+  color: #1E1E1E;
+  font-family: Roboto;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.doctors{
+  display: flex;
+  width: 100%;
+  height: 66rem;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.carousel{
+  width: 100%;
+  height: 98vh;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.inner-carousel{
+  display: flex;
+  width: 100.25rem;
+  height: 26.375rem;
+  gap: 1.5rem;
+  flex-shrink: 0;
+  margin-left: 0.1rem;
+}
+.carousel .item{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 43vh;
+  height: 80vh;
+  padding-top: 2rem;
+  
+}
+
+.doc-name h4{
+  color:#21272A;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%; /* 1.375rem */
+  padding: 1rem 0 0 1rem;
+}
+
+.t-work{
+  padding: 0.6rem 0 0 1rem ;
+  width: 12.875rem;
+  height: 1.83081rem;
+}
+
+.t-work h6{
+  margin: -1.4rem 0 0 2rem;
+  color: #393939;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 110%; /* 0.825rem */
+}
+
+.location{
+  padding: 0.6rem 0 0 1rem ;
+  width: 12.875rem;
+  height: 1.83081rem;
+}
+
+.location h6{
+  margin: -1.4rem 0 0 2rem;
+  color: #393939;
+  font-family: 'Roboto',sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 110%; /* 0.9625rem */
+}
+
+.stars{
+  padding: 0.2rem 0 0 1rem;
+}
+
+.doc-info{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  padding: 4rem 0 0 1rem;
+}
+
+.doc-info .trans-doc{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.doc-info p{
+  color: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; 
+  letter-spacing: 0.03125rem;
+}
+
+.item:hover {
+  transform: scale(1.1);
+}
+
+                                  /* About */
+
+.about-sec{
+  width: 100%;
+  height: 47rem;
+  flex-shrink: 0;
+}
+
+.about-sec h2{
+  color: #393939;
+  font-family: Roboto;
+  font-size: 2.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 5rem 0 0 36rem;
+}
+
+.about-sec .left-part{
+  margin: -16rem 0 0 5rem;
+}
+
+.about-sec .right-part{
+  display: inline-flex;
+  width: 42rem;
+  height: 10rem;
+  flex-shrink: 0;
+  margin: 10rem 0 0 40rem;
+  gap: 1rem;
+}
+
+.about-sec .right-part p{
+  color: var(--darkgraycolor);
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 110%;
+}
+
+.about-sec .btn{
+  display: flex;
+  min-height:5vh;
+  width: 12em;
+  height: 3.5rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.625rem;
+  border: 2px solid var(--Red);
+  background: var(--Red);
+  color: var(--whiteColor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5em;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.5px;
+  margin: 4rem 0 0 33rem;
+}
+
+.about-sec .btn:hover{
+  background-color: var(--secondaryColor);
+  color: var(--Red);
+  border: none;
+}
+
+                            /* Final*/
+
+.final-sec{
+  background: linear-gradient(180deg, #EEC2C2 0%, rgba(238, 194, 194, 0.00) 100%);
+  display: flex;
+  width: 100%;
+  height: 43.5rem;
+  padding: 5rem 5rem 0rem 5rem;
+  align-items: flex-start;
+  gap: 5rem;
+  flex-shrink: 0;
+}
+
+.final-sec .right-part{
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.1875rem;
+  padding: 10rem 0 0 39rem;
+}
+
+.final-sec .right-part h2{
+  color: #1F1F1F;
+  font-family: 'Roboto',sans-serif;
+  font-size: 3.375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%;
+  align-self: stretch;
+}
+
+.final-sec .right-part p{
+  width: 32.3125rem;
+  color: #353535;
+  font-family: Roboto;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.final-sec .left-part .phone1{
+  width: 23rem;
+  height: 39.6rem;
+  margin: -25rem 0 0 -38rem ;
+  display: inline-flex;
+  padding: 0.5rem;
+  align-items: flex-start;
+  gap: 0.625rem;
+  border-radius: 3.75rem;
+  border: 1px solid #C1C7CD;
+  background: #BE0202;
+}
+
+.final-sec .left-part .phone2{
+  display: inline-flex;
+  width: 23rem;
+  height: 30rem;
+  padding: 0.5rem;
+  align-items: flex-start;
+  gap: 0.625rem;
+  border-radius: 3.125rem;
+  border: 1px solid var(--CoolGray-30, #C1C7CD);
+  background: #E52D27;
+  margin: -29rem 0 0 -12rem ;
 }
