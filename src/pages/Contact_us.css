@@ -1,13 +1,15 @@
 .contact {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  padding: 4rem 5.5rem;
 }
 .contact_img  ,.contact-form{
-  max-width: 50%;
+  max-width: 100%;
   display: flex;
-  padding: 5%;
   flex-direction: column;
   align-items: center;
+  gap: 1em;
 }
 
 .contact .name {
@@ -15,13 +17,16 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  gap: 1.2em;
+  gap: 1em;
 }
 .contact_img {
   max-width: 50%;
 }
+.contact_img img{
+  max-width: 100%;
+}
 .contact-form {
-  max-width: 50%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -49,6 +54,7 @@
 }
 
 .contact-form form {
+  width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -88,9 +94,9 @@
   align-self: stretch;
 }
 .contact-form .lblc{
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 0.5em;
 }
 .contact-form form .btn {
@@ -98,18 +104,16 @@
   background-color: var(--Red);
   color: var(--whiteColor);
   width: 100%;
-  padding: 0vw 16.7vw;
-  height: 48px;
+  padding: 1.4vh 16.7vw;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 0.4rem;
   border: 2px solid var(--Red);
   font-family: "Roboto", sans-serif;
-  font-size: 18px;
+  font-size: 1.3em;
   font-style: normal;
   font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.02em;
   cursor: pointer;
 }
 .contact-form form .btn:hover {
@@ -124,29 +128,16 @@
 @media screen and (max-width: 935px) {
   .contact {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     max-width: 100%;
-    margin: auto;
   }
-  /* .contact_img, .contact-form {
+  .contact_img {
     max-width: 100%;
-  } */
+  }
 
 }
 
 @media screen and (max-width: 500px) {
-  .contact-form h2 {
-    font-size: 2.5rem; 
-  }
-  .contact-form p, .contact-form form label {
-    font-size: 1em; 
-  }
-  .contact-form form input, .contact-form form textarea {
-    padding: 8px; 
-  }
   .contact .name {
     flex-direction: column;
-    gap: 16px;
   }
 }
