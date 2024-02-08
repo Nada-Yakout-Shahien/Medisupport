@@ -23,6 +23,9 @@
   width: 100%;
   gap: 1.2em;
 }
+.sig .flex1 input::placeholder{
+  font-size: 0.8em;
+}
 .sig .flex1 #nam {
   display: flex;
   height: 48px;
