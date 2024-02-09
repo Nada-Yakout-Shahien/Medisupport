@@ -5,13 +5,13 @@
   flex: 1;
   flex-direction: column;
   justify-content: center;
+  gap: 2.5rem;
 }
 .bloodsugar .stb{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 3rem;
 }
 .bloodsugar .stb h3 {
   color: var(--Red);
@@ -78,7 +78,7 @@
   display: flex;
   overflow-x: auto;
   align-items: flex-start;
-  gap: 40px;
+  gap: 2.5em;
   margin-bottom: 2.5rem;
   scrollbar-width: none;
 }
@@ -112,7 +112,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 32px;
+  font-size: 2rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   word-wrap: break-word;

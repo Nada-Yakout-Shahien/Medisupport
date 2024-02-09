@@ -60,7 +60,35 @@ const DetailsBloodsuger = () => {
             </div>
           ))}
         </div>
-        <div className="diagram"></div>
+        <div className="diagram">
+          <div className="chart-container">
+            <div className="chart-box">
+              <div className="chart-title">
+                <p>RESULTS:</p>
+                <div className="chart-pre-diabetes">
+                  <p>
+                    Pre-diabetes:<p className="defnum">120</p> mg/gl
+                  </p>
+                </div>
+              </div>
+              <div className="chart-days">
+                {/* يمكن تحويل هذا إلى مكون يتم تكراره بدلاً من تكرار الكود */}
+                {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(
+                  (day) => (
+                    <div className="day">{day}</div>
+                  )
+                )}
+              </div>
+              <div className="chart-bars">
+                {/* يمكن هنا أيضاً استخدام تكرار حسب بيانات ال API */}
+                {/* على سبيل المثال، هذه الأشرطة لكل يوم */}
+              </div>
+              <div className="chart-values">
+                {/* مثل الأيام، يمكن تحويل هذا إلى مكون يتم تكراره */}
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="inf-det">
           <h3>Recommended Reading</h3>
           <h4>How To Loss Sugar ?</h4>
