@@ -46,6 +46,7 @@ input:hover{
   padding-left: 1vw;
   align-items: center;
   flex-direction: row;
+  cursor: pointer;
 }
 
 .coat {
@@ -56,6 +57,7 @@ input:hover{
 
 .search-box {
   border-radius: 5rem;
+  
 }
 
 /* .search-box input[type="text"] {
@@ -107,25 +109,54 @@ input:hover{
 }
 
 .rot {
-  width: 269px;
-  height: 178px;
-  flex-shrink: 0;
+  display: inline-flex;
+padding-left: 2rem;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 1.25rem;
+color: rgba(53, 53, 53, 1);
+
 }
 
-.doctors-details h2 {
-  color: #1e1e1e;
-  font-family: Roboto;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
+.zend{
+  color: #1E1E1E;
+font-family: Roboto;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+color: rgba(30, 30, 30, 1);
+padding-top: 2rem;
+}
+
+
+.xo{
+  color: #1F1F1F;
+font-family: Roboto;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
 }
 
 .bot {
-  display: inline-flex;
-  padding: 0px 16px 3.958px 0px;
-  align-items: flex-start;
-  gap: 3px;
+  display: flex;
+height: 1.375rem;
+padding-right: 0.25rem;
+align-items: flex-start;
+gap: 0.3125rem;
+padding-top: 0.40rem;
+}
+
+.quo{
+  color: #1F1F1F;
+font-family: Roboto;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
+line-height: 110%; /* 1.375rem */
 }
 
 .got {
@@ -135,28 +166,65 @@ input:hover{
   width: 114px;
   height: 40.091px;
   flex-shrink: 0;
+  padding-top: 1rem;
 }
 
-.doctors-details h6 {
-  color: #1f1f1f;
-  font-family: Roboto;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+.seou{
+  color: #1F1F1F;
+font-family: Roboto;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
 
-  height: 35px;
 }
 
-.doctors-details img {
-  width: Fixed (150px);
-  height: Fixed (172px);
-  top: 189px;
-  left: 824px;
-  border-radius: 4px;
-  gap: 10px;
+
+
+.star{
+  display: flex;
+align-items: flex-start;
+cursor: pointer;
+
+}
+
+.button{
+  display: flex;
+  color: #fff;
+width: 11.75rem;
+height: 3rem;
+padding: 0.5rem 0.75rem;
+justify-content: center;
+align-items: center;
+flex-shrink: 0;
+border-radius: 0.625rem;
+background: #BE0202;
+cursor: pointer;
+}
+
+.button:hover{
+  background: #9d0505;
 }
 
 .right-part {
   display: none;
+}
+
+.right{
+  width: 31.4375rem;
+height: 54.3125rem;
+flex-shrink: 0;
+border-radius: 0.625rem;
+border: 1px solid #BE0202;
+}
+
+.img6{
+  display: flex;
+width: 31.1875rem;
+height: 30.5rem;
+justify-content: center;
+align-items: center;
+gap: 0.625rem;
+flex-shrink: 0;
+
 }

@@ -51,11 +51,16 @@ const Doctors = ({ count, rating, color, onRating }) => {
             </svg>
             <input type="text" placeholder="Search"></input>
           </div>
-          <div className="doctors-details">
-            <img src={doctors} alt="doctors" />
+          </section>
+
+          <div className="connect">
+          <div className="right">
+          <img className="img6" src={doctors} alt="doctors" />
+          
             <div className="rot">
-              <h2>Dr: Mahmoud Ebrahim</h2>
-              <h6>Cardiologist</h6>
+
+              <h2 className="zend">Dr: Mahmoud Ebrahim</h2>
+              <h6 className="xo">Cardiologist</h6>
               <div className="bot">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +82,7 @@ const Doctors = ({ count, rating, color, onRating }) => {
                     fill="#A4A2A2"
                   />
                 </svg>
-                <h6>Cairo </h6>
+                <h6 className="quo">Cairo </h6>
               </div>
 
               <div className="got">
@@ -119,9 +124,9 @@ const Doctors = ({ count, rating, color, onRating }) => {
                     fill="#353535"
                   />
                 </svg>
-                <h6>12 pm : 3 pm</h6>
+                <h6 className="seou">12 pm : 3 pm</h6>
               </div>
-              <div>
+              <div className="star">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="36"
@@ -208,14 +213,11 @@ const Doctors = ({ count, rating, color, onRating }) => {
                   />
                 </svg>
               </div>
+            
+            <input className="button" type="submit" value="Book Now" />
             </div>
           </div>
-          <div className="right-part">
-            <img src={doctors} alt="doctors" />
-
-            <p></p>
           </div>
-        </section>
         {/* <section className="about-us-section2"></section>
 
         <section className="about-us-section3"></section> */}
