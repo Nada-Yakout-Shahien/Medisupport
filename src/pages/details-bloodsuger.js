@@ -71,20 +71,25 @@ const DetailsBloodsuger = () => {
                   </p>
                 </div>
               </div>
-              <div className="chart-days">
-                {/* يمكن تحويل هذا إلى مكون يتم تكراره بدلاً من تكرار الكود */}
-                {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(
-                  (day) => (
-                    <div className="day">{day}</div>
-                  )
-                )}
-              </div>
-              <div className="chart-bars">
-                {/* يمكن هنا أيضاً استخدام تكرار حسب بيانات ال API */}
-                {/* على سبيل المثال، هذه الأشرطة لكل يوم */}
-              </div>
-              <div className="chart-values">
-                {/* مثل الأيام، يمكن تحويل هذا إلى مكون يتم تكراره */}
+              <div className="chart-axis">
+                <div className="chart-values">
+                  
+                  
+
+                </div>
+                <div className="chart-bars">
+
+
+                  
+                
+                </div>
+                <div className="chart-days">
+                  {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(
+                    (day) => (
+                      <div className="day">{day}</div>
+                    )
+                  )}
+                </div>
               </div>
             </div>
           </div>

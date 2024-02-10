@@ -70,7 +70,6 @@
   opacity: 0.6;
 }
 /* diagram */
-/* ChartStyle.css */
 .diagram .chart-container {
   display: flex;
   justify-content: center;
@@ -85,7 +84,6 @@
   max-width: 70vw;
   min-height: 60vh;
 }
-
 .diagram .chart-title {
   display: flex;
   flex-direction: row;
@@ -109,16 +107,29 @@
   color: var(--Red);
   font-size: 1.5em;
 }
+
+
+.diagram .chart-axis {
+  display: flex;
+  flex-direction: row;
+}
+.diagram .chart-values{
+
+}
+.diagram .chart-bars{
+  width: 27.42038rem;
+  height: 19.70031rem;
+  border: 0.5em solid var(--Red);
+}
 .diagram  .chart-days {
   display: flex;
   justify-content: space-around;
-  align-items: center; 
-  flex-wrap: wrap; 
+  gap: 2em;
 }
-.diagram  .day {
+/* .diagram  .day {
   flex: 1;
   text-align: center;
-}
+} */
 /* .chart-days {
   display: flex;
   justify-content: space-between;
