@@ -27,7 +27,6 @@ header {
   justify-content: flex-start; 
   gap: 3.1vw;
 }
-
 nav a {
   color: var(--Red);
   text-decoration: none;
