@@ -25,7 +25,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: flex-start; 
-  gap: 3vw;
+  gap: 3.1vw;
 }
 
 nav a {
