@@ -225,7 +225,7 @@
 }
 
 /* responsive */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1090px) {
   .sig {
     flex-direction: column;
   }
