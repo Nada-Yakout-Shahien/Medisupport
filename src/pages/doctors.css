@@ -204,7 +204,8 @@ cursor: pointer;
 }
 
 .button:hover{
-  background: #9d0505;
+  background-color: var(--secondaryColor);
+  color: var(--Red);
 }
 
 .right-part {
@@ -213,7 +214,7 @@ cursor: pointer;
 
 .right{
   width: 27.4375rem;
-height: 54.3125rem;
+height: 50.3125rem;
 flex-shrink: 0;
 border-radius: 0.625rem;
 border: 1px solid #BE0202;
@@ -243,7 +244,7 @@ flex-shrink: 0;
 
 .left{
   width: 27.4375rem;
-  height: 54.3125rem;
+  height: 50.3125rem;
   flex-shrink: 0;
   border-radius: 0.625rem;
   border: 1px solid #BE0202;
@@ -259,7 +260,7 @@ flex-shrink: 0;
 
 .under{
   width: 27.4375rem;
-height: 54.3125rem;
+height: 50.3125rem;
 flex-shrink: 0;
 border-radius: 0.625rem;
 border: 1px solid #BE0202;
