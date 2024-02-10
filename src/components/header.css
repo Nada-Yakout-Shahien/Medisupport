@@ -14,33 +14,34 @@ header {
   align-items: center;
   justify-content:space-between;
 }
-
 .Navbar h3 {
   font-family: 'Arizonia',sans-serif;
   font-size: 2.7vw;
   font-weight: 400;
   cursor: pointer;
 }
-.Navbar, nav {
+.Navbar{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  gap: 3.7vw;
+}
+nav {
   display: flex;
   align-items: center;
   justify-content: flex-start; 
   gap: 3vw;
 }
-
 nav a {
   color: var(--Red);
   text-decoration: none;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 0.98vw;
+  font-size: 1vw;
 }
-
 nav a:hover {
-  font-weight: 900;
   color: var(--secondaryColor);
 }
-
 header .nav-btn {
   padding: 5vw;
   cursor: pointer;
@@ -53,16 +54,13 @@ header .nav-btn {
   font-size: 1.8rem;
   display: none;
 }
-
 header div,
 nav {
-  /* max-width: 98vw; */
   display: flex; 
   align-items: center;
   justify-content: space-around;
   align-content: flex-end;
 }
-
 nav .nav-button button {
   margin: 1vh;
   background-color: var(--Red);
@@ -82,7 +80,6 @@ nav .nav-button button {
 nav a:last-child, nav .nav-button:last-child {
   margin-right: 0; 
 }
-
 nav .nav-button button:hover,
 nav .navbar-menu_container button:hover {
   background-color: var(--secondaryColor);
