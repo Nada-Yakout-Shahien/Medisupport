@@ -24,13 +24,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: flex-start; 
-  gap: 4vw;
+  gap: 3.7vw;
 }
 nav {
   display: flex;
   align-items: center;
   justify-content: flex-start; 
-  gap: 3.1vw;
+  gap: 3vw;
 }
 nav a {
   color: var(--Red);
