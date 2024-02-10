@@ -21,23 +21,27 @@ header {
   font-weight: 400;
   cursor: pointer;
 }
-.Navbar, nav {
+.Navbar{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  gap: 4vw;
+}
+nav {
   display: flex;
   align-items: center;
   justify-content: flex-start; 
   gap: 3.1vw;
 }
-
 nav a {
   color: var(--Red);
   text-decoration: none;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 0.98vw;
+  font-size: 1vw;
 }
 
 nav a:hover {
-  font-weight: 900;
   color: var(--secondaryColor);
 }
 
@@ -56,7 +60,6 @@ header .nav-btn {
 
 header div,
 nav {
-  /* max-width: 98vw; */
   display: flex; 
   align-items: center;
   justify-content: space-around;
