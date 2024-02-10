@@ -77,106 +77,96 @@
   align-items: center;
 }
 .diagram .chart-box {
-  padding: 2.5em;
+  width: clamp(300px, 55vw, 600px);
+  padding: 2em;
   border-radius: 1rem;
+  margin: 0 auto;
   border: 1px var(--Red) solid;
   flex-direction: column;
   align-items: center;
-  max-width: 70vw;
-  min-height: 60vh;
 }
 .diagram .chart-title {
   display: flex;
   flex-direction: row;
   color: var(--Red);
-  font-size: 1.25rem;
-  font-family: 'Roboto',sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   line-height: 1rem;
   gap: 0.63em;
 }
-.diagram .chart-pre-diabetes p{
+.diagram .chart-pre-diabetes{
+  width: 100%;
+}
+.diagram .chart-pre-diabetes .pre {
   display: flex;
   flex-direction: row;
   color: var(--graycolor);
-  font-size: 1.25em;
-  font-family: 'Roboto',sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.25em);
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   gap: 0.2em;
 }
-.diagram .chart-pre-diabetes p .defnum{
+.diagram .chart-pre-diabetes .defnum {
   color: var(--Red);
-  font-size: 1.5em;
+  font-size: clamp(1.25rem, 3vw, 1.5em);
 }
 .diagram .chart-axis {
   display: flex;
-  flex-direction: row;
+  padding-top: 3rem;
+  align-items: flex-start;
+  gap: 2.5vw;
 }
-.diagram .chart-values{
-
+.diagram .chart-values {
+  max-height: 19.69506rem;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1.5rem;
 }
-.diagram .chart-bars{
-  width: 27.42038rem;
-  height: 19.70031rem;
-  border: 0.5em solid var(--Red);
+.diagram .lcp {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
 }
-.diagram  .chart-days {
+.diagram .chart-days{
   display: flex;
   justify-content: space-around;
-  gap: 2em;
+  align-items: flex-end;
+  width: 100%;
+  gap: 2vw;
 }
-/* .diagram  .day {
-  flex: 1;
-  text-align: center;
-} */
-/* .chart-days {
+.diagram .chart-bars {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  width: 100%;
+  height: 19.70031rem;
+  gap:2vw;
+}
+.chart-bar-outer {
+  flex: 1 1 auto;
+  max-width: 1.31369rem;
+  /* max-height: 19.69506rem; */
+  min-width: 1em;
+  border-radius: 0.4125rem;
+  border: 1px solid var(--Red-transparent);
+  position: relative;
+}
+.chart-bar-inner {
+  background-color: var(--Red);
+  border-radius: 0.3125rem;
+  width: 100%;
   position: absolute;
-  width: 441px;
-  top: 440.76px;
-  left: 126px;
+  bottom: 0;
+  height: 0;
 }
-
-.chart-days div {
-  text-align: center;
-  color: #1F1F1F;
-  font-size: 12px;
-  font-family: 'Roboto';
-  font-weight: 700;
-  line-height: 14px;
+.diagram .chart-days,
+.chart-value {
+  color: var(--graycolor);
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
 }
-
-.chart-bars {
-  position: absolute;
-  width: 438.73px;
-  height: 315.21px;
-  left: 124px;
-  top: 104.07px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.bar {
-  width: 21.02px;
-  position: absolute;
-  background: #BE0202;
-  border-radius: 5px;
-}
-
-.chart-values {
-  position: absolute;
-  top: 92.76px;
-  left: 33px;
-}
-
-.chart-values div {
-  text-align: right;
-  color: #1F1F1F;
-  font-size: 15px;
-  font-family: 'Roboto';
-  margin-bottom: 8px;
-} */
 
 /* inf-det */
 .bloodsugard .inf-det {
@@ -238,3 +228,10 @@
   background-color: var(--secondaryColor);
   color: var(--Red);
 }
+
+
+/* @media (max-width: 1100px) {
+  .diagram .chart-box {
+    max-width: 90vw; 
+  }
+} */

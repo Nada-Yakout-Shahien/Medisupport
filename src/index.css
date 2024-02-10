@@ -26,6 +26,7 @@ body,
   --blackColor: #000000;
   --graycolor: #1f1f1f;
   --darkgraycolor: #353535;
+  --Red-transparent: rgba(255, 0, 0, 0.5036);
 }
 a {
   text-decoration: none;

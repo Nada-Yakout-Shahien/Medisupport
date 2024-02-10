@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { eachDayOfInterval, format } from "date-fns";
 import "./details-bloodsuger.css";
@@ -31,6 +31,44 @@ const DetailsBloodsuger = () => {
   };
 
   //diagram
+
+  //numbers-diagram
+  useEffect(() => {
+    fetch("URL_TO_YOUR_API")
+      .then((response) => response.json())
+      .then((data) => {
+        const sortedData = data.sort((a, b) => a - b);
+        setChartValues(sortedData);
+      })
+      .catch((error) => console.error("Error fetching data: ", error));
+  }, []);
+  const [chartValues, setChartValues] = useState([
+      85, 110, 175, 220, 265, 300, 400, 500,
+  ]);
+
+  //days-diagram
+  const [dayValues, setDayValues] = useState([
+    { day: "Mon", value: 250 },
+    { day: "Tue", value: 400 },
+    { day: "Wed", value: 200 },
+    { day: "Thu", value: 250 },
+    { day: "Fri", value: 300 },
+    { day: "Sat", value: 350 },
+    { day: "Sun", value:  10 },
+  ]);
+
+  useEffect(() => {
+    fetch("URL_TO_YOUR_API")
+      .then((response) => response.json())
+      .then((data) => {
+        const transformedData = data.map((item) => ({
+          day: item.day, 
+          value: item.value, 
+        }));
+        setDayValues(transformedData);
+      })
+      .catch((error) => console.error("Error fetching data: ", error));
+  }, []);
 
   return (
     <Layout>
@@ -66,29 +104,41 @@ const DetailsBloodsuger = () => {
               <div className="chart-title">
                 <p>RESULTS:</p>
                 <div className="chart-pre-diabetes">
-                  <p>
+                  <div className="pre">
                     Pre-diabetes:<p className="defnum">120</p> mg/gl
-                  </p>
+                  </div>
                 </div>
               </div>
               <div className="chart-axis">
                 <div className="chart-values">
-                  
-                  
-
+                  {chartValues.map((value, index) => (
+                    <div key={index} className="chart-value">
+                      {value}
+                    </div>
+                  ))}
                 </div>
-                <div className="chart-bars">
-
-
-                  
-                
-                </div>
-                <div className="chart-days">
-                  {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(
-                    (day) => (
-                      <div className="day">{day}</div>
-                    )
-                  )}
+                <div className="lcp">
+                  <div className="chart-bars">
+                    {dayValues.map(({ day, value }, index) => (
+                      <div
+                        key={index}
+                        className="chart-bar-outer"
+                        style={{ height: `100%` }}
+                      >
+                        <div
+                          className="chart-bar-inner"
+                          style={{ height: `${(value / 500) * 100}%` }}
+                        ></div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="chart-days">
+                    {dayValues.map(({ day }, index) => (
+                      <div key={index} className="day">
+                        {day}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
