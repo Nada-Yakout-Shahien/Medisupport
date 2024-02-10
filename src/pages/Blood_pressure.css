@@ -1,0 +1,65 @@
+.BP-page {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 5vw;
+    gap: 2.91rem;
+}
+
+.BP-address {
+    p {
+        color: #be0202;
+        font-family: Roboto;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+}
+
+.BP-status {
+    max-width: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+        color: #1f1f1f;
+        font-family: Roboto;
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.45019rem;
+
+        /* 116.013% */
+        span {
+            color: #be0202;
+            font-family: Roboto;
+            font-size: 1.25rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 1.45019rem;
+            animation: none;
+        }
+    }
+
+    button {
+        text-align-last: center;
+        width: 18.75rem;
+        height: 2.1875rem;
+        flex-shrink: 0;
+        border-radius: 1rem;
+        background: #BE0202;
+
+        p {
+            color: #FFF;
+            text-align: right;
+            font-family: Roboto;
+            font-size: 0.9375rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.45019rem;
+            /* 154.684% */
+        }
+    }
+}
