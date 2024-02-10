@@ -217,12 +217,13 @@ height: 54.3125rem;
 flex-shrink: 0;
 border-radius: 0.625rem;
 border: 1px solid #BE0202;
+padding: 1rem;
 }
 
 .img6{
   display: flex;
-width: 25.1875rem;
-height: 29.5rem;
+width: 23.1875rem;
+height: 25.5rem;
 justify-content: center;
 align-items: center;
 gap: 0.625rem;
@@ -232,11 +233,12 @@ flex-shrink: 0;
 
 .connect{
   display: flex;
+  
   width: 104.5625rem;
 height: 57.3125rem;
 flex-shrink: 0;
-justify-content: space-between;
-padding-right: 20rem;
+
+
 }
 
 .left{
@@ -245,13 +247,13 @@ padding-right: 20rem;
   flex-shrink: 0;
   border-radius: 0.625rem;
   border: 1px solid #BE0202;
- 
+ padding: 1rem;
   
 }
 
 .img7{
-  width: 25.1875rem;
-height: 29.52004rem;
+  width: 23.1875rem;
+height: 25.52004rem;
 flex-shrink: 0;
 }
 
@@ -261,10 +263,11 @@ height: 54.3125rem;
 flex-shrink: 0;
 border-radius: 0.625rem;
 border: 1px solid #BE0202;
+padding: 1rem;
 }
 
 .img8{
-  width: 20rem;
-height: 29.51994rem;
+  width: 23rem;
+height: 25.51994rem;
 flex-shrink: 0;
 }
