@@ -2,9 +2,10 @@
   max-width: 100vw;
   height: 90.625rem;
   display: flex;
+  
   flex-direction: column;
   align-items: stretch;
-  padding: 3vh 4vw 0vh 4vw;
+  padding: 3vh 4vw 5vh 4vw;
 }
 
 input {
@@ -211,7 +212,7 @@ cursor: pointer;
 }
 
 .right{
-  width: 31.4375rem;
+  width: 29.4375rem;
 height: 54.3125rem;
 flex-shrink: 0;
 border-radius: 0.625rem;
@@ -220,7 +221,7 @@ border: 1px solid #BE0202;
 
 .img6{
   display: flex;
-width: 31.1875rem;
+width: 29.1875rem;
 height: 30.5rem;
 justify-content: center;
 align-items: center;
@@ -228,3 +229,23 @@ gap: 0.625rem;
 flex-shrink: 0;
 
 }
+
+.connect{
+  display: flex;
+  width: 104.5625rem;
+height: 57.3125rem;
+flex-shrink: 0;
+justify-content: space-between;
+padding-right: 42rem;
+}
+
+.left{
+  width: 31.4375rem;
+  height: 54.3125rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  border: 1px solid #BE0202;
+  
+  
+}
+
