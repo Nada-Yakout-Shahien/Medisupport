@@ -11,7 +11,7 @@ const SugarHistory = () => {
         <meta name="description" content="Sugar History" />
       </Helmet>
       <div className="history">
-        <h3></h3>
+        <h3>All History</h3>
         <div className="bloodhis">
 
         </div>

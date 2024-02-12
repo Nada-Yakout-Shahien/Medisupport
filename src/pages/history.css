@@ -1,0 +1,13 @@
+.history{
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+.history h3{
+  color: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
