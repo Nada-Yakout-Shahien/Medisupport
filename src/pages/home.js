@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import React ,{useRef,useEffect,useState}  from 'react';
+import React from 'react';
 import {motion} from "framer-motion";
 import { NavLink } from "react-router-dom";
 import "./home.css";
@@ -21,14 +21,7 @@ import screen1 from "../images/screen1.png";
 import screen2 from "../images/screen2.png";
 
 const Home = () => {
-  const carouselRef = useRef();
-  const [width , setwidth]= useState(0);
-  useEffect(()=>{
-      console.log(carouselRef.current.scrollwidth);
-      console.log(carouselRef.current.offsetwidth);
-      setwidth(carouselRef.current.scrollwidth -carouselRef.current.offsetwidth);
-  },[]);
-
+  
   return (
     <Layout>
       <Helmet>
@@ -220,8 +213,8 @@ const Home = () => {
           </NavLink>
         </div>
         <div className="doctors">
-          <motion.div ref={carouselRef} className="carousel">
-            <motion.div drag="x" dragConstraints={{right:0 , left: -width}} className="inner-carousel">
+          <motion.div className="carousel">
+            <motion.div drag="x" dragConstraints={{right:0 , left:-790 }} className="inner-carousel">
               <motion.div className="item" >
                 <img  src={doctors1} alt="doctors"/>
                 <div className="doc-name">

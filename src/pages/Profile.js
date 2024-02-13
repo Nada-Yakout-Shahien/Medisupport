@@ -34,8 +34,10 @@ const Profile = () => {
       </div>
         
                           {/* section2 */}
+
       <div className='info-sec'>
         <h4>Edit Info</h4>
+
         <div className='inputs'>
           <div className='f-name'>
             <label>First Name</label>
@@ -64,6 +66,8 @@ const Profile = () => {
           </div>
         </div>
         
+                              {/* buttons */}
+
         <div className='save'>
           <button onClick={()=>setShowPopupS(true)}>Save</button>
           {showPopupS && (<div className='popup-s'>
@@ -77,8 +81,8 @@ const Profile = () => {
         
         <div className='delete'>
           <button onClick={() => setShowPopupD(true)}>
-            <FontAwesomeIcon icon={faExclamationTriangle} style={{ color: "#fcfcfc" }}/>
-            Delete Account
+            <FontAwesomeIcon className='warning' icon={faExclamationTriangle} style={{ color: "#fcfcfc" }}/>
+              Delete Account
           </button>
           {showPopupD && (<div className='popup-d'>
             <div className='message'>
@@ -92,9 +96,7 @@ const Profile = () => {
                 </div>
                 <h2>Delete Account</h2>
                 <p>Aliquam vivamus elementum dictum<br></br>suspendisse enim metus.</p>
-                <NavLink to="/home" className='button'>
-                  Delete
-                </NavLink>
+                <NavLink to="/home" className='button'>Delete</NavLink>
             </div>
           </div>
           )}

@@ -1,3 +1,5 @@
+                          /* f-section */
+
 .profile-sec {
   width: 48.75rem;
   height: 42.75rem;
@@ -27,6 +29,8 @@
   padding: 7rem 0 0 7.5rem ;
 }
  
+                          /* section-info */
+
 .info-sec{
   gap: 1rem;
   padding: 5rem 0 3rem 36rem;
@@ -56,11 +60,13 @@
   display: flex;
   width: 20rem;
   height: 3rem;
-  border: 0.13rem solid var(--Red);
+  border: 0.12rem solid var(--Red);
   border-radius: 0.6rem;
   padding: 1.7rem;
   margin-top: 1rem;
 }
+
+                          /* section-inputs */
 
 .inputs{
   padding-left: 1.4rem;
@@ -105,6 +111,8 @@
   border: none;
 }
 
+                          /* section-buttons */
+
 .save button{
   width: 45rem;
   height: 4rem;
@@ -142,9 +150,15 @@
   border: none;
 }
 
+.delete button .warning{
+  padding-right: 1rem;
+}
+
+                          /* popups */
+
 .popup-s{
   width: 100%;
-  height: 96.2rem;
+  height: 95.6rem;
   background: rgba(18, 22, 25, 0.65);
   position: absolute;
   top: 10%;
@@ -188,7 +202,7 @@
 
 .popup-d{
   width: 100%;
-  height: 96.2rem;
+  height: 95.6rem;
   background: rgba(18, 22, 25, 0.65);
   position: absolute;
   top: 10%;
