@@ -1,0 +1,96 @@
+                    /* dropdown */
+
+.dropdown-menu{
+  display: flex;
+  padding-top:2rem ;
+}
+
+.dropdown-menu select{
+  width: 18rem;
+  border: none;
+  background: none;
+  color: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0 0rem 0 1rem;
+  margin-left: 1rem;
+}
+
+.dropdown-menu  option{
+  color: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.dropdown-menu option{
+  box-shadow: 4rem;
+}
+
+.rate{
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0 2rem 2rem;
+  gap: 1rem;
+}
+
+.average{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.average h5{
+  color: #1F1F1F;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.45019rem; /* 116.013% */
+}
+
+.ratio{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ratio p{
+  color: #BE0202;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.45019rem;
+  margin: -0.1rem 0 0 0.3rem;
+}
+
+.ratio h5{
+  color: #1F1F1F;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.45019rem; /* 116.013% */
+  margin: -0.1rem 0 0 0.3rem;
+}
+
+.rate button{
+  width: 25vw;
+  height: 5vh;
+  border: none;
+  border-radius: 2rem;
+  background-color: var(--Red);
+  color: white;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  font-family: 'Roboto',sans-serif;
+  margin: -2.8rem 0 0 20rem;
+}
+
