@@ -86,6 +86,22 @@ nav .navbar-menu_container button:hover {
 }
 
 /* responsive design */
+@media only screen and (max-width: 1324px) {
+  .Navbar{
+    gap: 2.5vw;
+  }
+  nav {
+    gap: 2.7vw;
+  }
+}
+@media only screen and (max-width: 1068px) {
+  .Navbar{
+    gap: 2.4vw;
+  }
+  nav {
+    gap: 2.6vw;
+  }
+}
 @media only screen and (max-width: 1024px) {
   .active {
     font-size: 16px;
