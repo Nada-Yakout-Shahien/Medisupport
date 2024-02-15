@@ -17,6 +17,8 @@ import Bloodsugar from "./pages/Blood_sugar";
 import BMI from "./pages/BMI";
 import Welcome from "./pages/Welcome";
 import FillInformation from "./pages/fill_information";
+import Resultsorry from './pages/resultsorry';
+import Resultcongratulations from './pages/resultcongratulations';
 import ArPressure from "./pages/ar_pressure";
 import ArSugar from "./pages/ar_sugar";
 import ArBmi from "./pages/ar_bmi";
@@ -26,6 +28,7 @@ import DetailsBS from "./pages/details-bloodsuger";
 import SugarHistory from './pages/sugar_history';
 import PressurHistory from './pages/pressur_history';
 import BmiHistory from './pages/bmi_history';
+
 
 const router = createBrowserRouter([
   {
@@ -144,6 +147,16 @@ const router = createBrowserRouter([
   {
     path: "/BmiHistory",
     element: <BmiHistory />,
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/Resultsorry",
+    element: <Resultsorry />,
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/Resultcongratulations",
+    element: <Resultcongratulations />,
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
 ]);

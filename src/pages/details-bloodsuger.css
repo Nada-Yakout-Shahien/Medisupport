@@ -225,13 +225,5 @@
   letter-spacing: 0.03125rem;
 }
 .bloodsugard .btn .addrec:hover {
-  background-color: var(--secondaryColor);
-  color: var(--Red);
+  opacity: 0.7;
 }
-
-
-/* @media (max-width: 1100px) {
-  .diagram .chart-box {
-    max-width: 90vw; 
-  }
-} */

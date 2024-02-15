@@ -4,7 +4,6 @@
   bottom: 0;
   background-color: var(--Red);
   color: var(--whiteColor);
-  /* margin-top: 1rem; */
 }
 .section_padding {
   padding: 3vw 5vw 3vw 5vw;
@@ -75,5 +74,5 @@
 }
 .sb_footer-below-links a {
   margin: 0 0.5rem;
-  color: var(--textColor);
+  color: var(--whiteColor);
 }

@@ -40,7 +40,7 @@ nav a {
   font-size: 1vw;
 }
 nav a:hover {
-  color: var(--secondaryColor);
+  opacity: 0.7;
 }
 header .nav-btn {
   padding: 5vw;
@@ -82,8 +82,7 @@ nav a:last-child, nav .nav-button:last-child {
 }
 nav .nav-button button:hover,
 nav .navbar-menu_container button:hover {
-  background-color: var(--secondaryColor);
-  color: var(--Red);
+  opacity: 0.7;
 }
 
 /* responsive design */
@@ -134,9 +133,7 @@ nav .navbar-menu_container button:hover {
     transform: scale(1); 
     visibility: visible;
   }
-  /* header .responsive_nav {
-    transform: translateY(100vh);
-  } */
+
   nav .nav-close-btn {
     position: absolute;
     top: -2rem;

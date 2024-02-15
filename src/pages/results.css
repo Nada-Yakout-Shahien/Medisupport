@@ -1,5 +1,41 @@
 .res{
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   min-height: 100vh;
+  gap: 2.5rem;
+  padding: 3rem;
+}
+.res h3{
+  color: var(--graycolor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.res .para{
+  color: var(--darkgraycolor);
+  text-align: center;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  max-width: 45.375rem;
+}
+.res .para span{
+  color: var(--Red);
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.res .para p{
+  color: var(--darkgraycolor);
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

@@ -15,7 +15,7 @@ const Welcome = () => {
         <div className="wel">
           <h3>Welcome</h3>
           <p className="par">We will help you check on your heart</p>
-          <NavLink to="/SugarHistory" className="link">
+          <NavLink to="/fillinfo" className="link">
             <p>Get started </p>
             <img src={riarrow} alt="" />
           </NavLink>
