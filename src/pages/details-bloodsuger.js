@@ -43,18 +43,18 @@ const DetailsBloodsuger = () => {
       .catch((error) => console.error("Error fetching data: ", error));
   }, []);
   const [chartValues, setChartValues] = useState([
-      85, 110, 175, 220, 265, 300, 400, 500,
+      0, 88, 155, 225, 295, 365, 430, 500,
   ]);
 
   //days-diagram
   const [dayValues, setDayValues] = useState([
-    { day: "Mon", value: 250 },
-    { day: "Tue", value: 400 },
-    { day: "Wed", value: 200 },
-    { day: "Thu", value: 250 },
-    { day: "Fri", value: 300 },
-    { day: "Sat", value: 350 },
-    { day: "Sun", value:  10 },
+    { day: "Mon", value: 450},
+    { day: "Tue", value: 225 },
+    { day: "Wed", value: 350 },
+    { day: "Thu", value: 299 },
+    { day: "Fri", value: 390 },
+    { day: "Sat", value: 250 },
+    { day: "Sun", value:  270 },
   ]);
 
   useEffect(() => {

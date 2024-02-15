@@ -164,9 +164,7 @@
 }
 
 .sig .flex1 .btn:hover {
-  background-color: var(--secondaryColor);
-  color: var(--Red);
-  border: none;
+  opacity: 0.7;
 }
 
 .sig .btn-log {
