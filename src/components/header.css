@@ -86,20 +86,28 @@ nav .navbar-menu_container button:hover {
 }
 
 /* responsive design */
-@media only screen and (max-width: 1324px) {
+@media only screen and (max-width: 1400px) {
   .Navbar{
-    gap: 2.5vw;
+    gap: 3vw;
   }
   nav {
-    gap: 2.7vw;
+    gap: 2.9vw;
   }
 }
-@media only screen and (max-width: 1068px) {
+@media only screen and (max-width: 1324px) {
+  .Navbar{
+    gap: 2.7vw;
+  }
+  nav {
+    gap: 2.6vw;
+  }
+}
+@media only screen and (max-width: 1088px) {
   .Navbar{
     gap: 2.4vw;
   }
   nav {
-    gap: 2.6vw;
+    gap: 2.5vw;
   }
 }
 @media only screen and (max-width: 1024px) {
