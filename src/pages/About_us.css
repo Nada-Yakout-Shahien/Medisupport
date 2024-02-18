@@ -174,7 +174,11 @@
   gap: 2rem;
   scroll-behavior: smooth;
   padding: 2vw;
-  overflow-x: hidden;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.container .Ourfeatures::-webkit-scrollbar {
+  display: none;
 }
 .container .Ourfeatures .feature {
   flex: 0 0 auto;

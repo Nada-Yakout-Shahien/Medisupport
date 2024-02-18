@@ -1,16 +1,17 @@
 .bloodsugar {
-  padding: 1rem 2rem 1rem 2rem;
+  position: relative;
+  padding: 1rem 2rem 2.5rem 2rem;
   display: flex;
   flex: 1;
   flex-direction: column;
   justify-content: center;
+  gap: 2.5rem;
 }
 .bloodsugar .stb{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 3rem;
 }
 .bloodsugar .stb h3 {
   color: var(--Red);
@@ -38,7 +39,7 @@
   font-weight: 400;
   line-height: 1.45019rem; 
 }
-.dropdown-content {
+.bloodsugar .dropdown-content {
   display: none;
   position: absolute;
   left: 0;
@@ -50,7 +51,7 @@
   z-index: 1;
   border-radius: 0.5rem;
 }
-.dropdown-content div {
+.bloodsugar .dropdown-content div {
   color: black;
   padding: 0.5rem 1rem;
   text-decoration: none;
@@ -71,20 +72,20 @@
   background-color: var(--Red);
 }
 /* date */
-.date {
+.bloodsugar .date {
   width: 100%;
   height: auto;
   display: flex;
   overflow-x: auto;
   align-items: flex-start;
-  gap: 40px;
+  gap: 2.5em;
   margin-bottom: 2.5rem;
   scrollbar-width: none;
 }
-.date::-webkit-scrollbar {
+.bloodsugar .date::-webkit-scrollbar {
   display: none;
 }
-.day-container {
+.bloodsugar .day-container {
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
@@ -92,47 +93,47 @@
   align-items: center;
   gap: 1.2rem;
 }
-.day-name {
+.bloodsugar .day-name {
   color: #1F1F1F;
   font-size: 2rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   word-wrap: break-word;
 }
-.date-container {
+.bloodsugar .date-container {
   width: 72px;
   height: 72px;
   position: relative;
   border-radius: 3rem;
   cursor: pointer;
 }
-.date-text {
+.bloodsugar .date-text {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 32px;
+  font-size: 2rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   word-wrap: break-word;
 }
-.selected {
+.bloodsugar .selected {
   opacity: 0.6;
 }
 /* diagram */
-.diagram {
+.bloodsugar .diagram {
   display: flex;
   padding: 1.5rem 2.5rem;
   flex-direction: column;
   width: 100%;
-  min-height: 23rem;
+  min-height: 22rem;
   flex-shrink: 0;
   border-radius: 0.625rem;
   background: var(--whiteColor);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   margin-bottom: 2.5rem;
 }
-.diagram .measure{
+.bloodsugar .diagram .measure{
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -142,17 +143,17 @@
   font-weight: 600;
   line-height: normal;
 }
-.diagram .measure .num{
+.bloodsugar .diagram .measure .num{
   color: var(--Red);
 }
-.dig{
+.bloodsugar .dig{
   overflow-x: auto;
   scrollbar-width: none;
 }
-.dig::-webkit-scrollbar {
+.bloodsugar .dig::-webkit-scrollbar {
   display: none;
 }
-.diagram .dig .container {
+.bloodsugar .diagram .dig .container {
   position: relative;
   width: 100%;
   min-width: 100.1875rem;
@@ -161,27 +162,27 @@
   overflow-x: auto;
   scrollbar-width: none;
 }
-.container::-webkit-scrollbar {
+.bloodsugar .container::-webkit-scrollbar {
   display: none;
 }
-.mark-bar ,.red-bar{
+.bloodsugar .mark-bar ,.red-bar{
   position: absolute;
   bottom: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.red-bar {
+.bloodsugar .red-bar {
   width: 0.9375rem;
   height: 8.56013rem;
   background-color: var(--Red);
 }
-.mark-bar {
+.bloodsugar .mark-bar {
   width: 1rem;
   height: 13.5625rem;
   background-color: var(--Red);
 }
-.mark-bar .number {
+.bloodsugar .mark-bar .number {
   position: absolute;
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
@@ -190,7 +191,69 @@
   z-index: 1;
   font-weight: 500;
 } 
-.red-bar .number{
+.bloodsugar .red-bar .number{
   display: none;
 }
 /* btn */
+.bloodsugar .btn{
+  display: flex;
+  justify-content: center;
+}
+.bloodsugar .btn .addrec{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  max-height: 3rem;
+  padding: 1rem 0.75rem;
+  align-items: center;
+  flex: 0.3;
+  color: var(--whiteColor);
+  border-radius: 0.625rem;
+  background: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; 
+  letter-spacing: 0.03125rem;
+}
+.bloodsugar .btn .addrec:hover{
+  background-color: var(--secondaryColor);
+  color: var(--Red);
+}
+/* after-click-btn */
+.bloodsugar .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background: rgba(18, 22, 25, 0.65);  
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.bloodsugar .overlay .seedet{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  max-height: 3rem;
+  padding: 1rem 4rem;
+  align-items: center;
+  color: var(--whiteColor);
+  border-radius: 0.625rem;
+  background: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; 
+  letter-spacing: 0.03125rem;
+}
+.bloodsugar .overlay .seedet:hover{
+  opacity: 0.7;
+}
