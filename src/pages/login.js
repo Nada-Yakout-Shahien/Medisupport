@@ -39,7 +39,7 @@ const Login = () => {
                 ></label>
                 <label for="custom-checkbox">Remember Me</label>
               </div>
-              <NavLink to="#" id="for">
+              <NavLink to="../pages/forget_password" id="for">
                 Forget Password?
               </NavLink>
             </div>

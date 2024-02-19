@@ -23,6 +23,7 @@ import ArBmi from "./pages/ar_bmi";
 import ArHeart from "./pages/ar_heart";
 import Activity from "./pages/Activity";
 import DetailsBS from "./pages/details-bloodsuger";
+import ForgetPassword from "./pages/forget_password";
 
 
 const router = createBrowserRouter([
@@ -127,6 +128,11 @@ const router = createBrowserRouter([
   {
     path: "/DetailsBS",
     element: <DetailsBS />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/forget_password",
+    element: <ForgetPassword />,
     errorElement: <h1>Sorry......</h1>,
   },
 ]);
