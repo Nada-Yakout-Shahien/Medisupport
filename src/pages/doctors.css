@@ -15,7 +15,7 @@ input {
   width: -webkit-fill-available;
 }
 
-input:hover{
+input:hover {
   border: white;
 }
 
@@ -48,7 +48,9 @@ input:hover{
   flex-direction: row;
   cursor: pointer;
 }
-
+.search-bar svg {
+  width: 30em;
+}
 .coat {
   color: #be0202;
   font-style: normal;
@@ -56,7 +58,6 @@ input:hover{
 }
 .search-box {
   border-radius: 5rem;
-  
 }
 
 /* .search-box input[type="text"] {
@@ -82,59 +83,52 @@ input:hover{
   gap: 1rem;
 }
 
-
-
-
-
 .rot {
   display: inline-flex;
-padding-left: 2rem;
-flex-direction: column;
-justify-content: center;
-align-items: flex-start;
-gap: 1.25rem;
-color: rgba(53, 53, 53, 1);
-
+  padding-left: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.25rem;
+  color: rgba(53, 53, 53, 1);
 }
 
-.zend{
-  color: #1E1E1E;
-font-family: Roboto;
-font-size: 1.5rem;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-color: rgba(30, 30, 30, 1);
-padding-top: 2rem;
+.zend {
+  color: #1e1e1e;
+  font-family: Roboto;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: rgba(30, 30, 30, 1);
+  padding-top: 2rem;
 }
 
-
-.xo{
-  color: #1F1F1F;
-font-family: Roboto;
-font-size: 1.25rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-
+.xo {
+  color: #1f1f1f;
+  font-family: Roboto;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .bot {
   display: flex;
-height: 1.375rem;
-padding-right: 0.25rem;
-align-items: flex-start;
-gap: 0.3125rem;
-padding-top: 0.40rem;
+  height: 1.375rem;
+  padding-right: 0.25rem;
+  align-items: flex-start;
+  gap: 0.3125rem;
+  padding-top: 0.4rem;
 }
 
-.quo{
-  color: #1F1F1F;
-font-family: Roboto;
-font-size: 1.25rem;
-font-style: normal;
-font-weight: 500;
-line-height: 110%; /* 1.375rem */
+.quo {
+  color: #1f1f1f;
+  font-family: Roboto;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 110%; /* 1.375rem */
 }
 
 .container .prev,
@@ -185,40 +179,38 @@ img-btn {
   padding-top: 1rem;
 }
 
-.seou{
-  color: #1F1F1F;
+.seou {
+  color: #1f1f1f;
 
-font-size: 0.9rem;
-font-style: normal;
-font-weight: 0.3rem;
-line-height: normal;
-font-family: "Roboto", sans-serif;
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 0.3rem;
+  line-height: normal;
+  font-family: "Roboto", sans-serif;
 }
 
-
-.star{
+.star {
   display: flex;
-align-items: flex-start;
-cursor: pointer;
-
+  align-items: flex-start;
+  cursor: pointer;
 }
 
-.button{
+.button {
   display: flex;
   color: #fff;
-width: 11.75rem;
-height: 3rem;
-padding: 0.5rem 0.75rem;
-justify-content: center;
-align-items: center;
-flex-shrink: 0;
-border-radius: 0.625rem;
-background: #BE0202;
-cursor: pointer;
+  width: 11.75rem;
+  height: 3rem;
+  padding: 0.5rem 0.75rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  background: #be0202;
+  cursor: pointer;
 }
 
 .button:hover,
-.doctors-details:hover{
+.doctors-details:hover {
   background-color: var(--secondaryColor);
   color: var(--Red);
 }
@@ -227,24 +219,23 @@ cursor: pointer;
   display: none;
 }
 
-.right{
+.right {
   width: 27rem;
-height: 50rem;
-flex-shrink: 0;
-border-radius: 0.625rem;
-border: 1px solid #BE0202;
-padding: 1rem;
+  height: 50rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  border: 1px solid #be0202;
+  padding: 1rem;
 }
 
-.img6{
+.img6 {
   display: flex;
-width: 23.1875rem;
-height: 25.5rem;
-justify-content: center;
-align-items: center;
-gap: 0.630rem;
-flex-shrink: 0;
-
+  width: 23.1875rem;
+  height: 25.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.63rem;
+  flex-shrink: 0;
 }
 
 /* .connect{
@@ -257,40 +248,35 @@ flex-shrink: 0;
 
 } */
 
-.left{
+.left {
   width: 27rem;
   height: 50rem;
   flex-shrink: 0;
   border-radius: 0.625rem;
-  border: 1px solid #BE0202;
- padding: 1rem;
-  
+  border: 1px solid #be0202;
+  padding: 1rem;
 }
 
-.img7{
+.img7 {
   width: 23.1875rem;
-height: 25.52004rem;
-flex-shrink: 0;
+  height: 25.52004rem;
+  flex-shrink: 0;
 }
 
-.under{
+.under {
   width: 27rem;
-height: 50rem;
-flex-shrink: 0;
-border-radius: 0.625rem;
-border: 1px solid #BE0202;
-padding: 1rem;
+  height: 50rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  border: 1px solid #be0202;
+  padding: 1rem;
 }
 
-.img8{
+.img8 {
   width: 23rem;
-height: 25.51994rem;
-flex-shrink: 0;
+  height: 25.51994rem;
+  flex-shrink: 0;
 }
-
-
-
-
 
 /* add */
 .contain .connect {
