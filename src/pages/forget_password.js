@@ -2,12 +2,13 @@ import { Helmet } from "react-helmet-async";
 import "./forget_password.css";
 import React from "react";
 
+
 const ForgetPassword = () => {
     return (
       <>
         <Helmet>
-          <title>forgetpassword ♥</title>
-          <meta name="description" content="forgetpassword" />
+          <title>forget_password ♥</title>
+          <meta name="description" content="forget_password" />
         </Helmet>
 
 

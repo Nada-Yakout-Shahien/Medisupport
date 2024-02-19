@@ -1,0 +1,116 @@
+.BP-page {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 5vw;
+    gap: 2.91rem;
+}
+
+.BP-address {
+    p {
+        color: #be0202;
+        font-family: Roboto;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+}
+
+.BP-status {
+    max-width: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+        color: #1f1f1f;
+        font-family: Roboto;
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.45019rem;
+
+        /* 116.013% */
+        span {
+            color: #be0202;
+            font-family: Roboto;
+            font-size: 1.25rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 1.45019rem;
+            animation: none;
+        }
+    }
+
+    button {
+        text-align-last: center;
+        width: 18.75rem;
+        height: 2.1875rem;
+        flex-shrink: 0;
+        border-radius: 1rem;
+        background: #BE0202;
+        border: none;
+
+        p {
+            color: #FFF;
+            text-align: right;
+            font-family: Roboto;
+            font-size: 0.9375rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.45019rem;
+            /* 154.684% */
+        }
+    }
+}
+
+/* date */
+.BP-page .BP-date {
+  width: 100%;
+  height: auto;
+  display: flex;
+  overflow-x: auto;
+  align-items: flex-start;
+  gap: 2.5em;
+  margin-bottom: 2.5rem;
+  scrollbar-width: none;
+}
+.BP-page .BP-date::-webkit-scrollbar {
+  display: none;
+}
+.BP-page .day-container {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+.BP-page .day-name {
+  color: #1F1F1F;
+  font-size: 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+.BP-page .date-container {
+  width: 72px;
+  height: 72px;
+  position: relative;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+.BP-page .date-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+.BP-page .selected {
+  opacity: 0.6;
+}
