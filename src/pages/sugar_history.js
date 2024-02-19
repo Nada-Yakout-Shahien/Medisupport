@@ -16,32 +16,108 @@ const SugarHistory = () => {
   const [dataList, setDataList] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const apiData = await new Promise((resolve) => setTimeout(() => resolve([
-        { status: "Normal", mesure: "120", unit: "mg/gl", date: "24/11/2023", day: "Tue" },
-        
-        { status: "High", mesure: "150", unit: "mg/gl", date: "25/11/2023", day: "Wed" },
-         
-        { status: "Low", mesure: "90", unit: "mg/gl", date: "26/11/2023", day: "Thu" },
-        { status: "Normal", mesure: "120", unit: "mg/gl", date: "24/11/2023", day: "Tue" },
-        
-        { status: "High", mesure: "150", unit: "mg/gl", date: "25/11/2023", day: "Wed" },
+      const apiData = await new Promise((resolve) =>
+        setTimeout(
+          () =>
+            resolve([
+              {
+                status: "Normal",
+                mesure: "120",
+                unit: "mg/gl",
+                date: "24/11/2023",
+                day: "Tue",
+              },
 
-        { status: "Low", mesure: "90", unit: "mg/gl", date: "26/11/2023", day: "Thu" },
-        { status: "Normal", mesure: "120", unit: "mg/gl", date: "24/11/2023", day: "Tue" },
-        
-        { status: "High", mesure: "150", unit: "mg/gl", date: "25/11/2023", day: "Wed" },
+              {
+                status: "High",
+                mesure: "150",
+                unit: "mg/gl",
+                date: "25/11/2023",
+                day: "Wed",
+              },
 
-        { status: "Low", mesure: "90", unit: "mg/gl", date: "26/11/2023", day: "Thu" },
-        { status: "Normal", mesure: "120", unit: "mg/gl", date: "24/11/2023", day: "Tue" },
-        
-        { status: "High", mesure: "150", unit: "mg/gl", date: "25/11/2023", day: "Wed" },
+              {
+                status: "Low",
+                mesure: "90",
+                unit: "mg/gl",
+                date: "26/11/2023",
+                day: "Thu",
+              },
+              {
+                status: "Normal",
+                mesure: "120",
+                unit: "mg/gl",
+                date: "24/11/2023",
+                day: "Tue",
+              },
 
-        { status: "Low", mesure: "90", unit: "mg/gl", date: "26/11/2023", day: "Thu" },
+              {
+                status: "High",
+                mesure: "150",
+                unit: "mg/gl",
+                date: "25/11/2023",
+                day: "Wed",
+              },
 
-      ]), 1000)); 
-        
-      
-      setDataList(apiData); 
+              {
+                status: "Low",
+                mesure: "90",
+                unit: "mg/gl",
+                date: "26/11/2023",
+                day: "Thu",
+              },
+              {
+                status: "Normal",
+                mesure: "120",
+                unit: "mg/gl",
+                date: "24/11/2023",
+                day: "Tue",
+              },
+
+              {
+                status: "High",
+                mesure: "150",
+                unit: "mg/gl",
+                date: "25/11/2023",
+                day: "Wed",
+              },
+
+              {
+                status: "Low",
+                mesure: "90",
+                unit: "mg/gl",
+                date: "26/11/2023",
+                day: "Thu",
+              },
+              {
+                status: "Normal",
+                mesure: "120",
+                unit: "mg/gl",
+                date: "24/11/2023",
+                day: "Tue",
+              },
+
+              {
+                status: "High",
+                mesure: "150",
+                unit: "mg/gl",
+                date: "25/11/2023",
+                day: "Wed",
+              },
+
+              {
+                status: "Low",
+                mesure: "90",
+                unit: "mg/gl",
+                date: "26/11/2023",
+                day: "Thu",
+              },
+            ]),
+          1000
+        )
+      );
+
+      setDataList(apiData);
     };
 
     fetchData();
@@ -53,7 +129,6 @@ const SugarHistory = () => {
         <title>Sugar History ♥</title>
         <meta name="description" content="Sugar History" />
       </Helmet>
-      
     </Layout>
   );
 };
