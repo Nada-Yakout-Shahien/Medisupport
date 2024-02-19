@@ -37,10 +37,16 @@ const Resultcongratulations = () => {
             />
           </svg>
         </svg>
-        <h3>Congratulations,  We think you don't have a heart disease</h3>
+        <h3>Congratulations, We think you don't have a heart disease</h3>
         <div className="para">
-          <p> <span>"Important Note: </span>
-            This prediction is based on machine learning algorithms and is not a substitute for professional medical advice. For accurate diagnosis and personalized care, we strongly recommend consulting with a healthcare professional or your primary care physician."</p>
+          <p>
+            {" "}
+            <span>"Important Note: </span>
+            This prediction is based on machine learning algorithms and is not a
+            substitute for professional medical advice. For accurate diagnosis
+            and personalized care, we strongly recommend consulting with a
+            healthcare professional or your primary care physician."
+          </p>
         </div>
       </div>
     </Layout>
