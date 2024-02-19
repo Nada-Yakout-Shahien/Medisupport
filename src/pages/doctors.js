@@ -69,7 +69,7 @@ const Doctors = ({ count, rating, color, onRating }) => {
       <div className="doctor-container">
         <section className="doctor-section">
           <div className="coat">
-            <h1>Our doctors</h1>
+            <h2>Our doctors</h2>
           </div>
           <div className="search-bar">
             <svg
