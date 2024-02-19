@@ -306,6 +306,10 @@ img-btn {
     margin-bottom: 2rem;
     max-width: 100%;
   }
+  .about-us-section .left-part img,
+  .about-us-section .right-part img {
+    order: -1;
+}
 }
 
 /* @media (max-width: 768px) {

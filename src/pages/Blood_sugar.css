@@ -218,8 +218,7 @@
   letter-spacing: 0.03125rem;
 }
 .bloodsugar .btn .addrec:hover{
-  background-color: var(--secondaryColor);
-  color: var(--Red);
+  opacity: 0.7;
 }
 /* after-click-btn */
 .bloodsugar .overlay {

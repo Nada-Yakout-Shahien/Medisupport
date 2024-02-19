@@ -139,6 +139,44 @@ font-weight: 500;
 line-height: 110%; /* 1.375rem */
 }
 
+.container .prev,
+.container .next {
+  position: absolute;
+  top: calc(50% - 50px);
+}
+.container .prev {
+  left: 1rem;
+}
+.container .next {
+  right: 1rem;
+}
+
+.about-us-section3 .Ourfeatures .feature p,
+img-btn {
+  color: var(--whiteColor);
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  line-height: 110%;
+  padding: 1.5rem;
+}
+.img-btn {
+  padding: 3vh;
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+}
+.control:hover {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+
+.Ourfeatures:hover .feature {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+.feature-end-space {
+  flex: 0 0 1rem;
+}
 .got {
   display: inline-flex;
   align-items: flex-start;
