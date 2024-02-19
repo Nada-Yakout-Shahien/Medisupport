@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { HelmetProvider } from "react-helmet-async";
@@ -17,18 +17,17 @@ import Bloodsugar from "./pages/Blood_sugar";
 import BMI from "./pages/BMI";
 import Welcome from "./pages/Welcome";
 import FillInformation from "./pages/fill_information";
-import Resultsorry from './pages/resultsorry';
-import Resultcongratulations from './pages/resultcongratulations';
+import Resultsorry from "./pages/resultsorry";
+import Resultcongratulations from "./pages/resultcongratulations";
 import ArPressure from "./pages/ar_pressure";
 import ArSugar from "./pages/ar_sugar";
 import ArBmi from "./pages/ar_bmi";
 import ArHeart from "./pages/ar_heart";
 import Activity from "./pages/Activity";
 import DetailsBS from "./pages/details-bloodsuger";
-import SugarHistory from './pages/sugar_history';
-import PressurHistory from './pages/pressur_history';
-import BmiHistory from './pages/bmi_history';
-
+import SugarHistory from "./pages/sugar_history";
+import PressurHistory from "./pages/pressur_history";
+import BmiHistory from "./pages/bmi_history";
 
 const router = createBrowserRouter([
   {
@@ -110,11 +109,13 @@ const router = createBrowserRouter([
     path: "/pressure",
     element: <ArPressure />,
     errorElement: <h1>Sorry, No page to display....</h1>,
-  },  {
+  },
+  {
     path: "/sugar",
     element: <ArSugar />,
     errorElement: <h1>Sorry, No page to display....</h1>,
-  },  {
+  },
+  {
     path: "/ABmi",
     element: <ArBmi />,
     errorElement: <h1>Sorry, No page to display....</h1>,
@@ -169,4 +170,3 @@ root.render(
     </HelmetProvider>
   </React.StrictMode>
 );
-
