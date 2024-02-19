@@ -12,7 +12,8 @@ input {
   border-color: white;
   padding-left: 0.5vw;
   font-size: 1.3em;
-  width: -webkit-fill-available;
+  width: 90%;
+  /* width: -webkit-fill-available; */
 }
 
 input:hover {
@@ -48,9 +49,7 @@ input:hover {
   flex-direction: row;
   cursor: pointer;
 }
-.search-bar svg {
-  width: 30em;
-}
+
 .coat {
   color: #be0202;
   font-style: normal;
