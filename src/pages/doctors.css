@@ -211,7 +211,7 @@ flex-shrink: 0;
 
 }
 
-.connect{
+/* .connect{
   display: flex;
   
   gap: 2rem;
@@ -219,7 +219,7 @@ height: 57.3125rem;
 flex-shrink: 0;
 
 
-}
+} */
 
 .left{
   width: 27rem;
@@ -250,4 +250,36 @@ padding: 1rem;
   width: 23rem;
 height: 25.51994rem;
 flex-shrink: 0;
+}
+
+
+
+/* add */
+.contain .connect {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+}
+.contain .connect::-webkit-scrollbar {
+  display: none;
+}
+.contain .control {
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}
+.contain .prev,
+.contain .next {
+  position: absolute;
+  top: calc(85% - 85px);
+}
+.contain .prev {
+  left: 1rem;
+}
+.contain .next {
+  right: 1rem;
+}
+.control:hover {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
 }
