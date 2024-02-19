@@ -166,6 +166,7 @@
   display: flex;
   padding: 1.4vh 3.1vw;
   align-items: center;
+  cursor: pointer;
   border-radius: 0.7em;
   background-color: var(--whiteColor);
   border: 2px solid var(--Red);

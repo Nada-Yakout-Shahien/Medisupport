@@ -25,6 +25,7 @@ import ArBmi from "./pages/ar_bmi";
 import ArHeart from "./pages/ar_heart";
 import Activity from "./pages/Activity";
 import DetailsBS from "./pages/details-bloodsuger";
+import ForgetPassword from "./pages/forget_password";
 import SugarHistory from "./pages/sugar_history";
 import PressurHistory from "./pages/pressur_history";
 import BmiHistory from "./pages/bmi_history";
@@ -159,6 +160,11 @@ const router = createBrowserRouter([
     path: "/Resultcongratulations",
     element: <Resultcongratulations />,
     errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/forget_password",
+    element: <ForgetPassword />,
+    errorElement: <h1>Sorry......</h1>,
   },
 ]);
 

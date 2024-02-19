@@ -182,6 +182,7 @@
   border-radius: 0.7em;
   background-color: var(--whiteColor);
   border: 2px solid var(--Red);
+  cursor: pointer;
 }
 .sig .text {
   display: flex;
