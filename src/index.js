@@ -25,14 +25,13 @@ import ArBmi from "./pages/ar_bmi";
 import ArHeart from "./pages/ar_heart";
 import Activity from "./pages/Activity";
 import DetailsBS from "./pages/details-bloodsuger";
-<<<<<<< HEAD
 import ForgetPassword from "./pages/forget_password";
 
-=======
+
 import SugarHistory from "./pages/sugar_history";
 import PressurHistory from "./pages/pressur_history";
 import BmiHistory from "./pages/bmi_history";
->>>>>>> origin/N-Yakout
+
 
 const router = createBrowserRouter([
   {
