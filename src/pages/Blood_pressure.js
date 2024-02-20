@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import "./Blood_pressure.css";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { eachDayOfInterval, format } from "date-fns";
 import Layout from "../components/Layout";
 
@@ -67,7 +67,22 @@ const Bloodpressure = () => {
           ))}
         </div>
 
-        <div className="BP-data"></div>
+        <div className="BP-data">
+          <div className="box">
+            <div className="address">Input data</div>
+            <div className="sbp">
+              <p>Systolic blood pressure</p>
+              <div className="num"></div>
+            </div>
+            <div className="dbp">
+              <p>Diastolic blood pressure</p>
+              <div className="num"></div>
+            </div>
+            <div className="add">
+              <button className="b-add">Add To Record</button>
+            </div>
+          </div>
+        </div>
       </div>
     </Layout>
   );
