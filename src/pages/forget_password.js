@@ -12,24 +12,26 @@ const ForgetPassword = () => {
         </Helmet>
 
 
-        <div className="forget">
-            <div className="password">
-                <div className="first">
-                <h1>Forgotten your password?</h1>
-                <p>There is nothing to worry about, we'll send you a message to help you reset your password.</p>
-                </div>
+        <section className="forget">
+            <div className="forgetpassword">
+                
+                <h1 className="forgetpassword_title">Forgotten your password?</h1>
+                <p className="forgetpassword_desc">There is nothing to worry about, we'll send you a message to help you reset your password.</p>
+                
 
-                <div className="last">
-                    <p>Email Address</p>
+                <div className="form_box">
+                <form>
+                <div className="input_box">
+                  <label htmlFor="">Email Address</label>
+                    
                     <input type="email" placeholder="Enter personal or work email address"></input>
                 </div>
-
-                <div className="button3">
-                <input type="submit" value="Send Reset Link" />
+                </form>
                 </div>
-            </div>
-        </div>
+                </div>
+                </section>
 
+                
         </>
   );
 };
