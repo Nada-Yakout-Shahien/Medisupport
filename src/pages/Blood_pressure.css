@@ -1,9 +1,10 @@
 .BP-page {
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   display: flex;
   flex-direction: column;
   padding: 0 0 0 5vw;
-  gap: 2.91rem;
+  gap: 2.5rem;
+  padding: 1rem 2rem 2.5rem 2rem;
 }
 .BP-address p {
   color: var(--Red);
@@ -114,11 +115,12 @@
   opacity: 0.6;
 }
 
+/* data */
 .BP-data {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 8vh;
+  /* margin-bottom: 8vh; */
 }
 
 .BP-data .box {
@@ -183,14 +185,23 @@
   flex-shrink: 0;
 }
 
-.BP-data .box .add .b-add {
-  background-color: inherit;
-  border: none;
-  color: var(--Default-White, #fff);
-  font-family: Roboto;
+.BP-data .box .add{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  max-height: 3rem;
+  padding: 1rem 12rem;
+  align-items: center;
+  color: var(--whiteColor);
+  border-radius: 0.625rem;
+  background: var(--Red);
+  font-family: 'Roboto',sans-serif;
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 100%;
+  line-height: 100%; 
   letter-spacing: 0.03125rem;
+}
+.BP-data .box .add:hover {
+    opacity: 0.7;
 }

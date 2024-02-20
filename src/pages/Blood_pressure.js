@@ -3,6 +3,7 @@ import "./Blood_pressure.css";
 import React, { useState } from "react";
 import { eachDayOfInterval, format } from "date-fns";
 import Layout from "../components/Layout";
+import { NavLink } from "react-router-dom";
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -78,9 +79,10 @@ const Bloodpressure = () => {
               <p>Diastolic blood pressure</p>
               <div className="num"></div>
             </div>
-            <div className="add">
-              <button className="b-add">Add To Record</button>
-            </div>
+            <div className="btn">
+            <NavLink to="/DetailsBS" className="add">
+              Add To Record
+            </NavLink>{" "}              </div>
           </div>
         </div>
       </div>
