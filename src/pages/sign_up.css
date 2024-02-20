@@ -160,6 +160,8 @@
   line-height: 100%;
   letter-spacing: 0.10em;
   cursor: pointer;
+  width: 100%;
+
   /* margin-top: -2rem; */
 }
 
