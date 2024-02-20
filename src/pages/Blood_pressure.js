@@ -73,16 +73,31 @@ const Bloodpressure = () => {
             <div className="address">Input data</div>
             <div className="sbp">
               <p>Systolic blood pressure</p>
-              <div className="num"></div>
+              <div className="num">
+                {/* <div className="numb">
+                  <p>110</p>
+                </div> */}
+                <div className="icon">
+                  <div className="mini"></div>
+                  <div className="max"></div>
+                </div>
+              </div>
             </div>
             <div className="dbp">
               <p>Diastolic blood pressure</p>
-              <div className="num"></div>
+              <div className="num">
+                {/* <div className="numb">80</div> */}
+                <div className="icon">
+                  <div className="mini"></div>
+                  <div className="max"></div>
+                </div>
+              </div>
             </div>
             <div className="btn">
-            <NavLink to="/DetailsBS" className="add">
-              Add To Record
-            </NavLink>{" "}              </div>
+              <NavLink to="/DetailsBS" className="add">
+                Add To Record
+              </NavLink>{" "}
+            </div>
           </div>
         </div>
       </div>
