@@ -157,7 +157,7 @@
   line-height: 100%;
   letter-spacing: 0.10em;
   cursor: pointer;
-  /* margin-top: -2rem; */
+  width: 100%;
 }
 .sig .flex1 .btn:hover {
   opacity: 0.7;
