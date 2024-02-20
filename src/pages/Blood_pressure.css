@@ -29,8 +29,8 @@
   line-height: 1.45019rem;
 }
 .BP-status span {
-  color: #be0202;
-  font-family: Roboto;
+  color: var(--Red);
+  font-family: 'Roboto',sans-serif;
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 600;
@@ -48,7 +48,7 @@
 }
 .BP-status p {
   color: #1f1f1f;
-  font-family: Roboto;
+  font-family: 'Roboto',sans-serif;
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 600;
@@ -58,7 +58,7 @@
 .BP-status button p {
   color: #fff;
   text-align: right;
-  font-family: Roboto;
+  font-family: 'Roboto',sans-serif;
   font-size: 0.9375rem;
   font-style: normal;
   font-weight: 400;
