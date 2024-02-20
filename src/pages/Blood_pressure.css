@@ -141,7 +141,7 @@
 .box .address {
   color: var(--Red);
   font-family: "Roboto", sans-serif;
-  font-size: 2.5vw;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -173,7 +173,7 @@
 .dbp p {
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
-  font-size: 2vw;
+  font-size: 1.4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
