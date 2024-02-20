@@ -150,9 +150,11 @@
   line-height: 100%;
   letter-spacing: 0.10em;
   cursor: pointer;
+  width: 100%;
+
 }
 .log .flex1 .btn:hover {
- opacity: 0.7;
+opacity: 0.7;
 }
 .log .btn-log{
   display: flex;
