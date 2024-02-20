@@ -150,8 +150,6 @@
   color: var(--whiteColor);
   text-align: center;
   padding: 0.4em;
-  justify-content: center;
-  align-items: center;
   border-radius: 0.4em;
   border: 2px solid var(--Red);
   font-family: "Roboto", sans-serif;
@@ -160,6 +158,7 @@
   line-height: 100%;
   letter-spacing: 0.10em;
   cursor: pointer;
+  width: 100%;  
   /* margin-top: -2rem; */
 }
 
