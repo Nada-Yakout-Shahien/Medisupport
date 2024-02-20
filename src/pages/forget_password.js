@@ -12,7 +12,7 @@ const ForgetPassword = () => {
         </Helmet>
 
 
-        <section className="forget">
+        <section className="forgetp">
             <div className="forgetpassword">
                 
                 <h1 className="forgetpassword_title">Forgotten your password?</h1>
