@@ -126,7 +126,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50vw;
+  width: 47vw;
   height: 60vh;
   flex-shrink: 0;
   border-radius: 0.625rem;
@@ -139,7 +139,7 @@
 .box .address {
   color: #be0202;
   font-family: "Roboto", sans-serif;
-  font-size: 2.5vw;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -171,7 +171,7 @@
 .dbp p {
   color: #1f1f1f;
   font-family: Roboto;
-  font-size: 2vw;
+  font-size: 1.4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
