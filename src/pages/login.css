@@ -1,6 +1,6 @@
 .log {
   display: flex;
-  flex-direction: row;
+  /*flex-direction: row;*/
   gap: 1em;
 }
 .log .flex2 {

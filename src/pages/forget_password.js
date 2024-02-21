@@ -12,8 +12,8 @@ const ForgetPassword = () => {
         </Helmet>
 
 
-        <section className="forget">
-            <div className="forgetpassword">
+        <section className="forgetpassword_wrapper">
+            <div className="forgetpassword_card">
                 
                 <h1 className="forgetpassword_title">Forgotten your password?</h1>
                 <p className="forgetpassword_desc">There is nothing to worry about, we'll send you a message to help you reset your password.</p>
