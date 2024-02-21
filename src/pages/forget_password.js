@@ -13,8 +13,7 @@ const ForgetPassword = () => {
 
 
 
-        <section className="forgetpassword_wrapper">
-            <div className="forgetpassword_card">
+        
 
         <section className="forgetp">
             <div className="forgetpassword">
@@ -41,4 +40,4 @@ const ForgetPassword = () => {
   );
 };
 
-export default ForgetPassword;
+ export default ForgetPassword;
