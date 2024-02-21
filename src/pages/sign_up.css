@@ -143,14 +143,12 @@
   border-width: 0 0.2em 0.2em 0;
   transform: rotate(45deg);
 }
-
 .sig .flex1 .btn {
   display: inline-block;
   background-color: var(--Red);
   color: var(--whiteColor);
   text-align: center;
   padding: 0.4em;
-
   border-radius: 0.4em;
   border: 2px solid var(--Red);
   font-family: "Roboto", sans-serif;
@@ -160,14 +158,10 @@
   letter-spacing: 0.10em;
   cursor: pointer;
   width: 100%;
-
-  /* margin-top: -2rem; */
 }
-
 .sig .flex1 .btn:hover {
   opacity: 0.7;
 }
-
 .sig .btn-log {
   display: flex;
   flex-direction: row;
