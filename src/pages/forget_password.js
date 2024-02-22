@@ -29,10 +29,10 @@ const ForgetPassword = () => {
                     
                     <input className="remair" type="email" placeholder="Enter personal or work email address"></input>
 
-                    
+                    <input type="submit" name="" value="Send Reset Link" className="rbtr" />
                 </div>
                 </form>
-                <input type="submit" name="" value="Send Reset Link" className="rbtr" />
+                
                 </div>
                 </div>
                 </section>
