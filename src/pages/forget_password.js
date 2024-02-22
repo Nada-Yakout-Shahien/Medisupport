@@ -32,7 +32,7 @@ const ForgetPassword = () => {
                     
                 </div>
                 </form>
-                <input type="submit" name="" value="Send Reset Link" className="rbtnr" />
+                <input type="submit" name="" value="Send Reset Link" className="rbtr" />
                 </div>
                 </div>
                 </section>
