@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import "./forget_password.css";
 import React from "react";
-
+import { NavLink } from "react-router-dom";
 
 const ForgetPassword = () => {
     return (
@@ -29,7 +29,8 @@ const ForgetPassword = () => {
                     
                     <input className="remair" type="email" placeholder="Enter personal or work email address"></input>
 
-                    <input type="submit" name="" value="Send Reset Link" className="rbtr" />
+                    
+                    <NavLink to="#" className="rbtr">Send Reset Link</NavLink>
                 </div>
                 </form>
                 
