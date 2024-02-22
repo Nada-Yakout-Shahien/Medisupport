@@ -168,7 +168,7 @@ const router = createBrowserRouter([
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
-    path: "/DetailsBS",
+    path: "/DetailsBP",
     element: <DetailsBloodpressure />,
     errorElement: <h1>Sorry, No page to display....</h1>,
   },

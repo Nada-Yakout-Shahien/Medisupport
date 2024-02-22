@@ -39,9 +39,7 @@
 }
 .BP-status button {
   text-align-last: center;
-  width: 18.75rem;
-  height: 2.1875rem;
-  flex-shrink: 0;
+  padding: 0.6vh 9vw;
   border-radius: 1rem;
   background: var(--Red);
   border: none;

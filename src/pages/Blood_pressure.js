@@ -180,7 +180,7 @@ const Bloodpressure = () => {
               </div>
             </div>
             <div className="btn">
-              <NavLink to="/DetailsBS" className="add">
+              <NavLink to="/DetailsBP" className="add">
                 Add To Record
               </NavLink>{" "}
             </div>
