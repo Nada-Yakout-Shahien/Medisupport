@@ -29,6 +29,16 @@ const Bloodpressure = () => {
   const handleDayClick = (fullDate) => {
     setSelectedDay(fullDate);
   };
+  
+  //data 
+  const [systolicBP, setSystolicBP] = useState(110);
+  const [diastolicBP, setDiastolicBP] = useState(80);
+
+  const increaseSystolic = () => setSystolicBP(prev => prev + 1);
+  const decreaseSystolic = () => setSystolicBP(prev => prev - 1);
+  const increaseDiastolic = () => setDiastolicBP(prev => prev + 1);
+  const decreaseDiastolic = () => setDiastolicBP(prev => prev - 1);
+
 
   return (
     <Layout>
@@ -71,25 +81,101 @@ const Bloodpressure = () => {
         <div className="BP-data">
           <div className="box">
             <div className="address">Input data</div>
-            <div className="sbp">
-              <p>Systolic blood pressure</p>
+            <div className="bp">
+              <div className="para">
+                <p>Systolic blood pressure</p>
+              </div>
               <div className="num">
-                {/* <div className="numb">
-                  <p>110</p>
-                </div> */}
-                <div className="icon">
-                  <div className="mini"></div>
-                  <div className="max"></div>
+                <div className="enum">
+                  <div className="numb">
+                  <p>{systolicBP}</p>
+                  </div>
+                  <div className="icon">
+                    <div className="mini" onClick={decreaseSystolic}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <g clip-path="url(#clip0_1_3839)">
+                          <path d="M12 16L6 10H18L12 16Z" fill="#1F1F1F" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_1_3839">
+                            <rect width="24" height="24" rx="5" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </div>
+                    <div className="max" onClick={increaseSystolic}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <g clip-path="url(#clip0_1_3843)">
+                          <path d="M12 8L18 14H6L12 8Z" fill="#1F1F1F" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_1_3843">
+                            <rect width="24" height="24" rx="5" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="dbp">
-              <p>Diastolic blood pressure</p>
+            <div className="bp">
+              <div className="para">
+                <p>Diastolic blood pressure</p>
+              </div>
               <div className="num">
-                {/* <div className="numb">80</div> */}
-                <div className="icon">
-                  <div className="mini"></div>
-                  <div className="max"></div>
+                <div className="enum">
+                  <div className="numb"><p>{diastolicBP}</p></div>
+                  <div className="icon">
+                    <div className="mini" onClick={decreaseDiastolic}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <g clip-path="url(#clip0_1_3839)">
+                          <path d="M12 16L6 10H18L12 16Z" fill="#1F1F1F" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_1_3839">
+                            <rect width="24" height="24" rx="5" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </div>
+                    <div className="max" onClick={increaseDiastolic}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <g clip-path="url(#clip0_1_3843)">
+                          <path d="M12 8L18 14H6L12 8Z" fill="#1F1F1F" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_1_3843">
+                            <rect width="24" height="24" rx="5" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
