@@ -97,9 +97,7 @@ const DetailsBloodpressure = () => {
                     <p>mmHG</p>
                   </div>
                 </div>
-                <div className="diagram">
-                  
-                </div>
+                <div className="diagram"></div>
               </div>
             </div>
           </div>
