@@ -13,24 +13,26 @@ const ForgetPassword = () => {
 
 
 
+        <section className="forgetpassword_wrapper">
+            <div className="forgetpassword_card">
+
         
-
-        <section className="forgetp">
-            <div className="forgetpassword">
-
-                
-                <h1 className="forgetpassword_title">Forgotten your password?</h1>
+                <div className="rforgetr">
+                <h2 className="forgetpassword_title" >Forgotten your password?</h2>
                 <p className="forgetpassword_desc">There is nothing to worry about, we'll send you a message to help you reset your password.</p>
-                
+                </div>
 
                 <div className="form_box">
                 <form>
                 <div className="input_box">
-                  <label htmlFor="">Email Address</label>
+                  <label className="remailr">Email Address</label>
                     
-                    <input type="email" placeholder="Enter personal or work email address"></input>
+                    <input className="remair" type="email" placeholder="Enter personal or work email address"></input>
+
+                    
                 </div>
                 </form>
+                <input type="submit" name="" value="Send Reset Link" className="rbtnr" />
                 </div>
                 </div>
                 </section>
@@ -40,4 +42,4 @@ const ForgetPassword = () => {
   );
 };
 
- export default ForgetPassword;
+export default ForgetPassword;
