@@ -72,7 +72,36 @@ const DetailsBloodpressure = () => {
           </div>
 
           <div className="dBP-diagram">
-            
+            <div className="diagrams">
+              <div className="dig">
+                <div className="bound">
+                  <div className="boun">
+                    <div className="rec"></div>
+                    <p>Upper bound</p>
+                  </div>
+                  <div className="measure">
+                    <p>mmHG</p>
+                  </div>
+                </div>
+                <div className="diagram">
+                  
+                </div>
+              </div>
+              <div className="dig">
+                <div className="bound">
+                  <div className="boun">
+                    <div className="rec"></div>
+                    <p>Lower bound</p>
+                  </div>
+                  <div className="measure">
+                    <p>mmHG</p>
+                  </div>
+                </div>
+                <div className="diagram">
+                  
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="inf-det">
