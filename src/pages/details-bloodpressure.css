@@ -139,7 +139,6 @@
 }
 .detailsbp .dBP-diagram .diagrams .dig{
   width: 50%;
-  height: 100%;
 }
 .detailsbp .dBP-diagram .diagrams .dig .bound{
   display: flex;
@@ -237,4 +236,14 @@
 }
 .detailsbp .btn .addrec:hover {
   opacity: 0.7;
+}
+
+@media (max-width: 750px) {
+  .detailsbp .dBP-diagram .diagrams{
+    display: flex;
+    flex-direction: column;
+  }
+  .detailsbp .dBP-diagram .diagrams .dig{
+    width: 100%;
+  }
 }
