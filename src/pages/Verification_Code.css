@@ -1,0 +1,81 @@
+.rverification{
+    width: 100vw; 
+   height: 100vh; 
+  display: flex;
+  overflow-x: hidden;
+}
+
+.ver1{
+    width: 33.5625rem;
+height: 17.625rem;
+flex-shrink: 0;
+padding-top: 20rem ;
+
+}
+
+.rrorr{
+    width: 26.89219rem;
+height: 3.4375rem;
+flex-shrink: 0;
+margin: 2rem;
+
+}
+
+.rrorr h2{
+    color: #BE0202;
+
+font-family: Montserrat;
+font-size: 1.975rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.rrorr p{
+    color: #1F1F1F;
+
+/* num of price */
+font-family: Montserrat;
+font-size: 0.8125rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.rowr{
+    display: flex;
+width: 32.625rem;
+align-items: flex-start;
+gap: 3.375rem;
+    margin: 2rem;
+    
+}
+
+.rowr input{
+    width: 5.625rem;
+height: 5.625rem;
+flex-shrink: 0;
+    border-radius: 0.625rem;
+border: 0.1rem solid #BE0202;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0rem;
+}
+
+.rbtsd{
+    display: flex;
+width: 33.5625rem;
+height: 3rem;
+padding: 1rem 0.75rem;
+justify-content: center;
+align-items: center;
+flex-shrink: 0;
+border-radius: 0.625rem;
+border: 2px solid #BE0202;
+background: #BE0202;
+color: #fff;
+font-size: 1rem;
+}

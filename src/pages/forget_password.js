@@ -30,7 +30,7 @@ const ForgetPassword = () => {
                     <input className="remair" type="email" placeholder="Enter personal or work email address"></input>
 
                     
-                    <NavLink to="#" className="rbtr">Send Reset Link</NavLink>
+                    <NavLink to="/Verification_Code" className="rbtr">Send Reset Link</NavLink>
                 </div>
                 </form>
                 
