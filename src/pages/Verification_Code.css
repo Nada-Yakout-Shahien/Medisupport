@@ -5,6 +5,15 @@
   overflow-x: hidden;
 }
 
+.ver2{
+    display: flex;
+width: 45rem;
+height: 64rem;
+justify-content: center;
+align-items: center;
+gap: 0.625rem;
+flex-shrink: 0;
+}
 .ver1{
     width: 33.5625rem;
 height: 17.625rem;
@@ -78,4 +87,8 @@ border: 2px solid #BE0202;
 background: #BE0202;
 color: #fff;
 font-size: 1rem;
+}
+
+.buttonr{
+    padding-left: 2rem;
 }

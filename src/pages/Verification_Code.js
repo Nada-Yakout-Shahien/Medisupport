@@ -28,10 +28,10 @@ const VerificationCode = () => {
             <input type="number"/>
             <input type="number"/>
           </div>
+          <div className="buttonr">
           <NavLink to="#" className="rbtsd">Verify</NavLink>
-          
+          </div>
         </div>
-
       </div>
                 
         </>
