@@ -64,6 +64,7 @@ gap: 3.375rem;
     width: 5.625rem;
 height: 5.625rem;
 flex-shrink: 0;
+text-align: center;
     border-radius: 0.625rem;
 border: 0.1rem solid #BE0202;
 }
