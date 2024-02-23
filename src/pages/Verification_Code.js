@@ -21,7 +21,7 @@ const VerificationCode = () => {
           <h2>Verification Code</h2>
           
           <p>Please enter the verification code that we’ve sent to your phone.</p>
-          
+          </div>
           <div className="rowr">
             <input  type="number"/>
             <input type="number"/>
@@ -29,7 +29,7 @@ const VerificationCode = () => {
             <input type="number"/>
           </div>
           <NavLink to="#" className="rbtsd">Verify</NavLink>
-          </div>
+          
         </div>
 
       </div>
