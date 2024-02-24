@@ -31,7 +31,7 @@ const NewPassword = () => {
                 <input type="Password" className="rnp" />
           </div>
           <div className="buttorr">
-          <NavLink to="#" className="rbtsd">Reset Password</NavLink>
+          <NavLink to="#" className="rbtrd">Reset Password</NavLink>
           </div>
         </div>
       </div>
