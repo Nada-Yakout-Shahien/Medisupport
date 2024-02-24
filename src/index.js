@@ -29,7 +29,8 @@ import ForgetPassword from "./pages/forget_password";
 import SugarHistory from "./pages/sugar_history";
 import PressurHistory from "./pages/pressur_history";
 import BmiHistory from "./pages/bmi_history";
-import VerificationCode from "./pages/Verification_Code"
+import VerificationCode from "./pages/Verification_Code";
+import NewPassword from "./pages/New_Password";
 
 const router = createBrowserRouter([
   {
@@ -170,6 +171,11 @@ const router = createBrowserRouter([
   {
     path: "/Verification_Code",
     element: <VerificationCode />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/New_Password",
+    element: <NewPassword />,
     errorElement: <h1>Sorry......</h1>,
   },
 ]);
