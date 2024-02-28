@@ -7,7 +7,9 @@
   font-family: "Roboto", sans-serif;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -16,15 +18,16 @@ html, body, #root {
 }
 
 :root {
-  --Red: #be0202;
-  --blackred:rgba(190, 2, 2, 0.50);
+  --Red: #be0202; /*ok*/
+  --blackred: rgba(190, 2, 2, 0.5);
   --mainColorLight: #f90723;
   --secondaryColor: #ff00007e;
-  --whiteColor: #fff;
-  --blackColor: #000000;
-  --graycolor: #1f1f1f;
-  --darkgraycolor:#353535;
-  
+  --whiteColor: #fff; /*ok*/
+  --blackColor: #000000; /*ok*/
+  --graycolor: #1f1f1f; /*ok*/
+  --darkgraycolor: #353535; /*ok*/
+  --Red-transparent: rgba(255, 0, 0, 0.5036);
+  /* color: #016c8d; */
 }
 a {
   text-decoration: none;

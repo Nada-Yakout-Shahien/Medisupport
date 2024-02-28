@@ -4,43 +4,45 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 header {
   display: flex;
-  /* max-width: 100vw; */
   width: 100%;
   padding: 1rem;
   background-color: var(--whiteColor);
   color: var(--Red);
   align-items: center;
-   justify-content:center;
+  justify-content:space-between;
 }
-
 .Navbar h3 {
   font-family: 'Arizonia',sans-serif;
-  font-size: 2.5vw;
+  font-size: 2.7vw;
   font-weight: 400;
+  cursor: pointer;
 }
-.Navbar, nav {
+.Navbar{
   display: flex;
   align-items: center;
   justify-content: flex-start; 
   gap: 3vw;
 }
-
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  gap: 3vw;
+}
 nav a {
   color: var(--Red);
   text-decoration: none;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 0.90em;
+  font-size: 1vw;
 }
-
 nav a:hover {
-  font-weight: 900;
-  color: var(--secondaryColor);
+  opacity: 0.7;
 }
-
 header .nav-btn {
   padding: 5vw;
   cursor: pointer;
@@ -53,45 +55,70 @@ header .nav-btn {
   font-size: 1.8rem;
   display: none;
 }
-
 header div,
 nav {
-  max-width: 98vw;
   display: flex; 
   align-items: center;
   justify-content: space-around;
   align-content: flex-end;
 }
-
 nav .nav-button button {
   margin: 1vh;
   background-color: var(--Red);
   border: none;
   font-weight: 600;
-  /* line-height: 2vw; */
   outline: none;
   cursor: pointer;
   border-radius: 0.625rem;
-  padding: 0.5rem 1rem;
-  /* min-width: 6.5625vw;
-  min-height: 4.9vh; */
+  padding: 0.6vw 2vw;
   flex-shrink: 0;
   color: var(--whiteColor);
   font-family: "Roboto", sans-serif;
-  font-size: 1rem;
+  font-size: 1vw;
   font-style: normal;
   color: var(--whiteColor);
 }
 nav a:last-child, nav .nav-button:last-child {
   margin-right: 0; 
 }
-
 nav .nav-button button:hover,
 nav .navbar-menu_container button:hover {
-  background-color: var(--secondaryColor);
-  color: var(--Red);
+  opacity: 0.7;
 }
 
+/* responsive design */
+@media only screen and (max-width: 1400px) {
+  .Navbar{
+    gap: 3vw;
+  }
+  nav {
+    gap: 2.8vw;
+  }
+}
+@media only screen and (max-width: 1324px) {
+  .Navbar{
+    gap: 2.7vw;
+  }
+  nav {
+    gap: 2.4vw;
+  }
+}
+@media only screen and (max-width: 1095px) {
+  .Navbar{
+    gap: 2.6vw;
+  }
+  nav {
+    gap: 2.3vw;
+  }
+}
+@media only screen and (max-width: 1048px) {
+  .Navbar{
+    gap: 2.4vw;
+  }
+  nav {
+    gap: 2.3vw;
+  }
+}
 @media only screen and (max-width: 1024px) {
   .active {
     font-size: 16px;
@@ -117,30 +144,39 @@ nav .navbar-menu_container button:hover {
   }
   header nav {
     position: fixed;
-    top: -100vh;
-    left: 0;
-    height: 100%;
-    width: 100%;
+    top: 4vh;
+    right: 0;
+    height: auto;
+    width: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1rem;
     background-color: var(--whiteColor);
-    transition: 1s;
+    transition: transform 1s ease , visibility 1s ease;
+    transform-origin: top;
+    transform: scale(0);
+    z-index: 11;
+    border-radius: 1rem;
+    visibility: hidden;
+    padding: 1em;
   }
-
-  header .responsive_nav {
-    transform: translateY(100vh);
+  header nav.responsive_nav {
+    transform: scale(1); 
+    visibility: visible;
   }
 
   nav .nav-close-btn {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
+    top: -2rem;
+    right: -1rem;
   }
-
   nav a {
-    font-size: 1.5rem;
+    font-size: 1rem;
+  }
+  nav .nav-button button {
+    font-size: 0.9em;
   }
 }
+

@@ -1,343 +1,228 @@
 .log {
   display: flex;
   flex-direction: row;
+  gap: 1em;
 }
-.flex1  ,.flex2{
-  max-width: 50%;
+.log .flex2 {
+  width: 100%;
+}
+.log .flex2 img{
+  width: 100%;
+}
+.log .forml{
   display: flex;
-  padding: 5%;
   flex-direction: column;
-  align-items: center;
-  gap: 5%;
+  gap: 1em;
 }
-
-.flex2 {
-  max-width: 50%;
+.log .flex1{
+  display: flex;
+  padding: 10% 5% 5% 5%;
+  flex-direction: column;
+  gap: 3em;
+  width:100%;
 }
-
-h2 {
+.log h2 {
   color: var(--Red);
   font-family: 'Roboto',sans-serif;
-  font-size: 5vw;
+  font-size: 2.625rem;
   font-style: normal;
   font-weight: 700;
   line-height: 110%;
 }
-.lbl, .lbl1, .lbl2 {
+.log .lbl, .lbl1, .lbl2 {
   width: 100%;
 }
-.lbl {
+.log .lbl {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  align-self: stretch;
+  gap: 1em;
+}
+.log .lbl1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75em;
   align-self: stretch;
 }
-
-.label {
+.log .lbl2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75em;
+  align-self: stretch;
+}
+.log label {
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%;
-}
-
-.field {
-  display: flex;
-  height: 48px;
-  padding: 12px 16px;
-  align-items: center;
-  gap: 8px;
-  align-self: stretch;
-}
-
-.lbl1 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  align-self: stretch;
-  margin-bottom: 16px;
-}
-.lbl2 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  align-self: stretch;
-}
-
-label {
-  color: var(--graycolor);
-  font-family: 'Roboto',sans-serif;
-  font-size: 14px;
+  font-size: 1em;
   font-style: normal;
   font-weight: 400;
   line-height: 140%; 
   max-width: 100%;
   height: auto;
 }
-
-.inp {
+.log .inp {
+  width: 100%;
   display: flex;
-  height: 48px;
-  padding: 12px 16px;
+  height: 2em;
   align-items: center;
-  gap: 8px;
   align-self: stretch;
-  border-radius: 10px;
-  border: 1px solid var(--Red);
+  border-radius: 0.4em;
+  border: 0.01em solid var(--Red);
 }
-.field, .inp {
-  width: 100%; 
-  border-radius: 5px; 
-}
-.disc {
+.log .disc {
   color: var(--darkgraycolor);
   font-family: Roboto;
-  font-size: 12px;
+  font-size: 0.8em;
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
 }
-
-.parent {
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.lbl3 {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.forget {
+.log .forget {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: -16px 0 0;
   font-size: .9em;
   width: 100%;
 }
-
-.checkbox-container {
+.log .checkbox-container {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
-
-.checkbox-container label {
+.log .checkbox-container label {
   color: var(--Red);
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-size: 1em;
   font-weight: 400;
   line-height: 140%; 
 }
-
-#custom-checkbox {
+.log #custom-checkbox {
   display: none;
 }
-
-.custom-checkbox-label {
+.log .custom-checkbox-label {
   display: flex;
   align-items: center;
-  width: 16px;
-  height: 16px;
-  border: 1px solid var(--Red);
+  width: 1em;
+  height: 1em;
+  border: 0.02em solid var(--Red);
   cursor: pointer;
   position: relative;
 }
-
-#custom-checkbox:checked + .custom-checkbox-label::after {
+.log #custom-checkbox:checked + .custom-checkbox-label::after {
   content: "";
   position: absolute;
-  left: 5px;
-  top: 1px;
-  width: 2px;
-  height: 8px;
+  left: 0.3em;
+  top: 0.04em;
+  width: 0.18em;
+  height: 0.5em;
   border: solid var(--secondaryColor);
-  border-width: 0 2.5px 2.5px 0;
+  border-width: 0 0.2em 0.2em 0;
   transform: rotate(45deg);
 }
-
-#for {
+.log #for {
   color: var(--Red);
   text-decoration: none;
   font-family: 'Roboto',sans-serif;
-  font-size: 14px;
+  font-size: 1em;
   font-style: normal;
   font-weight: 400;
   line-height: 140%; 
 }
-
 #for:hover {
   opacity: 0.7;
 }
-
-.flex1 .btn {
+.log .flex1 .btn {
   display: inline-block;
   background-color: var(--Red);
   color: var(--whiteColor);
-  padding: 0vw 42.5% 0%  45%;
   text-align: center;
-  width: 100%;
-  height: 48px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
+  padding: 0.3em;
+  border-radius: 0.4em;
   border: 2px solid var(--Red);
   font-family: "Roboto", sans-serif;
-  font-size: 4vw;
+  font-size: 1.7em;
   font-weight: 500;
   line-height: 100%;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.10em;
   cursor: pointer;
-  margin-top: -4vh;
-}
-
-
-.flex1 .btn:hover {
-  background-color: var(--secondaryColor);
-  color: var(--Red);
-  border: none;
-}
-
-
-.btn-log{
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.btn-log div {
-  max-width: 100%;
-}
-.blog .svg{
-  margin-left: -1vh;
-}
-.blog {
-  display: flex;
-  height: 48px;
-  padding: 0 4.9vh ;
-  justify-content: center;
-  align-items: center;
-  flex: 1 0 0;
-  border-radius: 10px;
-  background-color: var(--whiteColor);
-  border: 2px solid var(--Red);
-  display: flex;
   width: 100%;
 }
-.text{
+.log .flex1 .btn:hover {
+ opacity: 0.7;
+}
+.log .btn-log{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1em;
+}
+.log .blog {
+  justify-content: center;
+  display: flex;
+  padding: 1.4vh 3.1vw;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 0.7em;
+  background-color: var(--whiteColor);
+  border: 2px solid var(--Red);
+}
+.log .text{
   display: flex;
   padding: 0vh 2vh;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 500;
   line-height: 100%;
   letter-spacing: 0.5px;
 }
-.text:hover{
+.log .text:hover{
   opacity: 0.7;
 }
-hr{
+.log hr{
   opacity:0.3 ;
 }
-.sign p{
+.log .sign p{
   color: #1E1E1E;
   font-family: 'Roboto',sans-serif;
-  font-size: 14px;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: 140%; 
 }
-#nav{
+.log #nav{
   color: var(--Red);
   font-family: 'Roboto',sans-serif;
-  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
 }
-#nav:hover{
+.log #nav:hover{
   opacity: 0.7;
 }
-
-
-@media screen and (max-width: 1596px) {
-  .flex1 .btn {
-    padding: 0 35%; 
-  }
-  .forget label #for {
-    margin-left: 0;
-    text-align: left;
-  }
-}
-
-@media screen and (max-width: 768px) {
+/* responsive */
+@media screen and (max-width: 1090px) {
   .log {
     flex-direction: column;
   }
-  .flex1, .flex2 {
-    max-width: 100%;
-    padding: 40px;
+  .log .flex2, .log .flex1 {
+    width: 100%;
   }
-  .flex1 .btn, .inp, .btn, .blog {
-    padding: 12px 10%;
-    width: 80%;
+  .log .flex2 {
+    order: -1;
   }
-  h2 {
-    font-size: 6em;
+  .log .btn-log{
+    flex-direction: column;
   }
-
-  .text {
-    font-size: 4em;
+  .log .flex1{
+    padding-top: 0;
   }
 }
-@media (max-width: 600px) {
-  .btn-log {
-    flex-direction: column; 
-    
-  }
 
-  .text {
-    font-size: 14px;
-  }
-
-  .blog {
-    padding: 0 10px;
-  }
-  .btn-log div {
-    max-width: none; 
-  }
-
-  .blog .svg {
-  
-  }
-}
-@media (max-width: 480px) {
-  .forget label #for {
-    margin-left: 10vw; 
-  }
-  h2 {
-    font-size: 8em;
-  }
-
-  .flex1 .btn, .blog, .blog .svg {
-    width: 90%;
-  }
-
-  .text {
-    font-size: 5em;
-  }
-}

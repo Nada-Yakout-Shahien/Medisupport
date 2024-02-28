@@ -16,16 +16,18 @@ const Sign_up = () => {
           <h2>Sign Up</h2>
           <div className="lbl">
             <div className="name">
-              <div className="lbl1">
+              <div className="lbl">
                 <label htmlFor="">First Name</label>
                 <input type="text" placeholder="FName" required id="nam" />
               </div>
-              <div className="lbl1">
+              <div className="lbl2">
                 <label htmlFor="">Last Name</label>
                 <input type="text" placeholder="LName" required id="nam" />
               </div>
             </div>
-
+          </div>
+            <div className="forml">
+            <div className="lbl">
             <div className="lbl1">
               <label htmlFor="">Email Address</label>
               <input className="inp" type="text" />
@@ -34,9 +36,8 @@ const Sign_up = () => {
               <label htmlFor="">Password</label>
               <input type="Password" className="inp" />
             </div>
-          </div>
-
-          <div class="forget">
+            </div>
+          <div class="check">
             <label for="">
               <input type="checkbox" id="custom-checkbox" />
               <label
@@ -49,9 +50,10 @@ const Sign_up = () => {
             </label>
           </div>
           <input type="submit" name="" value="Sign Up" className="btn" />
-
+            </div>
+          
           <div className="btn-log">
-            <div>
+          
               <button className="blog">
                 <div className="svg">
                   <svg
@@ -81,8 +83,6 @@ const Sign_up = () => {
                 </div>
                 <p className="text"> Log in with Google</p>
               </button>
-            </div>
-            <div>
               <button className="blog">
                 <div className="svg">
                   <svg
@@ -100,7 +100,7 @@ const Sign_up = () => {
                 </div>
                 <p className="text"> Log in with Facebook</p>
               </button>
-            </div>
+            
           </div>
           <hr />
           <div className="sign">

@@ -9,7 +9,7 @@ import app from "../images/app.png";
 import google from "../images/google.png";
 import { useRef, useEffect, useState } from "react";
 import "./About_us.css";
-import Layout from '../components/Layout';
+import Layout from "../components/Layout";
 
 const Aboutus = () => {
   const prevRef = useRef(null);
@@ -22,7 +22,9 @@ const Aboutus = () => {
     if (ourFeaturesRef.current) {
       const container = ourFeaturesRef.current;
       setShowLeftArrow(container.scrollLeft > 0);
-      setShowRightArrow(container.scrollLeft + container.clientWidth < container.scrollWidth);
+      setShowRightArrow(
+        container.scrollLeft + container.clientWidth < container.scrollWidth
+      );
     }
   };
 
@@ -58,7 +60,6 @@ const Aboutus = () => {
         <title>About us ♥</title>
         <meta name="description" content="Aboutus" />
       </Helmet>
-
 
       <div className="about-us-container">
         <div className="about-us-section">
@@ -132,7 +133,6 @@ const Aboutus = () => {
               </p>
               <div className="backimg"></div>
             </div>
-            
           </div>
         </div>
         <svg
@@ -265,7 +265,7 @@ const Aboutus = () => {
                   Rokaia Shereet
                 </p>
                 <p>
-                <svg
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="2"
@@ -273,16 +273,16 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-                </svg>{" "} 
+                  </svg>{" "}
                   Sara Elbadry
                 </p>
-                </div>
+              </div>
             </div>
             <div className="developer">
               <h4>Front-end Team</h4>
               <div className="names">
                 <p>
-                <svg
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="2"
@@ -290,10 +290,11 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-                </svg>{" "} Rofayda Mohammed
+                  </svg>{" "}
+                  Rofayda Mohammed
                 </p>
-              <p>
-              <svg
+                <p>
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="2"
@@ -301,10 +302,11 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-              </svg>{" "} Nada Sobhy
-              </p>
-              <p>
-              <svg
+                  </svg>{" "}
+                  Nada Sobhy
+                </p>
+                <p>
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="2"
@@ -312,10 +314,11 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-              </svg>{" "} Nada Yakout
-              </p>
-              <p>
-              <svg
+                  </svg>{" "}
+                  Nada Yakout
+                </p>
+                <p>
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="2"
@@ -323,15 +326,16 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-              </svg>{" "} Hossam Ezzat
-              </p>
+                  </svg>{" "}
+                  Hossam Ezzat
+                </p>
               </div>
             </div>
             <div className="developer">
               <h4>Mobile Team</h4>
               <div className="names">
                 <p>
-                <svg
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="2"
@@ -339,7 +343,8 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-                </svg>{" "} Mostafa Salim
+                  </svg>{" "}
+                  Mostafa Salim
                 </p>
               </div>
             </div>
@@ -347,7 +352,7 @@ const Aboutus = () => {
               <h4>Back-end Team</h4>
               <div className="names">
                 <p>
-                <svg
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="2"
@@ -355,10 +360,11 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-                </svg>{" "} Asmaa Gamal
+                  </svg>{" "}
+                  Asmaa Gamal
                 </p>
                 <p>
-                <svg
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="2"
@@ -366,10 +372,11 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-                </svg>{" "} Nada El-habrouk
+                  </svg>{" "}
+                  Nada El-habrouk
                 </p>
                 <p>
-                <svg
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="2"
@@ -377,15 +384,16 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-                </svg>{" "} Alaa Mekhimer
+                  </svg>{" "}
+                  Alaa Mekhimer
                 </p>
               </div>
             </div>
             <div className="developer">
-              <h4 >AI Team </h4>
+              <h4>AI Team </h4>
               <div className="names">
                 <p>
-                <svg
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="2"
@@ -393,10 +401,11 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-                </svg>{" "} Alaa Mekhimer
+                  </svg>{" "}
+                  Alaa Mekhimer
                 </p>
                 <p>
-                <svg
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="2"
@@ -404,10 +413,11 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-                </svg>{" "} Nada Yakout
+                  </svg>{" "}
+                  Nada Yakout
                 </p>
                 <p>
-                <svg
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="2"
@@ -415,10 +425,11 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-                </svg>{" "} Mostafa Salim
+                  </svg>{" "}
+                  Mostafa Salim
                 </p>
                 <p>
-                <svg
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="2"
@@ -426,14 +437,14 @@ const Aboutus = () => {
                     fill="none"
                   >
                     <path d="M0 1H12" stroke="#BE0202" />
-                </svg>{" "} Hossam Ezzat
+                  </svg>{" "}
+                  Hossam Ezzat
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </Layout>
   );
 };

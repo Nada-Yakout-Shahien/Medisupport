@@ -1,0 +1,54 @@
+.details{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  flex: 1;
+}
+.details h3{
+  color: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: clamp(1rem, calc(1vw + 3vw), 2rem);    font-weight: 700;
+}
+.details .navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.88rem;
+  align-items: center;
+}
+.details .navigation .status{
+  display: flex;
+  flex-direction: row;
+  gap:  clamp(1rem, calc(1vw + 3vw), 4.25rem);
+}
+.details .navigation .status button{
+  color: #777474;
+  font-family: 'Roboto',sans-serif;
+  font-size: clamp(1rem, calc(1vw + 3vw), 2rem);  
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: none;
+  border: none;
+}
+.details .navigation .line{
+  position: relative;
+  width: clamp(17rem, calc(30vw + 35vw), 35rem); 
+  height: 0.4375rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--Red);
+}
+
+.details .navigation .line .lineafter{
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%; 
+  background: var(--Red); 
+  transition: all 0.3s ease;
+}
+

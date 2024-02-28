@@ -32,7 +32,6 @@ function Navbar(){
           </svg>
           support
         </h3>
-
         <nav ref={navRef}>
           <NavLink to="/home">Home</NavLink>
           <NavLink to="/About_us">About us</NavLink>
@@ -44,7 +43,7 @@ function Navbar(){
           <NavLink to="/Contact_us">Contact us</NavLink>
 
           <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-            <FaTimes />
+          <FaTimes />
           </button>
 
           <div className="nav-button">
