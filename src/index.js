@@ -31,6 +31,7 @@ import SugarHistory from "./pages/sugar_history";
 import PressurHistory from "./pages/pressur_history";
 import BmiHistory from "./pages/bmi_history";
 import BookingD from "./pages/Booking-Details";
+import DetailsBloodpressure from "./pages/details-bloodpressure";
 
 const router = createBrowserRouter([
   {
@@ -176,7 +177,12 @@ const router = createBrowserRouter([
   {
     path: "/Profile",
     element: <Profile />,
-    errorElement: <h1>Sorry......</h1>,
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/DetailsBP",
+    element: <DetailsBloodpressure />,
+    errorElement: <h1>Sorry, No page to display....</h1>,
   },
 ]);
 
