@@ -217,6 +217,16 @@ const Aboutus = () => {
                   inputting specific patient data.
                 </p>
               </div>
+              <div className="feature">
+                <p>
+                Online check up via video call between the patient and the doctor
+                </p>
+              </div>
+              <div className="feature">
+                <p>
+                Payment online via Vodafone Cash
+                </p>
+              </div>
               <div className="feature-end-space"></div>
             </div>
             {showRightArrow && (

@@ -9,7 +9,8 @@
 .details h3{
   color: var(--Red);
   font-family: 'Roboto',sans-serif;
-  font-size: clamp(1rem, calc(1vw + 3vw), 2rem);    font-weight: 700;
+  font-size: clamp(1rem, calc(1vw + 3vw), 2rem);    
+  font-weight: 700;
 }
 .details .navigation {
   display: flex;
