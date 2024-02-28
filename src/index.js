@@ -29,7 +29,7 @@ import ForgetPassword from "./pages/forget_password";
 import SugarHistory from "./pages/sugar_history";
 import PressurHistory from "./pages/pressur_history";
 import BmiHistory from "./pages/bmi_history";
-import DetailsBloodpressure from "./pages/details-bloodpressure";
+import BookingD from "./pages/Booking-Details";
 
 const router = createBrowserRouter([
   {
@@ -168,8 +168,8 @@ const router = createBrowserRouter([
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
-    path: "/DetailsBP",
-    element: <DetailsBloodpressure />,
+    path: "/Booking",
+    element: <BookingD />,
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
 ]);
