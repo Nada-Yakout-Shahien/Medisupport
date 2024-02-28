@@ -31,6 +31,7 @@ import PressurHistory from "./pages/pressur_history";
 import BmiHistory from "./pages/bmi_history";
 import VerificationCode from "./pages/Verification_Code";
 import NewPassword from "./pages/New_Password";
+import DoneNewPass from "./pages/done_new_pass"
 
 const router = createBrowserRouter([
   {
@@ -176,6 +177,11 @@ const router = createBrowserRouter([
   {
     path: "/New_Password",
     element: <NewPassword />,
+    errorElement: <h1>Sorry......</h1>,
+  },
+  {
+    path: "/done_New_Pass",
+    element: <DoneNewPass />,
     errorElement: <h1>Sorry......</h1>,
   },
 ]);

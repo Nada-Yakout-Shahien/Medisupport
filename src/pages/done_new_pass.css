@@ -1,0 +1,87 @@
+.rnewpassword{
+    width: 100vw; 
+   height: 350vh;
+  
+}
+
+.riconr {
+    width: 7.75rem;
+height: 7.75rem;
+padding-left: 40rem;
+
+}
+
+.rthank{
+    display: flex;
+width: 80rem;
+flex-direction: column;
+align-items: center;
+gap: 1rem;
+padding-bottom: 5rem;
+padding-left: 6rem;
+}
+
+.rthank h2{
+    color: #BE0202;
+text-align: center;
+
+/* Heading/1 */
+font-family: Roboto;
+font-size: 3.375rem;
+font-style: normal;
+font-weight: 700;
+line-height: 110%; /* 3.7125rem */
+}
+
+.rthank p{
+    color: #1F1F1F;
+text-align: center;
+
+/* Heading/2 */
+font-family: Roboto;
+font-size: 2.625rem;
+font-style: normal;
+font-weight: 700;
+line-height: 110%; /* 2.8875rem */
+}
+
+.rthanr{
+    display: flex;
+width: 80rem;
+flex-direction: column;
+align-items: center;
+gap: 1rem;
+padding-bottom: 3rem;
+padding-left: 6rem;
+}
+
+.rthanr p{
+    color: #353535;
+text-align: center;
+
+/* Body/L */
+font-family: Roboto;
+font-size: 1.125rem;
+font-style: normal;
+font-weight: 400;
+line-height: 140%; /* 1.575rem */
+}
+
+.rbr{
+    display: flex;
+    width: 11.5625rem;
+    height: 3.5rem;
+    padding: 1rem 0.75rem;
+    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid #BE0202;
+    color: rgba(31, 31, 31, 1);
+    font-size: 1rem;
+}
+
+.rbr:hover{
+    background: #b84e4e;
+}

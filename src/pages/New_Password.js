@@ -40,7 +40,7 @@ const NewPassword = () => {
                 <button className="tronr">  </button>
           </div>
           <div className="buttorr">
-          <NavLink to="#" className="rbtrd">Reset Password</NavLink>
+          <NavLink to="/done_new_pass" className="rbtrd">Reset Password</NavLink>
           </div>
         </div>
       </div>
