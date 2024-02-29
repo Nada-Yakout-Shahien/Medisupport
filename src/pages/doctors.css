@@ -156,12 +156,12 @@ input:hover {
   cursor: pointer;
 }
 
-.button {
+.buttonrr_r {
   display: flex;
   color: #fff;
   width: 11.75rem;
   height: 3rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.755rem 0.557rem;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
