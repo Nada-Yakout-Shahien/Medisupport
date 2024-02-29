@@ -142,7 +142,6 @@ input:hover {
 
 .seou {
   color: #1f1f1f;
-
   font-size: 0.9rem;
   font-style: normal;
   font-weight: 0.3rem;
@@ -159,8 +158,8 @@ input:hover {
 .button {
   display: flex;
   color: #fff;
-  width: 11.75rem;
-  height: 3rem;
+  /* width: 11.75rem; */
+  /* height: 3rem; */
   padding: 0.5rem 0.75rem;
   justify-content: center;
   align-items: center;
