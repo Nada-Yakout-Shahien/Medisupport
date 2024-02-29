@@ -27,22 +27,26 @@ const DoneNewPass = () => {
             />
           </svg>
         </div>
-        <div className="rthank">
-          <h2>Thank You</h2>
-          <p>Your password has been changed</p>
+        <div className="con">
+          <div className="rthank">
+            <h2>Thank You</h2>
+            <p>Your password has been changed</p>
+          </div>
+          <div className="rthanr">
+            <p>
+              Rhoncus morbi et augue nec, in id ullamcorper at sit. Condimentum
+              sit nunc in eros scelerisque sed. Commodo in viverra nunc,
+              ullamcorper ut. Non, amet, aliquet scelerisque nullam sagittis,
+              pulvinar. Fermentum scelerisque sit consectetur hac mi. Mollis leo
+              eleifend ultricies purus iaculis.
+            </p>
+          
+            
+              <NavLink to="/home" className="rbr">
+                Home Page
+              </NavLink>
+            
         </div>
-        <div className="rthanr">
-          <p>
-            Rhoncus morbi et augue nec, in id ullamcorper at sit. Condimentum
-            sit nunc in eros scelerisque sed. Commodo in viverra nunc,
-            ullamcorper ut. Non, amet, aliquet scelerisque nullam sagittis,
-            pulvinar. Fermentum scelerisque sit consectetur hac mi. Mollis leo
-            eleifend ultricies purus iaculis.
-          </p>
-
-          <NavLink to="/home" className="rbr">
-            Home Page
-          </NavLink>
         </div>
       </div>
     </Layout>
