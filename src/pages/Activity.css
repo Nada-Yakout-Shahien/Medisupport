@@ -1,16 +1,16 @@
-                        /* dropdown */
+/* dropdown */
 
-.dropdown-menu{
+.dropdown-menu {
   display: flex;
-  padding-top:2rem ;
+  padding-top: 2rem;
 }
 
-.dropdown-menu select{
+.dropdown-menu select {
   width: 18rem;
   border: none;
   background: none;
   color: var(--Red);
-  font-family: 'Roboto',sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 2rem;
   font-style: normal;
   font-weight: 600;
@@ -19,182 +19,542 @@
   margin-left: 1rem;
 }
 
-.dropdown-menu  option{
+.dropdown-menu option {
   color: var(--Red);
-  font-family: 'Roboto',sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 2rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
 }
 
-.dropdown-menu option{
+.dropdown-menu option {
   box-shadow: 4rem;
 }
 
-                          /* blood-pressure-sec */
 
-.rate{
+  /* table */
+
+  .table{
+    width: 33rem;
+    border: 0.1rem solid var(--Red);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin: 0 2rem 2rem 25rem;
+  }
+  
+  .table .head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    font-family: 'Roboto',sans-serif;
+    font-size: 1.1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-right: 2rem;
+  }
+  
+  .table .head .trans{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--Red);
+  }
+  
+  
+
+/* blood-pressure-sec */
+
+.detailsbpa {
   display: flex;
   flex-direction: column;
-  padding: 2rem 0 2rem 2rem;
-  gap: 1rem;
+  padding: 0 0 0 5vw;
+  gap: 2.5rem;
+  padding: 1rem 2rem 2.5rem 2rem;
 }
-
-.average{
+.detailsbpa .headcon {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
 }
-
-.average h5{
-  color: #1F1F1F;
-  font-family: 'Roboto',sans-serif;
-  font-size: 1.25rem;
+.detailsbpa .contant {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.dBP-address p {
+  color: var(--Red);
+  font-family: "Roboto", sans-serif;
+  font-size: 2rem;
   font-style: normal;
-  font-weight: 600;
-  line-height: 1.45019rem; /* 116.013% */
+  font-weight: 700;
+  line-height: normal;
 }
-
-.ratio{
+.dBP-status {
+  max-width: 40rem;
   display: flex;
-  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
-
-.ratio p{
-  color: #BE0202;
-  font-family: 'Roboto',sans-serif;
+.dBP-status p {
+  color: var(--graycolor);
+  font-family: "Roboto", sans-serif;
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 600;
   line-height: 1.45019rem;
-  margin: -0.1rem 0 0 0.3rem;
 }
-
-.ratio h5{
-  color: #1F1F1F;
-  font-family: 'Roboto',sans-serif;
+.dBP-status span {
+  color: var(--Red);
+  font-family: "Roboto", sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.45019rem;
+  animation: none;
+}
+.dBP-status button {
+  text-align-last: center;
+  padding: 0.6vh 9vw;
+  border-radius: 1rem;
+  background: var(--Red);
+  border: none;
+}
+.dBP-status p {
+  color: var(--graycolor);
+  font-family: "Roboto", sans-serif;
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 600;
   line-height: 1.45019rem; /* 116.013% */
-  margin: -0.1rem 0 0 0.3rem;
 }
 
-.rate button{
-  width: 25vw;
-  height: 5vh;
-  border: none;
-  border-radius: 2rem;
-  background-color: var(--Red);
-  color: white;
-  font-size: 1rem;
+.dBP-status button p {
+  color: var(--whiteColor);
+  text-align: right;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9375rem;
   font-style: normal;
   font-weight: 400;
-  font-family: 'Roboto',sans-serif;
-  margin: -2.8rem 0 0 20rem;
+  line-height: 1.45019rem; /* 154.684% */
 }
 
-                          /* dates */
+/* date */
+.detailsbpa .dBP-date {
+  width: 100%;
+  height: auto;
+  display: flex;
+  overflow-x: auto;
+  align-items: flex-start;
+  gap: 2.5em;
+  margin-bottom: 2.5rem;
+  scrollbar-width: none;
+}
+.detailsbpa .dBP-date::-webkit-scrollbar {
+  display: none;
+}
+.detailsbpa .day-container {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+.detailsbpa .day-name {
+  color: var(--graycolor);
+  font-family: "Roboto", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+.detailsbpa .date-container {
+  width: 72px;
+  height: 72px;
+  position: relative;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+.detailsbpa .date-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+.detailsbpa .selected {
+  opacity: 0.6;
+}
 
+/* diagram */
+.detailsbpa .dBP-diagram {
+  max-width: 100%;
+  min-height: 23.125rem;
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+  border: 1px solid var(--Red);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.detailsbpa .dBP-diagram .diagrams {
+  display: flex;
+  flex-direction: row;
+  gap: 7rem;
+  padding: 1.5rem;
+}
+.detailsbpa .dBP-diagram .diagrams .dig {
+  width: 50%;
+}
+.detailsbpa .dBP-diagram .diagrams .dig .bound {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.detailsbpa .dBP-diagram .diagrams .dig .bound p {
+  display: flex;
+  align-items: center;
+  color: var(--graycolor);
+  text-align: right;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.45019rem; /* 116.013% */
+}
+.detailsbpa .dBP-diagram .diagrams .dig .bound .boun {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}
+.detailsbpa .dBP-diagram .diagrams .dig .bound .boun .rec {
+  width: 1.84363rem;
+  height: 1.875rem;
+  flex-shrink: 0;
+  border-radius: 0.3125rem;
+  border: 1px solid var(--Red);
+  /* background: var(--Red); */
+}
 
+/* diag */
 
-                          /* graph */
-
-
-
-                          /* reading */
-                      
-.read{
-  border: 0.1rem solid darkgray;
-  border-radius: 1rem;
+/* inf-det */
+.detailsbpaa .inf-det {
+  max-width: 100%;
+  min-height: 16rem;
   padding: 1rem;
-  margin: 0 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 0.625rem;
+  border: 1px solid #d9d9d9;
 }
-
-.read h3{
-  color: #1F1F1F;
-  font-family: 'Roboto',sans-serif;
+.detailsbpa .inf-det h3 {
+  color: var(--graycolor);
+  font-family: "Roboto", sans-serif;
   font-size: 1.875rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
 }
- .read h5{
-  color: #1F1F1F;
-  font-family: 'Roboto',sans-serif;
+.detailsbpa .inf-det h4 {
+  color: var(--graycolor);
+  font-family: "Roboto", sans-serif;
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  padding-top: 1rem;
- }
-
- .read h6{
-  color: #353535;
-  font-family: 'Roboto',sans-serif;
-  font-size: 1.1rem;
+}
+.detailsbpa .inf-det p {
+  max-width: 97%;
+  color: var(--darkgraycolor);
+  font-family: "Roboto", sans-serif;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  padding: 1rem 0;
- }
-
-                          /* table */
-
-.table{
-  width: 33rem;
-  border: 0.1rem solid var(--Red);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  margin: 0 2rem 2rem 25rem;
 }
-
-.table .head{
+/* btn */
+.detailsbpa .btn {
   display: flex;
+  justify-content: center;
+}
+.detailsbpa .btn .addrec {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem 0.75rem;
   align-items: center;
-  justify-content: space-between;
-  align-content: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  font-family: 'Roboto',sans-serif;
-  font-size: 1.1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-right: 2rem;
-}
-
-.table .head .trans{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: var(--Red);
-}
-
-
-
-                            /* record */
-
-.button{
-  display: flex;
-  width: 30vw;
-  height: 8vh;
-  border: none;
-  border-radius: 0.7rem;
-  background-color: var(--Red);
-  color: white;
+  flex: 0.3;
+  color: var(--whiteColor);
+  border-radius: 0.625rem;
+  background: var(--Red);
+  font-family: "Roboto", sans-serif;
   font-size: 1.5rem;
   font-style: normal;
-  font-weight: 400;
-  font-family: 'Roboto',sans-serif;
-  padding: 1rem 0 2.5rem 7.8rem;
-  margin: 1rem 0 3rem 29rem;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.03125rem;
+}
+.detailsbpa .btn .addrec:hover {
+  opacity: 0.7;
 }
 
-.button:hover{
-  background-color: var(--secondaryColor);
+
+
+/* blood sugar */
+.bloodsugarda {
+  position: relative;
+  padding: 2rem 2rem 2.5em 2rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5em;
+}
+.bloodsugarda .stb {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.bloodsugarda .stb h3 {
   color: var(--Red);
-  border: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+}
+/* date */
+.bloodsugarda .date {
+  width: 100%;
+  height: auto;
+  display: flex;
+  overflow-x: auto;
+  align-items: flex-start;
+  gap: 2.5em;
+  margin-bottom: 2.5rem;
+  scrollbar-width: none;
+}
+.bloodsugarda .dated::-webkit-scrollbar {
+  display: none;
+}
+.bloodsugarda .day-container {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+}
+.bloodsugarda .day-name {
+  color: #1f1f1f;
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+.bloodsugarda .date-container {
+  width: 72px;
+  height: 72px;
+  position: relative;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+.bloodsugarda .date-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+.bloodsugarda .selected {
+  opacity: 0.6;
+}
+
+/* diagram */
+.diagram .chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.diagram .chart-box {
+  width: clamp(300px, 55vw, 600px);
+  padding: 2em;
+  border-radius: 1rem;
+  margin: 0 auto;
+  border: 1px var(--Red) solid;
+  flex-direction: column;
+  align-items: center;
+}
+.diagram .chart-title {
+  display: flex;
+  flex-direction: row;
+  color: var(--Red);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  line-height: 1rem;
+  gap: 0.63em;
+}
+.diagram .chart-pre-diabetes {
+  width: 100%;
+}
+.diagram .chart-pre-diabetes .pre {
+  display: flex;
+  flex-direction: row;
+  color: var(--graycolor);
+  font-size: clamp(1rem, 2.5vw, 1.25em);
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  gap: 0.2em;
+}
+.diagram .chart-pre-diabetes .defnum {
+  color: var(--Red);
+  font-size: clamp(1.25rem, 3vw, 1.5em);
+}
+.diagram .chart-axis {
+  display: flex;
+  padding-top: 3rem;
+  align-items: flex-start;
+  gap: 2.5vw;
+}
+.diagram .chart-values {
+  max-height: 19.69506rem;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1.5rem;
+}
+.diagram .lcp {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+}
+.diagram .chart-days {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 100%;
+  gap: 2vw;
+}
+.diagram .chart-bars {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 19.70031rem;
+  gap: 2vw;
+  padding-left: 0.4em;
+}
+.chart-bar-outer {
+  flex: 1 1 auto;
+  max-width: 1.31369rem;
+  min-width: 1em;
+  border-radius: 0.4125rem;
+  border: 1px solid var(--Red-transparent);
+  position: relative;
+}
+.chart-bar-inner {
+  background-color: var(--Red);
+  border-radius: 0.3125rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 0;
+}
+.diagram .chart-days,
+.chart-value {
+  color: var(--graycolor);
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+/* inf-det */
+.bloodsugarda .inf-det {
+  max-width: 100%;
+  min-height: 16rem;
+  border-radius: 0.625rem;
+  border: 1px solid #d9d9d9;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.bloodsugarda .inf-det h3 {
+  color: var(--graycolor);
+  font-family: "Roboto", sans-serif;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.bloodsugarda .inf-det h4 {
+  color: var(--graycolor);
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.bloodsugarda .inf-det p {
+  max-width: 97%;
+  color: var(--darkgraycolor);
+  font-family: "Roboto", sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+/* btn */
+.bloodsugarda .btn {
+  display: flex;
+  justify-content: center;
+}
+.bloodsugarda .btn .addrec {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem 0.75rem;
+  align-items: center;
+  flex: 0.3;
+  color: var(--whiteColor);
+  border-radius: 0.625rem;
+  background: var(--Red);
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.03125rem;
+}
+.bloodsugarda .btn .addrec:hover {
+  opacity: 0.7;
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 750px) {
+  .detailsbpa .dBP-diagram .diagrams {
+    display: flex;
+    flex-direction: column;
+  }
+  .detailsbpa .dBP-diagram .diagrams .dig {
+    width: 100%;
+  }
 }

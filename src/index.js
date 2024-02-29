@@ -31,7 +31,7 @@ import SugarHistory from "./pages/sugar_history";
 import PressurHistory from "./pages/pressur_history";
 import BmiHistory from "./pages/bmi_history";
 import BookingD from "./pages/Booking-Details";
-import DetailsBloodpressure from "./pages/details-bloodsuger";
+import DetailsBloodpressure from "./pages/details-bloodpressure";
 import DoneNewPass from "./pages/done_new_pass";
 import NewPassword from "./pages/New_Password";
 import VerificationCode from "./pages/Verification_Code";
