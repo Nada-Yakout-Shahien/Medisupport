@@ -92,7 +92,7 @@ nav .navbar-menu_container button:hover {
     gap: 3vw;
   }
   nav {
-    gap: 2.9vw;
+    gap: 2.8vw;
   }
 }
 @media only screen and (max-width: 1324px) {
@@ -100,15 +100,23 @@ nav .navbar-menu_container button:hover {
     gap: 2.7vw;
   }
   nav {
-    gap: 2.6vw;
+    gap: 2.4vw;
   }
 }
-@media only screen and (max-width: 1088px) {
+@media only screen and (max-width: 1095px) {
+  .Navbar{
+    gap: 2.6vw;
+  }
+  nav {
+    gap: 2.3vw;
+  }
+}
+@media only screen and (max-width: 1048px) {
   .Navbar{
     gap: 2.4vw;
   }
   nav {
-    gap: 2.5vw;
+    gap: 2.3vw;
   }
 }
 @media only screen and (max-width: 1024px) {

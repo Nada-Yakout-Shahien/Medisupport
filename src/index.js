@@ -24,14 +24,12 @@ import ArSugar from "./pages/ar_sugar";
 import ArBmi from "./pages/ar_bmi";
 import ArHeart from "./pages/ar_heart";
 import Activity from "./pages/Activity";
+import Profile from "./pages/Profile";
 import DetailsBS from "./pages/details-bloodsuger";
 import ForgetPassword from "./pages/forget_password";
 import SugarHistory from "./pages/sugar_history";
 import PressurHistory from "./pages/pressur_history";
 import BmiHistory from "./pages/bmi_history";
-import VerificationCode from "./pages/Verification_Code";
-import NewPassword from "./pages/New_Password";
-import DoneNewPass from "./pages/done_new_pass"
 
 const router = createBrowserRouter([
   {
@@ -167,7 +165,22 @@ const router = createBrowserRouter([
   {
     path: "/forget_password",
     element: <ForgetPassword />,
-    errorElement: <h1>Sorry......</h1>,
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/Booking",
+    element: <BookingD />,
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/Profile",
+    element: <Profile />,
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/DetailsBP",
+    element: <DetailsBloodpressure />,
+    errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/Verification_Code",

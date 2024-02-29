@@ -39,6 +39,7 @@
 .socialmedia img {
   width: 20px;
   height: 20px;
+  cursor: pointer;
 }
 .sb_footer-below {
   display: flex;
