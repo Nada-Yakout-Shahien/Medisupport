@@ -239,7 +239,6 @@
   flex-shrink: 0;
   border-radius: 0.3125rem;
   border: 1px solid var(--Red);
-  /* background: var(--Red); */
 }
 
 /* diag */
@@ -309,6 +308,46 @@
 
 
 /* blood sugar */
+.average{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.average h5{
+  color: #1F1F1F;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.45019rem; /* 116.013% */
+}
+
+.ratio{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ratio p{
+  color: #BE0202;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.45019rem;
+  margin: -0.1rem 0 0 0.3rem;
+}
+
+.ratio h5{
+  color: #1F1F1F;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.45019rem; /* 116.013% */
+  margin: -0.1rem 0 0 0.3rem;
+}
 .bloodsugarda {
   position: relative;
   padding: 2rem 2rem 2.5em 2rem;
