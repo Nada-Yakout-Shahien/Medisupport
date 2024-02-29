@@ -257,7 +257,7 @@ img-btn {
   gap: 1.5em;
   padding: 2vw 0vh;
   flex-direction: row;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
 }
@@ -292,7 +292,7 @@ img-btn {
 
 @media (max-width: 1000px) {
    .Ourdevelopers{
-      flex-wrap: wrap;
+      /* flex-wrap: wrap; */
    }
 }
 @media (max-width: 768px) {
