@@ -1,81 +1,9 @@
 
-
-.flex {
-  display: flex;
+h1{
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
 }
-
-.main-list {
-  padding: 20px;
-  font-size: 19px;
-  position: relative;
-}
-
-.main-link {
-  padding: 8px 15px;
-}
-
-.main-link:hover,  .main-link.active{
-  color: var(--Red);
-  box-shadow: 0 0 5px var(--Red);
-  border-radius: 5px;
-}
-
-
-
-.sub-ul {
-  display: none;
-  position: absolute;
-  top: 69px;
-  left: -15px;
-  border-top: 1px solid var(--Red);
-  background-color: #1b1b1b;
-  border-radius: 5px;
-  padding: 5px;
-  width: 155px;
-}
-
-.sub-of-js {
-  left: 10px;
-}
-
-.sub-ul li {
-  padding: 8px 0;
-  font-size: 17px;
-  border-bottom: 1px solid black;
-}
-
-.sub-ul li a:hover {
-  color: var(--Red);
-  font-weight: bold;
-}
-
-.main-list:hover .sub-ul {
-  display: block;
-}
-
-
-.sub-sub-ul {
-  position: absolute;
-  top: 80px;
-  left: 153px;
-
-  border-top: 1px solid var(--Red);
-
-  background-color: #1b1b1b;
-
-  border-radius: 5px;
-  padding: 5px;
-
-  width: 150px;
-
-  display: none;
-}
-
-.mini-projects:hover .sub-sub-ul {
-  display: block;
-}
-
-
 
 
 
