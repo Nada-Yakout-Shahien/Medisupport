@@ -1,4 +1,4 @@
-                    /* dropdown */
+                        /* dropdown */
 
 .dropdown-menu{
   display: flex;
@@ -31,6 +31,8 @@
 .dropdown-menu option{
   box-shadow: 4rem;
 }
+
+                          /* blood-pressure-sec */
 
 .rate{
   display: flex;
@@ -94,3 +96,105 @@
   margin: -2.8rem 0 0 20rem;
 }
 
+                          /* dates */
+
+
+
+                          /* graph */
+
+
+
+                          /* reading */
+                      
+.read{
+  border: 0.1rem solid darkgray;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 0 2rem 2rem 2rem;
+}
+
+.read h3{
+  color: #1F1F1F;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+ .read h5{
+  color: #1F1F1F;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: 1rem;
+ }
+
+ .read h6{
+  color: #353535;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 1rem 0;
+ }
+
+                          /* table */
+
+.table{
+  width: 33rem;
+  border: 0.1rem solid var(--Red);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 0 2rem 2rem 25rem;
+}
+
+.table .head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-right: 2rem;
+}
+
+.table .head .trans{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--Red);
+}
+
+
+
+                            /* record */
+
+.button{
+  display: flex;
+  width: 30vw;
+  height: 8vh;
+  border: none;
+  border-radius: 0.7rem;
+  background-color: var(--Red);
+  color: white;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  font-family: 'Roboto',sans-serif;
+  padding: 1rem 0 2.5rem 7.8rem;
+  margin: 1rem 0 3rem 29rem;
+}
+
+.button:hover{
+  background-color: var(--secondaryColor);
+  color: var(--Red);
+  border: none;
+}
