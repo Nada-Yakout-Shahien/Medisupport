@@ -29,16 +29,15 @@ const Bloodpressure = () => {
   const handleDayClick = (fullDate) => {
     setSelectedDay(fullDate);
   };
-  
-  //data 
+
+  //data
   const [systolicBP, setSystolicBP] = useState(110);
   const [diastolicBP, setDiastolicBP] = useState(80);
 
-  const increaseSystolic = () => setSystolicBP(prev => prev + 1);
-  const decreaseSystolic = () => setSystolicBP(prev => prev - 1);
-  const increaseDiastolic = () => setDiastolicBP(prev => prev + 1);
-  const decreaseDiastolic = () => setDiastolicBP(prev => prev - 1);
-
+  const increaseSystolic = () => setSystolicBP((prev) => prev + 1);
+  const decreaseSystolic = () => setSystolicBP((prev) => prev - 1);
+  const increaseDiastolic = () => setDiastolicBP((prev) => prev + 1);
+  const decreaseDiastolic = () => setDiastolicBP((prev) => prev - 1);
 
   return (
     <Layout>
@@ -88,7 +87,7 @@ const Bloodpressure = () => {
               <div className="num">
                 <div className="enum">
                   <div className="numb">
-                  <p>{systolicBP}</p>
+                    <p>{systolicBP}</p>
                   </div>
                   <div className="icon">
                     <div className="mini" onClick={decreaseSystolic}>
@@ -137,7 +136,9 @@ const Bloodpressure = () => {
               </div>
               <div className="num">
                 <div className="enum">
-                  <div className="numb"><p>{diastolicBP}</p></div>
+                  <div className="numb">
+                    <p>{diastolicBP}</p>
+                  </div>
                   <div className="icon">
                     <div className="mini" onClick={decreaseDiastolic}>
                       <svg
