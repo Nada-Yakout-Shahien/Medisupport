@@ -1,0 +1,38 @@
+.bmi_r{
+    width: 90vw; 
+   height: 100vh; 
+   padding:5rem 19.5rem ;
+}
+.bmir{
+    width: 49rem;
+height: 40.375rem;
+padding:2.5rem 22rem;
+flex-shrink: 0;
+border-radius: 0.625rem;
+border: 1px solid #BE0202;
+color: #BE0202;
+font-family: Roboto;
+font-size: 2.25rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.rbmi__r{
+    color: #BE0202;
+font-family: Roboto;
+font-size: 2.25rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.bmi_p{
+    color: #1F1F1F;
+
+font-family: Roboto;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
+line-height: 110%; /* 1.375rem */
+}
