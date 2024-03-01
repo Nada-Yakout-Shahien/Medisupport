@@ -1,9 +1,21 @@
 import { Helmet } from "react-helmet-async";
 import "./Activity.css";
 import React , { useState }  from "react";
-
+import { eachDayOfInterval, format } from "date-fns";
 import Layout from '../components/Layout';
 import { NavLink } from "react-router-dom";
+
+const generateDays = (startDate, numberOfDays) => {
+  const endDate = new Date(startDate.getTime());
+  endDate.setDate(startDate.getDate() + numberOfDays - 1);
+  return eachDayOfInterval({ start: startDate, end: endDate }).map((day) => ({
+    day: format(day, "EEE"),
+    date: format(day, "d"),
+    fullDate: format(day, "yyyy-MM-dd"),
+    color: "var(--Red)",
+    textColor: "var(--whiteColor)",
+  }));
+};
 
 
 const Activity = (props,{ data } ) => {
@@ -13,9 +25,18 @@ const Activity = (props,{ data } ) => {
     setSelectedOption(event.target.value);
   };
 
-
-
+    //days
+    const startDate = new Date(2024, 5, 1);
+    const days = generateDays(startDate, 100);
   
+    //on click day
+    const [selectedDay, setSelectedDay] = useState(null);
+  
+    const handleDayClick = (fullDate) => {
+      setSelectedDay(fullDate);
+    };
+
+
   return (
     <Layout>
       <Helmet>
@@ -50,7 +71,22 @@ const Activity = (props,{ data } ) => {
                           {/* dates */}
           
           <div className="date">
-            
+            {days.map((item, index) => (
+              <div key={index} className="day-container">
+                <div className="day-name">{item.day}</div>
+                <div
+                  className={`date-container ${
+                    selectedDay === item.fullDate ? "selected" : ""
+                  }`}
+                  onClick={() => handleDayClick(item.fullDate)}
+                  style={{ background: item.color }}
+                >
+                  <div className="date-text" style={{ color: item.textColor }}>
+                    {item.date}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
           
                           {/* graph */}

@@ -28,8 +28,8 @@
   line-height: normal;
 }
 
-.dropdown-menu option{
-  box-shadow: 4rem;
+.dropdown-menu option :hover{
+  background-color: var(--Red);
 }
 
                           /* blood-pressure-sec */
@@ -98,7 +98,60 @@
 
                           /* dates */
 
+.b-pressure .dates {
+  width: 100%;
+  height: auto;
+  display: flex;
+  overflow-x: auto;
+  align-items: flex-start;
+  gap: 2.5em;
+  margin-bottom: 2.5rem;
+  scrollbar-width: none;
+}
 
+.b-pressure .dates::-webkit-scrollbar {
+  display: none;
+}
+
+.b-pressure .day-container {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.b-pressure .day-name {
+  color: #1f1f1f;
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.b-pressure .date-container {
+  width: 72px;
+  height: 72px;
+  position: relative;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+
+.b-pressure .date-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+.b-pressure .selected {
+  opacity: 0.6;
+}
 
                           /* graph */
 
