@@ -21,7 +21,7 @@ const generateDays = (startDate, numberOfDays) => {
 const Bloodsugar = () => {
   //default menu
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Default");
+  const [selectedOption, setSelectedOption] = useState("Default State");
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
@@ -149,14 +149,24 @@ const Bloodsugar = () => {
             </svg>
             {isOpen && (
               <div className="dropdown-content">
-                <div onClick={() => handleOptionClick("Option 1")}>
-                  Option 1
+                <div onClick={() => handleOptionClick("Default")}>Default</div>
+                <div onClick={() => handleOptionClick("During fasting")}>
+                  During fasting
                 </div>
-                <div onClick={() => handleOptionClick("Option 2")}>
-                  Option 2
+                <div onClick={() => handleOptionClick("Before eating (1h)")}>
+                  Before eating (1h)
                 </div>
-                <div onClick={() => handleOptionClick("Option 3")}>
-                  Option 3
+                <div onClick={() => handleOptionClick("After eating (2h)")}>
+                  After eating (2h)
+                </div>
+                <div onClick={() => handleOptionClick("Before bedtime")}>
+                  Before bedtime
+                </div>
+                <div onClick={() => handleOptionClick("Before workout")}>
+                  Before workout
+                </div>
+                <div onClick={() => handleOptionClick("After workout")}>
+                  After workout
                 </div>
               </div>
             )}

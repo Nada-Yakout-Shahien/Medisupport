@@ -1,18 +1,16 @@
 .contact {
   position: relative;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 4rem 5.5rem;
+  padding: 5rem;
+  gap: 3rem;
 }
 .contact_img  ,.contact-form{
-  max-width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1em;
+  width: 100%;
 }
-
+.contact_img img{
+  width: 100%;
+}
 .contact .name {
   display: flex;
   flex-direction: row;
@@ -20,21 +18,13 @@
   width: 100%;
   gap: 1em;
 }
-.contact_img {
-  max-width: 50%;
-}
-.contact_img img{
-  max-width: 100%;
-}
 .contact-form {
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 3em;
   justify-content: center;
 }
-
 .contact-form h2 {
   color: var(--Red);
   font-family: "Roboto", sans-serif;
@@ -43,7 +33,6 @@
   font-weight: 700;
   line-height: 110%;
 }
-
 .contact-form p {
   align-self: stretch;
   color: var(--graycolor);
@@ -53,14 +42,6 @@
   font-weight: 400;
   line-height: 140%;
 }
-
-.contact-form form {
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
 .contact-form form label {
   display: flex;
   color: var(--graycolor);
@@ -118,9 +99,7 @@
   cursor: pointer;
 }
 .contact-form form .btn:hover {
-  background-color: var(--secondaryColor);
-  color: var(--Red);
-  border: none;
+  opacity: 0.7;
 }
 /* after-click-btn */
 .contact .overlay {
@@ -159,15 +138,12 @@
   opacity: 0.7;
 }
 
-
-
-@media screen and (max-width: 935px) {
+@media screen and (max-width: 1000px) {
   .contact {
     flex-direction: column;
-    max-width: 100%;
   }
-  .contact_img {
-    max-width: 100%;
+  .contact_img  ,.contact-form{
+    width: 100%;
   }
 
 }
