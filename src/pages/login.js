@@ -25,7 +25,6 @@ const Login = () => {
       login();
     }
   };
-
   const { login } = useAuth();
 
   return (

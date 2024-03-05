@@ -8,15 +8,15 @@ import chat from "../images/chat-lines.png";
 import video from "../images/Video.png";
 import del from "../images/del.png";
 
-
 const BookingDetails = () => {
-
   const [onlineDataList, setOnlineDataList] = useState([]);
   const [offlineDataList, setOfflineDataList] = useState([]);
   const [activeSection, setActiveSection] = useState("onlineDoctors");
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
-  const [selectedDoctor, setSelectedDoctor] = useState({ id: null, type: null });
-
+  const [selectedDoctor, setSelectedDoctor] = useState({
+    id: null,
+    type: null,
+  });
 
   //data
   useEffect(() => {
@@ -93,8 +93,12 @@ const BookingDetails = () => {
           1000
         )
       );
-      const onlineDoctors = apiData.filter(doctor => doctor.mode === "online");
-      const offlineDoctors = apiData.filter(doctor => doctor.mode === "offline");
+      const onlineDoctors = apiData.filter(
+        (doctor) => doctor.mode === "online"
+      );
+      const offlineDoctors = apiData.filter(
+        (doctor) => doctor.mode === "offline"
+      );
 
       setOnlineDataList(onlineDoctors);
       setOfflineDataList(offlineDoctors);
@@ -102,7 +106,6 @@ const BookingDetails = () => {
 
     fetchData();
   }, []);
-
 
   const lineStyle = {
     left: activeSection === "onlineDoctors" ? "0%" : "50%",
@@ -117,28 +120,30 @@ const BookingDetails = () => {
 
   //after-click-btn
   //cancel-book
-const handleSelectDoctorForCancellation = (doctorId, type) => {
+  const handleSelectDoctorForCancellation = (doctorId, type) => {
     setSelectedDoctor({ id: doctorId, type });
-    setIsOverlayVisible(true); 
+    setIsOverlayVisible(true);
   };
 
   const cancelBooking = () => {
     if (selectedDoctor.type === "online") {
-      setOnlineDataList(prev => prev.filter(doctor => doctor.id !== selectedDoctor.id));
+      setOnlineDataList((prev) =>
+        prev.filter((doctor) => doctor.id !== selectedDoctor.id)
+      );
     } else {
-      setOfflineDataList(prev => prev.filter(doctor => doctor.id !== selectedDoctor.id));
+      setOfflineDataList((prev) =>
+        prev.filter((doctor) => doctor.id !== selectedDoctor.id)
+      );
     }
     setIsOverlayVisible(false);
     setSelectedDoctor({ id: null, type: null });
   };
-
   return (
     <Layout>
       <Helmet>
         <title>Booking Details♥</title>
         <meta name="description" content="Booking Details" />
       </Helmet>
-
       <div className="details">
         <h3>Details of Booking</h3>
         <div className="navigation" {...handlers}>
@@ -151,9 +156,7 @@ const handleSelectDoctorForCancellation = (doctorId, type) => {
             </button>
             <button
               className={activeSection === "offlineDoctors" ? "active" : ""}
-              onClick={() => setActiveSection("offlineDoctors")
-              
-            }
+              onClick={() => setActiveSection("offlineDoctors")}
             >
               Offline Doctors
             </button>
@@ -199,7 +202,9 @@ const handleSelectDoctorForCancellation = (doctorId, type) => {
                   </div>{" "}
                   <div
                     className="cancel"
-                    onClick={() => handleSelectDoctorForCancellation(doctor.id, 'online')}
+                    onClick={() =>
+                      handleSelectDoctorForCancellation(doctor.id, "online")
+                    }
                   >
                     <img src={del} alt="" />
                     <button to="" className="canc">
@@ -282,15 +287,17 @@ const handleSelectDoctorForCancellation = (doctorId, type) => {
                     </svg>
                     <p className="time">{doctor.time}</p>
                   </div>{" "}
-                  <div className="chat">
-                    <img src={chat} alt="" />
-                    <NavLink to="/chat" className="ch">
-                      Chatting Now
-                    </NavLink>
-                  </div>{" "}
+                  <NavLink to="/Chat">
+                    <div className="chat">
+                      <img src={chat} alt="" />
+                      <p className="ch">Chatting Now</p>
+                    </div>{" "}
+                  </NavLink>
                   <div
                     className="cancel"
-                    onClick={() => handleSelectDoctorForCancellation(doctor.id, 'offline')}
+                    onClick={() =>
+                      handleSelectDoctorForCancellation(doctor.id, "offline")
+                    }
                   >
                     <img src={del} alt="" />
                     <button to="" className="canc">

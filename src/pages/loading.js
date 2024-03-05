@@ -40,8 +40,8 @@ const Loading = () => {
   return (
     <>
       <Helmet>
-        <title>Login ♥</title>
-        <meta name="description" content="Login" />
+        <title>Loading ♥</title>
+        <meta name="description" content="Loading" />
       </Helmet>
       <div className="icons-container">
         {icons.map((icon, index) => (

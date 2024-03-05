@@ -6,7 +6,7 @@
   min-height: 100vh;
   padding: 3rem;
 }
-.icon {
+.icons-container .icon {
   opacity: 0; 
   transition: opacity 0.5s ease; 
   min-width:7vw;

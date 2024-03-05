@@ -47,7 +47,7 @@
   animation: none;
 }
 .dBP-status button {
-  text-align-last: center;
+  text-align: center;
   padding: 0.6vh 9vw;
   border-radius: 1rem;
   background: var(--Red);
@@ -61,7 +61,6 @@
   font-weight: 600;
   line-height: 1.45019rem; /* 116.013% */
 }
-
 .dBP-status button p {
   color:var(--whiteColor);
   text-align: right;
@@ -71,7 +70,6 @@
   font-weight: 400;
   line-height: 1.45019rem; /* 154.684% */
 }
-
 /* date */
 .detailsbp .dBP-date {
   width: 100%;
@@ -121,12 +119,8 @@
 .detailsbp .selected {
   opacity: 0.6;
 }
-
 /* diagram */
 .detailsbp .dBP-diagram{
-  max-width: 100%;
-  min-height: 23.125rem;
-  flex-shrink: 0;
   border-radius: 0.625rem;
   border: 1px solid var(--Red);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -134,11 +128,14 @@
 .detailsbp .dBP-diagram .diagrams{
   display: flex;
   flex-direction: row;
-  gap: 7rem;
+  gap: 5rem;
   padding: 1.5rem;
 }
 .detailsbp .dBP-diagram .diagrams .dig{
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 .detailsbp .dBP-diagram .diagrams .dig .bound{
   display: flex;
@@ -172,6 +169,38 @@
 }
 
 /* diag */
+.diagramu .diagraml{
+  padding: 2.5rem 0rem 0rem;
+}
+.diagram-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+}
+.values {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.values p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
+  color: var(--graycolor);
+}
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: 3.62rem;
+  width: 100%;
+}
+.line {
+  position: relative;
+  border: 2.77px dashed var(--Red);
+  opacity: 0.30;
+  border-radius: 5em;
+}
 
 
 
@@ -238,7 +267,7 @@
   opacity: 0.7;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 780px) {
   .detailsbp .dBP-diagram .diagrams{
     display: flex;
     flex-direction: column;

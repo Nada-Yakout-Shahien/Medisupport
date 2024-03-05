@@ -118,7 +118,7 @@
   background-color: var(--whiteColor);
   cursor: pointer;
 }
-.details .doctor-info .data .nmark{
+.details .doctor-info .data .nmark {
   display: flex;
   justify-content: center;
   align-items: center;

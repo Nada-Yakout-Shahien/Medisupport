@@ -39,6 +39,7 @@ import NewPassword from "./pages/New_Password";
 import VerificationCode from "./pages/Verification_Code";
 import Loading from "./pages/loading";
 import Payment from "./pages/payment";
+import Chat from "./pages/chat";
 
 const router = createBrowserRouter([
   {
@@ -336,6 +337,15 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <Payment />
+      </ProtectedRoute>
+    ),
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/Chat",
+    element: (
+      <ProtectedRoute>
+        <Chat />
       </ProtectedRoute>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,
