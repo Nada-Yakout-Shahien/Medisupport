@@ -1,6 +1,6 @@
 .log {
   display: flex;
-  flex-direction: row;
+  /*flex-direction: row;*/
   gap: 1em;
 }
 .log .flex2 {
@@ -151,7 +151,7 @@
   width: 100%;
 }
 .log .flex1 .btn:hover {
- opacity: 0.7;
+opacity: 0.7;
 }
 .log .btn-log{
   display: flex;
