@@ -212,7 +212,7 @@
   flex-direction: row;
   width: 100%;
   justify-content: space-around;
-  display: none;
+  /* display: none; */
 }
 .dBP-diagram .data-point {
   width: 10px;
