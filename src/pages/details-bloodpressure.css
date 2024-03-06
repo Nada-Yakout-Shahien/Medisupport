@@ -169,39 +169,62 @@
 }
 
 /* diag */
-.diagramu .diagraml{
+.detailsbp .dBP-diagram .diagrams .diagramu .diagraml{
   padding: 2.5rem 0rem 0rem;
 }
-.diagram-container {
+.detailsbp .dBP-diagram .diagrams .diagram-container {
   position: relative;
   display: flex;
   flex-direction: row;
-  align-items: center;
   gap: 1.5rem;
 }
-.values {
+.detailsbp .dBP-diagram .diagrams .diagram-container .values {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
 }
-.values p {
+.detailsbp .dBP-diagram .diagrams .diagram-container .values p {
   font-family: 'Roboto', sans-serif;
   font-size: 1.25rem;
   color: var(--graycolor);
 }
-.lines {
+.detailsbp .dBP-diagram .diagrams .diagram-container .lines {
   display: flex;
   flex-direction: column;
   gap: 3.62rem;
   width: 100%;
 }
-.line {
+.detailsbp .dBP-diagram .diagrams .diagram-container .line {
   position: relative;
   border: 2.77px dashed var(--Red);
   opacity: 0.30;
   border-radius: 5em;
 }
+.detailsbp .dBP-diagram .diagrams .diagram-container .chart{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin-top: 1em;
+}
+.detailsbp .dBP-diagram .diagrams .diagram-container .chart .x-axis{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  display: none;
+}
+.dBP-diagram .data-point {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--Red); /* لون نقطة البيانات */
+  position: absolute;
+}
 
+.x-axis-date {
+
+}
 
 
 

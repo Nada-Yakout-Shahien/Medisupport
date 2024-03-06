@@ -2,10 +2,17 @@ import { Helmet } from "react-helmet-async";
 import "./details-bloodpressure.css";
 import React, { useState, useEffect } from "react";
 import { eachDayOfInterval, format } from "date-fns";
-import 'chart.js/auto';
-import { Line } from 'react-chartjs-2';
+import "chart.js/auto";
+//import { Line } from 'react-chartjs-2';
 import Layout from "../components/Layout";
 import { NavLink } from "react-router-dom";
+
+//dig
+const Days = (firstDate, endDate) => {
+  return eachDayOfInterval({ start: firstDate, end: endDate }).map((day) => ({
+    fullDate: format(day, "yyyy-MM-dd"),
+  }));
+};
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -36,12 +43,18 @@ const DetailsBloodpressure = () => {
   const [data] = useState({
     upperBoundValues: [160, 140, 120, 100, 0],
     lowerBoundValues: [110, 90, 70, 50, 0],
+    dates: ['2024-03-01', '2024-03-02', '2024-03-03'],
   });
 
-  const bloodPressureData = [
-    { date: "2024-06-01", upper: 120, lower: 80 },
-    { date: "2024-06-02", upper: 122, lower: 82 },
-    // أضف المزيد من البيانات هنا
+  const firstDate = new Date(2024, 0, 1);
+  const endDate = new Date(2024, 0, 5);
+  const day = Days(firstDate, endDate);
+
+
+  const bloodPressureReadings = [
+    { date: '2024-03-01', upperValue: 120, lowerValue: 80 },
+    { date: '2024-03-02', upperValue: 125, lowerValue: 85 },
+    { date: '2024-03-03', upperValue: 130, lowerValue: 90 },
   ];
   
   return (
@@ -108,15 +121,50 @@ const DetailsBloodpressure = () => {
                               )
                             )}
                           </div>
-                          <div className="lines">
-                            {data[`${type.toLowerCase()}BoundValues`].map(
-                              (value, i) => (
-                                <div className="line" key={i}>
-                                          
-
+                          <div className="chart">
+                            <div className="lines">
+                    
+                              {data.upperBoundValues.map((value, i) => (
+                                <div
+                                  className="line"
+                                  key={i}
+                                  style={{ position: "relative" }}
+                                >
+                                  
+                                  {day.map((dayData, index) => {
+                                    const pointData = Date(
+                                      dayData.fullDate
+                                    );
+                                    if (
+                                      pointData &&
+                                      pointData.value === value
+                                    ) {
+                                      return (
+                                        <div
+                                          key={index}
+                                          className="data-point"
+                                          style={{
+                                            position: "absolute",
+                                            left: `${
+                                              (index / day.length) * 100
+                                            }%`,
+                                            bottom: 0,
+                                          }}
+                                        ></div>
+                                      );
+                                    }
+                                    return null;
+                                  })}
                                 </div>
-                              )
-                            )}
+                              ))}
+                            </div>
+                            <div className="x-axis">
+                              {day.map((day, index) => (
+                                <div key={index} className="x-axis-date">
+                                  {day.fullDate}
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         </div>
                       </div>
