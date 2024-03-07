@@ -10,12 +10,20 @@ const BMI = () => {
         <title>BMI ♥</title>
         <meta name="description" content="BMI" />
       </Helmet>
-      <div className="bmi_r">
-        <div className="bmir">
-          <h2 className="rbmi__r">BMI</h2>
-        </div>
-        <div className="rbodyr">
-          <p className="bmi_p">Gender</p>
+      <div className="bmi">
+        <div className="bmi_r">
+          
+          <div className="bmir">
+            <h2 className="rbmi__r">BMI</h2>
+          </div>
+
+          <div className="rbodyr">
+            <p className="bmi_p">Gender</p>
+          </div>
+
+          <div className="but_bmi">
+
+          </div>
         </div>
       </div>
     </Layout>
