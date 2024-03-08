@@ -22,7 +22,13 @@ const BMI = () => {
           </div>
 
           <div className="but_bmi">
-
+            <div className="rbutr">
+            <svg xmlns="http://www.w3.org/2000/svg" width="31" height="30" viewBox="0 0 31 30" fill="none">
+  <circle cx="15.8242" cy="15" r="15" fill="#BE0202"/>
+</svg>
+<p>Female</p>
+            </div>
+            
           </div>
         </div>
       </div>

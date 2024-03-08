@@ -6,7 +6,7 @@
 }
 .bmi_r{
   padding: 1.5rem;
-  /* min-height: 100vh; */
+  min-height: 100vh; 
   /* max-width: 63vw; */
   width: 100%;
   max-width: 59rem;
@@ -43,10 +43,44 @@
 
 .bmi_p {
   color: #1f1f1f;
-
   font-family: Roboto;
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 500;
   line-height: 110%; 
+}
+
+.but_bmi{
+    width: 21.8125rem;
+
+margin-left: 2rem;
+flex-shrink: 0;
+border-radius: 0.625rem;
+border: 1px solid #BE0202;
+background: rgba(191, 23, 29, 0.76);
+
+}
+
+.rbutr{
+    width: 12.375rem;
+height: 2.375rem;
+flex-shrink: 0;
+}
+
+.rbutr svg{
+    
+height: 1.875rem;
+flex-shrink: 0;
+margin: 0.2rem 2rem;
+}
+
+.rbutr p{
+    color: #1F1F1F;
+text-align: center;
+
+font-family: Roboto;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 400;
+line-height: 110%; /* 1.375rem */
 }
