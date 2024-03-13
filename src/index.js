@@ -35,6 +35,7 @@ import DetailsBloodpressure from "./pages/details-bloodpressure";
 import DoneNewPass from "./pages/done_new_pass";
 import NewPassword from "./pages/New_Password";
 import VerificationCode from "./pages/Verification_Code";
+import BookingOffline from "./pages/Booking_Offline";
 
 const router = createBrowserRouter([
   {
@@ -173,7 +174,7 @@ const router = createBrowserRouter([
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
-    path: "/Booking",
+    path: "/login",
     element: <BookingD />,
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
@@ -201,6 +202,11 @@ const router = createBrowserRouter([
     path: "/done_New_Pass",
     element: <DoneNewPass />,
     errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path:"/Book",
+    element:<BookingOffline/>,
+    errorElement:<h1>Sorry, No page to display....</h1>
   },
 ]);
 

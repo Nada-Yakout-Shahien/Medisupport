@@ -2,9 +2,8 @@ import { Helmet } from "react-helmet-async";
 import "./Activity.css";
 import React, { useState, useEffect } from "react";
 import { eachDayOfInterval, format } from "date-fns";
-import {Line} from "react-chartjs-2";
-import {Chart as ChartJS,LineElement,CategoryScale,LinearScale,PointElement,Legend} from 'chart.js';
 import Layout from "../components/Layout";
+import { Line } from 'react-chartjs-2';
 import { NavLink } from "react-router-dom";
 
 //date show
@@ -20,16 +19,7 @@ const generateDays = (startDate, numberOfDays) => {
   }));
 };
 
-  // graph
     
-  ChartJS.register (
-    LineElement,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    Legend
-  )
-
 const Activity = (props, { data }) => {
   const [selectedOption, setSelectedOption] = useState("Blood Pressure");
   const handleOptionChange = (event) => {
@@ -37,7 +27,7 @@ const Activity = (props, { data }) => {
   };
 
   //days
-  const startDate = new Date(2024, 5, 23);
+  const startDate = new Date(2024, 5, 21);
   const days = generateDays(startDate, 100);
 
   //on click day
@@ -48,45 +38,58 @@ const Activity = (props, { data }) => {
   };
 
   // graph
-  const datap1 = {
-    datasets:[{
-      labels : "",
-      data: [100,120,140,160],
-    }
-    ]
-  }
+  const data1 = {
+    labels: ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Su'],
+    datasets: [
+      {
+        label: 'Upper Bound',
+        data: [160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160],
+        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      },
+      {
+        label: 'Lower Bound',
+        data: [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50],
+        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+      },
+      {
+        label: 'Average',
+        data: [140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140],
+        borderColor: 'rgba(255, 206, 86, 1)',
+        backgroundColor: 'rgba(255, 206, 86, 0.5)',
+      },
+    ],
+  };
 
-  const options1={
-    plugins :{
-      legend:true
+  const options = {
+    responsive: true,
+    title: {
+      display: true,
+      text: 'Blood Pressure',
     },
-    scales:{
-      y:{
-        min:100,
-        max:160
-      }
-    }
-  }
-
-  const datap2 = {
-    datasets:[{
-      labels : "",
-      data: [50,70,90,100],
-    }
-    ]
-  }
-
-  const options2={
-    plugins :{
-      legend:true
+    scales: {
+      xAxes: [
+        {
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Day',
+          },
+        },
+      ],
+      yAxes: [
+        {
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'mmHg',
+          },
+        },
+      ],
     },
-    scales:{
-      y:{
-        min:50,
-        max:100
-      }
-    }
-  }
+  };
+
   //diagram
 
   //numbers-diagram
@@ -259,12 +262,7 @@ const Activity = (props, { data }) => {
                     </div>
                   </div>
                   <div className="diagram">
-                  <Line
-                      data={datap1}
-                      options={options1}
-                    >
-
-                    </Line>
+                  <Line data={ data1 } options={options} />
                   </div>
                 </div>
                 <div className="dig">
@@ -278,11 +276,7 @@ const Activity = (props, { data }) => {
                     </div>
                   </div>
                   <div className="diagram">
-                    <Line
-                      data={datap2}
-                      options={options2}
-                    >
-                    </Line>
+                  <Line data={ data1 } options={options} />
                   </div>
                 </div>
               </div>
