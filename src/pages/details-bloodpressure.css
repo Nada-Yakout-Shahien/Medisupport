@@ -124,8 +124,11 @@
   border-radius: 0.625rem;
   border: 1px solid var(--Red);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: row;
 }
-.detailsbp element.style{
+.detailsbp .dBP-diagram .diagramupper,
+.detailsbp .dBP-diagram .diagramlower{
   width: 50%;
 }
 

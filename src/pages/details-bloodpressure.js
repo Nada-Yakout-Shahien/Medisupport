@@ -133,8 +133,12 @@ const DetailsBloodpressure = () => {
           </div>
 
           <div className="dBP-diagram">
-          <Line data={datau} options={options} />
-          <Line data={datal} options={options} />
+            <div className="diagramupper">
+            <Line data={datau} options={options} />
+            </div>
+            <div className="diagramlower">
+            <Line data={datal} options={options} />
+            </div>
           </div>
           <div className="inf-det">
             <h3>Recommended Reading</h3>
