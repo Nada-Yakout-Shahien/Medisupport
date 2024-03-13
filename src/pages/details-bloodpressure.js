@@ -3,7 +3,7 @@ import "./details-bloodpressure.css";
 import React, { useState, useEffect } from "react";
 import { eachDayOfInterval, format } from "date-fns";
 import "chart.js/auto";
-//import { Line } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import Layout from "../components/Layout";
 import { NavLink } from "react-router-dom";
 
@@ -40,22 +40,57 @@ const DetailsBloodpressure = () => {
   };
 
   //diagram
-  const [data] = useState({
-    upperBoundValues: [160, 140, 120, 100, 0],
-    lowerBoundValues: [110, 90, 70, 50, 0],
-    dates: ['2024-03-01', '2024-03-02', '2024-03-03'],
-  });
-
-  const firstDate = new Date(2024, 0, 1);
-  const endDate = new Date(2024, 0, 5);
-  const day = Days(firstDate, endDate);
-
-
-  const bloodPressureReadings = [
-    { date: '2024-03-01', upperValue: 120, lowerValue: 80 },
-    { date: '2024-03-02', upperValue: 125, lowerValue: 85 },
-    { date: '2024-03-03', upperValue: 130, lowerValue: 90 },
-  ];
+  const options = {
+    responsive: true,
+    title: {
+      display: true,
+      text: 'Blood Pressure',
+    },
+    scales: {
+      xAxes: [
+        {
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Day',
+          },
+        },
+      ],
+      yAxes: [
+        {
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'mmHg',
+          },
+        },
+      ],
+    },
+  };
+ 
+  const datau = {
+    labels: ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon'],
+    datasets: [
+      {
+        label: 'Upper Bound',
+        data: [100, 116, 100, 140, 120, 138, 100],
+        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      },
+    ],
+  };
+  const datal = {
+    labels: ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon'],
+    datasets: [
+      {
+        label: 'Lower Bound',
+        data: [90, 100, 89, 90, 69, 50, 91],
+        borderColor: 'rgba(54, 162, 235, 1)',
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+      },
+    ],
+  };
+  
   
   return (
     <Layout>
@@ -98,83 +133,9 @@ const DetailsBloodpressure = () => {
           </div>
 
           <div className="dBP-diagram">
-            <div className="diagrams">
-              {["Upper", "Lower"].map((type) => {
-                return (
-                  <div className="dig" key={type}>
-                    <div className="bound">
-                      <div className="boun">
-                        <div className="rec"></div>
-                        <p>{type} bound</p>
-                      </div>
-                      <div className="measure">
-                        <p>mmHG</p>
-                      </div>
-                    </div>
-                    <div className={`diagram${type[0].toLowerCase()}`}>
-                      <div className={`diagram${type[0].toLowerCase()}`}>
-                        <div className="diagram-container">
-                          <div className="values">
-                            {data[`${type.toLowerCase()}BoundValues`].map(
-                              (value, i) => (
-                                <p key={i}>{value}</p>
-                              )
-                            )}
-                          </div>
-                          <div className="chart">
-                            <div className="lines">
-                    
-                              {data.upperBoundValues.map((value, i) => (
-                                <div
-                                  className="line"
-                                  key={i}
-                                  style={{ position: "relative" }}
-                                >
-                                  
-                                  {day.map((dayData, index) => {
-                                    const pointData = Date(
-                                      dayData.fullDate
-                                    );
-                                    if (
-                                      pointData &&
-                                      pointData.value === value
-                                    ) {
-                                      return (
-                                        <div
-                                          key={index}
-                                          className="data-point"
-                                          style={{
-                                            position: "absolute",
-                                            left: `${
-                                              (index / day.length) * 100
-                                            }%`,
-                                            bottom: 0,
-                                          }}
-                                        ></div>
-                                      );
-                                    }
-                                    return null;
-                                  })}
-                                </div>
-                              ))}
-                            </div>
-                            <div className="x-axis">
-                              {day.map((day, index) => (
-                                <div key={index} className="x-axis-date">
-                                  {day.fullDate}
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+          <Line data={datau} options={options} />
+          <Line data={datal} options={options} />
           </div>
-
           <div className="inf-det">
             <h3>Recommended Reading</h3>
             <h4>How To Loss Sugar ?</h4>
