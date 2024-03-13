@@ -3,7 +3,7 @@ import "./details-bloodpressure.css";
 import React, { useState, useEffect } from "react";
 import { eachDayOfInterval, format } from "date-fns";
 import "chart.js/auto";
-import { Line } from 'react-chartjs-2';
+import { Line } from "react-chartjs-2";
 import Layout from "../components/Layout";
 import { NavLink } from "react-router-dom";
 
@@ -44,54 +44,58 @@ const DetailsBloodpressure = () => {
     responsive: true,
     title: {
       display: true,
-      text: 'Blood Pressure',
+      text: "Blood Pressure",
     },
     scales: {
-      xAxes: [
-        {
-          display: true,
-          scaleLabel: {
-            display: true,
-            labelString: 'Day',
-          },
+      xAxes: [{
+        gridLines: {
+          color: 'rgba(190, 2, 2, 0.3)', 
+          borderDash: [5, 5], 
+          lineWidth: 2.77, 
         },
-      ],
-      yAxes: [
-        {
+        scaleLabel: {
           display: true,
-          scaleLabel: {
-            display: true,
-            labelString: 'mmHg',
-          },
+          labelString: 'Day',
         },
-      ],
+      }],
+      yAxes: [{
+        gridLines: {
+          color: 'rgba(190, 2, 2, 0.3)', 
+          borderDash: [5, 5], 
+          lineWidth: 2.77, 
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'mmHg',
+        },
+      }],
     },
   };
- 
+
   const datau = {
-    labels: ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon'],
+    labels: ["", "", "", "", "", "", ""],
     datasets: [
       {
-        label: 'Upper Bound',
+        label: "Upper Bound",
         data: [100, 116, 100, 140, 120, 138, 100],
-        borderColor: 'rgba(255, 99, 132, 1)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: "#be0202",
+        backgroundColor: "#be0202",
       },
     ],
   };
   const datal = {
-    labels: ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon'],
+    labels: ["", "", "", "", "", "", ""],
+    display:false,
     datasets: [
       {
-        label: 'Lower Bound',
+        label: "Lower Bound",
         data: [90, 100, 89, 90, 69, 50, 91],
-        borderColor: 'rgba(54, 162, 235, 1)',
-        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+        borderColor: "#be0202",
+        backgroundColor: "#be0202",
       },
     ],
   };
-  
-  
+
   return (
     <Layout>
       <Helmet>
@@ -134,10 +138,10 @@ const DetailsBloodpressure = () => {
 
           <div className="dBP-diagram">
             <div className="diagramupper">
-            <Line data={datau} options={options} />
+              <Line data={datau} options={options} />
             </div>
             <div className="diagramlower">
-            <Line data={datal} options={options} />
+              <Line data={datal} options={options} />
             </div>
           </div>
           <div className="inf-det">

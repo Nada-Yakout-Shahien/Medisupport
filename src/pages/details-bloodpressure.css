@@ -200,11 +200,12 @@
 }
 
 @media (max-width: 780px) {
-  .detailsbp .dBP-diagram .diagrams{
+  .detailsbp .dBP-diagram{
     display: flex;
     flex-direction: column;
   }
-  .detailsbp .dBP-diagram .diagrams .dig{
+  .detailsbp .dBP-diagram .diagramupper,
+  .detailsbp .dBP-diagram .diagramlower{
     width: 100%;
   }
 }
