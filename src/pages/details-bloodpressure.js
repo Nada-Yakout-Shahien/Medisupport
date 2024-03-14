@@ -1,18 +1,12 @@
 import { Helmet } from "react-helmet-async";
 import "./details-bloodpressure.css";
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { eachDayOfInterval, format } from "date-fns";
 import "chart.js/auto";
 import { Line } from "react-chartjs-2";
 import Layout from "../components/Layout";
 import { NavLink } from "react-router-dom";
 
-//dig
-const Days = (firstDate, endDate) => {
-  return eachDayOfInterval({ start: firstDate, end: endDate }).map((day) => ({
-    fullDate: format(day, "yyyy-MM-dd"),
-  }));
-};
 
 //date show
 const generateDays = (startDate, numberOfDays) => {

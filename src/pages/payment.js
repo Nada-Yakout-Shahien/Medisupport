@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import "./payment.css";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 import pay from "../images/payment.png";
 import axios from "axios";
