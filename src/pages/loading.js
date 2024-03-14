@@ -34,7 +34,7 @@ const Loading = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentIconIndex((prevIndex) => (prevIndex + 1) % icons.length);
-    },250);
+    },450);
     return () => clearInterval(intervalId);
   }, []);
   return (
