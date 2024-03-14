@@ -47,7 +47,7 @@
   animation: none;
 }
 .dBP-status button {
-  text-align-last: center;
+  text-align: center;
   padding: 0.6vh 9vw;
   border-radius: 1rem;
   background: var(--Red);
@@ -61,7 +61,6 @@
   font-weight: 600;
   line-height: 1.45019rem; /* 116.013% */
 }
-
 .dBP-status button p {
   color:var(--whiteColor);
   text-align: right;
@@ -71,7 +70,6 @@
   font-weight: 400;
   line-height: 1.45019rem; /* 154.684% */
 }
-
 /* date */
 .detailsbp .dBP-date {
   width: 100%;
@@ -121,57 +119,20 @@
 .detailsbp .selected {
   opacity: 0.6;
 }
-
 /* diagram */
 .detailsbp .dBP-diagram{
-  max-width: 100%;
-  min-height: 23.125rem;
-  flex-shrink: 0;
   border-radius: 0.625rem;
   border: 1px solid var(--Red);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-.detailsbp .dBP-diagram .diagrams{
   display: flex;
   flex-direction: row;
-  gap: 7rem;
-  padding: 1.5rem;
 }
-.detailsbp .dBP-diagram .diagrams .dig{
+.detailsbp .dBP-diagram .diagramupper,
+.detailsbp .dBP-diagram .diagramlower{
   width: 50%;
 }
-.detailsbp .dBP-diagram .diagrams .dig .bound{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.detailsbp .dBP-diagram .diagrams .dig .bound p{
-  display: flex;
-  align-items: center;
-  color: var(--graycolor);
-  text-align: right;
-  font-family: 'Roboto',sans-serif;
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 1.45019rem; /* 116.013% */
-}
-.detailsbp .dBP-diagram .diagrams .dig .bound .boun{
-  display: flex;
-  flex-direction: row;
-  gap: 0.5em;
-}
-.detailsbp .dBP-diagram .diagrams .dig .bound .boun .rec{
-  width: 1.84363rem;
-  height: 1.875rem;
-  flex-shrink: 0;
-  border-radius: 0.3125rem;
-  border: 1px solid var(--Red);
-  background: var(--Red);
-}
 
-/* diag */
+
 
 
 
@@ -238,12 +199,13 @@
   opacity: 0.7;
 }
 
-@media (max-width: 750px) {
-  .detailsbp .dBP-diagram .diagrams{
+@media (max-width: 780px) {
+  .detailsbp .dBP-diagram{
     display: flex;
     flex-direction: column;
   }
-  .detailsbp .dBP-diagram .diagrams .dig{
+  .detailsbp .dBP-diagram .diagramupper,
+  .detailsbp .dBP-diagram .diagramlower{
     width: 100%;
   }
 }

@@ -1,9 +1,18 @@
 import { Helmet } from "react-helmet-async";
 import "./details-bloodpressure.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { eachDayOfInterval, format } from "date-fns";
+import "chart.js/auto";
+import { Line } from "react-chartjs-2";
 import Layout from "../components/Layout";
 import { NavLink } from "react-router-dom";
+
+//dig
+const Days = (firstDate, endDate) => {
+  return eachDayOfInterval({ start: firstDate, end: endDate }).map((day) => ({
+    fullDate: format(day, "yyyy-MM-dd"),
+  }));
+};
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -30,6 +39,63 @@ const DetailsBloodpressure = () => {
     setSelectedDay(fullDate);
   };
 
+  //diagram
+  const options = {
+    responsive: true,
+    title: {
+      display: true,
+      text: "Blood Pressure",
+    },
+    scales: {
+      xAxes: [{
+        gridLines: {
+          color: 'rgba(190, 2, 2, 0.3)', 
+          borderDash: [5, 5], 
+          lineWidth: 2.77, 
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'Day',
+        },
+      }],
+      yAxes: [{
+        gridLines: {
+          color: 'rgba(190, 2, 2, 0.3)', 
+          borderDash: [5, 5], 
+          lineWidth: 2.77, 
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'mmHg',
+        },
+      }],
+    },
+  };
+
+  const datau = {
+    labels: ["", "", "", "", "", "", ""],
+    datasets: [
+      {
+        label: "Upper Bound",
+        data: [100, 116, 100, 140, 120, 138, 100],
+        borderColor: "#be0202",
+        backgroundColor: "#be0202",
+      },
+    ],
+  };
+  const datal = {
+    labels: ["", "", "", "", "", "", ""],
+    display:false,
+    datasets: [
+      {
+        label: "Lower Bound",
+        data: [90, 100, 89, 90, 69, 50, 91],
+        borderColor: "#be0202",
+        backgroundColor: "#be0202",
+      },
+    ],
+  };
+
   return (
     <Layout>
       <Helmet>
@@ -50,7 +116,6 @@ const DetailsBloodpressure = () => {
             </button>
           </div>
         </div>
-
         <div className="contant">
           <div className="dBP-date">
             {days.map((item, index) => (
@@ -72,34 +137,13 @@ const DetailsBloodpressure = () => {
           </div>
 
           <div className="dBP-diagram">
-            <div className="diagrams">
-              <div className="dig">
-                <div className="bound">
-                  <div className="boun">
-                    <div className="rec"></div>
-                    <p>Upper bound</p>
-                  </div>
-                  <div className="measure">
-                    <p>mmHG</p>
-                  </div>
-                </div>
-                <div className="diagram"></div>
-              </div>
-              <div className="dig">
-                <div className="bound">
-                  <div className="boun">
-                    <div className="rec"></div>
-                    <p>Lower bound</p>
-                  </div>
-                  <div className="measure">
-                    <p>mmHG</p>
-                  </div>
-                </div>
-                <div className="diagram"></div>
-              </div>
+            <div className="diagramupper">
+              <Line data={datau} options={options} />
+            </div>
+            <div className="diagramlower">
+              <Line data={datal} options={options} />
             </div>
           </div>
-
           <div className="inf-det">
             <h3>Recommended Reading</h3>
             <h4>How To Loss Sugar ?</h4>

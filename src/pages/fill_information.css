@@ -35,7 +35,8 @@
   border-radius:0.625rem;
   align-items: center;
   padding: 1.1vh;
-  font-size: clamp(0.5rem, calc(1vw + 3vw), 1.5rem);
+  font-size: clamp(0.5rem, calc(1vw + 3vw), 1.3rem);
+  color: #4b4b4b;
 }
 .info .infolbl .menu{
   display: flex;
@@ -54,14 +55,15 @@
 }
 .info .infolbl .menu .txt{
   font-family: 'Roboto',sans-serif;
-  font-size: clamp(0.5rem, calc(1vw + 3vw), 1.5rem);  font-style: normal;
+  font-size: clamp(0.5rem, calc(1vw + 3vw), 1.3rem);  
+  font-style: normal;
   font-weight: 400;
   line-height: 1.45019rem; 
-  color: #000;
+  color: #4b4b4b;
 }
 .info .infolbl .menu .dropdown-content  {
-  display: none;
   position: absolute;
+  font-size: clamp(0.5rem, calc(1vw + 3vw), 1.3rem);
   left: 0;
   top: 100%;
   background-color: var(--whiteColor);
@@ -71,14 +73,6 @@
   z-index: 1;
   border-radius: 0.5rem;
   width: 100%;
-}
-.info .infolbl .menu .dropdown-content div {
-  color: black;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  display: block;
-}
-.info .infolbl .menu .dropdown-content {
   display: block;
 }
 .info .infolbl .menu .dropdown-content div {
@@ -93,8 +87,9 @@
   background-color: var(--graycolor);
 }
 .info input::placeholder {
-  font-size: clamp(1rem, calc(2vw + 4vw), 1rem);  color: #b1aeae; 
-  font-style: italic; 
+  font-size: clamp(1rem, calc(2vw + 4vw), 1rem);  
+  color: #373737;
+  /* font-style: italic;  */
 }
 .info label{
   color: var(--graycolor);

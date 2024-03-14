@@ -92,6 +92,7 @@
   align-self: stretch;
   border-radius: 0.4em;
   border: 0.01em solid var(--Red);
+  padding: 0.5em;
 }
 .sig .disc {
   color: var(--darkgraycolor);
@@ -216,6 +217,10 @@
 }
 .sig #nav:hover {
   opacity: 0.7;
+}
+.sig input::placeholder {
+  font-size: 0.8em;
+  padding: 0.5em;
 }
 
 /* responsive */

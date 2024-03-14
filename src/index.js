@@ -1,4 +1,6 @@
 import React from "react";
+import { AuthProvider } from "./components/AuthContext";
+import ProtectedRoute from './components/ProtectedRoute';
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { HelmetProvider } from "react-helmet-async";
@@ -35,6 +37,9 @@ import DetailsBloodpressure from "./pages/details-bloodpressure";
 import DoneNewPass from "./pages/done_new_pass";
 import NewPassword from "./pages/New_Password";
 import VerificationCode from "./pages/Verification_Code";
+import Loading from "./pages/loading";
+import Payment from "./pages/payment";
+import Chat from "./pages/chat";
 
 const router = createBrowserRouter([
   {
@@ -49,12 +54,20 @@ const router = createBrowserRouter([
   },
   {
     path: "/About_us",
-    element: <Aboutus />,
+    element: (
+      <ProtectedRoute>
+        <Aboutus />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/Smart_health_metrics",
-    element: <SmartHealthMetrics />,
+    element: (
+      <ProtectedRoute>
+        <SmartHealthMetrics />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
@@ -69,137 +82,272 @@ const router = createBrowserRouter([
   },
   {
     path: "/Contact_us",
-    element: <Contactus />,
+    element: (
+      <ProtectedRoute>
+        <Contactus />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/Reed_articles",
-    element: <Reedarticles />,
+    element: (
+      <ProtectedRoute>
+        <Reedarticles />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/Doctors",
-    element: <Doctors />,
+    element: (
+      <ProtectedRoute>
+        <Doctors />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/heart_rate",
-    element: <HeartRate />,
+    element: (
+      <ProtectedRoute>
+        <HeartRate />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/blood_pressure",
-    element: <Bloodpressure />,
+    element: (
+      <ProtectedRoute>
+        <Bloodpressure />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/blood_sugar",
-    element: <Bloodsugar />,
+    element: (
+      <ProtectedRoute>
+        <Bloodsugar />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/bmi",
-    element: <BMI />,
+    element: (
+      <ProtectedRoute>
+        <BMI />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/welcome",
-    element: <Welcome />,
+    element: (
+      <ProtectedRoute>
+        <Welcome />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/fillinfo",
-    element: <FillInformation />,
+    element: (
+      <ProtectedRoute>
+        <FillInformation />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/pressure",
-    element: <ArPressure />,
+    element: (
+      <ProtectedRoute>
+        <ArPressure />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/sugar",
-    element: <ArSugar />,
+    element: (
+      <ProtectedRoute>
+        <ArSugar />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/ABmi",
-    element: <ArBmi />,
+    element: (
+      <ProtectedRoute>
+        <ArBmi />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/heart",
-    element: <ArHeart />,
+    element: (
+      <ProtectedRoute>
+        <ArHeart />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/Activity",
-    element: <Activity />,
+    element: (
+      <ProtectedRoute>
+        <Activity />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/DetailsBS",
-    element: <DetailsBS />,
+    element: (
+      <ProtectedRoute>
+        <DetailsBS />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/SugarHistory",
-    element: <SugarHistory />,
+    element: (
+      <ProtectedRoute>
+        <SugarHistory />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/PressurHistory",
-    element: <PressurHistory />,
+    element: (
+      <ProtectedRoute>
+        <PressurHistory />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/BmiHistory",
-    element: <BmiHistory />,
+    element: (
+      <ProtectedRoute>
+        <BmiHistory />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/Resultsorry",
-    element: <Resultsorry />,
+    element: (
+      <ProtectedRoute>
+        <Resultsorry />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/Resultcongratulations",
-    element: <Resultcongratulations />,
+    element: (
+      <ProtectedRoute>
+        <Resultcongratulations />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/forget_password",
-    element: <ForgetPassword />,
+    element: (
+      <ProtectedRoute>
+        <ForgetPassword />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/Booking",
-    element: <BookingD />,
+    element: (
+      <ProtectedRoute>
+        <BookingD />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/Profile",
-    element: <Profile />,
+    element: (
+      <ProtectedRoute>
+        <Profile />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/DetailsBP",
-    element: <DetailsBloodpressure />,
+    element: (
+      <ProtectedRoute>
+        <DetailsBloodpressure />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/Verification_Code",
-    element: <VerificationCode />,
+    element: (
+      <ProtectedRoute>
+        <VerificationCode />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/New_Password",
-    element: <NewPassword />,
+    element: (
+      <ProtectedRoute>
+        <NewPassword />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
     path: "/done_New_Pass",
-    element: <DoneNewPass />,
+    element: (
+      <ProtectedRoute>
+        <DoneNewPass />
+      </ProtectedRoute>
+    ),
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/Loading",
+    element: (
+      <ProtectedRoute>
+        <Loading />
+      </ProtectedRoute>
+    ),
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/Payment",
+    element: (
+      <ProtectedRoute>
+        <Payment />
+      </ProtectedRoute>
+    ),
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/Chat",
+    element: (
+      <ProtectedRoute>
+        <Chat />
+      </ProtectedRoute>
+    ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
 ]);
@@ -208,7 +356,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <HelmetProvider>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </HelmetProvider>
   </React.StrictMode>
 );

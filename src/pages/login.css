@@ -6,30 +6,32 @@
 .log .flex2 {
   width: 100%;
 }
-.log .flex2 img{
+.log .flex2 img {
   width: 100%;
 }
-.log .forml{
+.log .forml {
   display: flex;
   flex-direction: column;
   gap: 1em;
 }
-.log .flex1{
+.log .flex1 {
   display: flex;
   padding: 10% 5% 5% 5%;
   flex-direction: column;
   gap: 3em;
-  width:100%;
+  width: 100%;
 }
 .log h2 {
   color: var(--Red);
-  font-family: 'Roboto',sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 2.625rem;
   font-style: normal;
   font-weight: 700;
   line-height: 110%;
 }
-.log .lbl, .lbl1, .lbl2 {
+.log .lbl,
+.lbl1,
+.lbl2 {
   width: 100%;
 }
 .log .lbl {
@@ -52,14 +54,15 @@
   align-items: flex-start;
   gap: 0.75em;
   align-self: stretch;
+  width: 100%;
 }
 .log label {
   color: var(--graycolor);
-  font-family: 'Roboto',sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1em;
   font-style: normal;
   font-weight: 400;
-  line-height: 140%; 
+  line-height: 140%;
   max-width: 100%;
   height: auto;
 }
@@ -71,6 +74,7 @@
   align-self: stretch;
   border-radius: 0.4em;
   border: 0.01em solid var(--Red);
+  padding: 0.5em;
 }
 .log .disc {
   color: var(--darkgraycolor);
@@ -84,7 +88,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: .9em;
+  font-size: 0.9em;
   width: 100%;
 }
 .log .checkbox-container {
@@ -94,10 +98,10 @@
 }
 .log .checkbox-container label {
   color: var(--Red);
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1em;
   font-weight: 400;
-  line-height: 140%; 
+  line-height: 140%;
 }
 .log #custom-checkbox {
   display: none;
@@ -125,11 +129,11 @@
 .log #for {
   color: var(--Red);
   text-decoration: none;
-  font-family: 'Roboto',sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1em;
   font-style: normal;
   font-weight: 400;
-  line-height: 140%; 
+  line-height: 140%;
 }
 #for:hover {
   opacity: 0.7;
@@ -146,14 +150,14 @@
   font-size: 1.7em;
   font-weight: 500;
   line-height: 100%;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.1em;
   cursor: pointer;
   width: 100%;
 }
 .log .flex1 .btn:hover {
-opacity: 0.7;
+  opacity: 0.7;
 }
-.log .btn-log{
+.log .btn-log {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -170,59 +174,86 @@ opacity: 0.7;
   background-color: var(--whiteColor);
   border: 2px solid var(--Red);
 }
-.log .text{
+.log .text {
   display: flex;
   padding: 0vh 2vh;
   justify-content: center;
   align-items: center;
   color: var(--graycolor);
-  font-family: 'Roboto',sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
   line-height: 100%;
   letter-spacing: 0.5px;
 }
-.log .text:hover{
+.log .text:hover {
   opacity: 0.7;
 }
-.log hr{
-  opacity:0.3 ;
+.log hr {
+  opacity: 0.3;
 }
-.log .sign p{
-  color: #1E1E1E;
-  font-family: 'Roboto',sans-serif;
+.log .sign p {
+  color: #1e1e1e;
+  font-family: "Roboto", sans-serif;
   font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%; 
-}
-.log #nav{
-  color: var(--Red);
-  font-family: 'Roboto',sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
 }
-.log #nav:hover{
+.log #nav {
+  color: var(--Red);
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+.log #nav:hover {
   opacity: 0.7;
 }
+.log input::placeholder {
+  font-size: 0.8em;
+  padding: 0.5em;
+}
+/* PasswordInput.css */
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+.password-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.toggle-password-visibility {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  fill: #353535; 
+}
+.toggle-password-visibility.active { 
+  fill: var(--Red);
+}
+
 /* responsive */
 @media screen and (max-width: 1090px) {
   .log {
     flex-direction: column;
   }
-  .log .flex2, .log .flex1 {
+  .log .flex2,
+  .log .flex1 {
     width: 100%;
   }
   .log .flex2 {
     order: -1;
   }
-  .log .btn-log{
+  .log .btn-log {
     flex-direction: column;
   }
-  .log .flex1{
+  .log .flex1 {
     padding-top: 0;
   }
 }
-
