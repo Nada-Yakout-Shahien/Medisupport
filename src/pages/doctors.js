@@ -439,10 +439,11 @@ const Doctors = ({ count, rating, color, onRating }) => {
                     />
                   </svg>
                 </div>
-              
+
                 <NavLink to="/Book" className="btn">
                   Book Now
                 </NavLink>
+                
               </div>
             </div>        
             <div className="under">

@@ -3,7 +3,7 @@ import "./Activity.css";
 import React, { useState, useEffect } from "react";
 import { eachDayOfInterval, format } from "date-fns";
 import Layout from "../components/Layout";
-import { Line } from 'react-chartjs-2';
+
 import { NavLink } from "react-router-dom";
 
 //date show
@@ -38,57 +38,7 @@ const Activity = (props, { data }) => {
   };
 
   // graph
-  const data1 = {
-    labels: ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Su'],
-    datasets: [
-      {
-        label: 'Upper Bound',
-        data: [160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160],
-        borderColor: 'rgba(255, 99, 132, 1)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      },
-      {
-        label: 'Lower Bound',
-        data: [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50],
-        borderColor: 'rgba(54, 162, 235, 1)',
-        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-      },
-      {
-        label: 'Average',
-        data: [140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140],
-        borderColor: 'rgba(255, 206, 86, 1)',
-        backgroundColor: 'rgba(255, 206, 86, 0.5)',
-      },
-    ],
-  };
-
-  const options = {
-    responsive: true,
-    title: {
-      display: true,
-      text: 'Blood Pressure',
-    },
-    scales: {
-      xAxes: [
-        {
-          display: true,
-          scaleLabel: {
-            display: true,
-            labelString: 'Day',
-          },
-        },
-      ],
-      yAxes: [
-        {
-          display: true,
-          scaleLabel: {
-            display: true,
-            labelString: 'mmHg',
-          },
-        },
-      ],
-    },
-  };
+  
 
   //diagram
 
@@ -262,7 +212,7 @@ const Activity = (props, { data }) => {
                     </div>
                   </div>
                   <div className="diagram">
-                  <Line data={ data1 } options={options} />
+                  
                   </div>
                 </div>
                 <div className="dig">
@@ -276,7 +226,7 @@ const Activity = (props, { data }) => {
                     </div>
                   </div>
                   <div className="diagram">
-                  <Line data={ data1 } options={options} />
+                  
                   </div>
                 </div>
               </div>

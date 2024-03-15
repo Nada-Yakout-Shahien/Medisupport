@@ -1,18 +1,15 @@
 import React,{useState} from 'react';
-import {FaStar} from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import {NavLink} from "react-router-dom";
-import Layout from '../components/Layout';
-import "./Booking_Offline.css";
 import doctors1 from"../images/doctors.png";
 import { Input } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleCheck} from '@fortawesome/free-regular-svg-icons';
+import {FaStar} from "react-icons/fa";
+import Layout from '../components/Layout';
+import "./Booking_Online.css";
 
+const Booking_Online = () => {
 
-const Booking_Offline = () => {
-
-  //Rating
+//Rating
   const [rating,setRating] = useState (null);
   const [hover,setHover] = useState (null);
   const [showPopupR, setShowPopupR] = useState(false);
@@ -20,42 +17,23 @@ const Booking_Offline = () => {
   const handleStarClick = (currentRating) => {
     setRating(currentRating); 
     setHover(null); 
-    setShowPopupR(true); 
+    setShowPopupR(true);
   };
-
-  //Booking 
-  //Booking Date
-  const [selectedDate, setSelectedDate] = useState(null);
-
-  const handleDateSelection = (date) => {
-    setSelectedDate(date);
-  };
-  
-  //Booking Time
-  const [selectedTime, setSelectedTime] = useState(null);
-
-  const handleTimeSelection = (date) => {
-    setSelectedTime(date);
-  };
-
-  //Completed message
-  const [showPopupB, setShowPopupB] = useState(false);
-
-
 
   return (
+
     <Layout>
 
       <Helmet>
         <title>Booking ♥</title>
-        <meta name="description" content="Booking_Offline" />
+        <meta name="description" content="Booking_Online" />
       </Helmet>
 
       <div className='head'>
         <p>Booking</p>
       </div>
 
-                    {/* card-booking */}
+                        {/* card-booking */}
 
       <div className='card'>
 
@@ -208,7 +186,7 @@ const Booking_Offline = () => {
                   
                 <FaStar
                   className='star'
-                  size={33}
+                  size={34}
                   color={currentRating <= (hover || rating) ? '#FA8F21' : '#f8df95'}
                   onMouseEnter={() => setHover(currentRating)}
                   onMouseLeave={() => setHover(null)}
@@ -226,121 +204,12 @@ const Booking_Offline = () => {
             </div>
           )}
         </div>
-
-                            {/* Booking a Date */}
-        
-        <div className='B-Date'>
-          <p>Book a Date :</p>
-          <div className='Dates'>
-
-            <label className={`l1 ${selectedDate === '11 Mar' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleDateSelection('11 Mar')} /> 11 Mar
-            </label>
-
-            <label className={` ${selectedDate === '13 Mar' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleDateSelection('13 Mar')} /> 13 Mar
-            </label>
-
-            <label className={` ${selectedDate === '20 Mar' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleDateSelection('20 Mar')} /> 20 Mar
-            </label>
-
-            <label className={` ${selectedDate === '16 Mar' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleDateSelection('16 Mar')} /> 16 Mar
-            </label>
-
-            <label className={` ${selectedDate === '18 Mar' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleDateSelection('18 Mar')} /> 18 Mar
-            </label>
-
-            <label className={` ${selectedDate === '10 Mar' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleDateSelection('10 Mar')} /> 10 Mar
-            </label>
-
-            <label className={` ${selectedDate === '14 Mar' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleDateSelection('14 Mar')} /> 14 Mar
-            </label>
-
-            <label className={` ${selectedDate === '12 Mar' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleDateSelection('12 Mar')} /> 12 Mar
-            </label>
-
-            <label className={` ${selectedDate === '19 Mar' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleDateSelection('19 Mar')} /> 19 Mar
-            </label>
-
-            <label className={` ${selectedDate === '15 Mar' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleDateSelection('15 Mar')} /> 15 Mar
-            </label>
-
-          </div>
-          
-        </div>
-      
-                            {/* Booking a Time */}
-
-        <div className='B-Time'>
-          <p>Select a Time :</p>
-          <div className='Time'>
-
-            <label className={`t1 ${selectedTime === '11 : 00' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleTimeSelection('11 : 00')} /> 11 : 00 
-            </label>
-
-            <label className={` ${selectedTime === '11 : 30' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleTimeSelection('11 : 30')} /> 11 : 30 
-            </label>
-
-            <label className={` ${selectedTime === '14 : 00' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleTimeSelection('14 : 00')} /> 14 : 00 
-            </label>
-
-            <label className={` ${selectedTime === '12 : 00' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleTimeSelection('12 : 00')} /> 12 : 00 
-            </label>
-
-            <label className={` ${selectedTime === '13 : 00' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleTimeSelection('13 : 00')} /> 13 : 00 
-            </label>
-
-            <label className={` ${selectedTime === '12 : 30' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleTimeSelection('12 : 30')} /> 12 : 30 
-            </label>
-
-            <label className={` ${selectedTime === '13 : 30' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleTimeSelection('13 : 30')} /> 13 : 30 
-            </label>
-
-            <label className={` ${selectedTime === '15 : 00' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleTimeSelection('15 : 00')} /> 15 : 00 
-            </label>
-
-            <label className={` ${selectedTime === '14 : 30' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleTimeSelection('14 : 30')} /> 14 : 30 
-            </label>
-
-            <label className={` ${selectedTime === '15 : 30' ? 'selected' : ''}`}>
-              <input type='radio' onClick={() => handleTimeSelection('15 : 30')} /> 15 : 30 
-            </label>
-          </div>
-        </div>
-
-                            {/* Button book */}
-
         <div className='book'>
-          <button onClick={()=>setShowPopupB(true)}>Book Now</button>
-          {showPopupB && (<div className='popup-b'>
-            <FontAwesomeIcon className='check' icon={faCircleCheck} style={{color: "#4A963D",}}/>
-              <NavLink to='/home' className='btn'>
-                Home Page
-              </NavLink>
-          </div>
-          )}
+          <NavLink to="" className="btn">Book Now</NavLink>
         </div>
       </div>
-      
     </Layout>
   );
 };
 
-export default Booking_Offline;
+export default Booking_Online;

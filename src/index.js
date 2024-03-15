@@ -36,6 +36,7 @@ import DoneNewPass from "./pages/done_new_pass";
 import NewPassword from "./pages/New_Password";
 import VerificationCode from "./pages/Verification_Code";
 import BookingOffline from "./pages/Booking_Offline";
+import BookingOnline from "./pages/Booking_Online";
 
 const router = createBrowserRouter([
   {
@@ -206,6 +207,11 @@ const router = createBrowserRouter([
   {
     path:"/Book",
     element:<BookingOffline/>,
+    errorElement:<h1>Sorry, No page to display....</h1>
+  },
+  {
+    path:"/BookOn",
+    element:<BookingOnline/>,
     errorElement:<h1>Sorry, No page to display....</h1>
   },
 ]);
