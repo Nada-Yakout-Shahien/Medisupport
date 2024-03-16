@@ -254,7 +254,7 @@ const Activity = (props, { data }) => {
 
             <div className="table">
               <div className="head">
-                <h4>History</h4>
+                <p>History</p>
                 <NavLink to="/PressurHistory" className="trans">
                   See All
                 </NavLink>
@@ -264,7 +264,7 @@ const Activity = (props, { data }) => {
                 <div className="datah">
                   {dataList.map((data, index) => (
                   <div key={index} className="data">
-                    <p className="status">{data.status}:</p>
+                    <p className="status">{data.status} : </p>
                     <p className="mesure">
                       {data.mesure}
                       <p className="unit-p">mmHG</p>
@@ -282,8 +282,8 @@ const Activity = (props, { data }) => {
 
                   {/* button */}
 
-          <div className="btn">
-            <NavLink to="/blood_pressure" className="addrec">
+          <div className="record">
+            <NavLink to="/blood_pressure" className="btn">
               Add New Record
             </NavLink>
           </div>
@@ -389,7 +389,7 @@ const Activity = (props, { data }) => {
 
           <div className="table">
             <div className="head">
-              <h4>History</h4>
+              <p>History</p>
               <NavLink to="/SugarHistory" className="trans">
                 See All
               </NavLink>
@@ -399,7 +399,7 @@ const Activity = (props, { data }) => {
               <div className="datah">
                 {dataList.map((data, index) => (
                 <div key={index} className="data">
-                  <p className="status">{data.status}:</p>
+                  <p className="status">{data.status} : </p>
                   <p className="mesure">
                      {data.mesures}
                     <p className="unit"> mg/gl</p>
@@ -416,8 +416,8 @@ const Activity = (props, { data }) => {
 
                         {/* button */}
 
-          <div className="btn">
-            <NavLink to="/blood_sugar" className="addrec">
+          <div className="record">
+            <NavLink to="/blood_sugar" className="btn">
               Add New Record
             </NavLink>
           </div>

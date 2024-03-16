@@ -41,16 +41,19 @@
   gap: 2.5rem;
   padding: 1rem 2rem 2.5rem 2rem;
 }
+
 .detailsbpa .headcon {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
+
 .detailsbpa .contant {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
 }
+
 .dBP-address p {
   color: var(--Red);
   font-family: "Roboto", sans-serif;
@@ -59,12 +62,14 @@
   font-weight: 700;
   line-height: normal;
 }
+
 .dBP-status {
   max-width: 40rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .dBP-status p {
   color: var(--graycolor);
   font-family: "Roboto", sans-serif;
@@ -73,6 +78,7 @@
   font-weight: 600;
   line-height: 1.45019rem;
 }
+
 .dBP-status span {
   color: var(--Red);
   font-family: "Roboto", sans-serif;
@@ -82,6 +88,7 @@
   line-height: 1.45019rem;
   animation: none;
 }
+
 .dBP-status button {
   text-align-last: center;
   padding: 0.6vh 9vw;
@@ -89,6 +96,7 @@
   background: var(--Red);
   border: none;
 }
+
 .dBP-status p {
   color: var(--graycolor);
   font-family: "Roboto", sans-serif;
@@ -266,11 +274,11 @@
                         /* table */
 
 .table{
-  width: 30rem;
-  height: 20rem;
+  width: 29rem;
+  height: 16rem;
   border: 0.1rem solid var(--Red);
   border-radius: 1rem;
-  padding: 4.5rem;
+  padding: 2rem ;
   margin: 0 2rem 2rem 25rem;
 }
 
@@ -281,12 +289,16 @@
   align-content: center;
   flex-direction: row;
   flex-wrap: nowrap;
+  margin: -1rem 0 0 0;
+}
+
+.head p{
+  color: var(--darkgraycolor);
   font-family: 'Roboto',sans-serif;
   font-size: 1.1rem;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
-  margin: -1rem 0 0 0;
 }
 
 .table .head .trans{
@@ -294,76 +306,82 @@
   flex-direction: row;
   align-items: center;
   color: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.1rem;
   font-weight: 600;
+  line-height: normal;
 }
 
 .table .his .data{
   border: 1px solid var(--Red);
-  margin-top: 1rem;
+  margin: 1rem 0 0 0.1rem;
   border-radius: 0.6rem;
   height: 3rem;
-  width: 21rem;
-  
+  width: 24.7rem;
 }
 
 .table .his .status{
   color: var(--Red);
   font-weight: 600;
   font-family: 'Roboto',sans-serif;
-  margin: 1rem 0 0 1rem;
+  font-size: 1.2rem;
+  margin: 0.7rem 0 0 1rem;
 }
 
 .table .his .mesure{
-  margin: -1.1rem 0 0 5rem;
+  margin: -1.4rem 0 0 6rem;
   font-family: 'Roboto',sans-serif;
-  color: #1F1F1F;
+  font-size: 1.2rem;
+  color: var(--darkgraycolor);
 }
 
 .table .his .unit-p{
-  margin: -1.3rem 0 0 3.4rem;
+  margin: -1.4rem 0 0 4.2rem;
   font-family: 'Roboto',sans-serif;
   font-weight: 600;
-  color: #1F1F1F;
+  font-size: 1.2rem;
+  color: var(--darkgraycolor);
 }
 
 .table .his .line1-p{
   color: var(--Red);
   font-weight: 600;
   font-family: 'Roboto',sans-serif;
-  margin: -1.2rem 0 0 11.9rem;
+  margin: -1.4rem 0 0 14rem;
 }
 
 .table .his .line2-p{
   color: var(--Red);
   font-weight: 600;
   font-family: 'Roboto',sans-serif;
-  margin: -1.2rem 0 0 17.9rem;
+  margin: -1.4rem 0 0 21rem;
 }
 
 .table .his .date-p{
-  margin: -1.2rem 0 0 12.4rem;
+  margin: -1.3rem 0 0 14.5rem;
   font-family: 'Roboto',sans-serif;
-  color: #1F1F1F;
+  font-size: 1.2rem;
+  color: var(--darkgraycolor);
 }
 
 .table .his  .day-p{
-  margin: -1.2rem 0 0 18.3rem;
+  margin: -1.3rem 0 0 21.5rem;
   font-family: 'Roboto',sans-serif;
-  color: #1F1F1F;
+  font-size: 1.2rem;
+  color: var(--darkgraycolor);
 }
-                            /* btn */
+                                    /* btn */
 
-.btn {
+.record .btn {
   display: flex;
   justify-content: center;
 }
 
-.btn .addrec {
+.record .btn {
   display: flex;
-  justify-content: center;
-  text-align: center;
-  padding: 1rem 0.75rem;
-  align-items: center;
+  width: 26rem;
+  padding: 2rem 1rem;
+  margin-left: 26.5rem;
   flex: 0.3;
   color: var(--whiteColor);
   border-radius: 0.625rem;
@@ -376,11 +394,11 @@
   letter-spacing: 0.03125rem;
 }
 
-.btn .addrec:hover {
+.record .btn:hover {
   opacity: 0.7;
 }
 
-                      /* blood sugar */
+                                  /* blood sugar */
 
 .average{
   display: flex;
@@ -448,7 +466,7 @@
   font-weight: 700;
 }
 
-                        /* date */
+                                  /* date */
 
 .bloodsugarda .date {
   width: 100%;
@@ -505,7 +523,7 @@
   opacity: 0.6;
 }
 
-                      /* diagram */
+                                  /* diagram */
 
 .diagram .chart-title {
   display: flex;
@@ -601,39 +619,50 @@
   font-weight: 400;
 }
 
-                                /* table */
+                                      /* table */
 
-.table .his .unit{
-  margin: -1.3rem 0 0 2rem;
-  font-family: 'Roboto',sans-serif;
-  font-weight: 600;
-  color: #1F1F1F;
+.bloodsugarda .table .his .data{
+  width: 24.5rem;
 }
 
-.table .his .line1{
+.bloodsugarda .table .his .mesure{
+  margin: -1.4rem 0 0 5.8rem;
+}
+
+.bloodsugarda .table .his .unit{
+  margin: -1.5rem 0 0 2.3rem;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 600;
+  font-size: 1.28rem;
+  color: var(--darkgraycolor);
+}
+
+.bloodsugarda .table .his .line1{
   color: var(--Red);
   font-weight: 600;
   font-family: 'Roboto',sans-serif;
-  margin: -1.2rem 0 0 10rem;
+  margin: -1.4rem 0 0 11.7rem;
 }
 
-.table .his .line2{
+.bloodsugarda .table .his .line2{
   color: var(--Red);
   font-weight: 600;
   font-family: 'Roboto',sans-serif;
-  margin: -1.2rem 0 0 15.9rem;
+  margin: -1.4rem 0 0 18.8rem;
 }
 
-.table .his .date{
-  margin: -1.2rem 0 0 10.4rem;
+.bloodsugarda .table .his .date{
+  margin: -1.3rem 0 0 12.3rem;
   font-family: 'Roboto',sans-serif;
-  color: #1F1F1F;
+  font-size: 1.2rem;
+  color: var(--darkgraycolor);
 }
 
-.table .his  .day{
-  margin: -1.2rem 0 0 16.4rem;
+.bloodsugarda .table .his .day{
+  margin: -1.3rem 0 0 19.5rem;
   font-family: 'Roboto',sans-serif;
-  color: #1F1F1F;
+  font-size: 1.2rem;
+  color: var(--darkgraycolor);
 }
 
 @media (max-width: 750px) {

@@ -4,6 +4,8 @@ import {NavLink} from "react-router-dom";
 import doctors1 from"../images/doctors.png";
 import { Input } from '@mui/material';
 import {FaStar} from "react-icons/fa";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faCircleCheck} from '@fortawesome/free-regular-svg-icons';
 import Layout from '../components/Layout';
 import "./Booking_Online.css";
 
@@ -20,6 +22,10 @@ const Booking_Online = () => {
     setShowPopupR(true);
   };
 
+  //Completed message
+  const [showPopupB, setShowPopupB] = useState(false);
+
+  
   return (
 
     <Layout>
@@ -48,6 +54,15 @@ const Booking_Online = () => {
         <div className="d-name">
           <p>Dr: Mahmoud Ebrahim</p>
           <p className='def'>(Cardiologist)</p>
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" 
+              width="20"
+              height="20" 
+              viewBox="0 0 20 20" 
+              fill="none">
+              <circle cx="10" cy="10" r="10" fill="#75F94C"/>
+            </svg>
+          </p>
         </div>
 
                     {/* tele */}
@@ -204,9 +219,20 @@ const Booking_Online = () => {
             </div>
           )}
         </div>
+
+                                    {/* Button book */}
+
         <div className='book'>
-          <NavLink to="" className="btn">Book Now</NavLink>
+          <button onClick={()=>setShowPopupB(true)}>Book Now</button>
+          {showPopupB && (<div className='popup-b'>
+            <FontAwesomeIcon className='check' icon={faCircleCheck} style={{color: "#4A963D",}}/>
+              <NavLink to='/Booking' className='btn'>
+                Booking Done
+              </NavLink>
+          </div>
+          )}
         </div>
+        
       </div>
     </Layout>
   );

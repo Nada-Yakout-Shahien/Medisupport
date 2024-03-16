@@ -71,22 +71,6 @@
   opacity: 0.7;
 }
 
-@media (max-width: 768px) {
-  .homesec1{
-    flex-direction: column;
-  }
-  .homesec1 .leftpart  ,.homesec1 .rightpart{
-    width: 100%;
-    gap: 1%;
-
-  }
-}
-@media (max-width: 450px) {
-  .homesec1 .rightpart h2{
-    font-size: 2.5em;
-  }
-}
-
                           /* smart health */
 
  .smarthealth-sec{
@@ -568,4 +552,23 @@
   border: 1px solid var(--CoolGray-30, #C1C7CD);
   background: #E52D27;
   margin: -29rem 0 0 -12rem ;
+}
+
+                                  /* media */
+
+@media (max-width: 768px) {
+  .homesec1{
+    flex-direction: column;
+  }
+  .homesec1 .leftpart  ,.homesec1 .rightpart{
+    width: 100%;
+    gap: 1%;
+
+  }
+
+}
+@media (max-width: 450px) {
+  .homesec1 .rightpart h2{
+    font-size: 2.5em;
+  }
 }

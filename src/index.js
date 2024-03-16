@@ -175,7 +175,7 @@ const router = createBrowserRouter([
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
-    path: "/login",
+    path: "/Booking",
     element: <BookingD />,
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
@@ -214,11 +214,7 @@ const router = createBrowserRouter([
     element:<BookingOnline/>,
     errorElement:<h1>Sorry, No page to display....</h1>
   },
-  {
-    path: "/Doctors",
-    element: <Doctors />,
-    errorElement: <h1>Sorry......</h1>,
-  },
+
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
