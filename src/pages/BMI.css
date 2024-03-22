@@ -52,7 +52,7 @@
 
 .but_bmi{
     width: 21.8125rem;
-
+display: flex;
 margin-left: 2rem;
 flex-shrink: 0;
 border-radius: 0.625rem;
@@ -61,15 +61,21 @@ background: rgba(191, 23, 29, 0.76);
 
 }
 
+.but_bmi_r{
+  width: 51.625rem;
+height: 32.625rem;
+flex-shrink: 0;
+
+}
+
 .rbutr{
     width: 12.375rem;
 height: 2.375rem;
 flex-shrink: 0;
+display: flex;
 }
 
 .rbutr svg{
-    
-height: 1.875rem;
 flex-shrink: 0;
 margin: 0.2rem 2rem;
 }
@@ -77,10 +83,240 @@ margin: 0.2rem 2rem;
 .rbutr p{
     color: #1F1F1F;
 text-align: center;
-
+margin: 0.55rem -1.3rem;
 font-family: Roboto;
 font-size: 1.25rem;
 font-style: normal;
 font-weight: 400;
+line-height: 110%; /* 1.375rem */
+}
+
+.rrrbur{
+  width: 5.68138rem;
+height: 1.875rem;
+flex-shrink: 0;
+display: flex;
+}
+
+.rrrbur svg{
+  flex-shrink: 0;
+margin: 0.2rem 2rem;
+}
+
+.rrrbur p{
+  color: #FFF;
+text-align: center;
+margin: 0.55rem -1.3rem;
+font-family: Roboto;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 400;
+line-height: 110%; /* 1.375rem */
+}
+
+.heightr{
+  width: 51.375rem;
+height: 7.75rem;
+flex-shrink: 0;
+gap: 4rem;
+margin: 2rem 2rem;
+
+}
+
+.heightrp p{
+  color: #1F1F1F;
+font-family: Roboto;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
+line-height: 110%; /* 1.375rem */
+}
+
+.heightrp2 p{
+  color: #353535;
+font-family: Roboto;
+margin: 0.5rem 0.1rem;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
+line-height: 110%; /* 1.375rem */
+}
+
+.heightrsliper{
+  width: 45.125rem;
+height: 1.70138rem;
+flex-shrink: 0;
+border-radius: 0.3125rem;
+display: flex;
+border: 1px solid #BE0202;
+}
+
+.heightrsliper2{
+  width: 16.69313rem;
+height: 1.599rem;
+flex-shrink: 0;
+background: rgba(190, 2, 2, 1);
+}
+
+.heightrsliper svg{
+  margin: -0.3rem -0.5rem;
+  width: 2.1875rem;
+height: 2.1875rem;
+flex-shrink: 0;
+}
+
+.heightrsliper5{
+  color: #1F1F1F;
+font-family: Roboto;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
+line-height: 110%; /* 1.375rem */
+}
+
+.heightrsliper6{
+  color: #1F1F1F;
+font-family: Roboto;
+margin: -1.3rem 43rem;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
+line-height: 110%; /* 1.375rem */
+}
+
+.sliper2{
+  width: 51.125rem;
+height: 7.6875rem;
+flex-shrink: 0;
+margin: 2rem 2rem;
+}
+
+.sliperp{
+  color: #1F1F1F;
+font-family: Roboto;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
+line-height: 110%; /* 1.375rem */
+}
+
+.sliperp2{
+  color: #353535;
+font-family: Roboto;
+margin: 0.5rem 0.1rem;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
+line-height: 110%; /* 1.375rem */
+}
+
+.slipersliper{
+  width: 45.125rem;
+  height: 1.70138rem;
+flex-shrink: 0;
+display: flex;
+border-radius: 0.3125rem;
+border: 1px solid #BE0202;
+}
+
+.slipersliper2{
+  width: 16.69313rem;
+height: 1.599rem;
+flex-shrink: 0;
+background: rgba(190, 2, 2, 1);
+}
+
+.slipersliper svg{
+  margin: -0.3rem -0.5rem;
+  width: 2.1875rem;
+height: 2.1875rem;
+flex-shrink: 0;
+}
+
+.slipersliper5{
+  color: #1F1F1F;
+font-family: Roboto;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
+line-height: 110%; /* 1.375rem */
+}
+
+.slipersliper6{
+  color: #1F1F1F;
+font-family: Roboto;
+margin: -1.3rem 43rem;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
+line-height: 110%; /* 1.375rem */
+}
+
+.heiher2{
+  width: 51.125rem;
+height: 7.6875rem;
+flex-shrink: 0;
+margin: 2rem 2rem;
+}
+
+.heiherp{
+  color: #1F1F1F;
+font-family: Roboto;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
+line-height: 110%; /* 1.375rem */
+}
+
+.heiherp2{
+  color: #353535;
+font-family: Roboto;
+margin: 0.5rem 0.1rem;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
+line-height: 110%; /* 1.375rem */
+}
+
+.heihersliper{
+  width: 45.125rem;
+  height: 1.70138rem;
+flex-shrink: 0;
+border-radius: 0.3125rem;
+border: 1px solid #BE0202;
+display: flex;
+}
+
+.heihersliper2{
+  width: 16.69313rem;
+height: 1.599rem;
+flex-shrink: 0;
+border-radius: 0.3125rem;
+background: rgba(190, 2, 2, 1);
+}
+
+.heihersliper svg{
+  margin: -0.3rem -0.5rem;
+  width: 2.1875rem;
+height: 2.1875rem;
+flex-shrink: 0;
+}
+
+.heihersliper5{
+  color: #1F1F1F;
+font-family: Roboto;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
+line-height: 110%; /* 1.375rem */
+}
+
+.heihersliper6{
+  color: #1F1F1F;
+font-family: Roboto;
+margin: -1.3rem 43rem;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 500;
 line-height: 110%; /* 1.375rem */
 }
