@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import "./BMI.css";
 import React from "react";
 import Layout from "../components/Layout";
+import { NavLink } from "react-router-dom";
 
 const BMI = () => {
   return (
@@ -87,7 +88,7 @@ const BMI = () => {
               <p className="heihersliper6">300</p>
             </div>
             </div>
-            
+            <NavLink to="#" className="heiherebut">Calculate</NavLink>
           </div>
           <div className="rfotr">
             <p className="rfotr2">Recommended Reading</p>
