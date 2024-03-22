@@ -73,6 +73,9 @@ flex-shrink: 0;
 height: 2.375rem;
 flex-shrink: 0;
 display: flex;
+border-radius: 0.625rem;
+border: 1px solid #BE0202;
+background: #FFF;
 }
 
 .rbutr svg{
