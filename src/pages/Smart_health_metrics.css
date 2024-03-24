@@ -1,5 +1,5 @@
 .disease{
-  padding: 6vh 9vh 5vh 9vh;
+  padding: 6vh 6vh 5vh 6vh;
   height: auto;
   flex: 1;
 }
@@ -27,6 +27,8 @@
   justify-content: center;
   display: flex;
   width: 100%;
+  min-width: 20vw;
+  max-width: 30vw;
   border-radius: 10px;
   border: 1px solid #A4A2A2;
   transition: transform 0.3s, box-shadow 0.3s; 
@@ -39,8 +41,7 @@
 }
 .child .recording img{
   width: 100%;
-  max-width: 15rem;
-  min-height: 10rem;
+  max-height: 15rem;
   padding: 1.2vw;
   justify-content: center;
   align-items: center;
@@ -89,8 +90,20 @@
   opacity: 0.7;
 }
 /* responsine design */
-@media (max-width: 1100px) {
+@media (max-width: 1024px) {
   .child{
   flex-wrap: wrap;
+  width: 100%;
+  }
+  .child .recording{
+    width: 100%;
+    max-width: 40vw;
+  }
 }
+
+@media (max-width: 650px) {
+  .child .recording{
+    width: 100%;
+    max-width: 100%;
+  }
 }
