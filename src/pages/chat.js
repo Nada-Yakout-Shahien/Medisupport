@@ -6,6 +6,7 @@ import chat from "../images/chatting.png";
 import "./chat.css";
 import Layout from "../components/Layout";
 import docchat1 from "../images/doc_chat1.jpeg";
+import { hover } from "@testing-library/user-event/dist/hover";
 //import { Picker } from "emoji-mart";
 
 const emojis = [
