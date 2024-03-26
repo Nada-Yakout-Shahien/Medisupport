@@ -341,7 +341,6 @@
   visibility: hidden; 
   opacity: 0;
 }
-
 .emoji-picker-container.show {
   transform: translateX(-50%) translateY(0); 
   visibility: visible; 
