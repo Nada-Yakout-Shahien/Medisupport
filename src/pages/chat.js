@@ -129,7 +129,8 @@ const emojis = [
   "💞",
   "💕",
   "💟",
-  "❣",
+  "❣️",
+  "♥️",
   "💔",
   "❤️",
   "🧡",
@@ -155,7 +156,6 @@ const emojis = [
   "✋",
   "🖖",
   "👌",
-  "🤌",
   "🤏",
   "✌",
   "🤞",
@@ -192,8 +192,6 @@ const emojis = [
   "🦻",
   "👃",
   "🧠",
-  "🫀",
-  "🫁",
   "🦷",
   "🦴",
   "👀",
@@ -238,7 +236,6 @@ const emojis = [
   "👼",
   "🎅",
   "🌱",
-  "🪴",
   "🌲",
   "🌳",
   "🌴",
@@ -276,17 +273,14 @@ const emojis = [
   "🍑",
   "🍒",
   "🍓",
-  "🫐",
   "🥝",
   "🍅",
-  "🫒",
   "🥑",
   "🍆",
   "🥔",
   "🥕",
   "🌽",
   "🌶️",
-  "🫑",
   "🥒",
   "🥬",
   "🥦",
@@ -298,7 +292,6 @@ const emojis = [
   "🍞",
   "🥐",
   "🥖",
-  "🫓",
   "🥨",
   "🥯",
   "🥞",
@@ -315,14 +308,12 @@ const emojis = [
   "🥪",
   "🌮",
   "🌯",
-  "🫔",
   "🥙",
   "🧆",
   "🥚",
   "🍳",
   "🥘",
   "🍲",
-  "🫕",
   "🥣",
   "🥗",
   "🍿",
@@ -366,7 +357,6 @@ const emojis = [
   "🍮",
   "🍯",
   "🍼",
-  "🫖",
   "☕",
   "🍵",
   "🧃",
@@ -552,11 +542,9 @@ const Chat = () => {
 
   // emogi
   const [showPicker, setShowPicker] = useState(false);
-
   const selectEmoji = (emoji) => {
     console.log("Emoji selected", emoji);
     setCurrentMessage(currentMessage + emoji);
-    setShowPicker(false);
   };
 
   //send files
@@ -650,7 +638,7 @@ const Chat = () => {
           </div>
           <div className="input-area">
             <div className="emoji-picker-position">
-              <button onClick={() => setShowPicker(!showPicker)}>
+              <button  onClick={() => setShowPicker(!showPicker)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="50"
@@ -681,7 +669,11 @@ const Chat = () => {
                 </svg>
               </button>
               {showPicker && (
-                <div className="emoji-picker-container">
+                <div
+                  className={`emoji-picker-container ${
+                    showPicker ? "show" : ""
+                  }`}
+                >
                   {emojis.map((emoji) => (
                     <button key={emoji} onClick={() => selectEmoji(emoji)}>
                       {emoji}
@@ -690,7 +682,6 @@ const Chat = () => {
                 </div>
               )}
             </div>
-
             <div class="input-container">
               <div className="textarea-custom">
                 <textarea
