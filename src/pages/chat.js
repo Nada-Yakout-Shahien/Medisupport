@@ -1,11 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import "./Welcome.css";
 import React, { useState, useRef, useEffect } from "react";
-import chat from "../images/chatting.png";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import "./chat.css";
 import Layout from "../components/Layout";
 import docchat1 from "../images/doc_chat1.jpeg";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const emojis = [
   "😀",
@@ -546,9 +546,16 @@ const Chat = () => {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+  //default mess
+  const [showDefaultConversation, setShowDefaultConversation] = useState(true);
+
+  //showsidebar
+  const [showSidebar, setShowSidebar] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
   const sendMessage = (event) => {
     event.preventDefault();
     if (currentMessage.trim() !== "" || selectedFile) {
@@ -586,6 +593,7 @@ const Chat = () => {
       }, 2000);
     }
   };
+
   // edit
   const handleMessageChange = (event) => {
     setCurrentMessage(event.target.value);
@@ -600,6 +608,67 @@ const Chat = () => {
     }
   };
 
+  const handleDoctorClick = (doctor) => {
+    setSelectedDoctor(doctor);
+    if (windowWidth <= 750) {
+      setShowSidebar(false);
+      setShowChat(true);
+    } else {
+      setShowChat(true);
+    }
+  };
+  const handlearrowClick = (doctor) => {
+    if (window.innerWidth >= 750 && !selectedDoctor) {
+      setShowDefaultConversation(true);
+      setShowSidebar(true);
+    }
+    if (windowWidth <= 750) {
+      setShowSidebar(true);
+      setShowChat(false);
+    }
+    if (windowWidth >= 750) {
+      setShowSidebar(true);
+      setShowDefaultConversation(true);
+    }
+    if (selectedDoctor && windowWidth < 750) {
+      setShowSidebar(true);
+    } 
+  };
+  useEffect(() => {
+    if (!selectedDoctor && !showChat && windowWidth >= 750) {
+      setShowDefaultConversation(true);
+    } else {
+      setShowDefaultConversation(false);
+    }
+  }, [selectedDoctor, showChat, windowWidth]);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      if (window.innerWidth >= 750 && !selectedDoctor) {
+        setShowSidebar(true);
+        setShowDefaultConversation(true);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [selectedDoctor]);
+  useEffect(() => {
+    if (selectedDoctor && windowWidth < 750) {
+      setShowSidebar(false);
+    } else {
+      setShowSidebar(true);
+    }
+  }, [selectedDoctor, windowWidth]);
+  useEffect(() => {
+    if (!selectedDoctor && windowWidth >= 750) {
+      setShowSidebar(true);
+    }
+  }, [selectedDoctor, windowWidth]);
+
   return (
     <Layout>
       <Helmet>
@@ -612,17 +681,15 @@ const Chat = () => {
         />{" "}
       </Helmet>
       <div className="chatting">
-        <div className="sidebarchat">
-          <h3>Messages</h3>
+        <div className={showSidebar ? "sidebarchat" : ""}>
+          <h3 style={{ display: showSidebar ? "block" : "none" }}>Messages</h3>
           <div className="sidebar">
             {doctorsData.map((doctor) => (
               <div
+                style={{ display: showSidebar ? "block" : "none" }}
                 key={doctor.id}
                 className="doctorschat"
-                onClick={() => {
-                  setSelectedDoctor(doctor);
-                  setShowChat(true);
-                }}
+                onClick={() => handleDoctorClick(doctor)}
               >
                 <div className="slide">
                   <div className="doctorAvatarContainer">
@@ -655,10 +722,13 @@ const Chat = () => {
             ))}
           </div>
         </div>
+
         {selectedDoctor && showChat && (
           <div className="chatm">
-            <i className="fa-solid fa-arrow-left"></i>
             <div className="doctorinfor">
+              <div className="convback" onClick={handlearrowClick}>
+                <i className="fa-solid fa-arrow-left"></i>
+              </div>
               <div className="contactimgchat">
                 <div className="imgd">
                   <img
@@ -810,7 +880,7 @@ const Chat = () => {
           </div>
         )}
 
-        {!selectedDoctor && !showChat && (
+        {showDefaultConversation && (
           <div className="conversation conversation-default active">
             <i className="ri-chat-3-line"></i>
             <p>Select chat and view conversation!</p>

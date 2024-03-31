@@ -139,7 +139,6 @@
   transform: translate(50%, 50%);
   z-index: 2;
 }
-
 .conversation {
   display: flex;
   flex: 3;
@@ -392,17 +391,24 @@
   display: none;
 }
 
+.chatm .convback{
+  margin-left: -2.7em;
+  margin-top: -1.9em;
+}
+.chatm .convback:hover{
+  opacity: 0.7;
+}
 .chatm .fa-solid.fa-arrow-left {
+  cursor: pointer;
   color: var(--Red); 
   display: none;
+  width: 1em;
+  padding: 0.5em;
 }
 
 
 /*Res*/
-@media screen and (max-width: 800px) {
-  .chatting .sidebarchat {
-    display: none;
-  }
+@media screen and (max-width: 750px) {
   .chatm {
     width: 100%;
   }
@@ -410,11 +416,9 @@
     display: flex;
   }
   .conversation.active {
-    position: relative;
-    z-index: 20;
+    z-index: 5;
   }
   .conversation-default.active {
-    display: none;
     padding: 16px;
   }
 }
