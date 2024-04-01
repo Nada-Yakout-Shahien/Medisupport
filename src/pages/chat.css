@@ -334,7 +334,7 @@
   border: 1px solid transparent;
 }
 .input-area .input-container .textarea::placeholder {
-  font-size: 70%; 
+  font-size: 80%; 
 }
 
 .input-area .input-container .textarea {

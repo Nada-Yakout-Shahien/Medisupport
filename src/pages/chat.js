@@ -618,21 +618,8 @@ const Chat = () => {
     }
   };
   const handlearrowClick = (doctor) => {
-    if (window.innerWidth >= 750 && !selectedDoctor) {
-      setShowDefaultConversation(true);
-      setShowSidebar(true);
-    }
-    if (windowWidth <= 750) {
-      setShowSidebar(true);
-      setShowChat(false);
-    }
-    if (windowWidth >= 750) {
-      setShowSidebar(true);
-      setShowDefaultConversation(true);
-    }
-    if (selectedDoctor && windowWidth < 750) {
-      setShowSidebar(true);
-    } 
+    setSelectedDoctor(null);
+    setShowChat(false);
   };
   useEffect(() => {
     if (!selectedDoctor && !showChat && windowWidth >= 750) {
@@ -670,7 +657,7 @@ const Chat = () => {
   }, [selectedDoctor, windowWidth]);
 
   return (
-    <Layout>
+    <>
       <Helmet>
         <title>Chat Doctor ♥</title>
         <meta name="description" content="Chat" />
@@ -887,7 +874,7 @@ const Chat = () => {
           </div>
         )}
       </div>
-    </Layout>
+    </>
   );
 };
 
