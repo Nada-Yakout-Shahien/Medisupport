@@ -25,7 +25,7 @@
 .chatting .sidebarchat h3 {
   color: var(--Red);
   font-family: "Roboto", sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1rem, calc(1vw + 3vw), 1.8rem);  
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -78,11 +78,11 @@
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorInfo .doctortext {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  justify-content: space-around;
 }
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorInfo .doctorName {
   color: #1c1f1e;
-  font-size: 20px;
+  font-size: clamp(0.5rem, calc(1vw + 3vw), 1.2rem);  
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
@@ -96,12 +96,17 @@
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorInfo .lastMessage,
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorInfo .messageTime {
   color: #a7a6a5;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
 }
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorInfo .lastMessage {
   font-size: 0.9375rem;
+  width: 100%;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  display: inline-block;
+  flex-shrink: 0;
 }
 .chatting
   .sidebarchat
@@ -111,21 +116,24 @@
   .doctorInfo
   .unreadMessages {
   text-align: center;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
+  border: 0.1rem solid var(--Red);
   background-color: var(--Red);
   opacity: 0.7;
   border-radius: 50%;
   color: white;
-  font-size: 12px;
+  font-size: clamp(0.5rem, calc(1vw + 3vw), 0.7rem);  
   font-family: "Inter", sans-serif;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 16px;
 }
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorInfo .mess {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   gap: 2.5rem;
+  align-items: stretch;
 }
 .chatting .sidebarchat .sidebar .doctorschat .slide .onlineIndicator {
   position: absolute;
@@ -252,6 +260,9 @@
 }
 .chatm .chat-messages .message {
   margin: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 .chatm .chat-messages .message.user {
   padding: 1rem;
@@ -284,7 +295,16 @@
   align-self: flex-start;
   max-width: 50%;
 }
-
+.chatm .chat-messages .user-time{
+  text-align: right;
+  font-size: 0.7rem;
+  color: #c8c8c8;
+}
+.chatm .chat-messages .doctor-time{
+  text-align: right;
+  font-size: 0.7rem;
+  color: #8a8a8a;
+}
 .input-area {
   display: flex;
   gap: 0.5rem;
@@ -403,7 +423,7 @@
   color: var(--Red); 
   display: none;
   width: 1em;
-  padding: 0.5em;
+  padding: 1em  0.5em ;
 }
 
 

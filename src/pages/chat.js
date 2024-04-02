@@ -1,11 +1,9 @@
 import { Helmet } from "react-helmet-async";
 import "./Welcome.css";
 import React, { useState, useRef, useEffect } from "react";
-//import { Link } from "react-router-dom";
 import "./chat.css";
-import Layout from "../components/Layout";
+//import Layout from "../components/Layout";
 import docchat1 from "../images/doc_chat1.jpeg";
-import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const emojis = [
   "😀",
@@ -394,13 +392,15 @@ const Chat = () => {
   //doc
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [doctorMessageIndex, setDoctorMessageIndex] = useState(0);
+  const [currentDoctorMessages, setCurrentDoctorMessages] = useState([]);
+  const [doctorMessages, setDoctorMessages] = useState({});
   // doc
   const doctorsData = [
     {
       id: 1,
       name: "Dr. Floyd Miles",
       speciality: "Pediatrics",
-      lastMessage: "Vivamus varius odio non dui gravida, qui...",
+      lastMessage: "Vivamus varius odio non dui gravida, qui Vivamus varius odio non dui gravida, qui",
       messageTime: "9:12",
       unreadMessages: 3,
       avatar: docchat1,
@@ -418,7 +418,7 @@ const Chat = () => {
       id: 2,
       name: "Dr. mazen noah",
       speciality: "Dermatology",
-      lastMessage: "Curabitur eget leo at velit imperdiet vi...",
+      lastMessage: "Curabitur eget leo at velit imperdiet vi",
       messageTime: "2 Mar",
       unreadMessages: 4,
       avatar: docchat1,
@@ -436,7 +436,7 @@ const Chat = () => {
       id: 3,
       name: "Dr. noah moaz",
       speciality: "Pediatrics",
-      lastMessage: "Vivamus varius odio non dui gravida, qui...",
+      lastMessage: "Vivamus varius odio non dui gravida, qui",
       messageTime: "3 Fep",
       unreadMessages: 5,
       avatar: docchat1,
@@ -454,7 +454,7 @@ const Chat = () => {
       id: 4,
       name: "Dr. nor Doe",
       speciality: "Dermatology",
-      lastMessage: "Curabitur eget leo at velit imperdiet vi...",
+      lastMessage: "Curabitur eget leo at velit imperdiet viro",
       messageTime: "8:10",
       unreadMessages: 7,
       avatar: docchat1,
@@ -472,7 +472,7 @@ const Chat = () => {
       id: 5,
       name: "Dr. Amr Miles",
       speciality: "Pediatrics",
-      lastMessage: "Vivamus varius odio non dui gravida, qui...",
+      lastMessage: "Vivamus varius odio non dui gravida, qui",
       messageTime: "9:12",
       unreadMessages: 8,
       avatar: docchat1,
@@ -490,7 +490,7 @@ const Chat = () => {
       id: 6,
       name: "Dr. Ali Doe",
       speciality: "Dermatology",
-      lastMessage: "Curabitur eget leo at velit imperdiet vi...",
+      lastMessage: "Curabitur eget leo at velit imperdiet vi",
       messageTime: "5:15",
       unreadMessages: 4,
       avatar: docchat1,
@@ -508,7 +508,7 @@ const Chat = () => {
       id: 7,
       name: "Dr. saad Miles",
       speciality: "Pediatrics",
-      lastMessage: "Vivamus varius odio non dui gravida, qui...",
+      lastMessage: "Vivamus varius odio non dui gravida, qui",
       messageTime: "1:20",
       unreadMessages: 1,
       avatar: docchat1,
@@ -526,7 +526,7 @@ const Chat = () => {
       id: 8,
       name: "Dr. kazem nabil",
       speciality: "Dermatology",
-      lastMessage: "Curabitur eget leo at velit imperdiet vi...",
+      lastMessage: "Curabitur eget leo at velit imperdiet vi",
       messageTime: "20 Sat",
       unreadMessages: 2,
       avatar: docchat1,
@@ -548,25 +548,35 @@ const Chat = () => {
   };
   //default mess
   const [showDefaultConversation, setShowDefaultConversation] = useState(true);
-
   //showsidebar
   const [showSidebar, setShowSidebar] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
-
   const sendMessage = (event) => {
     event.preventDefault();
     if (currentMessage.trim() !== "" || selectedFile) {
+      const currentTime = new Date().toLocaleTimeString();
+
       if (currentMessage.trim() !== "") {
         const newMessage = {
           id: Date.now(),
           text: currentMessage,
           sender: "user",
+          time: currentTime,
         };
         setMessages([newMessage, ...messages]);
         setCurrentMessage("");
+        localStorage.setItem('chatMessages', JSON.stringify([...messages, newMessage]));
+        // Update doctorMessages state for the current doctor
+        setDoctorMessages((prevDoctorMessages) => ({
+          ...prevDoctorMessages,
+          [selectedDoctor.id]: [
+            newMessage,
+            ...(prevDoctorMessages[selectedDoctor.id] || []),
+          ],
+        }));
       }
 
       if (selectedFile) {
@@ -574,26 +584,47 @@ const Chat = () => {
           id: Date.now(),
           text: `File sent: ${selectedFile.name}`,
           sender: "user",
+          time: currentTime,
         };
         setMessages([fileMessage, ...messages]);
         console.log("File sent:", selectedFile.name);
         setSelectedFile(null);
+
+        // Update doctorMessages state for the current doctor
+        setDoctorMessages((prevDoctorMessages) => ({
+          ...prevDoctorMessages,
+          [selectedDoctor.id]: [
+            fileMessage,
+            ...(prevDoctorMessages[selectedDoctor.id] || []),
+          ],
+        }));
       }
       setTimeout(() => {
         const doctorMessage = {
           id: Date.now(),
           text: selectedDoctor.doctorMessages[doctorMessageIndex],
           sender: "doctor",
+          time: currentTime,
         };
         setMessages((messages) => [doctorMessage, ...messages]);
 
         setDoctorMessageIndex(
           (prevIndex) => (prevIndex + 1) % selectedDoctor.doctorMessages.length
         );
+
+        // Update doctorMessages state for the current doctor
+        setDoctorMessages((prevDoctorMessages) => ({
+          ...prevDoctorMessages,
+          [selectedDoctor.id]: [
+            doctorMessage,
+            ...(prevDoctorMessages[selectedDoctor.id] || []),
+          ],
+        }));
       }, 2000);
+      
+
     }
   };
-
   // edit
   const handleMessageChange = (event) => {
     setCurrentMessage(event.target.value);
@@ -607,9 +638,11 @@ const Chat = () => {
       setSelectedFile(file);
     }
   };
-
   const handleDoctorClick = (doctor) => {
     setSelectedDoctor(doctor);
+    setCurrentDoctorMessages(doctor.doctorMessages);
+    setMessages(doctorMessages[doctor.id] || []);
+    setShowPicker(false);
     if (windowWidth <= 750) {
       setShowSidebar(false);
       setShowChat(true);
@@ -620,14 +653,8 @@ const Chat = () => {
   const handlearrowClick = (doctor) => {
     setSelectedDoctor(null);
     setShowChat(false);
+    setShowPicker(false);
   };
-  useEffect(() => {
-    if (!selectedDoctor && !showChat && windowWidth >= 750) {
-      setShowDefaultConversation(true);
-    } else {
-      setShowDefaultConversation(false);
-    }
-  }, [selectedDoctor, showChat, windowWidth]);
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -655,7 +682,20 @@ const Chat = () => {
       setShowSidebar(true);
     }
   }, [selectedDoctor, windowWidth]);
-
+  useEffect(() => {
+    if (!selectedDoctor && !showChat && windowWidth >= 750) {
+      setShowDefaultConversation(true);
+    } else {
+      setShowDefaultConversation(false);
+    }
+  }, [selectedDoctor, showChat, windowWidth]);
+  useEffect(() => {
+    const storedMessages = JSON.parse(localStorage.getItem('chat-messages'));
+    if (storedMessages && storedMessages.length > 0) {
+      setMessages(storedMessages);
+    }
+  }, []);
+  
   return (
     <>
       <Helmet>
@@ -733,23 +773,41 @@ const Chat = () => {
                 <p>{selectedDoctor.status}</p>
               </div>
             </div>
-            <div
-              className={`chat-container ${selectedDoctor.speciality.toLowerCase()}-chat`}
-            >
-              <div className="chat-messages">
-                {messages.map((message) => (
-                  <div
-                    key={message.id}
-                    className={`message ${
-                      message.sender === "doctor" ? "doctor" : "user"
-                    }`}
-                  >
-                    {message.text}
+            {selectedDoctor && (
+              <div
+                className={`chat-container ${selectedDoctor.speciality.toLowerCase()}-chat`}
+                onClick={() => setShowPicker(false)}
+              >
+                {currentDoctorMessages.length > 0 && (
+                  <div className="chat-messages">
+                    {messages.map((message) => (
+                      <div className="chat-messages">
+                        <div
+                          key={message.id}
+                          className={`message ${
+                            message.sender === "doctor" ? "doctor" : "user"
+                          }`}
+                        >
+                          <span>{message.text}</span>
+
+                          <span
+                            className={`message-time ${
+                              message.sender === "doctor"
+                                ? "doctor-time"
+                                : "user-time"
+                            }`}
+                          >
+                            {message.time}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                    <div ref={messagesEndRef} />
                   </div>
-                ))}
-                <div ref={messagesEndRef} />
+                )}
               </div>
-            </div>
+            )}
+
             <div className="input-area">
               <div className="emoji-picker-position">
                 <button onClick={() => setShowPicker(!showPicker)}>
