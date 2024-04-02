@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import "./Welcome.css";
 import React, { useState, useRef, useEffect } from "react";
 import "./chat.css";
-//import Layout from "../components/Layout";
+import Layout from "../components/Layout";
 import docchat1 from "../images/doc_chat1.jpeg";
 
 const emojis = [
@@ -697,7 +697,7 @@ const Chat = () => {
   }, []);
   
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>Chat Doctor ♥</title>
         <meta name="description" content="Chat" />
@@ -932,7 +932,7 @@ const Chat = () => {
           </div>
         )}
       </div>
-    </>
+    </Layout>
   );
 };
 

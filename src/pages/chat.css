@@ -441,4 +441,7 @@
   .conversation-default.active {
     padding: 16px;
   }
+  header , footer {
+    display: none;
+  }
 }
