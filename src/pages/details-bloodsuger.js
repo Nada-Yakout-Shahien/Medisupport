@@ -4,6 +4,7 @@ import { eachDayOfInterval, format } from "date-fns";
 import "./details-bloodsuger.css";
 import Layout from "../components/Layout";
 import { NavLink } from "react-router-dom";
+//import { fetchData } from "../components/apiService";
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -33,15 +34,8 @@ const DetailsBloodsuger = () => {
   //diagram
 
   //numbers-diagram
-  useEffect(() => {
-    fetch("URL_TO_YOUR_API")
-      .then((response) => response.json())
-      .then((data) => {
-        const sortedData = data.sort((a, b) => a - b);
-        setChartValues(sortedData);
-      })
-      .catch((error) => console.error("Error fetching data: ", error));
-  }, []);
+
+
   const [chartValues, setChartValues] = useState([
     0, 88, 155, 225, 295, 365, 430, 500,
   ]);
@@ -56,9 +50,8 @@ const DetailsBloodsuger = () => {
     { day: "Sat", value: 250 },
     { day: "Sun", value: 270 },
   ]);
-
   useEffect(() => {
-    fetch("URL_TO_YOUR_API")
+    fetch("https://69ed-197-63-218-196.ngrok-free.app/api")
       .then((response) => response.json())
       .then((data) => {
         const transformedData = data.map((item) => ({
@@ -69,6 +62,26 @@ const DetailsBloodsuger = () => {
       })
       .catch((error) => console.error("Error fetching data: ", error));
   }, []);
+
+  //valid data ?
+  const [formData, setFormData] = useState({});
+  const [isFormDataComplete, setIsFormDataComplete] = useState(false);
+
+  const validateFormData = () => {
+  };
+  
+  const handleSubmit = () => {
+    if (isFormDataComplete) {
+      
+    }
+  };  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  useEffect(() => {
+    validateFormData();
+  }, [formData]);
 
   return (
     <Layout>
@@ -159,7 +172,12 @@ const DetailsBloodsuger = () => {
           </p>
         </div>
         <div className="btn">
-          <NavLink to="/blood_sugar" className="addrec">
+          <NavLink
+            to="/blood_sugar"
+            className="addrec"
+            onClick={handleSubmit}
+            disabled={!isFormDataComplete}
+          >
             Add New Record
           </NavLink>
         </div>

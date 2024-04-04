@@ -1,18 +1,41 @@
 import { Helmet } from "react-helmet-async";
 import "./sign_up.css";
-import React,{useState} from "react";
+import React, { useState } from "react";
 import sign from "../images/sign.png";
 import { NavLink } from "react-router-dom";
+import { registerUser } from "../components/apiService";
 
 const Sign_up = () => {
-    //password
-    const [passwordVisible, setPasswordVisible] = useState(false);
-    const [iconActive, setIconActive] = useState(false);
-  
-    const togglePasswordVisibility = () => {
-      setPasswordVisible(!passwordVisible);
-      setIconActive(!iconActive);
-    };
+  //password
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [iconActive, setIconActive] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+    setIconActive(!iconActive);
+  };
+  const handleSignUp = async () => {
+    try {
+      const firstName = document.getElementById("first-name").value;
+      const lastName = document.getElementById("last-name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const userData = {
+        name: firstName,
+        last_name: lastName,
+        email: email,
+        password: password, 
+        password_confirmation: password, 
+      };
+
+      const response = await registerUser(userData);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -25,56 +48,64 @@ const Sign_up = () => {
           <div className="lbl">
             <div className="name">
               <div className="lbl">
-                <label htmlFor="">First Name</label>
-                <input type="text" placeholder="FName" required id="nam" />
+                <label htmlFor="first-name">First Name</label>
+                <input type="text" placeholder="FName" required id="first-name" />
               </div>
               <div className="lbl2">
-                <label htmlFor="">Last Name</label>
-                <input type="text" placeholder="LName" required id="nam" />
+                <label htmlFor="last-name">Last Name</label>
+                <input type="text" placeholder="LName" required id="last-name" />
               </div>
             </div>
           </div>
           <div className="forml">
             <div className="lbl">
               <div className="lbl1">
-                <label htmlFor="">Email Address</label>
-                <input className="inp" type="text" placeholder="Your Email"/>
+                <label htmlFor="email">Email Address</label>
+                <input className="inp" type="text" placeholder="Your Email" id="email"/>
               </div>
               <div className="lbl2">
-                <label htmlFor="">Password</label>
+                <label htmlFor="password">Password</label>
                 <div className="password-input-container">
-                  <input type={passwordVisible ? "text" : "password"} className="inp" 
-                  placeholder="Your Password"/>
-                  <svg
-                  onClick={togglePasswordVisibility}
-                  className={`toggle-password-visibility ${
-                    iconActive ? "active" : ""
-                  }`}
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="25"
-                  viewBox="0 0 24 25"
-                >
-                  <path
-                    d="M20 12.5C20 10.69 16.24 8.51499 11.993 8.49999C7.775 8.48499 4 10.678 4 12.5C4 14.325 7.754 16.506 11.997 16.5C16.252 16.494 20 14.32 20 12.5ZM12 18.5C6.958 18.507 2 15.814 2 12.5C2 9.18599 6.984 6.48299 12 6.49999C17.016 6.51699 22 9.18599 22 12.5C22 15.814 17.042 18.493 12 18.5ZM12 16.5C10.9391 16.5 9.92172 16.0786 9.17157 15.3284C8.42143 14.5783 8 13.5609 8 12.5C8 11.4391 8.42143 10.4217 9.17157 9.67156C9.92172 8.92142 10.9391 8.49999 12 8.49999C13.0609 8.49999 14.0783 8.92142 14.8284 9.67156C15.5786 10.4217 16 11.4391 16 12.5C16 13.5609 15.5786 14.5783 14.8284 15.3284C14.0783 16.0786 13.0609 16.5 12 16.5ZM12 14.5C12.5304 14.5 13.0391 14.2893 13.4142 13.9142C13.7893 13.5391 14 13.0304 14 12.5C14 11.9696 13.7893 11.4608 13.4142 11.0858C13.0391 10.7107 12.5304 10.5 12 10.5C11.4696 10.5 10.9609 10.7107 10.5858 11.0858C10.2107 11.4608 10 11.9696 10 12.5C10 13.0304 10.2107 13.5391 10.5858 13.9142C10.9609 14.2893 11.4696 14.5 12 14.5Z"
+                  <input
+                    type={passwordVisible ? "text" : "password"}
+                    className="inp"
+                    placeholder="Your Password"
+                    id="password"
                   />
-                </svg>
+                  <svg
+                    onClick={togglePasswordVisibility}
+                    className={`toggle-password-visibility ${
+                      iconActive ? "active" : ""
+                    }`}
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="25"
+                    viewBox="0 0 24 25"
+                  >
+                    <path d="M20 12.5C20 10.69 16.24 8.51499 11.993 8.49999C7.775 8.48499 4 10.678 4 12.5C4 14.325 7.754 16.506 11.997 16.5C16.252 16.494 20 14.32 20 12.5ZM12 18.5C6.958 18.507 2 15.814 2 12.5C2 9.18599 6.984 6.48299 12 6.49999C17.016 6.51699 22 9.18599 22 12.5C22 15.814 17.042 18.493 12 18.5ZM12 16.5C10.9391 16.5 9.92172 16.0786 9.17157 15.3284C8.42143 14.5783 8 13.5609 8 12.5C8 11.4391 8.42143 10.4217 9.17157 9.67156C9.92172 8.92142 10.9391 8.49999 12 8.49999C13.0609 8.49999 14.0783 8.92142 14.8284 9.67156C15.5786 10.4217 16 11.4391 16 12.5C16 13.5609 15.5786 14.5783 14.8284 15.3284C14.0783 16.0786 13.0609 16.5 12 16.5ZM12 14.5C12.5304 14.5 13.0391 14.2893 13.4142 13.9142C13.7893 13.5391 14 13.0304 14 12.5C14 11.9696 13.7893 11.4608 13.4142 11.0858C13.0391 10.7107 12.5304 10.5 12 10.5C11.4696 10.5 10.9609 10.7107 10.5858 11.0858C10.2107 11.4608 10 11.9696 10 12.5C10 13.0304 10.2107 13.5391 10.5858 13.9142C10.9609 14.2893 11.4696 14.5 12 14.5Z" />
+                  </svg>
                 </div>
               </div>
             </div>
             <div class="check">
-              <label for="">
+              <label htmlFor="custom-checkbox">
                 <input type="checkbox" id="custom-checkbox" />
-                <label
+                <span
                   for="custom-checkbox"
                   class="custom-checkbox-label"
-                ></label>
+                ></span>
                 <p className="tex">
                   Vestibulum faucibus odio vitae arcu auctor lectus.
                 </p>
               </label>
             </div>
-            <input type="submit" name="" value="Sign Up" className="btn" />
+            <input
+              type="submit"
+              name=""
+              value="Sign Up"
+              className="btn"
+              onClick={handleSignUp}
+            />
           </div>
           <div className="btn-log">
             <button className="blog">
