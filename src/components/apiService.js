@@ -2,6 +2,21 @@ import axios from "axios";
 
 const BASE_URL = "http://127.0.0.1:8000/api";
 
+//sendContactMessage
+export const sendContactMessage = async (contactData) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/contact`, JSON.stringify(contactData), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error('Unable to send contact message. Please try again.');
+  }
+};
+
 //registerUser
 export const registerUser = async (userData) => {
   try {

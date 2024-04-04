@@ -441,7 +441,8 @@
   .conversation-default.active {
     padding: 16px;
   }
-  header, .footer {
+  .chatting 
+    header, .footer {
     display: none;
   }
 }

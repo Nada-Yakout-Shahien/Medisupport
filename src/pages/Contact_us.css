@@ -1,7 +1,7 @@
 .contact {
   position: relative;
   display: flex;
-  padding: 5rem;
+  padding: 4rem;
   gap: 3rem;
 }
 .contact_img  ,.contact-form{

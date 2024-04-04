@@ -26,7 +26,7 @@ const Sign_up = () => {
         last_name: lastName,
         email: email,
         password: password, 
-        password_confirmation: password, 
+        password_confirmation: password,
       };
 
       const response = await registerUser(userData);

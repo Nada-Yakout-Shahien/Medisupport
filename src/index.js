@@ -83,9 +83,9 @@ const router = createBrowserRouter([
   {
     path: "/Contact_us",
     element: (
-      <ProtectedRoute>
+      <>
         <Contactus />
-      </ProtectedRoute>
+      </>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
