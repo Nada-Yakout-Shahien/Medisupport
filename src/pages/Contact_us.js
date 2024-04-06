@@ -52,18 +52,17 @@ const Contactus = () => {
             <div className="name">
               <div className="lblc">
                 <label htmlFor="fname">First Name</label>
-                <input type="text" placeholder="F Name" required id="firstName" name="firstName"/>
+                <input type="text" placeholder="F Name" required  name="firstName"/>
               </div>
               <div className="lblc">
                 <label htmlFor="lname">Last Name</label>
-                <input type="text" placeholder="L Name" required id="lastName" name="lastName"/>
+                <input type="text" placeholder="L Name" required  name="lastName"/>
               </div>
             </div>
             <div className="lblc">
               <label htmlFor="email">Email</label>
               <input
                 type="email"
-                id="email" 
                 name="email" 
                 placeholder="Your Email"
                 required
@@ -72,7 +71,6 @@ const Contactus = () => {
             <div className="lblc">
               <label htmlFor="message">Message</label>
               <textarea
-                id="message"
                 name="message"
                 cols="30"
                 rows="10"

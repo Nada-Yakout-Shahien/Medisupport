@@ -3,7 +3,13 @@ import "./sign_up.css";
 import React, { useState } from "react";
 import sign from "../images/sign.png";
 import { NavLink } from "react-router-dom";
-import { registerUser } from "../components/apiService";
+import {
+  registerUser,
+  loginWithGoogle,
+  loginWithFacebook,
+} from "../components/apiService";
+import { GoogleLogin } from "react-google-login";
+import FacebookLogin from "react-facebook-login";
 
 const Sign_up = () => {
   //password
@@ -14,26 +20,62 @@ const Sign_up = () => {
     setPasswordVisible(!passwordVisible);
     setIconActive(!iconActive);
   };
-  const handleSignUp = async () => {
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
     try {
-      const firstName = document.getElementById("first-name").value;
-      const lastName = document.getElementById("last-name").value;
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
+      const formData = new FormData(event.target);
       const userData = {
-        name: firstName,
-        last_name: lastName,
-        email: email,
-        password: password, 
-        password_confirmation: password,
+        name: formData.get("name"),
+        last_name: formData.get("last_name"),
+        email: formData.get("email"),
+        password: formData.get("password"),
+        password_confirmation: formData.get("password"),
       };
-
-      const response = await registerUser(userData);
-      console.log(response);
+      // Send userData directly without JSON.stringify
+      await registerUser(userData);
+      // Reset form fields after successful submission
+      event.target.reset();
     } catch (error) {
       console.error(error);
+      alert("Failed to register user. Please try again.");
     }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      await loginWithGoogle(
+        "provider",
+        "ya29.a0AfB_byCJwGBqfylm1ult8BtYR5GzyaxUDHu27cDCBfPjt0JqbdSFI2_RDut1Nnsuc7HpzVtkpe8USKLR7_SCGj9J_3fozqvjKbTTA75gJN8uIDdbB8mztSijWlHZHrAQqW16ijVNCxxC2q9FStgGhqf2-i8yI0sO5QaCgYKASwSARISFQHGX2MiXudLJV5WeJWwQkjtwr-c_Q0169"
+      );
+
+      // Redirect or handle success accordingly
+    } catch (error) {
+      console.error(error);
+      alert("Failed to login with Google. Please try again.");
+    }
+  };
+
+  const handleFacebookLogin = async () => {
+    try {
+      await loginWithFacebook(
+        "provider",
+        "ya29.a0AfB_byCJwGBqfylm1ult8BtYR5GzyaxUDHu27cDCBfPjt0JqbdSFI2_RDut1Nnsuc7HpzVtkpe8USKLR7_SCGj9J_3fozqvjKbTTA75gJN8uIDdbB8mztSijWlHZHrAQqW16ijVNCxxC2q9FStgGhqf2-i8yI0sO5QaCgYKASwSARISFQHGX2MiXudLJV5WeJWwQkjtwr-c_Q0169"
+      );
+      // Redirect or handle success accordingly
+    } catch (error) {
+      console.error(error);
+      alert("Failed to login with Facebook. Please try again.");
+    }
+  };
+  const responseGoogle = (response) => {
+    console.log(response);
+    // Handle Google login response here
+  };
+  const responseFacebook = (response) => {
+    console.log(response);
+    // Handle Facebook login response here
   };
 
   return (
@@ -43,17 +85,29 @@ const Sign_up = () => {
         <meta name="description" content="Sign up" />
       </Helmet>
       <div className="sig">
-        <div className="flex1">
+        <form className="flex1" onSubmit={handleSubmit}>
           <h2>Sign Up</h2>
           <div className="lbl">
             <div className="name">
               <div className="lbl">
-                <label htmlFor="first-name">First Name</label>
-                <input type="text" placeholder="FName" required id="first-name" />
+                <label htmlFor="name">First Name</label>
+                <input
+                  type="text"
+                  placeholder="FName"
+                  required
+                  id="name"
+                  name="name"
+                />
               </div>
               <div className="lbl2">
-                <label htmlFor="last-name">Last Name</label>
-                <input type="text" placeholder="LName" required id="last-name" />
+                <label htmlFor="last_name">Last Name</label>
+                <input
+                  type="text"
+                  placeholder="LName"
+                  required
+                  id="last_name"
+                  name="last_name"
+                />
               </div>
             </div>
           </div>
@@ -61,7 +115,13 @@ const Sign_up = () => {
             <div className="lbl">
               <div className="lbl1">
                 <label htmlFor="email">Email Address</label>
-                <input className="inp" type="text" placeholder="Your Email" id="email"/>
+                <input
+                  className="inp"
+                  type="text"
+                  placeholder="Your Email"
+                  id="email"
+                  name="email"
+                />
               </div>
               <div className="lbl2">
                 <label htmlFor="password">Password</label>
@@ -71,6 +131,7 @@ const Sign_up = () => {
                     className="inp"
                     placeholder="Your Password"
                     id="password"
+                    name="password"
                   />
                   <svg
                     onClick={togglePasswordVisibility}
@@ -99,61 +160,25 @@ const Sign_up = () => {
                 </p>
               </label>
             </div>
-            <input
-              type="submit"
-              name=""
-              value="Sign Up"
-              className="btn"
-              onClick={handleSignUp}
-            />
+            <input type="submit" name="" value="Sign Up" className="btn" />
           </div>
           <div className="btn-log">
-            <button className="blog">
-              <div className="svg">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="25"
-                  viewBox="0 0 24 25"
-                  fill="none"
-                >
-                  <path
-                    d="M23.7666 10.1498H22.8V10.1H12V14.9H18.7818C17.7924 17.6942 15.1338 19.7 12 19.7C8.0238 19.7 4.8 16.4762 4.8 12.5C4.8 8.5238 8.0238 5.3 12 5.3C13.8354 5.3 15.5052 5.9924 16.7766 7.1234L20.1708 3.7292C18.0276 1.7318 15.1608 0.5 12 0.5C5.373 0.5 0 5.873 0 12.5C0 19.127 5.373 24.5 12 24.5C18.627 24.5 24 19.127 24 12.5C24 11.6954 23.9172 10.91 23.7666 10.1498Z"
-                    fill="#FFC107"
-                  />
-                  <path
-                    d="M1.38281 6.9146L5.32541 9.806C6.39221 7.1648 8.97581 5.3 11.9992 5.3C13.8346 5.3 15.5044 5.9924 16.7758 7.1234L20.17 3.7292C18.0268 1.7318 15.16 0.5 11.9992 0.5C7.39001 0.5 3.39281 3.1022 1.38281 6.9146Z"
-                    fill="#FF3D00"
-                  />
-                  <path
-                    d="M11.9994 24.5C15.099 24.5 17.9154 23.3138 20.0448 21.3848L16.3308 18.242C15.126 19.1546 13.6284 19.7 11.9994 19.7C8.87821 19.7 6.22801 17.7098 5.22961 14.9324L1.31641 17.9474C3.30241 21.8336 7.33561 24.5 11.9994 24.5Z"
-                    fill="#4CAF50"
-                  />
-                  <path
-                    d="M23.7666 10.1499H22.8V10.1001H12V14.9001H18.7818C18.3066 16.2423 17.4432 17.3997 16.3296 18.2427C16.3302 18.2421 16.3308 18.2421 16.3314 18.2415L20.0454 21.3843C19.7826 21.6231 24 18.5001 24 12.5001C24 11.6955 23.9172 10.9101 23.7666 10.1499Z"
-                    fill="#1976D2"
-                  />
-                </svg>
-              </div>
-              <p className="text"> Log in with Google</p>
-            </button>
-            <button className="blog">
-              <div className="svg">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="25"
-                  viewBox="0 0 24 25"
-                  fill="none"
-                >
-                  <path
-                    d="M9.04525 6.365V9.113H7.03125V12.473H9.04525V22.459H13.1792V12.474H15.9543C15.9543 12.474 16.2142 10.863 16.3403 9.101H13.1962V6.803C13.1962 6.46 13.6462 5.998 14.0922 5.998H16.3463V2.5H13.2822C8.94225 2.5 9.04525 5.863 9.04525 6.365Z"
-                    fill="#006FFF"
-                  />
-                </svg>
-              </div>
-              <p className="text"> Log in with Facebook</p>
-            </button>
+            <GoogleLogin
+              clientId="159237658249-prbgkv3mt6a9ichu2dikct14qc781tn4.apps.googleusercontent.com"
+              buttonText="Log in with Google"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={"single_host_origin"}
+            />
+            <FacebookLogin
+              appId="763487532477503"
+              autoLoad={false}
+              fields="name,email,picture"
+              callback={responseFacebook}
+              cssClass="facebook-login-button"
+              icon={<i className="fab fa-facebook-f"></i>}
+              textButton="Log in with Facebook"
+            />
           </div>
           <hr />
           <div className="sign">
@@ -164,7 +189,7 @@ const Sign_up = () => {
               </NavLink>
             </p>
           </div>
-        </div>
+        </form>
         <div className="flex2">
           <img src={sign} alt="sign_up" />
         </div>

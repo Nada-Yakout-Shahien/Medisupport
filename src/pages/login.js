@@ -1,31 +1,56 @@
-import { Helmet } from "react-helmet-async";
-import "./login.css";
 import React, { useState } from "react";
-import log from "../images/logIn.png";
-import { NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
+import { loginUser } from "../components/apiService";
+import logInImage from "../images/logIn.png";
+import "./login.css";
 
 const Login = () => {
-  //password
+  // State for password visibility and icon active status
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [iconActive, setIconActive] = useState(false);
 
+  // Function to toggle password visibility
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
     setIconActive(!iconActive);
   };
-  //loading
-  let navigate = useNavigate();
 
-  const handleLoginClick = () => {
-    navigate("/Loading");
-    const isSuccess = true;
-    if (isSuccess) {
+  // Hooks for navigation and authentication
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
+  // Function to handle login form submission
+  const handleLoginClick = async (event) => {
+    event.preventDefault();
+
+    try {
+      const formData = new FormData(event.target);
+      const userloginData = {
+        email: formData.get("email"),
+        password: formData.get("password"),
+      };
+
+      // Call the API service function to log in the user
+      const access_token = await loginUser(userloginData);
+
+      // Store the access token in local storage
+      localStorage.setItem("access_token", access_token);
+
+      // Navigate to the loading page
+      navigate("/Loading");
+
+      // Perform login action
       login();
+
+      // Reset form fields after successful submission
+      event.target.reset();
+    } catch (error) {
+      console.error(error);
+      alert("Failed to login user. Please try again.");
     }
   };
-  const { login } = useAuth();
 
   return (
     <>
@@ -37,19 +62,29 @@ const Login = () => {
       <div className="log">
         <div className="flex1">
           <h2>Log In</h2>
-          <div className="forml">
+          <form className="forml" onSubmit={handleLoginClick}>
             <div className="lbl">
               <div className="lbl1">
-                <label htmlFor="">Email Address</label>
-                <input className="inp" type="text" placeholder="Your Email" />
+                <label htmlFor="email">Email Address</label>
+                <input
+                  className="inp"
+                  type="email"
+                  placeholder="Your Email"
+                  name="email"
+                  id="email"
+                  required
+                />
               </div>
               <div className="lbl2">
-                <label htmlFor="">Password</label>
+                <label htmlFor="password">Password</label>
                 <div className="password-input-container">
                   <input
                     type={passwordVisible ? "text" : "password"}
                     className="inp"
                     placeholder="Your Password"
+                    name="password"
+                    id="password"
+                    required
                   />
                   <svg
                     onClick={togglePasswordVisibility}
@@ -70,25 +105,25 @@ const Login = () => {
                 </div>
               </div>
             </div>
-            <div class="forget">
-              <div class="checkbox-container">
+            <div className="forget">
+              <div className="checkbox-container">
                 <input type="checkbox" id="custom-checkbox" />
                 <label
-                  for="custom-checkbox"
-                  class="custom-checkbox-label"
+                  htmlFor="custom-checkbox"
+                  className="custom-checkbox-label"
                 ></label>
-                <label for="custom-checkbox">Remember Me</label>
+                <label htmlFor="custom-checkbox">Remember Me</label>
               </div>
               <NavLink to="/forget_password" id="for">
                 Forget Password?
               </NavLink>
             </div>
             <div>
-              <button onClick={handleLoginClick} className="btn">
+              <button type="submit" className="btn">
                 Login
               </button>
             </div>
-          </div>
+          </form>
           <div className="btn-log">
             <button className="blog">
               <div className="svg">
@@ -148,8 +183,8 @@ const Login = () => {
             </p>
           </div>
         </div>
-        <div classNEmail className="flex2">
-          <img src={log} alt="log_in" />
+        <div className="flex2">
+          <img src={logInImage} alt="log_in" />
         </div>
       </div>
     </>

@@ -2,18 +2,71 @@ import axios from "axios";
 
 const BASE_URL = "http://127.0.0.1:8000/api";
 
-//sendContactMessage
-export const sendContactMessage = async (contactData) => {
+//handleRequestError
+export const handleRequestError = (error) => {
+  let errorMessage = "";
+  if (error.response) {
+    errorMessage = `Error: ${error.response.status} - ${error.response.data.message}`;
+  } else if (error.request) {
+    errorMessage = "Network Error: No response received";
+  } else {
+    errorMessage = `Error: ${error.message}`;
+  }
+  alert(errorMessage);
+};
+
+// send request with stored token  for data
+export const sendAuthenticatedRequest = async (
+  url,
+  method,
+  data,
+  accessToken
+) => {
   try {
-    const response = await axios.post(`${BASE_URL}/contact`, JSON.stringify(contactData), {
+    const response = await axios({
+      method: method,
+      url: `${BASE_URL}${url}`,
+      data: data,
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
+        Authorization: `Bearer ${accessToken}`,
+      },
     });
     return response.data;
   } catch (error) {
-    throw new Error('Unable to send contact message. Please try again.');
+    throw new Error("Failed to send request with token");
+  }
+};
+
+//loginUser
+export const loginUser = async (userloginData) => {
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/auth/user/login`,
+      userloginData
+    );
+    const { accessToken } = response.data;
+    return accessToken;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+//sendContactMessage
+export const sendContactMessage = async (contactData) => {
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/contact`,
+      JSON.stringify(contactData),
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    handleRequestError(error);
   }
 };
 
@@ -22,66 +75,74 @@ export const registerUser = async (userData) => {
   try {
     const response = await axios.post(
       `${BASE_URL}/auth/user/register`,
-      userData
-    );
-    return response.data;
-  } catch (error) {
-    throw new Error("Unable to register user. Please try again.");
-  }
-};
-
-//loginUser
-export const loginUser = async (loginData) => {
-  try {
-    const response = await axios.post(`${BASE_URL}/auth/user/login`, loginData);
-    return response.data;
-  } catch (error) {
-    throw new Error(
-      "Unable to login. Please check your credentials and try again."
-    );
-  }
-};
-
-// logoutUser
-export const logoutUser = async (token) => {
-  try {
-    const response = await axios.post(
-      `${BASE_URL}/auth/user/logout`,
-      {},
+      JSON.stringify(userData),
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
       }
     );
     return response.data;
   } catch (error) {
-    throw new Error("Unable to logout. Please try again.");
-  }
-};
-// socialLogin
-export const socialLogin = async (socialData) => {
-  try {
-    const response = await axios.post(
-      `${BASE_URL}/auth/user/social-login`,
-      socialData
-    );
-    return response.data;
-  } catch (error) {
-    throw new Error("Unable to login using social account. Please try again.");
+    handleRequestError(error);
   }
 };
 
-//getUserProfile
-export const getUserProfile = async (token) => {
+
+//bloodsugr
+export const bloodSugar = async (userstatusData) => {
   try {
-    const response = await axios.get(`${BASE_URL}/auth/user/user-profile`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await axios.post(
+      `${BASE_URL}/user/blood-sugar/store?level=89&blood_sugar_statuses_id=1`,
+      JSON.stringify(userstatusData),
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
     return response.data;
   } catch (error) {
-    throw new Error("Unable to fetch user profile. Please try again.");
+    handleRequestError(error);
+  }
+};
+
+//loginWithGoogle
+export const loginWithGoogle = async (provider, accessProviderToken) => {
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/auth/user/social-login`,
+      JSON.stringify({ provider, accessProviderToken }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Unable to login with Google. Please try again.");
+  }
+};
+
+//loginWithFacebook
+export const loginWithFacebook = async (provider, accessProviderToken) => {
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/auth/user/social-login`,
+      JSON.stringify({ provider, accessProviderToken }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Unable to login with Facebook. Please try again.");
   }
 };
