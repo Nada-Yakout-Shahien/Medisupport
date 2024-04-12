@@ -7,13 +7,18 @@ export const handleRequestError = (error) => {
   let errorMessage = "";
   if (error.response) {
     errorMessage = `Error: ${error.response.status} - ${error.response.data.message}`;
+    alert(errorMessage);
+    throw error;
   } else if (error.request) {
     errorMessage = "Network Error: No response received";
+    alert(errorMessage);
   } else {
     errorMessage = `Error: ${error.message}`;
+    alert(errorMessage);
   }
-  alert(errorMessage);
+  return errorMessage;
 };
+
 
 // send request with stored token  for data
 export const sendAuthenticatedRequest = async (
@@ -44,12 +49,18 @@ export const loginUser = async (userloginData) => {
       `${BASE_URL}/auth/user/login`,
       userloginData
     );
-    const { accessToken } = response.data;
-    return accessToken;
+
+    if (response.status === 200) {
+      const { accessToken } = response.data;
+      return accessToken;
+    } else {
+      throw new Error("Failed to login user. Please check your credentials and try again.");
+    }
   } catch (error) {
     handleRequestError(error);
   }
 };
+
 
 //sendContactMessage
 export const sendContactMessage = async (contactData) => {
