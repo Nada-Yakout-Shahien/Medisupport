@@ -35,7 +35,7 @@ import DetailsBloodpressure from "./pages/details-bloodpressure";
 import DoneNewPass from "./pages/done_new_pass";
 import NewPassword from "./pages/New_Password";
 import VerificationCode from "./pages/Verification_Code";
-
+import BMI1 from "./pages/BMI1";
 
 const router = createBrowserRouter([
   {
@@ -201,6 +201,11 @@ const router = createBrowserRouter([
   {
     path: "/done_New_Pass",
     element: <DoneNewPass />,
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/BMI1",
+    element: <BMI1 />,
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
 ]);

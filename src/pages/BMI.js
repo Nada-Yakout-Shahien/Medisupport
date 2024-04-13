@@ -88,7 +88,7 @@ const BMI = () => {
               <p className="heihersliper6">300</p>
             </div>
             </div>
-            <NavLink to="#" className="heiherebut">Calculate</NavLink>
+            <NavLink to="/BMI1" className="heiherebut">Calculate</NavLink>
           </div>
           <div className="rfotr">
             <p className="rfotr2">Recommended Reading</p>
