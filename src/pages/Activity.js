@@ -3,7 +3,8 @@ import "./Activity.css";
 import React, { useState, useEffect } from "react";
 import { eachDayOfInterval, format } from "date-fns";
 import Layout from "../components/Layout";
-
+import "chart.js/auto";
+import { Line } from "react-chartjs-2";
 import { NavLink } from "react-router-dom";
 
 //date show
@@ -38,7 +39,57 @@ const Activity = (props, { data }) => {
   };
 
   // graph
-  
+  const options = {
+    responsive: true,
+
+    scales: {
+      xAxes: [{
+        gridLines: {
+          color: 'rgba(190, 2, 2, 0.3)', 
+          borderDash: [5, 5], 
+          lineWidth: 2.77, 
+        },scaleLabel: {
+          display: true,
+          labelString: 'Day',
+        },
+      }],
+
+      yAxes: [{
+        gridLines: {
+          color: 'rgba(190, 2, 2, 0.3)', 
+          borderDash: [20, 20], 
+          lineWidth: 2.77, 
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'mmHg',
+        },
+      }],
+    },
+  };
+  const datau = {
+    labels: ["", "", "", "", "", "", ""],
+    datasets: [
+      {
+        label: "Upper Bound",
+        data: [110, 125, 110, 160, 140, 150, 110],
+        borderColor: "#be0202",
+        backgroundColor: "#be0202",
+      },
+    ],
+  };
+  const datal = {
+    labels: ["", "", "", "", "", "", ""],
+    display:false,
+    datasets: [
+      {
+        label: "Lower Bound",
+        data: [60, 80, 80, 100, 96, 95, 85],
+        borderColor: "#be0202",
+        backgroundColor: "#be0202",
+      },
+    ],
+  };
 
   //diagram
 
@@ -212,7 +263,7 @@ const Activity = (props, { data }) => {
                     </div>
                   </div>
                   <div className="diagram">
-                  
+                    <Line data={datau} options={options} />
                   </div>
                 </div>
                 <div className="dig">
@@ -226,7 +277,7 @@ const Activity = (props, { data }) => {
                     </div>
                   </div>
                   <div className="diagram">
-                  
+                    <Line data={datal} options={options} />
                   </div>
                 </div>
               </div>
