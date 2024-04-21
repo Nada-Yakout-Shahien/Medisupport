@@ -12,8 +12,9 @@ export const handleRequestError = (error) => {
   } else {
     errorMessage = `Error: ${error.message}`;
   }
-  alert(errorMessage);
+  throw new Error(errorMessage); 
 };
+
 
 // send request with stored token  for data
 export const sendAuthenticatedRequest = async (
@@ -47,9 +48,10 @@ export const loginUser = async (userloginData) => {
     const { accessToken } = response.data;
     return accessToken;
   } catch (error) {
-    handleRequestError(error);
+    handleRequestError(error); 
   }
 };
+
 
 //sendContactMessage
 export const sendContactMessage = async (contactData) => {
