@@ -40,6 +40,7 @@ import VerificationCode from "./pages/Verification_Code";
 import Loading from "./pages/loading";
 import Payment from "./pages/payment";
 import Chat from "./pages/chat";
+import BMI1 from "./pages/BMI1";
 
 const router = createBrowserRouter([
   {
@@ -348,6 +349,11 @@ const router = createBrowserRouter([
         <Chat />
       </ProtectedRoute>
     ),
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/BMI1",
+    element: <BMI1 />,
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
 ]);

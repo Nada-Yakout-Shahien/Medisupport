@@ -273,7 +273,7 @@ const Doctors = ({ count, rating, color, onRating }) => {
                   </svg>
                 </div>
               
-              <input className="button" type="submit" value="Book Now" />
+              <input className="buttonrr_r" type="submit" value="Book Now" />
               </div>
             </div>
             <div className="left">
@@ -436,7 +436,7 @@ const Doctors = ({ count, rating, color, onRating }) => {
                   </svg>
                 </div>
               
-              <input className="button" type="submit" value="Book Now" />
+              <input className="buttonrr_r" type="submit" value="Book Now" />
               </div>
             </div>        
             <div className="under">
@@ -599,7 +599,7 @@ const Doctors = ({ count, rating, color, onRating }) => {
                   </svg>
                 </div>
               
-              <input className="button" type="submit" value="Book Now" />
+              <input className="buttonrr_r" type="submit" value="Book Now" />
               </div>
             </div>
             </div>
