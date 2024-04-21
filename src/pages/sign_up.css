@@ -174,15 +174,39 @@
   width: 100%;
   gap: 1em;
 }
-.sig .blog {
+.sig .blog{
+  width: 100%;
   justify-content: center;
   display: flex;
-  padding: 1vh 2vw;
   align-items: center;
-  border-radius: 0.7em;
+  cursor: pointer;
+  border-radius: 0.3em;
   background-color: var(--whiteColor);
   border: 2px solid var(--Red);
+}
+.sig .blog button{
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
   cursor: pointer;
+}
+.sig .blog button div{
+  display: flex;
+  justify-content: center;
+}
+.sig .blog span{
+  animation: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--graycolor);
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.5px;
 }
 .sig .text {
   display: flex;

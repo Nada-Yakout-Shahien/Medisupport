@@ -11,6 +11,9 @@ import {
 import { GoogleLogin } from "react-google-login";
 import FacebookLogin from "react-facebook-login";
 
+const clientId =
+  "639786245015-q9agbhq4ekj8vhqu85jbvdg75er66dnh.apps.googleusercontent.com";
+
 const Sign_up = () => {
   //password
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -43,36 +46,13 @@ const Sign_up = () => {
     }
   };
 
-  const handleGoogleLogin = async () => {
-    try {
-      await loginWithGoogle(
-        "provider",
-        "ya29.a0AfB_byCJwGBqfylm1ult8BtYR5GzyaxUDHu27cDCBfPjt0JqbdSFI2_RDut1Nnsuc7HpzVtkpe8USKLR7_SCGj9J_3fozqvjKbTTA75gJN8uIDdbB8mztSijWlHZHrAQqW16ijVNCxxC2q9FStgGhqf2-i8yI0sO5QaCgYKASwSARISFQHGX2MiXudLJV5WeJWwQkjtwr-c_Q0169"
-      );
-
-      // Redirect or handle success accordingly
-    } catch (error) {
-      console.error(error);
-      alert("Failed to login with Google. Please try again.");
-    }
+  const handleLogingoogleClick = (googleData) => {
+    console.log("Google login success:", googleData);
+  };
+  const handleLogingoogleFailure = (error) => {
+    console.error("Google login failed:", error);
   };
 
-  const handleFacebookLogin = async () => {
-    try {
-      await loginWithFacebook(
-        "provider",
-        "ya29.a0AfB_byCJwGBqfylm1ult8BtYR5GzyaxUDHu27cDCBfPjt0JqbdSFI2_RDut1Nnsuc7HpzVtkpe8USKLR7_SCGj9J_3fozqvjKbTTA75gJN8uIDdbB8mztSijWlHZHrAQqW16ijVNCxxC2q9FStgGhqf2-i8yI0sO5QaCgYKASwSARISFQHGX2MiXudLJV5WeJWwQkjtwr-c_Q0169"
-      );
-      // Redirect or handle success accordingly
-    } catch (error) {
-      console.error(error);
-      alert("Failed to login with Facebook. Please try again.");
-    }
-  };
-  const responseGoogle = (response) => {
-    console.log(response);
-    // Handle Google login response here
-  };
   const responseFacebook = (response) => {
     console.log(response);
     // Handle Facebook login response here
@@ -163,13 +143,15 @@ const Sign_up = () => {
             <input type="submit" name="" value="Sign Up" className="btn" />
           </div>
           <div className="btn-log">
-            <GoogleLogin
-              clientId="159237658249-prbgkv3mt6a9ichu2dikct14qc781tn4.apps.googleusercontent.com"
-              buttonText="Log in with Google"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={"single_host_origin"}
-            />
+            <button className="blog">
+              <GoogleLogin
+                clientId={clientId}
+                buttonText="Login in with Google"
+                onSuccess={handleLogingoogleClick}
+                onFailure={handleLogingoogleFailure}
+                cookiePolicy={"single_host_origin"}
+              />
+            </button>
             <FacebookLogin
               appId="763487532477503"
               autoLoad={false}

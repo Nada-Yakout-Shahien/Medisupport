@@ -16,7 +16,7 @@ export const handleRequestError = (error) => {
     errorMessage = `Error: ${error.message}`;
     alert(errorMessage);
   }
-  return errorMessage;
+  throw new Error(errorMessage); 
 };
 
 
@@ -57,7 +57,7 @@ export const loginUser = async (userloginData) => {
       throw new Error("Failed to login user. Please check your credentials and try again.");
     }
   } catch (error) {
-    handleRequestError(error);
+    handleRequestError(error); 
   }
 };
 
