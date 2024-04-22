@@ -1,12 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import "./details-bloodpressure.css";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { eachDayOfInterval, format } from "date-fns";
 import "chart.js/auto";
 import { Line } from "react-chartjs-2";
 import Layout from "../components/Layout";
 import { NavLink } from "react-router-dom";
-
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -34,38 +33,44 @@ const DetailsBloodpressure = () => {
   };
 
   //diagram
-  const options = {
+  // Chart options
+  const chartOptions = {
     responsive: true,
     title: {
       display: true,
       text: "Blood Pressure",
     },
     scales: {
-      xAxes: [{
-        gridLines: {
-          color: 'rgba(190, 2, 2, 0.3)', 
-          borderDash: [5, 5], 
-          lineWidth: 2.77, 
+      xAxes: [
+        {
+          gridLines: {
+            color: "rgba(190, 2, 2, 0.3)",
+            borderDash: [5, 5],
+            lineWidth: 2.77,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Day",
+          },
         },
-        scaleLabel: {
-          display: true,
-          labelString: 'Day',
+      ],
+      yAxes: [
+        {
+          gridLines: {
+            color: "rgba(190, 2, 2, 0.3)",
+            borderDash: [5, 5],
+            lineWidth: 2.77,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "mmHg",
+          },
         },
-      }],
-      yAxes: [{
-        gridLines: {
-          color: 'rgba(190, 2, 2, 0.3)', 
-          borderDash: [5, 5], 
-          lineWidth: 2.77, 
-        },
-        scaleLabel: {
-          display: true,
-          labelString: 'mmHg',
-        },
-      }],
+      ],
     },
   };
 
+  // Upper bound data
   const datau = {
     labels: ["", "", "", "", "", "", ""],
     datasets: [
@@ -76,10 +81,17 @@ const DetailsBloodpressure = () => {
         backgroundColor: "#be0202",
       },
     ],
+    options: {
+      legend: {
+        position: "left",
+      },
+    },
   };
+
+  // Lower bound data
   const datal = {
     labels: ["", "", "", "", "", "", ""],
-    display:false,
+    display: false,
     datasets: [
       {
         label: "Lower Bound",
@@ -88,6 +100,11 @@ const DetailsBloodpressure = () => {
         backgroundColor: "#be0202",
       },
     ],
+    options: {
+      legend: {
+        position: "left",
+      },
+    },
   };
 
   return (
@@ -132,12 +149,13 @@ const DetailsBloodpressure = () => {
 
           <div className="dBP-diagram">
             <div className="diagramupper">
-              <Line data={datau} options={options} />
+              <Line data={datau} options={chartOptions} />
             </div>
             <div className="diagramlower">
-              <Line data={datal} options={options} />
+              <Line data={datal} options={chartOptions} />
             </div>
           </div>
+
           <div className="inf-det">
             <h3>Recommended Reading</h3>
             <h4>How To Loss Sugar ?</h4>

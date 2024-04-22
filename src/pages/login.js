@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
-import { loginUser } from "../components/apiService";
+import { loginUser,saveTokenToLocalStorage } from "../components/apiService";
 import logInImage from "../images/logIn.png";
 import "./login.css";
 import { GoogleLogin } from "react-google-login";
@@ -25,6 +25,9 @@ const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
 
+  const [accessToken, setAccessToken] = useState("");
+  
+
   // Function to handle login form submission
   const handleLoginClick = async (event) => {
     event.preventDefault();
@@ -35,20 +38,12 @@ const Login = () => {
         email: formData.get("email"),
         password: formData.get("password"),
       };
-
-      // Call the API service function to log in the user
-      const access_token = await loginUser(userData);
-
-      // Store the access token in local storage
-      localStorage.setItem("access_token", access_token);
-
-      // Navigate to the loading page
+      const accessToken = await loginUser(userData, setAccessToken); 
+      saveTokenToLocalStorage(accessToken); 
+      setAccessToken(accessToken); 
+      console.log("access_token:", accessToken);
       navigate("/Loading");
-
-      // Perform login action
       login();
-
-      // Reset form fields after successful submission
       event.target.reset();
     } catch (error) {
       console.error(error);

@@ -131,6 +131,38 @@
 .detailsbp .dBP-diagram .diagramlower{
   width: 50%;
 }
+/* تنسيق عنوان الرسم البياني في الجزء العلوي */
+.dBP-diagram .diagramupper .chartjs-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* تنسيق العناصر المحورية في الجزء العلوي */
+.dBP-diagram .diagramupper .chartjs-axis-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+}
+
+/* تنسيق التسميات في الجزء العلوي */
+.dBP-diagram .diagramupper .chartjs-scale-label {
+  font-size: 12px;
+  color: #999;
+}
+
+/* تنسيق الشبكات في الجزء العلوي */
+.dBP-diagram .diagramupper .chartjs-gridline {
+  stroke: rgba(190, 2, 2, 0.3);
+  stroke-dasharray: 5, 5;
+  stroke-width: 2.77;
+}
+
+/* تنسيق الخطوط في الجزء العلوي */
+.dBP-diagram .diagramupper .chartjs-line {
+  stroke: #be0202;
+  stroke-width: 2;
+}
 
 
 

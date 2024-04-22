@@ -4,7 +4,7 @@ import { eachDayOfInterval, format } from "date-fns";
 import "./Blood_sugar.css";
 import Layout from "../components/Layout";
 //import { NavLink } from "react-router-dom";
-import { sendAuthenticatedRequest } from "../components/apiService";
+import { sendRequest ,getAccessTokenFromLocalStorage} from "../components/apiService";
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -119,30 +119,38 @@ const Bloodsugar = () => {
       running = false;
     };
   }, []);
-  
+
   //after-click-btn
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const formData = new FormData(event.target);
-      const userstatusData = {
-        level: formData.get("level"),
-        status_id: formData.get("status-name"),
-      };
-      await sendAuthenticatedRequest(
-        "/user/blood-sugar/store?level=89&blood_sugar_statuses_id=1", 
-        "POST",
-        userstatusData
-      );
-      alert("Data sent successfully.");
-      event.target.reset();
-    } catch (error) {
-      console.error(error);
-      alert('Failed to send data. Please try again later.');
+
+const handleFormSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const accessToken = getAccessTokenFromLocalStorage(); 
+    if (!accessToken) {
+      console.error("Access token is missing");
+      return;
     }
-  };
+    const bloodSugarData = {
+      level: averageValue.toFixed(2),
+      blood_sugar_statuses_id: 1,
+    };
+    await sendRequest(
+      "POST",
+      "/user/blood-sugar/store?level=89&blood_sugar_statuses_id=1",
+      bloodSugarData,
+      accessToken
+    );
+    setIsOverlayVisible(true);
+    console.log("Blood sugar data submitted successfully");
+  } catch (error) {
+    console.error("Error submitting blood sugar data:", error);
+  }
+};
+
+
+  
 
   return (
     <Layout>
@@ -150,7 +158,7 @@ const Bloodsugar = () => {
         <title>Blood Sugar ♥</title>
         <meta name="description" content="Manage your blood sugar levels" />
       </Helmet>
-      <form className="bloodsugar" onSubmit={handleSubmit}>
+      <form className="bloodsugar" onSubmit={handleFormSubmit}>
         <div className="stb">
           <h3>Blood Sugar</h3>
           <div className="menu" onClick={toggleMenu}>
@@ -267,7 +275,7 @@ const Bloodsugar = () => {
           <input
             type="submit"
             name=""
-            value="  Add To Record"
+            value="Add To Record"
             className="addrec"
           />
         </div>

@@ -16,42 +16,46 @@ export const handleRequestError = (error) => {
 };
 
 
-// send request with stored token  for data
-export const sendAuthenticatedRequest = async (
-  url,
-  method,
-  data,
-  accessToken
-) => {
+// send request with stored token for data
+export const sendRequest = async (method, url, data, accessToken) => {
   try {
     const response = await axios({
       method: method,
       url: `${BASE_URL}${url}`,
       data: data,
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
+      headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},
     });
     return response.data;
-  } catch (error) {
-    throw new Error("Failed to send request with token");
-  }
-};
-
-//loginUser
-export const loginUser = async (userloginData) => {
-  try {
-    const response = await axios.post(
-      `${BASE_URL}/auth/user/login`,
-      userloginData
-    );
-    const { accessToken } = response.data;
-    return accessToken;
   } catch (error) {
     handleRequestError(error); 
   }
 };
 
+// loginUser
+export const loginUser = async (userloginData, setAccessToken) => { 
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/auth/user/login`,
+      userloginData
+    );
+    console.log("Response data:", response.data); 
+    const accessToken = response.data.access_token;
+    console.log("Access Token:", accessToken); 
+    setAccessToken(accessToken); 
+    return accessToken; 
+  } catch (error) {
+    console.error("Error logging in:", error); 
+    handleRequestError(error); 
+  }
+};
+
+export const saveTokenToLocalStorage = (accessToken) => {
+  localStorage.setItem('accessToken', accessToken);
+};
+
+export const getAccessTokenFromLocalStorage = () => {
+  return localStorage.getItem('accessToken');
+};
 
 //sendContactMessage
 export const sendContactMessage = async (contactData) => {
@@ -77,20 +81,13 @@ export const registerUser = async (userData) => {
   try {
     const response = await axios.post(
       `${BASE_URL}/auth/user/register`,
-      JSON.stringify(userData),
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
+      userData
     );
-    return response.data;
+    return response.data.accessToken;
   } catch (error) {
     handleRequestError(error);
   }
 };
-
 
 //bloodsugr
 export const bloodSugar = async (userstatusData) => {
