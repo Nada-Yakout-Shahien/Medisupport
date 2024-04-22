@@ -89,6 +89,90 @@ export const registerUser = async (userData) => {
   }
 };
 
+
+
+export const storeBloodSugarLevel = async (accessToken, level, statusId) => {
+  try {
+    const response = await sendRequest("POST", `/user/blood-sugar/store?level=${level}&blood_sugar_statuses_id=${statusId}`, null, accessToken);
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+export const getAllBloodSugarRecords = async (accessToken) => {
+  try {
+    const response = await sendRequest("GET", "/user/blood-sugar/get-all-records", null, accessToken);
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+export const getLastThreeBloodSugarRecords = async (accessToken) => {
+  try {
+    const response = await sendRequest("GET", "/user/blood-sugar/get-last-three-records", null, accessToken);
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+export const getLastSevenBloodSugarRecords = async (accessToken) => {
+  try {
+    const response = await sendRequest("GET", "/user/blood-sugar/get-last-seven-records", null, accessToken);
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+export const getLastBloodSugarRecord = async (accessToken) => {
+  try {
+    const response = await sendRequest("GET", "/user/blood-sugar/get-last-record", null, accessToken);
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+export const getRecommendedBloodSugarAdvice = async (accessToken) => {
+  try {
+    const response = await sendRequest("GET", "/user/blood-sugar/get-recommended-advice", null, accessToken);
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+export const getAllBloodSugarStatuses = async (accessToken) => {
+  try {
+    const response = await sendRequest("GET", "/user/blood-sugar/get-all-status", null, accessToken);
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //bloodsugr
 export const bloodSugar = async (userstatusData) => {
   try {
