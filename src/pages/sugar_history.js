@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./history.css";
 import { NavLink } from "react-router-dom";
 import Layout from "../components/Layout";
+import { getAllBloodSugarRecords } from "../components/apiService";
 
 const SugarHistory = () => {
   //default menu
@@ -14,115 +15,30 @@ const SugarHistory = () => {
 
   //data
   const [dataList, setDataList] = useState([]);
+
   useEffect(() => {
-    const fetchData = async () => {
-      const apiData = await new Promise((resolve) =>
-        setTimeout(
-          () =>
-            resolve([
-              {
-                status: "Normal",
-                mesure: "120",
-                unit: "mg/gl",
-                date: "24/11/2023",
-                day: "Tue",
-              },
+    const fetchRecords = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const records = await getAllBloodSugarRecords(accessToken);
+        console.log("Last seven blood sugar records:", records);
 
-              {
-                status: "High",
-                mesure: "150",
-                unit: "mg/gl",
-                date: "25/11/2023",
-                day: "Wed",
-              },
-
-              {
-                status: "Low",
-                mesure: "90",
-                unit: "mg/gl",
-                date: "26/11/2023",
-                day: "Thu",
-              },
-              {
-                status: "Normal",
-                mesure: "120",
-                unit: "mg/gl",
-                date: "24/11/2023",
-                day: "Tue",
-              },
-
-              {
-                status: "High",
-                mesure: "150",
-                unit: "mg/gl",
-                date: "25/11/2023",
-                day: "Wed",
-              },
-
-              {
-                status: "Low",
-                mesure: "90",
-                unit: "mg/gl",
-                date: "26/11/2023",
-                day: "Thu",
-              },
-              {
-                status: "Normal",
-                mesure: "120",
-                unit: "mg/gl",
-                date: "24/11/2023",
-                day: "Tue",
-              },
-
-              {
-                status: "High",
-                mesure: "150",
-                unit: "mg/gl",
-                date: "25/11/2023",
-                day: "Wed",
-              },
-
-              {
-                status: "Low",
-                mesure: "90",
-                unit: "mg/gl",
-                date: "26/11/2023",
-                day: "Thu",
-              },
-              {
-                status: "Normal",
-                mesure: "120",
-                unit: "mg/gl",
-                date: "24/11/2023",
-                day: "Tue",
-              },
-
-              {
-                status: "High",
-                mesure: "150",
-                unit: "mg/gl",
-                date: "25/11/2023",
-                day: "Wed",
-              },
-
-              {
-                status: "Low",
-                mesure: "90",
-                unit: "mg/gl",
-                date: "26/11/2023",
-                day: "Thu",
-              },
-            ]),
-          1000
-        )
-      );
-
-      setDataList(apiData);
+        const formattedRecords = records.data.Records.map((record, index) => ({
+          id: record.id,
+          day: record["day-name"],
+          level: record.level,
+          advice: record.advice,
+          created_at: record.created_at,
+        }));
+        
+        setDataList(formattedRecords);
+      } catch (error) {
+        console.error("Error fetching all blood sugar records:", error);
+      }
     };
 
-    fetchData();
+    fetchRecords();
   }, []);
-
   return (
     <Layout>
       <Helmet>
@@ -170,13 +86,13 @@ const SugarHistory = () => {
           <div className="datah">
             {dataList.map((data, index) => (
               <div key={index} className="data">
-                <p className="status">{data.status}:</p>
+                <p className="status">{data.advice}:</p>
                 <p className="mesure">
-                  {data.mesure}
+                  {data.level}
                   <p className="unit"> mg/gl</p>
                 </p>
                 <p className="line"></p>
-                <p className="date">{data.date}</p>
+                <p className="date">{data.created_at}</p>
                 <p className="line"></p>
                 <p className="day">{data.day}</p>
               </div>

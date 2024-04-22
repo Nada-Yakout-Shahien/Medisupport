@@ -282,7 +282,7 @@ const router = createBrowserRouter([
     path: "/Profile",
     element: (
       <ProtectedRoute>
-        <Profile />
+        <SugarHistory />
       </ProtectedRoute>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,

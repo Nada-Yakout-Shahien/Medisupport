@@ -5,13 +5,8 @@ import "./details-bloodsuger.css";
 import Layout from "../components/Layout";
 import { NavLink } from "react-router-dom";
 import {
-  storeBloodSugarLevel,
-  getAllBloodSugarRecords,
-  getLastThreeBloodSugarRecords,
   getLastSevenBloodSugarRecords,
-  getLastBloodSugarRecord,
   getRecommendedBloodSugarAdvice,
-  getAllBloodSugarStatuses,
 } from "../components/apiService";
 
 //date show
@@ -47,9 +42,9 @@ const DetailsBloodsuger = () => {
   ]);
 
   //days-diagram
-  const [dayValues, setDayValues] = useState([]);
-
   const [lastBloodSugarRecord, setLastBloodSugarRecord] = useState(null);
+
+  const [dayValues, setDayValues] = useState([]);
 
   useEffect(() => {
     const fetchRecords = async () => {
@@ -84,7 +79,6 @@ const DetailsBloodsuger = () => {
 
     fetchRecords();
   }, []);
-
   const [recommendedAdvice, setRecommendedAdvice] = useState("");
 
   useEffect(() => {

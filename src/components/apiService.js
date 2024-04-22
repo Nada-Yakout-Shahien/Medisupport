@@ -12,9 +12,8 @@ export const handleRequestError = (error) => {
   } else {
     errorMessage = `Error: ${error.message}`;
   }
-  throw new Error(errorMessage); 
+  throw new Error(errorMessage);
 };
-
 
 // send request with stored token for data
 export const sendRequest = async (method, url, data, accessToken) => {
@@ -27,34 +26,34 @@ export const sendRequest = async (method, url, data, accessToken) => {
     });
     return response.data;
   } catch (error) {
-    handleRequestError(error); 
+    handleRequestError(error);
   }
 };
 
 // loginUser
-export const loginUser = async (userloginData, setAccessToken) => { 
+export const loginUser = async (userloginData, setAccessToken) => {
   try {
     const response = await axios.post(
       `${BASE_URL}/auth/user/login`,
       userloginData
     );
-    console.log("Response data:", response.data); 
+    console.log("Response data:", response.data);
     const accessToken = response.data.access_token;
-    console.log("Access Token:", accessToken); 
-    setAccessToken(accessToken); 
-    return accessToken; 
+    console.log("Access Token:", accessToken);
+    setAccessToken(accessToken);
+    return accessToken;
   } catch (error) {
-    console.error("Error logging in:", error); 
-    handleRequestError(error); 
+    console.error("Error logging in:", error);
+    handleRequestError(error);
   }
 };
 
 export const saveTokenToLocalStorage = (accessToken) => {
-  localStorage.setItem('accessToken', accessToken);
+  localStorage.setItem("accessToken", accessToken);
 };
 
 export const getAccessTokenFromLocalStorage = () => {
-  return localStorage.getItem('accessToken');
+  return localStorage.getItem("accessToken");
 };
 
 //sendContactMessage
@@ -89,11 +88,14 @@ export const registerUser = async (userData) => {
   }
 };
 
-
-
 export const storeBloodSugarLevel = async (accessToken, level, statusId) => {
   try {
-    const response = await sendRequest("POST", `/user/blood-sugar/store?level=${level}&blood_sugar_statuses_id=${statusId}`, null, accessToken);
+    const response = await sendRequest(
+      "POST",
+      `/user/blood-sugar/store?level=${level}&blood_sugar_statuses_id=${statusId}`,
+      null,
+      accessToken
+    );
     return response;
   } catch (error) {
     handleRequestError(error);
@@ -102,7 +104,12 @@ export const storeBloodSugarLevel = async (accessToken, level, statusId) => {
 
 export const getAllBloodSugarRecords = async (accessToken) => {
   try {
-    const response = await sendRequest("GET", "/user/blood-sugar/get-all-records", null, accessToken);
+    const response = await sendRequest(
+      "GET",
+      "/user/blood-sugar/get-all-records",
+      null,
+      accessToken
+    );
     return response;
   } catch (error) {
     handleRequestError(error);
@@ -111,7 +118,12 @@ export const getAllBloodSugarRecords = async (accessToken) => {
 
 export const getLastThreeBloodSugarRecords = async (accessToken) => {
   try {
-    const response = await sendRequest("GET", "/user/blood-sugar/get-last-three-records", null, accessToken);
+    const response = await sendRequest(
+      "GET",
+      "/user/blood-sugar/get-last-three-records",
+      null,
+      accessToken
+    );
     return response;
   } catch (error) {
     handleRequestError(error);
@@ -120,7 +132,12 @@ export const getLastThreeBloodSugarRecords = async (accessToken) => {
 
 export const getLastSevenBloodSugarRecords = async (accessToken) => {
   try {
-    const response = await sendRequest("GET", "/user/blood-sugar/get-last-seven-records", null, accessToken);
+    const response = await sendRequest(
+      "GET",
+      "/user/blood-sugar/get-last-seven-records",
+      null,
+      accessToken
+    );
     return response;
   } catch (error) {
     handleRequestError(error);
@@ -129,7 +146,12 @@ export const getLastSevenBloodSugarRecords = async (accessToken) => {
 
 export const getLastBloodSugarRecord = async (accessToken) => {
   try {
-    const response = await sendRequest("GET", "/user/blood-sugar/get-last-record", null, accessToken);
+    const response = await sendRequest(
+      "GET",
+      "/user/blood-sugar/get-last-record",
+      null,
+      accessToken
+    );
     return response;
   } catch (error) {
     handleRequestError(error);
@@ -138,7 +160,12 @@ export const getLastBloodSugarRecord = async (accessToken) => {
 
 export const getRecommendedBloodSugarAdvice = async (accessToken) => {
   try {
-    const response = await sendRequest("GET", "/user/blood-sugar/get-recommended-advice", null, accessToken);
+    const response = await sendRequest(
+      "GET",
+      "/user/blood-sugar/get-recommended-advice",
+      null,
+      accessToken
+    );
     return response;
   } catch (error) {
     handleRequestError(error);
@@ -147,31 +174,17 @@ export const getRecommendedBloodSugarAdvice = async (accessToken) => {
 
 export const getAllBloodSugarStatuses = async (accessToken) => {
   try {
-    const response = await sendRequest("GET", "/user/blood-sugar/get-all-status", null, accessToken);
+    const response = await sendRequest(
+      "GET",
+      "/user/blood-sugar/get-all-status",
+      null,
+      accessToken
+    );
     return response;
   } catch (error) {
     handleRequestError(error);
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //bloodsugr
 export const bloodSugar = async (userstatusData) => {
