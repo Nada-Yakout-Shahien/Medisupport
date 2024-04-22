@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { eachDayOfInterval, format } from "date-fns";
 import "./Blood_sugar.css";
 import Layout from "../components/Layout";
-//import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { sendRequest ,getAccessTokenFromLocalStorage} from "../components/apiService";
 
 //date show
@@ -297,6 +297,9 @@ const handleFormSubmit = async (e) => {
                 fill="white"
               />
             </svg>
+            <NavLink to="/DetailsBS" className="seedet">
+              See Details
+            </NavLink>{" "}
           </div>
         )}
       </form>
