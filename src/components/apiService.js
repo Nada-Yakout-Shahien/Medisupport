@@ -203,10 +203,48 @@ export const bloodSugar = async (userstatusData) => {
     handleRequestError(error);
   }
 };
-
-
-
-
+//getDoctorDetails
+export const getDoctorDetails = async (accessToken, doctorId) => {
+  try {
+    const response = await sendRequest(
+      "GET",
+      `/user/booking/get-doctor-details?id=${doctorId}`,
+      null,
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+//getTimes
+export const getTimes = async (accessToken, doctorId) => {
+  try {
+    const response = await sendRequest(
+      "GET",
+      `/user/booking/get-times?id=${doctorId}`,
+      null,
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+//bookAppointment
+export const bookAppointment = async (accessToken, dateId, doctorId, timeId) => {
+  try {
+    const response = await sendRequest(
+      "POST",
+      "/user/booking/appointment",
+      { date_id: dateId, doctor_id: doctorId, time_id: timeId },
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
 
 
 
