@@ -4,7 +4,7 @@ import { eachDayOfInterval, format } from "date-fns";
 import "./Blood_sugar.css";
 import Layout from "../components/Layout";
 import { NavLink } from "react-router-dom";
-import { sendRequest ,getAccessTokenFromLocalStorage} from "../components/apiService";
+import { sendRequest ,getAccessTokenFromLocalStorage,getAllBloodSugarStatuses} from "../components/apiService";
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -27,10 +27,6 @@ const Bloodsugar = () => {
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
-  };
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
   };
 
   //days
@@ -148,8 +144,25 @@ const handleFormSubmit = async (e) => {
     console.error("Error submitting blood sugar data:", error);
   }
 };
+const [bloodSugarStatuses, setBloodSugarStatuses] = useState([]);
 
-
+const toggleMenu = async () => {
+  setIsOpen(!isOpen);
+  if (!isOpen) {
+    try {
+      const accessToken = getAccessTokenFromLocalStorage();
+      if (!accessToken) {
+        console.error("Access token is missing");
+        return;
+      }
+      const response = await getAllBloodSugarStatuses(accessToken);
+      setBloodSugarStatuses(response.data);
+      console.log("Blood sugar statuses:", response);
+    } catch (error) {
+      console.error("Error fetching blood sugar statuses:", error);
+    }
+  }
+};
   
 
   return (
@@ -177,55 +190,16 @@ const handleFormSubmit = async (e) => {
             </svg>
             {isOpen && (
               <div className="dropdown-content">
-                <div
-                  onClick={() => handleOptionClick("Default")}
-                  id="1"
-                  name="status-name"
-                >
-                  Default
-                </div>
-                <div
-                  onClick={() => handleOptionClick("During fasting")}
-                  id="2"
-                  name="status-name"
-                >
-                  During fasting
-                </div>
-                <div
-                  onClick={() => handleOptionClick("Before eating (1h)")}
-                  id="3"
-                  name="status-name"
-                >
-                  Before eating (1h)
-                </div>
-                <div
-                  onClick={() => handleOptionClick("After eating (2h)")}
-                  id="4"
-                  name="status-name"
-                >
-                  After eating (2h)
-                </div>
-                <div
-                  onClick={() => handleOptionClick("Before bedtime")}
-                  id="5"
-                  name="status-name"
-                >
-                  Before bedtime
-                </div>
-                <div
-                  onClick={() => handleOptionClick("Before workout")}
-                  id="6"
-                  name="status-name"
-                >
-                  Before workout
-                </div>
-                <div
-                  onClick={() => handleOptionClick("After workout")}
-                  id="7"
-                  name="status-name"
-                >
-                  After workout
-                </div>
+                {bloodSugarStatuses.map((status) => (
+                  <div
+                    key={status.id}
+                    onClick={() => handleOptionClick(status["status-name"])} 
+                    id={status.id}
+                    name="status-name"
+                  >
+                    {status["status-name"]} 
+                  </div>
+                ))}
               </div>
             )}
           </div>

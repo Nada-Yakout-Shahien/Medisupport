@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import {
   getLastSevenBloodSugarRecords,
   getRecommendedBloodSugarAdvice,
+  getLastBloodSugarRecord,
 } from "../components/apiService";
 
 //date show
@@ -35,7 +36,6 @@ const DetailsBloodsuger = () => {
   };
 
   //diagram
-
   //numbers-diagram
   const [chartValues, setChartValues] = useState([
     0, 60, 100, 140, 180, 220, 260, 300,
@@ -114,7 +114,25 @@ const DetailsBloodsuger = () => {
   useEffect(() => {
     validateFormData();
   }, [formData]);
-
+  
+  useEffect(() => {
+    const fetchLastBloodSugarRecord = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const response = await getLastBloodSugarRecord(accessToken);
+        if (response && response.data) {
+          setLastBloodSugarRecord(response.data);
+        } else {
+          console.error("No data found for last blood sugar record");
+        }
+      } catch (error) {
+        console.error("Error fetching last blood sugar record:", error);
+      }
+    };
+  
+    fetchLastBloodSugarRecord();
+  }, []);
+  
   return (
     <Layout>
       <Helmet>
