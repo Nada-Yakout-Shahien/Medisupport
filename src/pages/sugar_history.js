@@ -14,33 +14,49 @@ const SugarHistory = () => {
   };
 
   //data
+
+  // Pagination state
   const [dataList, setDataList] = useState([]);
 
   useEffect(() => {
     const fetchRecords = async () => {
       try {
         const accessToken = localStorage.getItem("accessToken");
-        const records = await getAllBloodSugarRecords(accessToken);
-        console.log("All blood sugar records:", records);
-
-        const formattedRecords = records.data.Records.map((record, index) => ({
-          id: record.id,
-          day: record["day-name"],
-          level: record.level,
-          advice: record.advice,
-          created_at: record.created_at,
-        }));
-        
-        setDataList(formattedRecords);
+        let currentPage = 1;
+        let totalPages = 1;
+        let allRecords = [];
+  
+        while (currentPage <= totalPages) {
+          const response = await getAllBloodSugarRecords(accessToken, currentPage);
+          console.log("Fetched page", currentPage, "of data:", response);
+  
+          // Update totalPages from the response
+          totalPages = response.data.last_page;
+  
+          // Concatenate the records from the current page to the existing records
+          allRecords = allRecords.concat(response.data.Records.map(record => ({
+            id: record.id,
+            day: record["day-name"],
+            level: record.level,
+            advice: record.advice.key,
+            created_at: record.created_at,
+          })));
+  
+          // Update dataList with the current records
+          setDataList(allRecords);
+  
+          // Move to the next page
+          currentPage++;
+        }
+  
+        console.log("All blood sugar records:", allRecords);
       } catch (error) {
         console.error("Error fetching all blood sugar records:", error);
       }
     };
-
+  
     fetchRecords();
   }, []);
-
-
   
 
   return (
@@ -93,7 +109,7 @@ const SugarHistory = () => {
                 <p className="status">{data.advice}:</p>
                 <p className="mesure">
                   {data.level}
-                  <p className="unit"> mg/gl</p>
+                  <span className="unit"> mg/gl</span>
                 </p>
                 <p className="line"></p>
                 <p className="date">{data.created_at}</p>

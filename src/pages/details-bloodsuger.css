@@ -204,11 +204,11 @@
   line-height: normal;
 }
 /* btn */
-.bloodsugard .btn {
+.bloodsugard .butn {
   display: flex;
   justify-content: center;
 }
-.bloodsugard .btn .addrec {
+.bloodsugard .butn .addrec {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -225,6 +225,6 @@
   line-height: 100%;
   letter-spacing: 0.03125rem;
 }
-.bloodsugard .btn .addrec:hover {
+.bloodsugard .butn .addrec:hover {
   opacity: 0.7;
 }

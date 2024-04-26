@@ -245,7 +245,7 @@ const toggleMenu = async () => {
           </div>
         </div>
 
-        <div className="btn">
+        <div className="butn">
           <input
             type="submit"
             name=""

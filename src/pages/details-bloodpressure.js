@@ -148,9 +148,27 @@ const DetailsBloodpressure = () => {
 
           <div className="dBP-diagram">
             <div className="diagramupper">
+              <div className="bound">
+                <div className="boun">
+                  <div className="rec"></div>
+                  <p>Upper bound</p>
+                </div>
+                <div className="measure">
+                  <p>mmHG</p>
+                </div>
+              </div>
               <Line data={datau} options={chartOptions} />
             </div>
             <div className="diagramlower">
+              <div className="bound">
+                <div className="boun">
+                  <div className="rec"></div>
+                  <p>Upper bound</p>
+                </div>
+                <div className="measure">
+                  <p>mmHG</p>
+                </div>
+              </div>
               <Line data={datal} options={chartOptions} />
             </div>
           </div>
@@ -169,7 +187,7 @@ const DetailsBloodpressure = () => {
               eiusmod tempor incididunt ut labore et dolore magna aliqua.”
             </p>
           </div>
-          <div className="btn">
+          <div className="butn">
             <NavLink to="/blood_pressure" className="addrec">
               Add New Record
             </NavLink>

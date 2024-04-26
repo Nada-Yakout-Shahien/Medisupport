@@ -197,11 +197,11 @@
   display: none;
 }
 /* btn */
-.bloodsugar .btn{
+.bloodsugar .butn{
   display: flex;
   justify-content: center;
 }
-.bloodsugar .btn .addrec{
+.bloodsugar .butn .addrec{
   display: flex;
   justify-content: center;
   text-align: center;
@@ -220,7 +220,7 @@
   /* line-height: 100%;  */
   letter-spacing: 0.03125rem;
 }
-.bloodsugar .btn .addrec:hover{
+.bloodsugar .butn .addrec:hover{
   opacity: 0.7;
 }
 /* after-click-btn */

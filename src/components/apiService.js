@@ -102,19 +102,26 @@ export const storeBloodSugarLevel = async (accessToken, level, statusId) => {
   }
 };
 
-export const getAllBloodSugarRecords = async (accessToken) => {
+export const getAllBloodSugarRecords = async (accessToken, page) => {
   try {
     const response = await sendRequest(
       "GET",
-      "/user/blood-sugar/get-all-records",
+      `/user/blood-sugar/get-all-records?page=${page}`, 
       null,
       accessToken
     );
-    return response;
+    if (response && response.data && response.data.Records) {
+      return response;
+    } else {
+      throw new Error("Invalid response format");
+    }
   } catch (error) {
     handleRequestError(error);
+    throw error; 
   }
 };
+
+
 
 export const getLastThreeBloodSugarRecords = async (accessToken) => {
   try {

@@ -219,7 +219,7 @@ const DetailsBloodsuger = () => {
           </p>
         </div>
 
-        <div className="btn">
+        <div className="butn">
           <NavLink
             to="/blood_sugar"
             className="addrec"
