@@ -335,3 +335,4 @@ const cancelBooking = async () => {
 };
 
 export default BookingDetails;
+

@@ -40,6 +40,8 @@ import VerificationCode from "./pages/Verification_Code";
 import Loading from "./pages/loading";
 import Payment from "./pages/payment";
 import Chat from "./pages/chat";
+import BookingOffline from "./pages/Booking_Offline";
+import BookingOnline from "./pages/Booking_Online";
 
 const router = createBrowserRouter([
   {
@@ -350,6 +352,17 @@ const router = createBrowserRouter([
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
+  {
+    path:"/Book",
+    element:<BookingOffline/>,
+    errorElement:<h1>Sorry, No page to display....</h1>
+  },
+  {
+    path:"/BookOn",
+    element:<BookingOnline/>,
+    errorElement:<h1>Sorry, No page to display....</h1>
+  },
+
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
