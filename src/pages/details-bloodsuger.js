@@ -4,7 +4,11 @@ import { eachDayOfInterval, format } from "date-fns";
 import "./details-bloodsuger.css";
 import Layout from "../components/Layout";
 import { NavLink } from "react-router-dom";
-//import { fetchData } from "../components/apiService";
+import {
+  getLastSevenBloodSugarRecords,
+  getRecommendedBloodSugarAdvice,
+  getLastBloodSugarRecord,
+} from "../components/apiService";
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -32,49 +36,69 @@ const DetailsBloodsuger = () => {
   };
 
   //diagram
-
   //numbers-diagram
-
-
   const [chartValues, setChartValues] = useState([
-    0, 88, 155, 225, 295, 365, 430, 500,
+    0, 60, 100, 140, 180, 220, 260, 300,
   ]);
 
   //days-diagram
-  const [dayValues, setDayValues] = useState([
-    { day: "Mon", value: 450 },
-    { day: "Tue", value: 225 },
-    { day: "Wed", value: 350 },
-    { day: "Thu", value: 299 },
-    { day: "Fri", value: 390 },
-    { day: "Sat", value: 250 },
-    { day: "Sun", value: 270 },
-  ]);
+  const [lastBloodSugarRecord, setLastBloodSugarRecord] = useState(null);
+
+  const [dayValues, setDayValues] = useState([]);
+
   useEffect(() => {
-    fetch("https://69ed-197-63-218-196.ngrok-free.app/api")
-      .then((response) => response.json())
-      .then((data) => {
-        const transformedData = data.map((item) => ({
-          day: item.day,
-          value: item.value,
+    const fetchRecords = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const records = await getLastSevenBloodSugarRecords(accessToken);
+        console.log("Last seven blood sugar records:", records);
+            
+        
+        const formattedRecords = records.data.map((records, index) => ({
+          id: records.id,
+          day: format(new Date(records.created_at), "EEE"),
+          level: records.level,
+          advice: records.advice,
         }));
-        setDayValues(transformedData);
-      })
-      .catch((error) => console.error("Error fetching data: ", error));
+
+        setDayValues(formattedRecords);
+      } catch (error) {
+        console.error("Error fetching last seven blood sugar records:", error);
+      }
+    };
+
+    fetchRecords();
+  }, []);
+  
+
+  const [recommendedAdvice, setRecommendedAdvice] = useState("");
+
+  useEffect(() => {
+    const fetchRecommendedAdvice = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const advice = await getRecommendedBloodSugarAdvice(accessToken);
+        console.log("Recommended blood sugar advice:", advice);
+        setRecommendedAdvice(advice);
+      } catch (error) {
+        console.error("Error fetching recommended blood sugar advice:", error);
+      }
+    };
+
+    fetchRecommendedAdvice();
   }, []);
 
   //valid data ?
   const [formData, setFormData] = useState({});
   const [isFormDataComplete, setIsFormDataComplete] = useState(false);
 
-  const validateFormData = () => {
-  };
-  
-  const handleSubmit = () => {
+  const validateFormData = () => {};
+
+  const handleSubmit = (event) => {
     if (isFormDataComplete) {
-      
     }
-  };  
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -82,7 +106,25 @@ const DetailsBloodsuger = () => {
   useEffect(() => {
     validateFormData();
   }, [formData]);
-
+  
+  useEffect(() => {
+    const fetchLastBloodSugarRecord = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const response = await getLastBloodSugarRecord(accessToken);
+        if (response && response.data) {
+          setLastBloodSugarRecord(response.data);
+        } else {
+          console.error("No data found for last blood sugar record");
+        }
+      } catch (error) {
+        console.error("Error fetching last blood sugar record:", error);
+      }
+    };
+  
+    fetchLastBloodSugarRecord();
+  }, []);
+  
   return (
     <Layout>
       <Helmet>
@@ -113,26 +155,32 @@ const DetailsBloodsuger = () => {
         </div>
         <div className="diagram">
           <div className="chart-container">
-            <div className="chart-box">
+            <div className="chart-boxx">
               <div className="chart-title">
                 <p>RESULTS:</p>
                 <div className="chart-pre-diabetes">
                   <div className="pre">
-                    Pre-diabetes:<p className="defnum">120</p> mg/gl
+                    Pre-diabetes:
+                    <p className="defnum">
+                      {lastBloodSugarRecord
+                        ? lastBloodSugarRecord.level
+                        : "N/A"}
+                    </p>{" "}
+                    mg/gl
                   </div>
                 </div>
               </div>
               <div className="chart-axis">
                 <div className="chart-values">
-                  {chartValues.map((value, index) => (
+                  {chartValues.map((level, index) => (
                     <div key={index} className="chart-value">
-                      {value}
+                      {level}
                     </div>
                   ))}
                 </div>
                 <div className="lcp">
                   <div className="chart-bars">
-                    {dayValues.map(({ day, value }, index) => (
+                    {dayValues.map(({ day, level }, index) => (
                       <div
                         key={index}
                         className="chart-bar-outer"
@@ -140,7 +188,7 @@ const DetailsBloodsuger = () => {
                       >
                         <div
                           className="chart-bar-inner"
-                          style={{ height: `${(value / 500) * 100}%` }}
+                          style={{ height: `${(level / 300) * 100}%` }}
                         ></div>
                       </div>
                     ))}
@@ -159,19 +207,19 @@ const DetailsBloodsuger = () => {
         </div>
         <div className="inf-det">
           <h3>Recommended Reading</h3>
-          <h4>How To Loss Sugar ?</h4>
+          <h4>
+            {recommendedAdvice && recommendedAdvice.data.key
+              ? recommendedAdvice.data.key
+              : "No Key available"}
+          </h4>
           <p>
-            Lorem ipsum, or lipsum as it is sometimes known, is dummy text used
-            in laying out print, graphic or web designs. The passage is
-            attributed to an unknown typesetter in the 15th century who is
-            thought to have scrambled parts of Cicero's De Finibus Bonorum et
-            Malorum for use in a type specimen book. It usually begins with:
-            <br />
-            “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.”
+            {recommendedAdvice && recommendedAdvice.data.advice
+              ? recommendedAdvice.data.advice
+              : "No advice available"}
           </p>
         </div>
-        <div className="btn">
+
+        <div className="butn">
           <NavLink
             to="/blood_sugar"
             className="addrec"

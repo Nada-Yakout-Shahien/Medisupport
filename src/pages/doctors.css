@@ -155,7 +155,7 @@ input:hover {
   cursor: pointer;
 }
 
-.buttonrr_r {
+.btn {
   display: flex;
   color: #fff;
 
@@ -172,9 +172,16 @@ input:hover {
   border-radius: 0.625rem;
   background: #be0202;
   cursor: pointer;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5em;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.5px;
+  border: none;
 }
 
-.button:hover,
+.btn:hover,
 .doctors-details:hover {
   background-color: var(--secondaryColor);
   color: var(--Red);

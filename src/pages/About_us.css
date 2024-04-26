@@ -197,7 +197,9 @@
 .container .Ourfeatures .feature {
   flex: 0 0 auto;
   min-height: 22.4375rem;
-  width: 23.375rem;
+  width: clamp(22rem, calc(10vw + 20vw), 25rem);
+  height: clamp(17rem, calc(0vw + 2vw), 20rem);
+  /* width: 23.375rem; */
   border-radius: 1.25rem;
   border: 1px solid var(--Red);
   background: linear-gradient(90deg, var(--blackred) 0%, var(--blackred) 100%);
@@ -224,7 +226,7 @@
 .about-us-section3 .Ourfeatures .feature p {
   color: var(--whiteColor);
   font-family: "Roboto", sans-serif;
-  font-size: clamp(1rem, calc(1vw + 3vw), 1.5rem);
+  font-size: clamp(1rem, calc(1em + 2em), 1.5rem);
   line-height: 110%;
   padding: 1.5rem;
 }
@@ -237,7 +239,7 @@
   cursor: pointer;
 }
 .about-us-section3 .Ourfeatures .feature .img-btn img{
-  width: clamp(4rem, calc(2vw + 6vw), 8rem);
+  width: clamp(4rem, calc(2vw + 8vw), 8rem);
 }
 .control:hover {
   transform: scale(1.2);
@@ -321,9 +323,9 @@
     flex-direction: column;
     width: 100%;
   }
-  .about-us-section2 .down-part {
-  /* background:0.7; */
-  }
+  /* .container .Ourfeatures .feature {
+    width: 20rem;
+  } */
 
   .about-us-section2 .down-part p,
   .about-us-section2 .down-part .dparag {

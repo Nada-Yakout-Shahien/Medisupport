@@ -29,7 +29,7 @@ const Contactus = () => {
       event.target.reset();
     } catch (error) {
       console.error(error);
-      alert('Failed to send message. Please try again later.');
+      alert("Failed to send message. Please try again later.");
     }
   };
 
@@ -52,18 +52,28 @@ const Contactus = () => {
             <div className="name">
               <div className="lblc">
                 <label htmlFor="fname">First Name</label>
-                <input type="text" placeholder="F Name" required  name="firstName"/>
+                <input
+                  type="text"
+                  placeholder="F Name"
+                  required
+                  name="firstName"
+                />
               </div>
               <div className="lblc">
                 <label htmlFor="lname">Last Name</label>
-                <input type="text" placeholder="L Name" required  name="lastName"/>
+                <input
+                  type="text"
+                  placeholder="L Name"
+                  required
+                  name="lastName"
+                />
               </div>
             </div>
             <div className="lblc">
               <label htmlFor="email">Email</label>
               <input
                 type="email"
-                name="email" 
+                name="email"
                 placeholder="Your Email"
                 required
               />
@@ -87,7 +97,7 @@ const Contactus = () => {
             />
           </form>
         </div>
-        
+
         {isOverlayVisible && (
           <div className="overlay">
             <svg

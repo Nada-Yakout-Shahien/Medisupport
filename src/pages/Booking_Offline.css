@@ -1,0 +1,361 @@
+.head{
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  color: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: 2.8rem;
+  font-style: normal;
+  font-weight: 700;
+  margin: 2rem 0;
+}
+
+                        /* Cards */
+
+.card{
+  display: block;
+  width: 44rem;
+  border: 0.1rem solid var(--Red);
+  border-radius: 1rem;
+  margin: 2rem 0 3rem 21rem;
+}
+
+                        /* Card-img */
+
+.card .d-img{
+  display: flex;
+}
+
+.card .d-img img{
+  width: 27rem;
+  height: 29rem;
+  margin: 1rem 0 1rem 7rem;
+}
+
+                        /* Card-doctor-name */
+
+.card .d-name {
+  display: flex;
+}
+
+.card .d-name p{
+  color: var(--blackColor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  padding-left: 1rem;
+  margin-top: -1rem;
+}
+
+.card .d-name .def{
+  color: #9c9b9bc5;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.27rem;
+  font-style: normal;
+  font-weight: 700;
+  margin-left: -0.7rem;
+}
+
+                        /* Card-doctor-number */
+
+.card .d-tele p{
+  display: flex;
+  color: var(--graycolor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 500;
+  padding: 1rem;
+}
+
+                        /* Card-doctor-location */
+
+.card .location{
+  display: flex;
+  margin-top: -0.6rem;
+}
+
+.card .location p{
+  color: var(--blackColor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.27rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+                        /* Card-doctor-rate */
+
+.card .stars{
+  display: flex;
+  padding-top: 0.6rem;
+}
+
+                        /* Card-doctor-about */
+
+.card .info{
+  display: flex;
+  gap: 1%;
+  margin: -2rem 0 0 -1.3rem;
+}
+
+.card .info p{
+  color: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.card .info .d-about{
+  display: flex;
+  color: var(--graycolor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 500;
+  margin: -1.7rem 0 0 5rem;
+}
+
+                        /* Card-(doctor_user)-rate */
+
+.card .rate{
+  display: flex;
+  padding: 1rem 0 0 1.3rem;
+}
+
+.card .rate p{
+  color: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.card .rate input {
+  display: none;
+}
+
+.card .rate .star{
+  margin-top: -1.4rem ;
+  padding-left: 0.5rem;
+}
+
+.card .rate  .popup-r{
+  width: 100%;
+  height: 83.5rem;
+  background: rgba(18, 22, 25, 0.65);
+  position: absolute;
+  top: 10%;
+  text-align: center;
+  left: 0%;
+  padding: 27%;
+}
+
+.card .rate .popup-r p{
+  margin: 16rem 0 0 0 ;
+  color: var(--whiteColor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.5px;
+}
+.card .rate  .popup-r .btn{
+  display: flex;
+  min-height:5vh;
+  width: 9em;
+  height: 3.5rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.625rem;
+  border: 2px solid var(--Red);
+  background: var(--Red);
+  color: var(--whiteColor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5em;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.5px;
+  margin: 5rem 0 0 13rem;
+}
+
+.card .rate .popup-r .btn:hover{
+  cursor: pointer;
+  background-color: var(--blackred);
+  color: var(--whiteColor);
+  border: none;
+}
+                        /* Booking a Date */
+
+.card .B-Date{
+  margin: 3rem 0 0 -2.5rem;
+}
+
+.card .B-Date .Dates{
+  margin: 1.6rem 0 0 0;
+}
+
+.card .B-Date p{
+  display: flex;
+  color: var(--graycolor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 500;
+  margin: -1.2rem 0 0 3.8rem;
+}
+
+.card .B-Date input{
+  display: none;
+}
+
+.card .B-Date label{
+  justify-items: center;
+  border: 0.1rem solid var(--Red);
+  border-radius: 0.4rem;
+  margin: 2rem 0 0 0.4rem;
+  padding: 0.8rem 0.2rem ;
+  color: var(--graycolor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.card .B-Date label:hover{
+  color: var(--whiteColor);
+  background-color: var(--Red);
+  cursor: pointer;
+}
+
+.card .B-Date .selected{
+  color: var(--whiteColor);
+  background-color: var(--Red);
+}
+
+.card .B-Date .l1{
+  margin-left: 3.8rem;
+}
+
+                        /* Booking a Time */
+
+.card .B-Time{
+  margin: 3.2rem 0 0 -2.5rem;
+}
+
+.card .B-Time .Time{
+  margin: 1.7rem 0 2rem 0;
+}
+
+.card .B-Time p{
+  display: flex;
+  color: var(--graycolor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 500;
+  margin: -1.2rem 0 0 3.8rem;
+}
+
+.card .B-Time input{
+  display: none;
+}
+
+.card .B-Time label{
+  justify-items: center;
+  border: 0.1rem solid var(--Red);
+  border-radius: 0.4rem;
+  margin: 2rem 0 0 0.57rem;
+  padding: 0.9rem 0.2rem ;
+  color: var(--graycolor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.card .B-Time label:hover{
+  color: var(--whiteColor);
+  background-color: var(--Red);
+  cursor: pointer;
+}
+
+.card .B-Time .selected{
+  color: var(--whiteColor);
+  background-color: var(--Red);
+}
+
+.card .B-Time .t1{
+  margin-left: 3.8rem;
+}
+
+                        /* Book - Button*/
+
+.card .book button{
+  width: 18rem;
+  height: 4rem;
+  background-color: var(--Red);
+  color: white;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 0.7rem;
+  margin: 2rem 0 2rem 12.5rem;
+}
+
+.card .book button:hover{
+  cursor: pointer;
+  background-color: var(--secondaryColor);
+  color: var(--Red);
+  border: none;
+}
+
+                        /* Complete - Button*/
+
+.card .book .popup-b{
+  width: 100%;
+  height: 83.5rem;
+  background: rgba(18, 22, 25, 0.65);
+  position: absolute;
+  top: 10%;
+  text-align: center;
+  left: 0%;
+  padding: 27%;
+}
+
+.card .book .popup-b .check{
+  width: 20rem;
+  height: 30rem;
+}
+
+.card .book .popup-b .btn{
+  display: flex;
+  min-height:5vh;
+  width: 9em;
+  height: 3.5rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.625rem;
+  border: 2px solid var(--Red);
+  background: var(--Red);
+  color: var(--whiteColor);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5em;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.5px;
+  margin: -3rem 0 0 13rem;
+}
+
+.card .book .popup-b .btn:hover{
+  cursor: pointer;
+  background-color: var(--blackred);
+  color: var(--whiteColor);
+  border: none;
+}

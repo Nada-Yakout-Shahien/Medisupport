@@ -16,7 +16,7 @@
 .bloodsugar .stb h3 {
   color: var(--Red);
   font-family: 'Roboto',sans-serif;
-  font-size: clamp(1.5rem, calc(1vw + 3vw), 2rem);  
+  font-size: clamp(1.3rem, calc(1vw + 3vw), 2rem);  
   font-style: normal;
   font-weight: 700;
 }
@@ -34,7 +34,7 @@
 .bloodsugar .stb .menu .txt{
   color: var(--whiteColor);
   font-family: 'Roboto',sans-serif;
-  font-size: clamp(1rem, calc(1vw + 3vw), 1.25rem);  font-style: normal; 
+  font-size: clamp(0.9rem, calc(1vw + 3vw), 1.25rem);  font-style: normal; 
   font-weight: 400;
   line-height: 1.45019rem; 
 }
@@ -197,11 +197,11 @@
   display: none;
 }
 /* btn */
-.bloodsugar .btn{
+.bloodsugar .butn{
   display: flex;
   justify-content: center;
 }
-.bloodsugar .btn .addrec{
+.bloodsugar .butn .addrec{
   display: flex;
   justify-content: center;
   text-align: center;
@@ -220,7 +220,7 @@
   /* line-height: 100%;  */
   letter-spacing: 0.03125rem;
 }
-.bloodsugar .btn .addrec:hover{
+.bloodsugar .butn .addrec:hover{
   opacity: 0.7;
 }
 /* after-click-btn */
