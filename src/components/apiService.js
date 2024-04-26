@@ -121,8 +121,6 @@ export const getAllBloodSugarRecords = async (accessToken, page) => {
   }
 };
 
-
-
 export const getLastThreeBloodSugarRecords = async (accessToken) => {
   try {
     const response = await sendRequest(
@@ -252,12 +250,11 @@ export const bookAppointment = async (accessToken, dateId, doctorId, timeId) => 
     handleRequestError(error);
   }
 };
-// Function to get all bookings
-export const getAllofflineBookings = async (accessToken) => {
+export const getAllofflineBookings = async (accessToken, page) => {
   try {
     const response = await sendRequest(
       "GET",
-      "/user/booking/get-all-booking",
+      `/user/booking/get-all-booking?page=${page}`, 
       null,
       accessToken
     );
@@ -266,18 +263,19 @@ export const getAllofflineBookings = async (accessToken) => {
     handleRequestError(error);
   }
 };
+
 // Function to delete a booking
-export const deleteBooking = async (accessToken, bookingId) => {
+export const deleteBooking = async (accessToken, id) => {
   try {
-    const response = await sendRequest(
-      "DELETE",
-      `/user/booking/${bookingId}`,
-      null,
-      accessToken
-    );
-    return response;
+      const response = await sendRequest(
+          "DELETE",
+          `/user/booking/delete-booking?id=${id}`,
+          null,
+          accessToken
+      );
+      return response;
   } catch (error) {
-    handleRequestError(error);
+      handleRequestError(error);
   }
 };
 
@@ -296,11 +294,11 @@ export const onlineBookings = async (doctorId, accessToken) => {
 };
 
 // All bookings request
-export const getAllonlineBookings = async (accessToken) => {
+export const getAllonlineBookings = async (accessToken, page) => {
   try {
     const response = await sendRequest(
       "GET",
-      "/auth/user/all-bookings",
+      `/auth/user/all-bookings?page=${page}`,
       null,
       accessToken
     );
@@ -310,6 +308,7 @@ export const getAllonlineBookings = async (accessToken) => {
     handleRequestError(error);
   }
 };
+
 
 
 
