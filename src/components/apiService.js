@@ -47,11 +47,11 @@ export const loginUser = async (userloginData, setAccessToken) => {
     handleRequestError(error);
   }
 };
-
+//saveTokenToLocalStorage
 export const saveTokenToLocalStorage = (accessToken) => {
   localStorage.setItem("accessToken", accessToken);
 };
-
+//getAccessTokenFromLocalStorage
 export const getAccessTokenFromLocalStorage = () => {
   return localStorage.getItem("accessToken");
 };
@@ -245,10 +245,64 @@ export const bookAppointment = async (accessToken, dateId, doctorId, timeId) => 
     handleRequestError(error);
   }
 };
+// Function to get all bookings
+export const getAllofflineBookings = async (accessToken) => {
+  try {
+    const response = await sendRequest(
+      "GET",
+      "/user/booking/get-all-booking",
+      null,
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+// Function to delete a booking
+export const deleteBooking = async (accessToken, bookingId) => {
+  try {
+    const response = await sendRequest(
+      "DELETE",
+      `/user/booking/${bookingId}`,
+      null,
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
 
+// Online bookings request
+export const onlineBookings = async (doctorId, accessToken) => {
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/auth/user/online-bookings`,
+      { doctor_id: doctorId },
+      { headers: { Authorization: `Bearer ${accessToken}` } }
+    );
+    return response.data;
+  } catch (error) {
+    handleRequestError(error); 
+  }
+};
 
-
-
+// All bookings request
+export const getAllonlineBookings = async (accessToken) => {
+  try {
+    const response = await sendRequest(
+      "GET",
+      "/auth/user/all-bookings",
+      null,
+      accessToken
+    );
+    console.log(response);
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
 
 
 

@@ -87,7 +87,6 @@ const DetailsBloodpressure = () => {
       },
     },
   };
-
   // Lower bound data
   const datal = {
     labels: ["", "", "", "", "", "", ""],

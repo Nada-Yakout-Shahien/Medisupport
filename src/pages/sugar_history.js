@@ -21,7 +21,7 @@ const SugarHistory = () => {
       try {
         const accessToken = localStorage.getItem("accessToken");
         const records = await getAllBloodSugarRecords(accessToken);
-        console.log("Last seven blood sugar records:", records);
+        console.log("All blood sugar records:", records);
 
         const formattedRecords = records.data.Records.map((record, index) => ({
           id: record.id,
@@ -39,6 +39,10 @@ const SugarHistory = () => {
 
     fetchRecords();
   }, []);
+
+
+  
+
   return (
     <Layout>
       <Helmet>

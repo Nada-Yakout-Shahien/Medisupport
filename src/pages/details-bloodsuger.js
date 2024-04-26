@@ -52,18 +52,8 @@ const DetailsBloodsuger = () => {
         const accessToken = localStorage.getItem("accessToken");
         const records = await getLastSevenBloodSugarRecords(accessToken);
         console.log("Last seven blood sugar records:", records);
-
-        const lastRecordOfDay = records.data.find((record) => {
-          return (
-            new Date(record.created_at).toDateString() ===
-            new Date().toDateString()
-          );
-        });
-
-        if (lastRecordOfDay) {
-          setLastBloodSugarRecord(lastRecordOfDay);
-        }
-
+            
+        
         const formattedRecords = records.data.map((records, index) => ({
           id: records.id,
           day: format(new Date(records.created_at), "EEE"),
@@ -79,6 +69,8 @@ const DetailsBloodsuger = () => {
 
     fetchRecords();
   }, []);
+  
+
   const [recommendedAdvice, setRecommendedAdvice] = useState("");
 
   useEffect(() => {

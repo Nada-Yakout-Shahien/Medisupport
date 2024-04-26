@@ -7,137 +7,112 @@ import { NavLink } from "react-router-dom";
 import chat from "../images/chat-lines.png";
 import video from "../images/Video.png";
 import del from "../images/del.png";
+import {
+  getAllofflineBookings,
+  getAllonlineBookings,
+  deleteBooking,
+  getAccessTokenFromLocalStorage,
+} from "../components/apiService";
 
 const BookingDetails = () => {
-  const [onlineDataList, setOnlineDataList] = useState([]);
-  const [offlineDataList, setOfflineDataList] = useState([]);
   const [activeSection, setActiveSection] = useState("onlineDoctors");
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
   const [selectedDoctor, setSelectedDoctor] = useState({
     id: null,
     type: null,
   });
-
-  //data
-  useEffect(() => {
-    const fetchData = async () => {
-      const apiData = await new Promise((resolve) =>
-        setTimeout(
-          () =>
-            resolve([
-              {
-                id: 1,
-                name: "Dr: Amr Ebrahim ",
-                country: "Cairo ",
-                time: "12 pm : 3 pm",
-                status: "Accept",
-                mode: "online",
-              },
-              {
-                id: 2,
-                name: "Dr: Mahmoud Ebrahim ",
-                country: "Cairo ",
-                time: "12 pm : 3 pm",
-                status: "Waiting",
-                mode: "online",
-              },
-              {
-                id: 3,
-                name: "Dr: Amr Ebrahim ",
-                country: "Cairo ",
-                time: "12 pm : 3 pm",
-                status: "Accept",
-                mode: "online",
-              },
-              {
-                id: 4,
-                name: "Dr: Mahmoud Ebrahim ",
-                country: "Cairo ",
-                time: "12 pm : 3 pm",
-                status: "Waiting",
-                mode: "online",
-              },
-              {
-                id: 5,
-                name: "Dr: Mahmoud Ebrahim ",
-                country: "Cairo ",
-                time: "12 pm : 3 pm",
-                status: "Accept",
-                mode: "offline",
-              },
-              {
-                id: 6,
-                name: "Dr: Amr Ebrahim ",
-                country: "Cairo ",
-                time: "12 pm : 3 pm",
-                status: "Waiting",
-                mode: "offline",
-              },
-              {
-                id: 7,
-                name: "Dr: Mahmoud Ebrahim ",
-                country: "Cairo ",
-                time: "12 pm : 3 pm",
-                status: "Accept",
-                mode: "offline",
-              },
-              {
-                id: 8,
-                name: "Dr: Amr Ebrahim ",
-                country: "Cairo ",
-                time: "12 pm : 3 pm",
-                status: "Waiting",
-                mode: "offline",
-              },
-            ]),
-          1000
-        )
-      );
-      const onlineDoctors = apiData.filter(
-        (doctor) => doctor.mode === "online"
-      );
-      const offlineDoctors = apiData.filter(
-        (doctor) => doctor.mode === "offline"
-      );
-
-      setOnlineDataList(onlineDoctors);
-      setOfflineDataList(offlineDoctors);
-    };
-
-    fetchData();
-  }, []);
-
   const lineStyle = {
     left: activeSection === "onlineDoctors" ? "0%" : "50%",
   };
-
   const handlers = useSwipeable({
     onSwipedLeft: () => setActiveSection("offlineDoctors"),
     onSwipedRight: () => setActiveSection("onlineDoctors"),
     preventDefaultTouchmoveEvent: true,
     trackMouse: true,
   });
-
-  //after-click-btn
-  //cancel-book
-  const handleSelectDoctorForCancellation = (doctorId, type) => {
-    setSelectedDoctor({ id: doctorId, type });
+  const handleSelectDoctorForCancellation = (doctorId, type, bookingId) => {
+    setSelectedDoctor({ id: doctorId, type, bookingId });
     setIsOverlayVisible(true);
   };
+  
+  const [onlineBookings, setOnlineBookings] = useState([]);
 
-  const cancelBooking = () => {
+  useEffect(() => {
+    const fetchonlineBookings = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const Bookingonline = await getAllonlineBookings(accessToken);
+        console.log("Booking details:", Bookingonline);
+
+        const formattedRecords = Bookingonline.data.map((Bookingonline) => ({
+          name: Bookingonline.doctor_name,
+          username: Bookingonline.username,
+          status: Bookingonline.status,
+        }));
+        setOnlineBookings(formattedRecords);
+      } catch (error) {
+        console.error(
+          "An unexpected error occurred while fetching online bookings:",
+          error
+        );
+      }
+    };
+
+    fetchonlineBookings();
+  }, []);
+
+  const [offlineBookings, setOfflineBookings] = useState([]);
+
+  useEffect(() => {
+    const fetchofflineBookings = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const Booking = await getAllofflineBookings(accessToken);
+        console.log("User Booking details:", Booking);
+
+        const formattedRecords = Booking.data.data.map((Booking, index) => ({
+          bookingId: Booking.id,
+          first_name: Booking.first_name,
+          last_name: Booking.last_name,
+          clinic_location: Booking.clinic_location,
+          time: Booking.time,
+        }));
+        
+        setOfflineBookings(formattedRecords);
+      } catch (error) {
+        console.error(
+          "An unexpected error occurred while fetching offline bookings:",
+          error
+        );
+      }
+    };
+
+    fetchofflineBookings();
+  }, []);
+// Function to cancel booking
+const cancelBooking = async () => {
+  try {
+    const accessToken = getAccessTokenFromLocalStorage();
+    if (!accessToken) {
+      console.error("Access token is missing");
+      return;
+    }
+    await deleteBooking(accessToken, selectedDoctor.id);
     if (selectedDoctor.type === "online") {
-      setOnlineDataList((prev) =>
-        prev.filter((doctor) => doctor.id !== selectedDoctor.id)
+      setOnlineBookings((prev) =>
+        prev.filter((booking) => booking.username !== selectedDoctor.username)
       );
     } else {
-      setOfflineDataList((prev) =>
-        prev.filter((doctor) => doctor.id !== selectedDoctor.id)
+      setOfflineBookings((prev) =>
+        prev.filter((booking) => booking.bookingId !== selectedDoctor.bookingId)
       );
     }
     setIsOverlayVisible(false);
-    setSelectedDoctor({ id: null, type: null });
-  };
+    setSelectedDoctor({ bookingId: null, type: null });
+  } catch (error) {
+    console.error("Error cancelling booking:", error);
+  }
+};
   return (
     <Layout>
       <Helmet>
@@ -169,11 +144,10 @@ const BookingDetails = () => {
         {activeSection === "onlineDoctors" && (
           <div id="onlineDoctors">
             <div className="doctor-info">
-              {onlineDataList.map((doctor) => (
-                <div key={doctor.id} className="data">
+              {onlineBookings.map((bookings,index) => (
+                <div key={index} className="data">
                   <div className="nmark">
-                    <p className="name">{doctor.name}</p>
-
+                    <p className="name">{bookings.name}</p>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="15"
@@ -189,10 +163,10 @@ const BookingDetails = () => {
                   </p>
                   <div
                     className={`status ${
-                      doctor.status === "Accept" ? "Accept" : "Waiting"
+                      bookings.status === "Accept" ? "Accept" : "Waiting"
                     }`}
                   >
-                    {doctor.status}
+                    {bookings.status}
                   </div>
                   <div className="video">
                     <img src={video} alt="" className="cam" />
@@ -203,7 +177,7 @@ const BookingDetails = () => {
                   <div
                     className="cancel"
                     onClick={() =>
-                      handleSelectDoctorForCancellation(doctor.id, "online")
+                      handleSelectDoctorForCancellation(bookings.username, "online", bookings.bookingId)
                     }
                   >
                     <img src={del} alt="" />
@@ -220,9 +194,11 @@ const BookingDetails = () => {
         {activeSection === "offlineDoctors" && (
           <div id="offlineDoctors">
             <div className="doctor-info">
-              {offlineDataList.map((doctor) => (
-                <div key={doctor.id} className="data">
-                  <p className="name">{doctor.name}</p>
+              {offlineBookings.map((booking,index) => (
+                <div key={index} className="data">
+                  <p className="name">
+                    {booking.first_name} {booking.last_name}
+                  </p>
                   <div className="chil">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -232,19 +208,19 @@ const BookingDetails = () => {
                       fill="none"
                     >
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M3.375 7.12766C3.375 4.28412 5.92109 2.02051 9 2.02051C12.0789 2.02051 14.625 4.28412 14.625 7.12766C14.625 8.73072 13.7121 10.7141 12.7122 12.4284C11.6972 14.1683 10.5283 15.7359 9.90146 16.5397C9.79803 16.674 9.66278 16.7832 9.50663 16.8587C9.34969 16.9346 9.17609 16.9741 9 16.9741C8.82391 16.9741 8.65031 16.9346 8.49337 16.8587C8.3372 16.7832 8.20194 16.674 8.0985 16.5397C7.47168 15.7356 6.30279 14.1674 5.28782 12.4272C4.28789 10.7128 3.375 8.72958 3.375 7.12766ZM9 3.08867C6.48907 3.08867 4.5 4.92346 4.5 7.12766C4.5 8.4298 5.27461 10.1997 6.27199 11.9097C7.25166 13.5894 8.38638 15.1133 9 15.9007C9.6136 15.1137 10.7483 13.5903 11.728 11.9108C12.7254 10.2011 13.5 8.43099 13.5 7.12766C13.5 4.92346 11.5109 3.08867 9 3.08867Z"
                         fill="#353535"
                       />
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M9 6.29277C8.37868 6.29277 7.875 6.771 7.875 7.36093C7.875 7.95086 8.37868 8.42909 9 8.42909C9.62132 8.42909 10.125 7.95086 10.125 7.36093C10.125 6.771 9.62132 6.29277 9 6.29277ZM6.75 7.36093C6.75 6.18107 7.75736 5.22461 9 5.22461C10.2426 5.22461 11.25 6.18107 11.25 7.36093C11.25 8.54079 10.2426 9.49726 9 9.49726C7.75736 9.49726 6.75 8.54079 6.75 7.36093Z"
                         fill="#A4A2A2"
                       />
                     </svg>
-                    <p className="country">{doctor.country}</p>
+                    <p className="country">{booking.clinic_location}</p>
                   </div>
                   <div className="chil">
                     <svg
@@ -255,37 +231,37 @@ const BookingDetails = () => {
                       fill="none"
                     >
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M9 4.53955C9.31066 4.53955 9.5625 4.77867 9.5625 5.07363V7.74404C9.5625 8.039 9.31066 8.27812 9 8.27812C8.68934 8.27812 8.4375 8.039 8.4375 7.74404V5.07363C8.4375 4.77867 8.68934 4.53955 9 4.53955Z"
                         fill="#353535"
                       />
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M9 1.60205C9.46599 1.60205 9.84375 1.96073 9.84375 2.40317V2.93725C9.84375 3.3797 9.46599 3.73837 9 3.73837C8.53401 3.73837 8.15625 3.3797 8.15625 2.93725V2.40317C8.15625 1.96073 8.53401 1.60205 9 1.60205Z"
                         fill="#353535"
                       />
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M3.62213 3.43923C3.95163 3.12638 4.48587 3.12638 4.81537 3.43923L5.23725 3.83979C5.56675 4.15265 5.56675 4.65989 5.23725 4.97275C4.90774 5.28561 4.37351 5.28561 4.044 4.97275L3.62213 4.57219C3.29262 4.25933 3.29262 3.75209 3.62213 3.43923Z"
                         fill="#353535"
                       />
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M9 8.54521C8.68934 8.54521 8.4375 8.78433 8.4375 9.07929C8.4375 9.37426 8.68934 9.61337 9 9.61337C9.31066 9.61337 9.5625 9.37426 9.5625 9.07929C9.5625 8.78433 9.31066 8.54521 9 8.54521ZM7.3125 9.07929C7.3125 8.1944 8.06802 7.47705 9 7.47705C9.93198 7.47705 10.6875 8.1944 10.6875 9.07929C10.6875 9.96419 9.93198 10.6815 9 10.6815C8.06802 10.6815 7.3125 9.96419 7.3125 9.07929Z"
                         fill="#353535"
                       />
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M5.2499 3.75052C6.35994 3.04629 7.66498 2.67041 9 2.67041C10.7902 2.67041 12.5071 3.34564 13.773 4.54755C15.0388 5.74947 15.75 7.37962 15.75 9.07938C15.75 10.347 15.3541 11.5861 14.6124 12.64C13.8707 13.694 12.8165 14.5154 11.5831 15.0005C10.3497 15.4856 8.99252 15.6125 7.68314 15.3652C6.37377 15.1179 5.17104 14.5075 4.22703 13.6112C3.28303 12.7149 2.64015 11.5729 2.3797 10.3297C2.11925 9.08649 2.25292 7.79786 2.76382 6.62677C3.27471 5.45569 4.13987 4.45474 5.2499 3.75052ZM9 3.73857C7.88748 3.73857 6.79995 4.05181 5.87492 4.63866C4.94989 5.22552 4.22892 6.05964 3.80318 7.03554C3.37744 8.01145 3.26604 9.08531 3.48309 10.1213C3.70013 11.1573 4.23586 12.109 5.02253 12.8559C5.8092 13.6028 6.81148 14.1115 7.90262 14.3176C8.99376 14.5236 10.1248 14.4179 11.1526 14.0136C12.1804 13.6094 13.0589 12.9249 13.677 12.0466C14.2951 11.1683 14.625 10.1357 14.625 9.07938C14.625 7.66291 14.0324 6.30446 12.9775 5.30286C11.9226 4.30126 10.4918 3.73857 9 3.73857Z"
                         fill="#353535"
                       />
                     </svg>
-                    <p className="time">{doctor.time}</p>
+                    <p className="time">{booking.time}</p>
                   </div>{" "}
                   <NavLink to="/Chat">
                     <div className="chat">
@@ -296,10 +272,10 @@ const BookingDetails = () => {
                   <div
                     className="cancel"
                     onClick={() =>
-                      handleSelectDoctorForCancellation(doctor.id, "offline")
+                      handleSelectDoctorForCancellation(booking.id, "offline")
                     }
                   >
-                    <img src={del} alt="" />
+                    <img src={del} alt="delete" />
                     <button to="" className="canc">
                       Cancel Booking
                     </button>
