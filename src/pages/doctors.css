@@ -1,6 +1,6 @@
 .doctor-container {
-  /* max-width: 100vw; */
-  /* height: 90.625rem; */
+  max-width: 100%; 
+  height: 100rem; 
   display: flex;
   flex-direction: column;
   align-items: stretch;
