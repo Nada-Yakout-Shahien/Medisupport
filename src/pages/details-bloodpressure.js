@@ -37,7 +37,7 @@ const DetailsBloodpressure = () => {
   const chartOptions = {
     responsive: true,
     title: {
-      display: true,
+      display: false,
       text: "Blood Pressure",
     },
     scales: {
@@ -81,11 +81,6 @@ const DetailsBloodpressure = () => {
         backgroundColor: "#be0202",
       },
     ],
-    options: {
-      legend: {
-        position: "left",
-      },
-    },
   };
   // Lower bound data
   const datal = {
@@ -99,11 +94,6 @@ const DetailsBloodpressure = () => {
         backgroundColor: "#be0202",
       },
     ],
-    options: {
-      legend: {
-        position: "left",
-      },
-    },
   };
 
   return (

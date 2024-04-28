@@ -208,7 +208,6 @@
   max-height: 3rem;
   max-width: min-content;
   padding: 1vh 7vw;
-  /* padding-bottom: 2vw; */
   align-items: center;
   color: var(--whiteColor);
   border-radius: 0.625rem;

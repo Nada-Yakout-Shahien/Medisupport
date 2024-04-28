@@ -3,7 +3,7 @@ import "./Blood_pressure.css";
 import React, { useState } from "react";
 import { eachDayOfInterval, format } from "date-fns";
 import Layout from "../components/Layout";
-import { NavLink } from "react-router-dom";
+import { storeBloodPressure } from "../components/apiService";
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -38,6 +38,19 @@ const Bloodpressure = () => {
   const decreaseSystolic = () => setSystolicBP((prev) => prev - 1);
   const increaseDiastolic = () => setDiastolicBP((prev) => prev + 1);
   const decreaseDiastolic = () => setDiastolicBP((prev) => prev - 1);
+
+  const handleAddToRecord = async (event) => {
+    event.preventDefault();
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      await storeBloodPressure(systolicBP, diastolicBP, accessToken);
+      console.log("Blood pressure data stored successfully!");
+      window.location.href = "/DetailsBP"; 
+
+    } catch (error) {
+      console.error("Failed to store blood pressure data:", error.message);
+    }
+  };
 
   return (
     <Layout>
@@ -78,7 +91,7 @@ const Bloodpressure = () => {
         </div>
 
         <div className="BP-data">
-          <div className="box">
+          <form className="box" onSubmit={handleAddToRecord}>
             <div className="address">Input data</div>
             <div className="bp">
               <div className="para">
@@ -181,11 +194,14 @@ const Bloodpressure = () => {
               </div>
             </div>
             <div className="butn">
-              <NavLink to="/DetailsBP" className="add">
-                Add To Record
-              </NavLink>{" "}
+              <input
+                type="submit"
+                name=""
+                value="Add To Record"
+                className="add"
+              />
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </Layout>

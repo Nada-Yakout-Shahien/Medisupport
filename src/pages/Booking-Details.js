@@ -93,7 +93,7 @@ const BookingDetails = () => {
   
         while (currentPage <= totalPages) {
           const response = await getAllofflineBookings(accessToken, currentPage);
-          console.log("Fetched page", currentPage, "of bookings:", response);
+          console.log("Fetched page", currentPage, "of bookings offline:", response);
   
           // Update totalPages from the response
           totalPages = response.data.last_page;
