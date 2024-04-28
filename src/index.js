@@ -154,7 +154,7 @@ const router = createBrowserRouter([
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
-    path: "/BmiHistory",
+    path: "/bmi_History",
     element: <BmiHistory />,
     errorElement: <h1>Sorry, No page to display....</h1>,
   },

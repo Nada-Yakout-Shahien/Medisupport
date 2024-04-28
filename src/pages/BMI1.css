@@ -16,7 +16,7 @@ line-height: normal;
 }
 
 .clockr2{
-margin: 6rem 20rem;
+margin: 6rem 25rem;
 flex-shrink: 0;
 width: 3rem;
 height: 23rem;
@@ -38,7 +38,7 @@ letter-spacing: -0.03125rem;
 .pclockp p{
     color: #BE0202;
 font-family: Inter;
-margin: -4rem 29rem;
+margin: -4rem 33rem;
 font-size: 2rem;
 font-style: normal;
 font-weight: 700;
@@ -48,7 +48,7 @@ line-height: normal;
 .rtabler{
     width: 40.8125rem;
 height: 20.8125rem;
-margin: 7rem 12rem;
+margin: 7rem 16.5rem;
 flex-shrink: 0;
 border: 1px solid #be0202;
   border-radius: 0.625rem;
@@ -184,7 +184,7 @@ line-height: 1.45019rem; /* 96.677% */
 }
 
 .rfotr1{
-    width: 84.375rem;
+    width: 92.375rem;
   height: 16rem;
   margin: -4.5rem -7rem;
   gap: 4rem;
@@ -227,7 +227,7 @@ line-height: 1.45019rem; /* 96.677% */
     display: flex;
 width: 29.0625rem;
 height: 3rem;
-margin: 6.5rem 20rem;
+margin: 6.5rem 24rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
