@@ -308,10 +308,150 @@ export const getAllonlineBookings = async (accessToken, page) => {
     handleRequestError(error);
   }
 };
+//userChatAuth
+export const userChatAuth = async (accessToken) => {
+  try {
+    const response = await sendRequest(
+      "POST",
+      "/user/chat/auth",
+      {
+        socket_id: "9013.50262712",
+        channel_name: "private-chatify"
+      },
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+//userSendMessage
+export const userSendMessage = async (accessToken, id, message, temporaryMsgId) => {
+  try {
+    const response = await sendRequest(
+      "POST",
+      "/user/chat/sendMessage",
+      {
+        id,
+        message,
+        temporaryMsgId
+      },
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
 
+//chaaaaaaaaaaaaaaaaaaaaaaaaaatting
+//getUserContacts
+export const getUserContacts = async (accessToken) => {
+  try {
+    const response = await sendRequest(
+      "GET",
+      "/user/chat/getUserContacts",
+      null,
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
 
-
-
+//fetchUserMessages
+export const fetchUserMessages = async (accessToken, id) => {
+  try {
+    const response = await sendRequest(
+      "POST",
+      "/user/chat/fetchMessages",
+      {
+        id
+      },
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+//userDownloadFile
+export const userDownloadFile = async () => {
+  try {
+    const response = await sendRequest(
+      "GET",
+      "/user/chat/download/file-name-here"
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+//userMakeMessageSeen
+export const userMakeMessageSeen = async (accessToken, id) => {
+  try {
+    const response = await sendRequest(
+      "POST",
+      "/user/chat/makeSeen",
+      {
+        id
+      },
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+//getUserSharedPhotos
+export const getUserSharedPhotos = async (accessToken, userId) => {
+  try {
+    const response = await sendRequest(
+      "POST",
+      "/user/chat/shared",
+      {
+        user_id: userId
+      },
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+//userDeleteConversation
+export const userDeleteConversation = async (accessToken, id) => {
+  try {
+    const response = await sendRequest(
+      "POST",
+      "/user/chat/deleteConversation",
+      {
+        id
+      },
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+//userFetchDoctorByID
+export const userFetchDoctorByID = async (accessToken, id) => {
+  try {
+    const response = await sendRequest(
+      "POST",
+      "/user/chat/idInfo",
+      {
+        id
+      },
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
 
 
 

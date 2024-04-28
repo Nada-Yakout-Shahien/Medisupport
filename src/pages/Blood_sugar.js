@@ -4,7 +4,7 @@ import { eachDayOfInterval, format } from "date-fns";
 import "./Blood_sugar.css";
 import Layout from "../components/Layout";
 import { NavLink } from "react-router-dom";
-import { sendRequest ,getAccessTokenFromLocalStorage,getAllBloodSugarStatuses ,allBookings} from "../components/apiService";
+import { sendRequest ,getAccessTokenFromLocalStorage,getAllBloodSugarStatuses } from "../components/apiService";
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
