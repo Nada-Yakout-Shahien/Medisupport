@@ -12,7 +12,7 @@ import Contactus from "./pages/Contact_us";
 import Login from "./pages/login";
 import Signup from "./pages/sign_up";
 import Reedarticles from "./pages/Reed_articles";
-import Doctors from "./pages/doctors";
+import Doctors from "./pages/Doctors";
 import HeartRate from "./pages/Heart_rate";
 import Bloodpressure from "./pages/Blood_pressure";
 import Bloodsugar from "./pages/Blood_sugar";
