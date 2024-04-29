@@ -59,22 +59,11 @@ input:hover {
   border-radius: 5rem;
 }
 
-/* .search-box input[type="text"] {
-  width: 33.39306rem;
-  height: 2.82rem;
-  flex-shrink: 0;
-  border-radius: 0.625rem;
 
-  border: 1px solid #be0202;
-  color: #1f1f1f;
-  font-family: Roboto;
-  font-size: 1.25rem;
-  font-style: normal;
-
-  line-height: normal;
-  left: 20rem;
-  padding: 0rem 3rem;
-} */
+.search-bar input{
+  border: none;
+  outline: none;
+}
 
 .nod {
   justify-content: space-between;
