@@ -7,10 +7,14 @@ export const handleRequestError = (error) => {
   let errorMessage = "";
   if (error.response) {
     errorMessage = `Error: ${error.response.status} - ${error.response.data.message}`;
+    alert(errorMessage);
+    throw error;
   } else if (error.request) {
     errorMessage = "Network Error: No response received";
+    alert(errorMessage);
   } else {
     errorMessage = `Error: ${error.message}`;
+    alert(errorMessage);
   }
   throw new Error(errorMessage);
 };
