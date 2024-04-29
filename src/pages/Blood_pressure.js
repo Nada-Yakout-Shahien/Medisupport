@@ -1,9 +1,10 @@
+import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import "./Blood_pressure.css";
-import React, { useState } from "react";
 import { eachDayOfInterval, format } from "date-fns";
 import Layout from "../components/Layout";
 import { storeBloodPressure } from "../components/apiService";
+import { useNavigate } from 'react-router-dom';
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -38,6 +39,7 @@ const Bloodpressure = () => {
   const decreaseSystolic = () => setSystolicBP((prev) => prev - 1);
   const increaseDiastolic = () => setDiastolicBP((prev) => prev + 1);
   const decreaseDiastolic = () => setDiastolicBP((prev) => prev - 1);
+  const navigate = useNavigate();
 
   const handleAddToRecord = async (event) => {
     event.preventDefault();
@@ -45,7 +47,8 @@ const Bloodpressure = () => {
       const accessToken = localStorage.getItem("accessToken");
       await storeBloodPressure(systolicBP, diastolicBP, accessToken);
       console.log("Blood pressure data stored successfully!");
-      window.location.href = "/DetailsBP"; 
+      // Navigate to the details page
+      navigate("/DetailsBP");
 
     } catch (error) {
       console.error("Failed to store blood pressure data:", error.message);
@@ -72,8 +75,8 @@ const Bloodpressure = () => {
         </div>
 
         <div className="BP-date">
-          {days.map((item, index) => (
-            <div key={index} className="day-container">
+          {days.map((item) => (
+            <div key={item.fullDate} className="day-container">
               <div className="day-name">{item.day}</div>
               <div
                 className={`date-container ${

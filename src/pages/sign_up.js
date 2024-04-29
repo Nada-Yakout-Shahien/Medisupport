@@ -8,8 +8,8 @@ import {
   loginWithGoogle,
   loginWithFacebook,
 } from "../components/apiService";
-import { GoogleLogin } from "react-google-login";
-import FacebookLogin from "react-facebook-login";
+//import { GoogleLogin } from "react-google-login";
+//import FacebookLogin from "react-facebook-login";
 
 const clientId =
   "639786245015-q9agbhq4ekj8vhqu85jbvdg75er66dnh.apps.googleusercontent.com";
@@ -143,7 +143,7 @@ const Sign_up = () => {
             <input type="submit" name="" value="Sign Up" className="btn" />
           </div>
           <div className="btn-log">
-            <button className="blog">
+            {/* <button className="blog">
               <GoogleLogin
                 clientId={clientId}
                 buttonText="Login in with Google"
@@ -151,8 +151,8 @@ const Sign_up = () => {
                 onFailure={handleLogingoogleFailure}
                 cookiePolicy={"single_host_origin"}
               />
-            </button>
-            <FacebookLogin
+            </button> */}
+            {/* <FacebookLogin
               appId="763487532477503"
               autoLoad={false}
               fields="name,email,picture"
@@ -160,7 +160,8 @@ const Sign_up = () => {
               cssClass="facebook-login-button"
               icon={<i className="fab fa-facebook-f"></i>}
               textButton="Log in with Facebook"
-            />
+            /> */}
+             
           </div>
           <hr />
           <div className="sign">

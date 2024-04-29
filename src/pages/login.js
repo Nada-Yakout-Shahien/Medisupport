@@ -5,7 +5,7 @@ import { useAuth } from "../components/AuthContext";
 import { loginUser,saveTokenToLocalStorage } from "../components/apiService";
 import logInImage from "../images/logIn.png";
 import "./login.css";
-import { GoogleLogin } from "react-google-login";
+//import { GoogleLogin } from "react-google-login";
 
 const clientId =
   "639786245015-q9agbhq4ekj8vhqu85jbvdg75er66dnh.apps.googleusercontent.com";
@@ -142,14 +142,14 @@ const Login = () => {
           </form>
           <div className="btn-log">
             <button className="blog">
-              <GoogleLogin
+              {/* <GoogleLogin
                 clientId={clientId}
                 buttonText="Login in with Google"
                 onSuccess={handleLogingoogleClick}
                 onFailure={handleLogingoogleFailure}
                 cookiePolicy={"single_host_origin"}
               />
-              
+               */}
             </button>
             <button className="blog">
               <div className="svg">

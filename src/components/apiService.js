@@ -334,7 +334,7 @@ export const storeBloodPressure = async (systolic, diastolic, accessToken) => {
 };
 
 // Function to get all systolic measurements
-export const getAllSystolicMeasurements = async (accessToken) => {
+export const getAllSystolicMeasurementsupper = async (accessToken) => {
   try {
     return await sendRequest(
       "GET",
@@ -348,7 +348,7 @@ export const getAllSystolicMeasurements = async (accessToken) => {
 };
 
 // Function to get all diastolic measurements
-export const getAllDiastolicMeasurements = async (accessToken) => {
+export const getAllDiastolicMeasurementslower = async (accessToken) => {
   try {
     return await sendRequest(
       "GET",
@@ -567,6 +567,23 @@ export const userMakeMessageSeen = async (accessToken, id) => {
     handleRequestError(error);
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //loginWithGoogle
 export const loginWithGoogle = async (provider, accessProviderToken) => {
