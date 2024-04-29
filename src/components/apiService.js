@@ -313,7 +313,20 @@ export const getAllonlineBookings = async (accessToken, page) => {
     handleRequestError(error);
   }
 };
-
+// Function to delete a booking
+export const deleteBookings = async (accessToken, id) => {
+  try {
+    const response = await sendRequest(
+      "DELETE",
+      `/auth/user/delete-bookings?id=${id}`,
+      null,
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
 
 
 

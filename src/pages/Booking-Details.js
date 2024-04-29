@@ -12,6 +12,7 @@ import {
   getAllonlineBookings,
   deleteBooking,
   getAccessTokenFromLocalStorage,
+  deleteBookings
 } from "../components/apiService";
 
 const BookingDetails = () => {
@@ -51,22 +52,25 @@ const BookingDetails = () => {
           const response = await getAllonlineBookings(accessToken, currentPage);
           console.log("Fetched page", currentPage, "of online bookings:", response);
   
-          // Update totalPages from the response
-          totalPages = response.data.last_page;
+          // Ensure response contains pagination data
+          if (response.data.pagination) {
+            // Update totalPages from the response
+            totalPages = response.data.pagination.last_page;
   
-          // Concatenate the bookings from the current page to the existing bookings
-          allBookings = allBookings.concat(response.data.map(booking => ({
-            name: booking.doctor_name,
-            username: booking.username,
-            status: booking.status,
-          })));
-  
-          // Update onlineBookings with the current bookings
-          setOnlineBookings(allBookings);
+            // Concatenate the bookings from the current page to the existing bookings
+            allBookings = allBookings.concat(response.data.data.map(booking => ({
+              name: booking.doctor_name,
+              username: booking.username,
+              status: booking.status,
+            })));
+          }
   
           // Move to the next page
           currentPage++;
         }
+  
+        // Update onlineBookings with all bookings after fetching all pages
+        setOnlineBookings(allBookings);
   
         console.log("All online bookings:", allBookings);
       } catch (error) {
@@ -79,6 +83,8 @@ const BookingDetails = () => {
   
     fetchonlineBookings();
   }, []);
+  // Function to cancel booking
+
   
 
   const [offlineBookings, setOfflineBookings] = useState([]);
@@ -139,7 +145,7 @@ const cancelBooking = async () => {
 
     // Call the deleteBooking function based on the type
     if (type === "online") {
-      await deleteBooking(accessToken, id);
+      await deleteBookings(accessToken, id);
       console.log("Successfully cancelled online booking");
       // Update the state of online bookings
       setOnlineBookings(prevOnlineBookings => prevOnlineBookings.filter(booking => booking.id !== id));
