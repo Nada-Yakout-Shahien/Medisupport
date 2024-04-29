@@ -110,7 +110,7 @@ export const getAllBloodSugarRecords = async (accessToken, page) => {
   try {
     const response = await sendRequest(
       "GET",
-      `/user/blood-sugar/get-all-records?page=${page}`, 
+      `/user/blood-sugar/get-all-records?page=${page}`,
       null,
       accessToken
     );
@@ -121,11 +121,9 @@ export const getAllBloodSugarRecords = async (accessToken, page) => {
     }
   } catch (error) {
     handleRequestError(error);
-    throw error; 
+    throw error;
   }
 };
-
-
 
 export const getLastThreeBloodSugarRecords = async (accessToken) => {
   try {
@@ -243,7 +241,12 @@ export const getTimes = async (accessToken, doctorId) => {
   }
 };
 //bookAppointment
-export const bookAppointment = async (accessToken, dateId, doctorId, timeId) => {
+export const bookAppointment = async (
+  accessToken,
+  dateId,
+  doctorId,
+  timeId
+) => {
   try {
     const response = await sendRequest(
       "POST",
@@ -256,12 +259,11 @@ export const bookAppointment = async (accessToken, dateId, doctorId, timeId) => 
     handleRequestError(error);
   }
 };
-// Function to get all bookings
-export const getAllofflineBookings = async (accessToken) => {
+export const getAllofflineBookings = async (accessToken, page) => {
   try {
     const response = await sendRequest(
       "GET",
-      "/user/booking/get-all-booking",
+      `/user/booking/get-all-booking?page=${page}`,
       null,
       accessToken
     );
@@ -270,12 +272,13 @@ export const getAllofflineBookings = async (accessToken) => {
     handleRequestError(error);
   }
 };
+
 // Function to delete a booking
-export const deleteBooking = async (accessToken, bookingId) => {
+export const deleteBooking = async (accessToken, id) => {
   try {
     const response = await sendRequest(
       "DELETE",
-      `/user/booking/${bookingId}`,
+      `/user/booking/delete-booking?id=${id}`,
       null,
       accessToken
     );
@@ -295,21 +298,110 @@ export const onlineBookings = async (doctorId, accessToken) => {
     );
     return response.data;
   } catch (error) {
-    handleRequestError(error); 
+    handleRequestError(error);
   }
 };
 
 // All bookings request
-export const getAllonlineBookings = async (accessToken) => {
+export const getAllonlineBookings = async (accessToken, page) => {
   try {
     const response = await sendRequest(
       "GET",
-      "/auth/user/all-bookings",
+      `/auth/user/all-bookings?page=${page}`,
       null,
       accessToken
     );
     console.log(response);
     return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+
+
+
+
+// Function to store blood pressure data
+export const storeBloodPressure = async (systolic, diastolic, accessToken) => {
+  try {
+    const data = { systolic, diastolic };
+    return await sendRequest(
+      "POST",
+      "/user/blood-pressure/store",
+      data,
+      accessToken
+    );
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+// Function to get all systolic measurements
+export const getAllSystolicMeasurementsupper = async (accessToken) => {
+  try {
+    return await sendRequest(
+      "GET",
+      "/user/blood-pressure/get-all-systolic",
+      null,
+      accessToken
+    );
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+// Function to get all diastolic measurements
+export const getAllDiastolicMeasurementslower = async (accessToken) => {
+  try {
+    return await sendRequest(
+      "GET",
+      "/user/blood-pressure/get-all-diastolic",
+      null,
+      accessToken
+    );
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+// Function to get latest blood pressure measurement
+export const getLatestBloodPressureMeasurement = async (accessToken) => {
+  try {
+    return await sendRequest(
+      "GET",
+      "/user/blood-pressure/get-latest-measurement",
+      null,
+      accessToken
+    );
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+// Function to get latest three blood pressure measurements
+export const getLatestThreeBloodPressureMeasurements = async (accessToken) => {
+  try {
+    return await sendRequest(
+      "GET",
+      "/user/blood-pressure/get-latest-three-measurements",
+      null,
+      accessToken
+    );
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+// Function to get all blood pressure measurements
+export const getAllBloodPressureMeasurements = async (accessToken) => {
+  try {
+    return await sendRequest(
+      "GET",
+      "/user/blood-pressure/get-all-measurements",
+      null,
+      accessToken
+    );
   } catch (error) {
     handleRequestError(error);
   }
@@ -325,71 +417,160 @@ export const getAllonlineBookings = async (accessToken) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//chaaaaaaaaaaaaaaaaaaaaaaaaaatting
+// Function to get user contacts
+export const getUserContacts = async (accessToken) => {
+  try {
+    const response = await sendRequest(
+      "GET",
+      "/user/chat/getUserContacts",
+      null,
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+// Function to authenticate user for chat
+export const userChatAuth = async (socketId, channelName, accessToken) => {
+  try {
+    const response = await sendRequest(
+      "POST",
+      "/user/chat/auth",
+      {
+        socket_id: socketId,
+        channel_name: channelName,
+      },
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+// Function to send a message
+export const userSendMessage = async (
+  accessToken,
+  id,
+  message,
+  temporaryMsgId
+) => {
+  try {
+    const response = await sendRequest(
+      "POST",
+      "/user/chat/sendMessage",
+      {
+        id,
+        message,
+        temporary_msg_id: temporaryMsgId,
+      },
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+// Function to fetch user messages
+export const fetchUserMessages = async (accessToken, id) => {
+  try {
+    const response = await sendRequest(
+      "POST",
+      "/user/chat/fetchMessages",
+      {
+        id,
+      },
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+// Function to download a file
+export const userDownloadFile = async () => {
+  try {
+    const response = await sendRequest(
+      "GET",
+      "/user/chat/download/file-name-here"
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+// Function to get user's shared photos
+export const getUserSharedPhotos = async (accessToken, userId) => {
+  try {
+    const response = await sendRequest(
+      "POST",
+      "/user/chat/shared",
+      {
+        user_id: userId,
+      },
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+// Function to delete a conversation
+export const userDeleteConversation = async (accessToken, id) => {
+  try {
+    const response = await sendRequest(
+      "POST",
+      "/user/chat/deleteConversation",
+      {
+        id,
+      },
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+// Function to fetch doctor information by ID
+export const userFetchDoctorByID = async (accessToken, id) => {
+  try {
+    const response = await sendRequest(
+      "POST",
+      "/user/chat/idInfo",
+      {
+        id,
+      },
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+// Function to mark a message as seen
+export const userMakeMessageSeen = async (accessToken, id) => {
+  try {
+    const response = await sendRequest(
+      "POST",
+      "/user/chat/makeSeen",
+      {
+        id,
+      },
+      accessToken
+    );
+    return response;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
 
 
 

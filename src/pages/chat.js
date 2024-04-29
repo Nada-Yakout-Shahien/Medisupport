@@ -5,6 +5,7 @@ import "./chat.css";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import docchat1 from "../images/doc_chat1.jpeg";
+import { getUserContacts } from "../components/apiService";
 
 const emojis = [
   "😀",
@@ -396,7 +397,7 @@ const Chat = () => {
   const [currentDoctorMessages, setCurrentDoctorMessages] = useState([]);
   const [doctorMessages, setDoctorMessages] = useState({});
   // doc
-  const doctorsData = [
+  const doctorData = [
     {
       id: 1,
       name: "Dr. Floyd Miles",
@@ -641,18 +642,7 @@ const Chat = () => {
       setSelectedFile(file);
     }
   };
-  const handleDoctorClick = (doctor) => {
-    setSelectedDoctor(doctor);
-    setCurrentDoctorMessages(doctor.doctorMessages);
-    setMessages(doctorMessages[doctor.id] || []);
-    setShowPicker(false);
-    if (windowWidth <= 750) {
-      setShowSidebar(false);
-      setShowChat(true);
-    } else {
-      setShowChat(true);
-    }
-  };
+
   const handlearrowClick = (doctor) => {
     setSelectedDoctor(null);
     setShowChat(false);
@@ -699,6 +689,53 @@ const Chat = () => {
     }
   }, []);
 
+  const [doctorsData, setDoctorsData] = useState([]);
+  const fetchUserContacts = async () => {
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      const contacts = await getUserContacts(accessToken);
+      console.log("User contacts data:", contacts);
+      const contactsArray = contacts.contacts;
+
+      setDoctorsData(
+        contactsArray.map((contact) => ({
+          id: contact.user.id,
+          isOnline: contact.user.active_status === 1,
+          contactInfo: contact,
+        }))
+      );
+    } catch (error) {
+      console.error("An error occurred while fetching user contacts:", error);
+    }
+  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await fetchUserContacts();
+      } catch (error) {
+        console.error("An error occurred while fetching user contacts:", error);
+      }
+    };
+
+    const interval = setInterval(() => {
+      fetchData();
+    }, 60000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleDoctorClick = (doctor) => {
+    setSelectedDoctor(doctor);
+    setCurrentDoctorMessages(doctor.doctorMessages);
+    setMessages(doctorMessages[doctor.id] || []);
+    setShowPicker(false);
+    if (windowWidth <= 750) {
+      setShowSidebar(false);
+      setShowChat(true);
+    } else {
+      setShowChat(true);
+    }
+  };
   return (
     <>
       <Helmet>
@@ -720,7 +757,6 @@ const Chat = () => {
             <div className="sidebar">
               {doctorsData.map((doctor) => (
                 <div
-                  style={{ display: showSidebar ? "block" : "none" }}
                   key={doctor.id}
                   className="doctorschat"
                   onClick={() => handleDoctorClick(doctor)}
@@ -729,7 +765,7 @@ const Chat = () => {
                     <div className="doctorAvatarContainer">
                       <div className="doctorAvatar">
                         <img
-                          src={doctor.avatar}
+                          src={doctor.contactInfo.user.avatar}
                           alt="contact-img"
                           className="zoomedImage"
                         />
@@ -740,16 +776,25 @@ const Chat = () => {
                     </div>
                     <div className="doctorInfo">
                       <div className="doctortext">
-                        <div className="doctorName">{doctor.name}</div>
-                        <div className="doctorSpeciality">
-                          {doctor.speciality}
+                        <div className="doctorName">
+                          {doctor.contactInfo.user.first_name}{" "}
+                          {doctor.contactInfo.user.last_name}
                         </div>
-                        <div className="lastMessage">{doctor.lastMessage}</div>
+                        <div className="doctorSpeciality">
+                          {doctor.contactInfo.user.active_status === 1
+                            ? "Online"
+                            : "Offline"}
+                        </div>
+                        <div className="lastMessage">
+                          {doctor.contactInfo.lastMessage.last_message}
+                        </div>
                       </div>
                       <div className="mess">
-                        <div className="messageTime">{doctor.messageTime}</div>
+                        <div className="messageTime">
+                          {doctor.contactInfo.lastMessage.timeAgo}
+                        </div>
                         <div className="unreadMessages">
-                          {doctor.unreadMessages}
+                          {doctor.contactInfo.unseenCounter}
                         </div>
                       </div>
                     </div>
@@ -758,7 +803,6 @@ const Chat = () => {
               ))}
             </div>
           </div>
-
           {selectedDoctor && showChat && (
             <div className="chatm">
               <div className="doctorinfor">
@@ -933,7 +977,6 @@ const Chat = () => {
               </div>
             </div>
           )}
-
           {showDefaultConversation && (
             <div className="conversation conversation-default active">
               <i className="ri-chat-3-line"></i>

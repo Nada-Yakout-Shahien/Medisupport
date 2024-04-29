@@ -1,11 +1,16 @@
 import { Helmet } from "react-helmet-async";
 import "./details-bloodpressure.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { eachDayOfInterval, format } from "date-fns";
 import "chart.js/auto";
 import { Line } from "react-chartjs-2";
 import Layout from "../components/Layout";
 import { NavLink } from "react-router-dom";
+import {
+  getAllBloodPressureMeasurements,
+  getLatestBloodPressureMeasurement,
+  getAllSystolicMeasurementsupper,
+} from "../components/apiService";
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -37,7 +42,7 @@ const DetailsBloodpressure = () => {
   const chartOptions = {
     responsive: true,
     title: {
-      display: true,
+      display: false,
       text: "Blood Pressure",
     },
     scales: {
@@ -69,8 +74,6 @@ const DetailsBloodpressure = () => {
       ],
     },
   };
-
-  // Upper bound data
   const datau = {
     labels: ["", "", "", "", "", "", ""],
     datasets: [
@@ -81,12 +84,51 @@ const DetailsBloodpressure = () => {
         backgroundColor: "#be0202",
       },
     ],
-    options: {
-      legend: {
-        position: "left",
-      },
-    },
   };
+// Upper bound data
+const [dataup, setDataup] = useState({});
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      // Call the function to fetch systolic measurements
+      const accessToken = localStorage.getItem("accessToken");
+      const systolicMeasurements = await getAllSystolicMeasurementsupper(accessToken);
+
+      // Extract data from API response
+      const formattedRecords = Object.entries(systolicMeasurements.data).map(
+        ([dateTime, value]) => {
+          return { x: dateTime, y: value };
+        }
+      );      
+
+      // Extract labels and data arrays
+      const labels = formattedRecords.map((record) => record.x);
+      const data = formattedRecords.map((record) => record.y);
+
+      // Set data for chart
+      setDataup({
+        labels: labels,
+        datasets: [
+          {
+            label: "Upper Bound",
+            data: data,
+            borderColor: "#be0202",
+            backgroundColor: "#be0202",
+          },
+        ],
+      });
+    } catch (error) {
+      console.error("Failed to fetch systolic measurements:", error.message);
+    }
+  };
+
+  fetchData();
+}, []);
+
+
+  
+
   // Lower bound data
   const datal = {
     labels: ["", "", "", "", "", "", ""],
@@ -99,12 +141,59 @@ const DetailsBloodpressure = () => {
         backgroundColor: "#be0202",
       },
     ],
-    options: {
-      legend: {
-        position: "left",
-      },
-    },
   };
+
+  const [bloodPressureMeasurements, setBloodPressureMeasurements] = useState(
+    []
+  );
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Call the function to fetch measurements
+        const accessToken = localStorage.getItem("accessToken");
+        const measurements = await getAllBloodPressureMeasurements(accessToken);
+        // Save the measurements to state
+        console.log(measurements);
+
+        const formattedRecords = measurements.data.attributes.map(
+          (measurements, index) => ({
+            systolic: measurements.systolic,
+            diastolic: measurements.diastolic,
+            pressure_advice_advice: measurements["pressure_advice_advice"],
+            pressure_advice_key: measurements["pressure_advice_key"],
+          })
+        );
+        setBloodPressureMeasurements(formattedRecords);
+      } catch (error) {
+        console.error(
+          "Failed to fetch blood pressure measurements:",
+          error.message
+        );
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const [latestMeasurement, setLatestMeasurement] = useState(null);
+
+  useEffect(() => {
+    const fetchRecommendedAdvice = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const { data } = await getLatestBloodPressureMeasurement(accessToken);
+        console.log("Recommended blood pressure advice:", data);
+        setLatestMeasurement(data);
+      } catch (error) {
+        console.error(
+          "Error fetching recommended blood pressure advice:",
+          error
+        );
+      }
+    };
+
+    fetchRecommendedAdvice();
+  }, []);
 
   return (
     <Layout>
@@ -163,7 +252,7 @@ const DetailsBloodpressure = () => {
               <div className="bound">
                 <div className="boun">
                   <div className="rec"></div>
-                  <p>Upper bound</p>
+                  <p>Lower bound</p>
                 </div>
                 <div className="measure">
                   <p>mmHG</p>
@@ -173,20 +262,24 @@ const DetailsBloodpressure = () => {
             </div>
           </div>
 
-          <div className="inf-det">
-            <h3>Recommended Reading</h3>
-            <h4>How To Loss Sugar ?</h4>
-            <p>
-              Lorem ipsum, or lipsum as it is sometimes known, is dummy text
-              used in laying out print, graphic or web designs. The passage is
-              attributed to an unknown typesetter in the 15th century who is
-              thought to have scrambled parts of Cicero's De Finibus Bonorum et
-              Malorum for use in a type specimen book. It usually begins with:
-              <br />
-              “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.”
-            </p>
-          </div>
+          {latestMeasurement && (
+            <div className="inf-det">
+              <h3>Recommended Reading</h3>
+              <h4>
+                {latestMeasurement &&
+                latestMeasurement.attributes.pressure_advice_key
+                  ? latestMeasurement.attributes.pressure_advice_key
+                  : "No Key available"}
+              </h4>
+              <p>
+                {latestMeasurement &&
+                latestMeasurement.attributes.pressure_advice_advice
+                  ? latestMeasurement.attributes.pressure_advice_advice
+                  : "No advice available"}
+              </p>
+            </div>
+          )}
+
           <div className="butn">
             <NavLink to="/blood_pressure" className="addrec">
               Add New Record
