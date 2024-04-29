@@ -12,7 +12,7 @@ import {
   getAllonlineBookings,
   deleteBooking,
   getAccessTokenFromLocalStorage,
-  deleteBookings
+  deleteBookings,
 } from "../components/apiService";
 
 const BookingDetails = () => {
@@ -36,43 +36,66 @@ const BookingDetails = () => {
     setSelectedDoctor({ id: doctorId, type, bookingId });
     setIsOverlayVisible(true);
   };
-  
-  
-  const [onlineBookings, setOnlineBookings] = useState([]);
 
+  const [onlineBookings, setOnlineBookings] = useState([]);
   useEffect(() => {
     const fetchonlineBookings = async () => {
       try {
         const accessToken = localStorage.getItem("accessToken");
         let currentPage = 1;
         let totalPages = 1;
-        let allBookings = [];
+        const uniqueBookings = new Set(); 
   
         while (currentPage <= totalPages) {
           const response = await getAllonlineBookings(accessToken, currentPage);
-          console.log("Fetched page", currentPage, "of online bookings:", response);
+          console.log(
+            "Fetched page",
+            currentPage,
+            "of online bookings:",
+            response
+          );
   
           // Ensure response contains pagination data
           if (response.data.pagination) {
             // Update totalPages from the response
             totalPages = response.data.pagination.last_page;
   
-            // Concatenate the bookings from the current page to the existing bookings
-            allBookings = allBookings.concat(response.data.data.map(booking => ({
-              name: booking.doctor_name,
-              username: booking.username,
-              status: booking.status,
-            })));
+            // Loop through the bookings and add only the unique ones to the set
+            response.data.data.forEach((booking) => {
+              if (!uniqueBookings.has(booking.id)) {
+                uniqueBookings.add(booking.id);
+              }
+            });
+  
+            // Map unique bookings inside the while loop
+            const allBookings = Array.from(uniqueBookings).map((bookingId) => {
+              const bookingData = response.data.data.find(
+                (booking) => booking.id === bookingId
+              );
+              
+              // Check if bookingData exists before accessing its properties
+              if (bookingData) {
+                return {
+                  bookingId: bookingData.id,
+                  name: bookingData.doctor_name,
+                  username: bookingData.username,
+                  status: bookingData.status,
+                };
+              }
+            });
+  
+            // Filter out undefined values before updating onlineBookings
+            const filteredBookings = allBookings.filter((booking) => booking !== undefined);
+  
+            // Update onlineBookings with all unique bookings after fetching each page
+            setOnlineBookings((prevBookings) => [...prevBookings, ...filteredBookings]);
           }
   
           // Move to the next page
           currentPage++;
         }
-  
-        // Update onlineBookings with all bookings after fetching all pages
-        setOnlineBookings(allBookings);
-  
-        console.log("All online bookings:", allBookings);
+        
+        console.log("All online bookings:", onlineBookings);
       } catch (error) {
         console.error(
           "An unexpected error occurred while fetching online bookings:",
@@ -83,10 +106,10 @@ const BookingDetails = () => {
   
     fetchonlineBookings();
   }, []);
-  // Function to cancel booking
-
+  
   
 
+  // Function to cancel booking
   const [offlineBookings, setOfflineBookings] = useState([]);
 
   useEffect(() => {
@@ -96,30 +119,40 @@ const BookingDetails = () => {
         let currentPage = 1;
         let totalPages = 1;
         let allBookings = [];
-  
+
         while (currentPage <= totalPages) {
-          const response = await getAllofflineBookings(accessToken, currentPage);
-          console.log("Fetched page", currentPage, "of bookings offline:", response);
-  
+          const response = await getAllofflineBookings(
+            accessToken,
+            currentPage
+          );
+          console.log(
+            "Fetched page",
+            currentPage,
+            "of bookings offline:",
+            response
+          );
+
           // Update totalPages from the response
           totalPages = response.data.last_page;
-  
+
           // Concatenate the bookings from the current page to the existing bookings
-          allBookings = allBookings.concat(response.data.data.map(booking => ({
-            bookingId: booking.id,
-            first_name: booking.first_name,
-            last_name: booking.last_name,
-            clinic_location: booking.clinic_location,
-            time: booking.time,
-          })));
-  
+          allBookings = allBookings.concat(
+            response.data.data.map((booking) => ({
+              bookingId: booking.id,
+              first_name: booking.first_name,
+              last_name: booking.last_name,
+              clinic_location: booking.clinic_location,
+              time: booking.time,
+            }))
+          );
+
           // Update offlineBookings with the current bookings
           setOfflineBookings(allBookings);
-  
+
           // Move to the next page
           currentPage++;
         }
-  
+
         console.log("All offline bookings:", allBookings);
       } catch (error) {
         console.error(
@@ -128,7 +161,7 @@ const BookingDetails = () => {
         );
       }
     };
-  
+
     fetchofflineBookings();
   }, []);
 // Function to cancel booking
@@ -144,43 +177,49 @@ const cancelBooking = async () => {
     }
 
     // Call the deleteBooking function based on the type
+    let response;
     if (type === "online") {
-      await deleteBookings(accessToken, id);
+      response = await deleteBookings(accessToken, id);
       console.log("Successfully cancelled online booking");
       // Update the state of online bookings
-      setOnlineBookings(prevOnlineBookings => prevOnlineBookings.filter(booking => booking.id !== id));
+      setOnlineBookings(prevOnlineBookings => prevOnlineBookings.filter(booking => booking.bookingId !== bookingId));
     } else if (type === "offline") {
-      await deleteBooking(accessToken, bookingId);
+      response = await deleteBooking(accessToken, bookingId);
       console.log("Successfully cancelled offline booking");
       // Update the state of offline bookings
       setOfflineBookings(prevOfflineBookings => prevOfflineBookings.filter(booking => booking.bookingId !== bookingId));
     } else {
       console.error("Invalid booking type");
+      return;
     }
 
-    // Set bookingCancelled to true after successful cancellation
-    setBookingCancelled(true);
+    // Check if the response indicates success
+    if (response && response.success) {
+      // Set bookingCancelled to true after successful cancellation
+      setBookingCancelled(true);
 
-    // After cancelling, hide the overlay
-    setIsOverlayVisible(false);
+      // After cancelling, hide the overlay
+      setIsOverlayVisible(false);
+    } else {
+      console.error("Failed to cancel booking:", response && response.message);
+    }
   } catch (error) {
     console.error("An unexpected error occurred while cancelling booking:", error);
   }
 };
 
-const [bookingCancelled, setBookingCancelled] = useState(false);
+  const [bookingCancelled, setBookingCancelled] = useState(false);
 
-// useEffect to reset bookingCancelled after a delay
-useEffect(() => {
-  let timeout;
-  if (bookingCancelled) {
-    timeout = setTimeout(() => {
-      setBookingCancelled(false);
-    }, 3000); // Reset bookingCancelled after 3 seconds (adjust the delay as needed)
-  }
-  return () => clearTimeout(timeout);
-}, [bookingCancelled]);
-
+  // useEffect to reset bookingCancelled after a delay
+  useEffect(() => {
+    let timeout;
+    if (bookingCancelled) {
+      timeout = setTimeout(() => {
+        setBookingCancelled(false);
+      }, 3000); // Reset bookingCancelled after 3 seconds (adjust the delay as needed)
+    }
+    return () => clearTimeout(timeout);
+  }, [bookingCancelled]);
 
   return (
     <Layout>
@@ -213,7 +252,7 @@ useEffect(() => {
         {activeSection === "onlineDoctors" && (
           <div id="onlineDoctors">
             <div className="doctor-info">
-              {onlineBookings.map((bookings,index) => (
+              {onlineBookings.map((bookings, index) => (
                 <div key={index} className="data">
                   <div className="nmark">
                     <p className="name">{bookings.name}</p>
@@ -246,7 +285,11 @@ useEffect(() => {
                   <div
                     className="cancel"
                     onClick={() =>
-                      handleSelectDoctorForCancellation(bookings.username, "online", bookings.bookingId)
+                      handleSelectDoctorForCancellation(
+                        bookings.username,
+                        "online",
+                        bookings.bookingId
+                      )
                     }
                   >
                     <img src={del} alt="" />
@@ -263,7 +306,7 @@ useEffect(() => {
         {activeSection === "offlineDoctors" && (
           <div id="offlineDoctors">
             <div className="doctor-info">
-              {offlineBookings.map((booking,index) => (
+              {offlineBookings.map((booking, index) => (
                 <div key={index} className="data">
                   <p className="name">
                     {booking.first_name} {booking.last_name}
@@ -341,8 +384,11 @@ useEffect(() => {
                   <div
                     className="cancel"
                     onClick={() =>
-                      handleSelectDoctorForCancellation(booking.id, "offline", booking.bookingId)
-
+                      handleSelectDoctorForCancellation(
+                        booking.id,
+                        "offline",
+                        booking.bookingId
+                      )
                     }
                   >
                     <img src={del} alt="delete" />
@@ -405,4 +451,3 @@ useEffect(() => {
 };
 
 export default BookingDetails;
-

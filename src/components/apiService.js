@@ -278,9 +278,10 @@ export const deleteBooking = async (accessToken, id) => {
       null,
       accessToken
     );
-    return response;
+    return response.data;
   } catch (error) {
     handleRequestError(error);
+    throw error;
   }
 };
 
@@ -318,13 +319,14 @@ export const deleteBookings = async (accessToken, id) => {
   try {
     const response = await sendRequest(
       "DELETE",
-      `/auth/user/delete-bookings?id=${id}`,
+      `/auth/user/delete-bookings/${id}`,
       null,
       accessToken
     );
-    return response;
+    return response.data;
   } catch (error) {
     handleRequestError(error);
+    throw error;
   }
 };
 
