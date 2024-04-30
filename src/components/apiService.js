@@ -273,7 +273,6 @@ export const getAllofflineBookings = async (accessToken, page) => {
   }
 };
 
-
 // Function to delete a booking
 export const deleteBooking = async (accessToken, id) => {
   try {
@@ -333,9 +332,6 @@ export const deleteBookings = async (accessToken, id) => {
     throw error;
   }
 };
-
-
-
 
 // Function to store blood pressure data
 export const storeBloodPressure = async (systolic, diastolic, accessToken) => {
@@ -421,6 +417,10 @@ export const getAllBloodPressureMeasurements = async (accessToken) => {
     handleRequestError(error);
   }
 };
+
+
+
+
 
 
 
@@ -586,6 +586,10 @@ export const userMakeMessageSeen = async (accessToken, id) => {
     handleRequestError(error);
   }
 };
+
+
+
+
 
 
 

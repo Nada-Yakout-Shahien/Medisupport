@@ -5,7 +5,12 @@ import "./chat.css";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import docchat1 from "../images/doc_chat1.jpeg";
-import { getUserContacts } from "../components/apiService";
+import {
+  getUserContacts,
+  userChatAuth,
+  userFetchDoctorByID,
+} from "../components/apiService";
+import WebSocketClient from "websocket";
 
 const emojis = [
   "😀",
@@ -675,19 +680,6 @@ const Chat = () => {
       setShowSidebar(true);
     }
   }, [selectedDoctor, windowWidth]);
-  useEffect(() => {
-    if (!selectedDoctor && !showChat && windowWidth >= 750) {
-      setShowDefaultConversation(true);
-    } else {
-      setShowDefaultConversation(false);
-    }
-  }, [selectedDoctor, showChat, windowWidth]);
-  useEffect(() => {
-    const storedMessages = JSON.parse(localStorage.getItem("chat-messages"));
-    if (storedMessages && storedMessages.length > 0) {
-      setMessages(storedMessages);
-    }
-  }, []);
 
   const [doctorsData, setDoctorsData] = useState([]);
   const fetchUserContacts = async () => {
@@ -724,7 +716,37 @@ const Chat = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleDoctorClick = (doctor) => {
+  const [selectedDoctorInfo, setSelectedDoctorInfo] = useState(null);
+
+  const handleDoctorClick = async (doctor) => {
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      const doctorInfo = await userFetchDoctorByID(accessToken, doctor.id);
+      console.log("Doctor information:", doctorInfo);
+      setSelectedDoctorInfo(doctorInfo);
+    } catch (error) {
+      console.error(
+        "An error occurred while fetching doctor information:",
+        error
+      );
+    }
+  };
+  useEffect(() => {
+    if (!selectedDoctorInfo && !showChat && windowWidth >= 750) {
+      setShowDefaultConversation(true);
+    } else {
+      setShowDefaultConversation(false);
+    }
+  }, [selectedDoctorInfo, showChat, windowWidth]);
+
+  useEffect(() => {
+    const storedMessages = JSON.parse(localStorage.getItem("chat-messages"));
+    if (storedMessages && storedMessages.length > 0) {
+      setMessages(storedMessages);
+    }
+  }, []);
+
+  const handleDoctorClickk = (doctor) => {
     setSelectedDoctor(doctor);
     setCurrentDoctorMessages(doctor.doctorMessages);
     setMessages(doctorMessages[doctor.id] || []);
@@ -736,6 +758,7 @@ const Chat = () => {
       setShowChat(true);
     }
   };
+
   return (
     <>
       <Helmet>
@@ -781,9 +804,7 @@ const Chat = () => {
                           {doctor.contactInfo.user.last_name}
                         </div>
                         <div className="doctorSpeciality">
-                          {doctor.contactInfo.user.active_status === 1
-                            ? "Online"
-                            : "Offline"}
+                          {doctor.contactInfo.user.specialization}
                         </div>
                         <div className="lastMessage">
                           {doctor.contactInfo.lastMessage.last_message}
@@ -803,7 +824,7 @@ const Chat = () => {
               ))}
             </div>
           </div>
-          {selectedDoctor && showChat && (
+          {selectedDoctorInfo && showChat && (
             <div className="chatm">
               <div className="doctorinfor">
                 <div className="convback" onClick={handlearrowClick}>
@@ -812,23 +833,28 @@ const Chat = () => {
                 <div className="contactimgchat">
                   <div className="imgd">
                     <img
-                      src={selectedDoctor.avatar}
+                      src={selectedDoctorInfo.avatar}
                       alt="contact-img"
                       className="zoomedImagechat"
                     />
                   </div>
-                  {selectedDoctor.isOnline && (
+                  {selectedDoctorInfo.isOnline && (
                     <div className="onlineIndicator"></div>
                   )}
                 </div>
                 <div className="infor">
-                  <h3>{selectedDoctor.name}</h3>
-                  <p>{selectedDoctor.status}</p>
+                  <h3>
+                    {selectedDoctorInfo.first_name}
+                    {selectedDoctorInfo.last_name}
+                  </h3>
+                  <p>
+                    {selectedDoctor.active_status === 1 ? "Online" : "Offline"}
+                  </p>
                 </div>
               </div>
-              {selectedDoctor && (
+              {selectedDoctorInfo && (
                 <div
-                  className={`chat-container ${selectedDoctor.speciality.toLowerCase()}-chat`}
+                  className={`chat-container ${selectedDoctorInfo.specialization.toLowerCase()}-chat`}
                   onClick={() => setShowPicker(false)}
                 >
                   {currentDoctorMessages.length > 0 && (
