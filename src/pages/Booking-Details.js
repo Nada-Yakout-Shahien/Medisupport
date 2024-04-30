@@ -44,8 +44,8 @@ const BookingDetails = () => {
         const accessToken = localStorage.getItem("accessToken");
         let currentPage = 1;
         let totalPages = 1;
-        const uniqueBookings = new Set(); 
-  
+        const uniqueBookings = new Set();
+
         while (currentPage <= totalPages) {
           const response = await getAllonlineBookings(accessToken, currentPage);
           console.log(
@@ -54,25 +54,25 @@ const BookingDetails = () => {
             "of online bookings:",
             response
           );
-  
+
           // Ensure response contains pagination data
           if (response.data.pagination) {
             // Update totalPages from the response
             totalPages = response.data.pagination.last_page;
-  
+
             // Loop through the bookings and add only the unique ones to the set
             response.data.data.forEach((booking) => {
               if (!uniqueBookings.has(booking.id)) {
                 uniqueBookings.add(booking.id);
               }
             });
-  
+
             // Map unique bookings inside the while loop
             const allBookings = Array.from(uniqueBookings).map((bookingId) => {
               const bookingData = response.data.data.find(
                 (booking) => booking.id === bookingId
               );
-              
+
               // Check if bookingData exists before accessing its properties
               if (bookingData) {
                 return {
@@ -83,19 +83,22 @@ const BookingDetails = () => {
                 };
               }
             });
-  
+
             // Filter out undefined values before updating onlineBookings
-            const filteredBookings = allBookings.filter((booking) => booking !== undefined);
-  
+            const filteredBookings = allBookings.filter(
+              (booking) => booking !== undefined
+            );
+
             // Update onlineBookings with all unique bookings after fetching each page
-            setOnlineBookings((prevBookings) => [...prevBookings, ...filteredBookings]);
+            setOnlineBookings((prevBookings) => [
+              ...prevBookings,
+              ...filteredBookings,
+            ]);
           }
-  
+
           // Move to the next page
           currentPage++;
         }
-        
-        console.log("All online bookings:", onlineBookings);
       } catch (error) {
         console.error(
           "An unexpected error occurred while fetching online bookings:",
@@ -103,13 +106,10 @@ const BookingDetails = () => {
         );
       }
     };
-  
+
     fetchonlineBookings();
   }, []);
-  
-  
 
-  // Function to cancel booking
   const [offlineBookings, setOfflineBookings] = useState([]);
 
   useEffect(() => {
@@ -152,8 +152,6 @@ const BookingDetails = () => {
           // Move to the next page
           currentPage++;
         }
-
-        console.log("All offline bookings:", allBookings);
       } catch (error) {
         console.error(
           "An unexpected error occurred while fetching offline bookings:",
@@ -164,62 +162,53 @@ const BookingDetails = () => {
 
     fetchofflineBookings();
   }, []);
-// Function to cancel booking
-const cancelBooking = async () => {
-  try {
-    const accessToken = getAccessTokenFromLocalStorage();
-    const { id, type, bookingId } = selectedDoctor;
-
-    // Check if the bookingId is available
-    if (!bookingId) {
-      console.error("Booking ID is missing");
-      return;
-    }
-
-    // Call the deleteBooking function based on the type
-    let response;
-    if (type === "online") {
-      response = await deleteBookings(accessToken, id);
-      console.log("Successfully cancelled online booking");
-      // Update the state of online bookings
-      setOnlineBookings(prevOnlineBookings => prevOnlineBookings.filter(booking => booking.bookingId !== bookingId));
-    } else if (type === "offline") {
-      response = await deleteBooking(accessToken, bookingId);
-      console.log("Successfully cancelled offline booking");
-      // Update the state of offline bookings
-      setOfflineBookings(prevOfflineBookings => prevOfflineBookings.filter(booking => booking.bookingId !== bookingId));
-    } else {
-      console.error("Invalid booking type");
-      return;
-    }
-
-    // Check if the response indicates success
-    if (response && response.success) {
-      // Set bookingCancelled to true after successful cancellation
-      setBookingCancelled(true);
-
-      // After cancelling, hide the overlay
-      setIsOverlayVisible(false);
-    } else {
-      console.error("Failed to cancel booking:", response && response.message);
-    }
-  } catch (error) {
-    console.error("An unexpected error occurred while cancelling booking:", error);
-  }
-};
 
   const [bookingCancelled, setBookingCancelled] = useState(false);
 
-  // useEffect to reset bookingCancelled after a delay
-  useEffect(() => {
-    let timeout;
-    if (bookingCancelled) {
-      timeout = setTimeout(() => {
-        setBookingCancelled(false);
-      }, 3000); // Reset bookingCancelled after 3 seconds (adjust the delay as needed)
+  async function cancelBooking() {
+    try {
+      const accessToken = getAccessTokenFromLocalStorage();
+      const { type, bookingId } = selectedDoctor;
+
+      if (!bookingId) {
+        console.error("Booking ID is missing");
+        return;
+      }
+
+      let response;
+      if (type === "online") {
+        response = await deleteBookings(accessToken, bookingId);
+        console.log("Successfully cancelled online booking");
+        setIsOverlayVisible(false)
+      } else if (type === "offline") {
+        response = await deleteBooking(accessToken, bookingId);
+        console.log("Successfully cancelled offline booking", response);
+        setIsOverlayVisible(false)
+      } else {
+        console.error("Invalid booking type");
+        return;
+      }
+      if (response) {
+        if (type === "online") {
+          const newOnlineBookings = onlineBookings.filter(
+            (booking) => booking.bookingId !== bookingId
+          );
+          setOnlineBookings(newOnlineBookings);
+        } else if (type === "offline") {
+          const newOfflineBookings = offlineBookings.filter(
+            (booking) => booking.bookingId !== bookingId
+          );
+          setOfflineBookings(newOfflineBookings);
+        }
+      }
+    } catch (error) {
+      console.error(
+        "An unexpected error occurred while cancelling booking:",
+        error
+      );
     }
-    return () => clearTimeout(timeout);
-  }, [bookingCancelled]);
+  }
+
 
   return (
     <Layout>
@@ -385,7 +374,7 @@ const cancelBooking = async () => {
                     className="cancel"
                     onClick={() =>
                       handleSelectDoctorForCancellation(
-                        booking.id,
+                        booking.doctorId,
                         "offline",
                         booking.bookingId
                       )

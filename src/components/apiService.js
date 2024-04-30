@@ -273,6 +273,7 @@ export const getAllofflineBookings = async (accessToken, page) => {
   }
 };
 
+
 // Function to delete a booking
 export const deleteBooking = async (accessToken, id) => {
   try {
@@ -288,7 +289,6 @@ export const deleteBooking = async (accessToken, id) => {
     throw error;
   }
 };
-
 // Online bookings request
 export const onlineBookings = async (doctorId, accessToken) => {
   try {
