@@ -163,8 +163,6 @@ const BookingDetails = () => {
     fetchofflineBookings();
   }, []);
 
-  const [bookingCancelled, setBookingCancelled] = useState(false);
-
   async function cancelBooking() {
     try {
       const accessToken = getAccessTokenFromLocalStorage();
