@@ -648,40 +648,9 @@ const Chat = () => {
     }
   };
 
-  const handlearrowClick = (doctor) => {
-    setSelectedDoctor(null);
-    setShowChat(false);
-    setShowPicker(false);
-  };
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-      if (window.innerWidth >= 750 && !selectedDoctor) {
-        setShowSidebar(true);
-        setShowDefaultConversation(true);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [selectedDoctor]);
-  useEffect(() => {
-    if (selectedDoctor && windowWidth < 750) {
-      setShowSidebar(false);
-    } else {
-      setShowSidebar(true);
-    }
-  }, [selectedDoctor, windowWidth]);
-  useEffect(() => {
-    if (!selectedDoctor && windowWidth >= 750) {
-      setShowSidebar(true);
-    }
-  }, [selectedDoctor, windowWidth]);
-
   const [doctorsData, setDoctorsData] = useState([]);
+  const [selectedDoctorInfo, setSelectedDoctorInfo] = useState(null);
+
   const fetchUserContacts = async () => {
     try {
       const accessToken = localStorage.getItem("accessToken");
@@ -716,14 +685,21 @@ const Chat = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const [selectedDoctorInfo, setSelectedDoctorInfo] = useState(null);
-
   const handleDoctorClick = async (doctor) => {
     try {
       const accessToken = localStorage.getItem("accessToken");
       const doctorInfo = await userFetchDoctorByID(accessToken, doctor.id);
       console.log("Doctor information:", doctorInfo);
-      setSelectedDoctorInfo(doctorInfo);
+      setSelectedDoctorInfo(doctorInfo.fetch);
+      setCurrentDoctorMessages(doctor.doctorMessages);
+      setMessages(doctorMessages[doctor.id] || []);
+      setShowPicker(false);
+      if (windowWidth <= 750) {
+        setShowSidebar(false);
+        setShowChat(true);
+      } else {
+        setShowChat(true);
+      }
     } catch (error) {
       console.error(
         "An error occurred while fetching doctor information:",
@@ -745,18 +721,37 @@ const Chat = () => {
       setMessages(storedMessages);
     }
   }, []);
-
-  const handleDoctorClickk = (doctor) => {
-    setSelectedDoctor(doctor);
-    setCurrentDoctorMessages(doctor.doctorMessages);
-    setMessages(doctorMessages[doctor.id] || []);
-    setShowPicker(false);
-    if (windowWidth <= 750) {
-      setShowSidebar(false);
-      setShowChat(true);
-    } else {
-      setShowChat(true);
+  useEffect(() => {
+    if (!selectedDoctorInfo && windowWidth >= 750) {
+      setShowSidebar(true);
     }
+  }, [selectedDoctorInfo, windowWidth]);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      if (window.innerWidth >= 750 && !selectedDoctorInfo) {
+        setShowSidebar(true);
+        setShowDefaultConversation(true);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [selectedDoctorInfo]);
+  useEffect(() => {
+    if (selectedDoctorInfo && windowWidth < 750) {
+      setShowSidebar(false);
+    } else {
+      setShowSidebar(true);
+    }
+  }, [selectedDoctorInfo, windowWidth]);
+  const handlearrowClick = (doctor) => {
+    setSelectedDoctorInfo(null);
+    setShowChat(false);
+    setShowPicker(false);
   };
 
   return (
@@ -773,7 +768,7 @@ const Chat = () => {
       <div className="chatt">
         <Header />
         <div className="chatting">
-          <div className={showSidebar ? "sidebarchat" : ""}>
+        <div className={showSidebar ? "sidebarchat" : "sidebarchat-hidden"}>
             <h3 style={{ display: showSidebar ? "block" : "none" }}>
               Messages
             </h3>
@@ -842,25 +837,35 @@ const Chat = () => {
                     <div className="onlineIndicator"></div>
                   )}
                 </div>
-                <div className="infor">
-                  <h3>
-                    {selectedDoctorInfo.first_name}
-                    {selectedDoctorInfo.last_name}
-                  </h3>
-                  <p>
-                    {selectedDoctor.active_status === 1 ? "Online" : "Offline"}
-                  </p>
-                </div>
+
+                {selectedDoctorInfo && (
+                  <div className="infor">
+                    <h3>
+                      {selectedDoctorInfo.first_name}{" "}
+                      {selectedDoctorInfo.last_name}
+                    </h3>
+                    <p>
+                      {selectedDoctorInfo.active_status === 1
+                        ? "Online"
+                        : "Offline"}
+                    </p>
+                  </div>
+                )}
               </div>
               {selectedDoctorInfo && (
                 <div
-                  className={`chat-container ${selectedDoctorInfo.specialization.toLowerCase()}-chat`}
+                  className={`chat-container ${
+                    selectedDoctorInfo.specialization
+                      ? selectedDoctorInfo.specialization.toLowerCase() +
+                        "-chat"
+                      : ""
+                  }`}
                   onClick={() => setShowPicker(false)}
                 >
-                  {currentDoctorMessages.length > 0 && (
-                    <div className="chat-messages">
-                      {messages.map((message) => (
-                        <div className="chat-messages">
+                  {currentDoctorMessages &&
+                    currentDoctorMessages.length > 0 && (
+                      <div className="chat-messages">
+                        {currentDoctorMessages.map((message) => (
                           <div
                             key={message.id}
                             className={`message ${
@@ -868,7 +873,6 @@ const Chat = () => {
                             }`}
                           >
                             <span>{message.text}</span>
-
                             <span
                               className={`message-time ${
                                 message.sender === "doctor"
@@ -879,11 +883,10 @@ const Chat = () => {
                               {message.time}
                             </span>
                           </div>
-                        </div>
-                      ))}
-                      <div ref={messagesEndRef} />
-                    </div>
-                  )}
+                        ))}
+                        <div ref={messagesEndRef} />
+                      </div>
+                    )}
                 </div>
               )}
 

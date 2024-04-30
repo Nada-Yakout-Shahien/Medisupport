@@ -13,6 +13,10 @@
   flex: 2;
   gap: 1.5rem;
 }
+.sidebarchat-hidden {
+  display: none;
+}
+
 .chatting .sidebarchat .sidebar {
   display: flex;
   flex-direction: column;
