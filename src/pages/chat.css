@@ -13,10 +13,12 @@
   flex: 2;
   gap: 1.5rem;
 }
-.sidebarchat-hidden {
+.chatting .sidebarchat-hidden {
   display: none;
 }
-
+.hidden{
+  display: none;
+}
 .chatting .sidebarchat .sidebar {
   display: flex;
   flex-direction: column;
@@ -67,10 +69,10 @@
 }
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorAvatar .zoomedImage {
   object-fit: cover;
-  object-position: -16px center;
+  object-position: -2px center;
   width: auto;
-  height: 450%;
-  transform: translateY(31%);
+  height: 150%;
+  transform: translateY(3%);
   z-index: 1;
 }
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorInfo {
@@ -104,10 +106,13 @@
   font-family: "Roboto", sans-serif;
   font-weight: 500;
 }
+
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorInfo .lastMessage {
   font-size: 0.9375rem;
   width: 100%;
+  max-width: 19vw;
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
   display: inline-block;
   flex-shrink: 0;
@@ -228,9 +233,9 @@
   object-position: top right;
   top: 0;
   left: 0;
-  width: 300%;
-  height: 260%;
-  transform: translate(-45%, -15%) scale(1);
+  width: 116%;
+  height: 114%;
+    transform: translate(-2%, -8%) scale(1);
 }
 .chatm .doctorinfor .contactimgchat .onlineIndicator {
   width: clamp(0.9rem, calc(1vw + 3vw), 1rem);
@@ -298,15 +303,25 @@
   align-self: flex-start;
   max-width: 50%;
 }
+
+.chatm .chat-messages .user-time svg{
+  color: #d9d9d9;
+
+}
 .chatm .chat-messages .user-time {
-  text-align: right;
+  display: flex;
+  justify-content: right;
   font-size: 0.7rem;
   color: #c8c8c8;
 }
 .chatm .chat-messages .doctor-time {
-  text-align: right;
+  display: flex;
+  justify-content: right;  
   font-size: 0.7rem;
   color: #8a8a8a;
+}
+.doctor-time svg {
+  display: none;
 }
 .input-area {
   display: flex;
@@ -319,7 +334,7 @@
 .input-area .input-container .input-icon {
   position: absolute;
   height: 100%;
-  top: -0.3em;
+  /* top: -0.3em; */
   bottom: 0;
   display: flex;
   align-items: center;
@@ -332,7 +347,7 @@
 }
 .input-area .input-container .textarea-custom {
   width: 100%;
-  height: 5.5vh;
+  /* height: 5.5vh; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -364,7 +379,7 @@
   height: 100%;
   justify-content: center;
   padding-top: 1rem;
-  padding-left: 1rem;
+  /* padding-left: 1rem; */
   box-sizing: border-box;
   border: none;
   resize: none;
@@ -414,7 +429,7 @@
 }
 
 .chatm .convback {
-  margin-left: -2.7em;
+  /* margin-left: -2.7em; */
   margin-top: -1.9em;
 }
 .chatm .convback:hover {

@@ -426,12 +426,6 @@ export const getAllBloodPressureMeasurements = async (accessToken) => {
 
 
 
-
-
-
-
-
-
 //chaaaaaaaaaaaaaaaaaaaaaaaaaatting
 // Function to get user contacts
 export const getUserContacts = async (accessToken) => {
@@ -460,6 +454,7 @@ export const userChatAuth = async (socketId, channelName, accessToken) => {
       },
       accessToken
     );
+
     return response;
   } catch (error) {
     handleRequestError(error);
@@ -487,8 +482,10 @@ export const userSendMessage = async (
     return response;
   } catch (error) {
     handleRequestError(error);
+    throw error;
   }
 };
+
 
 // Function to fetch user messages
 export const fetchUserMessages = async (accessToken, id) => {
@@ -586,27 +583,6 @@ export const userMakeMessageSeen = async (accessToken, id) => {
     handleRequestError(error);
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //loginWithGoogle
 export const loginWithGoogle = async (provider, accessProviderToken) => {
