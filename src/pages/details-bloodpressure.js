@@ -10,6 +10,7 @@ import {
   getAllBloodPressureMeasurements,
   getLatestBloodPressureMeasurement,
   getAllSystolicMeasurementsupper,
+  getAllDiastolicMeasurementslower,
 } from "../components/apiService";
 
 //date show
@@ -38,143 +39,6 @@ const DetailsBloodpressure = () => {
   };
 
   //diagram
-  // Chart options
-  const chartOptions = {
-    responsive: true,
-    title: {
-      display: false,
-      text: "Blood Pressure",
-    },
-    scales: {
-      xAxes: [
-        {
-          gridLines: {
-            color: "rgba(190, 2, 2, 0.3)",
-            borderDash: [5, 5],
-            lineWidth: 2.77,
-          },
-          scaleLabel: {
-            display: true,
-            labelString: "Day",
-          },
-        },
-      ],
-      yAxes: [
-        {
-          gridLines: {
-            color: "rgba(190, 2, 2, 0.3)",
-            borderDash: [5, 5],
-            lineWidth: 2.77,
-          },
-          scaleLabel: {
-            display: true,
-            labelString: "mmHg",
-          },
-        },
-      ],
-    },
-  };
-  const datau = {
-    labels: ["", "", "", "", "", "", ""],
-    datasets: [
-      {
-        label: "Upper Bound",
-        data: [100, 116, 100, 140, 120, 138, 100],
-        borderColor: "#be0202",
-        backgroundColor: "#be0202",
-      },
-    ],
-  };
-// Upper bound data
-const [dataup, setDataup] = useState({});
-
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      // Call the function to fetch systolic measurements
-      const accessToken = localStorage.getItem("accessToken");
-      const systolicMeasurements = await getAllSystolicMeasurementsupper(accessToken);
-
-      // Extract data from API response
-      const formattedRecords = Object.entries(systolicMeasurements.data).map(
-        ([dateTime, value]) => {
-          return { x: dateTime, y: value };
-        }
-      );      
-
-      // Extract labels and data arrays
-      const labels = formattedRecords.map((record) => record.x);
-      const data = formattedRecords.map((record) => record.y);
-
-      // Set data for chart
-      setDataup({
-        labels: labels,
-        datasets: [
-          {
-            label: "Upper Bound",
-            data: data,
-            borderColor: "#be0202",
-            backgroundColor: "#be0202",
-          },
-        ],
-      });
-    } catch (error) {
-      console.error("Failed to fetch systolic measurements:", error.message);
-    }
-  };
-
-  fetchData();
-}, []);
-
-
-  
-
-  // Lower bound data
-  const datal = {
-    labels: ["", "", "", "", "", "", ""],
-    display: false,
-    datasets: [
-      {
-        label: "Lower Bound",
-        data: [90, 100, 89, 90, 69, 50, 91],
-        borderColor: "#be0202",
-        backgroundColor: "#be0202",
-      },
-    ],
-  };
-
-  const [bloodPressureMeasurements, setBloodPressureMeasurements] = useState(
-    []
-  );
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Call the function to fetch measurements
-        const accessToken = localStorage.getItem("accessToken");
-        const measurements = await getAllBloodPressureMeasurements(accessToken);
-        // Save the measurements to state
-        console.log(measurements);
-
-        const formattedRecords = measurements.data.attributes.map(
-          (measurements, index) => ({
-            systolic: measurements.systolic,
-            diastolic: measurements.diastolic,
-            pressure_advice_advice: measurements["pressure_advice_advice"],
-            pressure_advice_key: measurements["pressure_advice_key"],
-          })
-        );
-        setBloodPressureMeasurements(formattedRecords);
-      } catch (error) {
-        console.error(
-          "Failed to fetch blood pressure measurements:",
-          error.message
-        );
-      }
-    };
-
-    fetchData();
-  }, []);
-
   const [latestMeasurement, setLatestMeasurement] = useState(null);
 
   useEffect(() => {
@@ -194,6 +58,93 @@ useEffect(() => {
 
     fetchRecommendedAdvice();
   }, []);
+
+  const [systolicData, setSystolicData] = useState([]);
+  const [diastolicData, setDiastolicData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const accessToken = localStorage.getItem("accessToken");
+      try {
+        const systolicResponse = await getAllSystolicMeasurementsupper(
+          accessToken
+        );
+        const diastolicResponse = await getAllDiastolicMeasurementslower(
+          accessToken
+        );
+
+        // Extract data from the response
+        const systolicData = Object.entries(systolicResponse.data).map(
+          ([timestamp, value]) => ({
+            timestamp,
+            value,
+          })
+        );
+        const diastolicData = Object.entries(diastolicResponse.data).map(
+          ([timestamp, value]) => ({
+            timestamp,
+            value,
+          })
+        );
+
+        // Update state with the fetched data
+        setSystolicData(systolicData);
+        console.log("systolicData", systolicData);
+        setDiastolicData(diastolicData);
+        console.log("diastolicData", diastolicData);
+      } catch (error) {
+        console.error("Error fetching blood pressure data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const systolicChartData = {
+    labels: systolicData.map((entry) => entry.timestamp),
+    datasets: [
+      {
+        label: "Systolic",
+        data: systolicData.map((entry) => entry.value),
+        borderColor: "#be0202",
+        fill: false,
+        pointBackgroundColor: "white",
+        pointBorderColor: "#be0202",
+        yAxisID: "systolic-axis", // Assigning a unique ID to the y-axis
+      },
+    ],
+  };
+
+  const diastolicChartData = {
+    labels: diastolicData.map((entry) => entry.timestamp),
+    datasets: [
+      {
+        label: "Diastolic",
+        data: diastolicData.map((entry) => entry.value),
+        borderColor: "#be0202",
+        fill: false,
+        pointBackgroundColor: "white",
+        pointBorderColor: "#be0202",
+        yAxisID: "diastolic-axis", // Assigning a unique ID to the y-axis
+      },
+    ],
+  };
+
+  const chartOptions = {
+    responsive: true,
+    scales: {
+      x: {
+        display: false,
+      },
+      y: {
+        display: false,
+      },
+    },
+  };
+  
+  
+  
+
 
   return (
     <Layout>
@@ -246,7 +197,7 @@ useEffect(() => {
                   <p>mmHG</p>
                 </div>
               </div>
-              <Line data={datau} options={chartOptions} />
+              <Line data={systolicChartData} options={chartOptions} />
             </div>
             <div className="diagramlower">
               <div className="bound">
@@ -258,7 +209,7 @@ useEffect(() => {
                   <p>mmHG</p>
                 </div>
               </div>
-              <Line data={datal} options={chartOptions} />
+              <Line data={diastolicChartData} options={chartOptions} />
             </div>
           </div>
 
