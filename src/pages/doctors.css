@@ -54,6 +54,7 @@ input:hover {
 .notificationr1 {
   margin: -1rem 90.5rem;
   position: absolute;
+  cursor: pointer;
 }
 
 .coat {
@@ -141,6 +142,7 @@ input:hover {
   flex-shrink: 0;
   border-radius: 0.625rem;
   position: absolute;
+  z-index: 999;
   margin: 3.8rem 56rem;
   background: #FCFCFC;
 }
