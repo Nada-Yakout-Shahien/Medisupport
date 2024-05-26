@@ -159,7 +159,12 @@ const DetailsBloodpressure = () => {
           </div>
           <div className="dBP-status">
             <p>
-              Average <span>140/90</span> mmHG
+              Average 
+              {latestMeasurement && (
+                <span>{latestMeasurement.attributes.systolic}/{latestMeasurement.attributes.diastolic}</span> 
+              )}
+
+              mmHG
             </p>
             <button>
               <p>Normal</p>
