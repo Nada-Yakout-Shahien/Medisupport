@@ -1,47 +1,57 @@
                           /* f-section */
 
 .profile-sec {
-  width: 48.75rem;
-  height: 42.75rem;
+  width: 100%;
+  height: 42.75vh;
   flex-shrink: 0;
-  padding: 8rem 0 0 27rem;
+ 
 }
 
 .profile-sec img{
-  width: 30rem;
-  height: 30rem;
+  display: flex;
+  width: 28%;
+  height: 25vw;
+  margin:7% 0 0 37%;
 }
 
 .profile-sec .edit{
-  padding-left: 24rem;
-  margin-top: -7rem;
+  display: flex;
+  width: 100%;
+  padding-left: 49rem;
+  margin-top: -5rem;
+}
+
+.profile-sec .edit button{
+  border: none;
+  background: none;
 }
 
 .profile-sec h4{
-  width: 28.875rem;
-  height: 2.652rem;
+  display: flex;
+  width: 100%;
   color: #BE0202;
   font-family: 'Roboto',sans-serif;
-  font-size: 3rem;
+  font-size: 2.6rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  padding: 7rem 0 0 7.5rem ;
+  padding: 7% 0 0 43% ;
 }
  
                           /* section-info */
 
 .info-sec{
-  gap: 1rem;
-  padding: 5rem 0 3rem 36rem;
+  width: 100%;
+  gap: 1%;
+  padding: 23% 0 3% 45%;
 }
 
 .info-sec h4{
-  width: 47.875rem;
-  height: 2.652rem;
+  width: 47.875%;
+  height: 2.652%;
   color: #1F1F1F;
   font-family: 'Roboto',sans-serif;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-style: normal;
   font-weight: 600;
   line-height: 110%; /* 2.2rem */
@@ -50,7 +60,7 @@
 .info-sec label{
   color: #1F1F1F;
   font-family: 'Roboto',sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 1.225rem */
@@ -68,61 +78,74 @@
 
                           /* section-inputs */
 
-.inputs{
-  padding-left: 1.4rem;
+.info-sec .inputs{
+  width: 100%;
+  gap:2%;
 }
+
+.info-sec .inputs .name{
+  gap:2%;
+  width: 100%;
+}
+
 .f-name{
-  margin: 4rem 0 0 -17rem;
+  margin: 7% 0 0 -35%;
 }
 
 .l-name{
-  margin: -6.7rem 0 0 8rem;
+  margin: -13.6% 0 0 15%;
 }
 
 .pass{
-  margin: 2rem 0 0 -17rem;
+ position: relative;
+ margin:3% 0 0 -35%;
 }
 
 .pass input{
-  width: 45rem;
+  width: 69%;
 }
 
 .pass button{
   display: flex;
   position: absolute;
-  margin: -2rem 0 0 43rem;
+  margin: -3.4% 0 0 64%;
   background: none;
   border: none;
 }
 
 .confirm{
-  margin: 2rem 0 0 -17rem;
+  position: relative;
+  margin:3% 0 0 -35%;
 }
 
 .confirm input{
-  width: 45rem;
+  width: 69%;
 }
 
 .confirm button{
   display: flex;
   position: absolute;
-  margin: -2rem 0 0 43rem;
+  margin: -3.4% 0 0 64%;
   background: none;
   border: none;
 }
 
                           /* section-buttons */
 
+.save {
+  margin: 4% 0 0 -35%;
+}
+
 .save button{
-  width: 45rem;
-  height: 4rem;
+  width: 69%;
   background-color: var(--Red);
   color: white;
   font-family: 'Roboto',sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   border: none;
-  border-radius: 0.7rem;
-  margin: 3rem 0 0 -15.8rem;
+  border-radius: 0.6rem;
+  padding: 1% 0 ;
+  
 }
 
 .save button:hover{
@@ -132,15 +155,19 @@
   border: none;
 }
 
+.delete{
+  margin: 4% 0 0 -35%;
+}
+
 .delete button{
-  width: 45rem;
-  height: 4rem;
-  background-color: #DA1E28;
+  width: 69%;
+  background-color: var(--mainColorLight);
   color: white;
   font-family: 'Roboto',sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   border: none;
-  margin: 3rem 0 0 -15.8rem;
+  border-radius: 0.6rem;
+  padding: 1% 0 ;
 }
 
 .delete button:hover{
@@ -151,31 +178,31 @@
 }
 
 .delete button .warning{
-  padding-right: 1rem;
+  padding-right: 1.3%;
 }
 
                           /* popups */
 
 .popup-s{
   width: 100%;
-  height: 95.6rem;
+  height: 90.3vw;
   background: rgba(18, 22, 25, 0.65);
   position: absolute;
   top: 10%;
   text-align: center;
   left: 0%;
-  padding: 40%;
 }
 
 .popup-s .check{
-  width: 20rem;
-  height: 30rem;
+  width: 50%;
+  height: 28%;
+  padding: 30% 0 0 0;
 }
 
 .popup-s .btn{
   display: flex;
   min-height:5vh;
-  width: 9em;
+  width: 15%;
   height: 3.5rem;
   padding: 1rem;
   justify-content: center;
@@ -190,7 +217,7 @@
   font-weight: 500;
   line-height: 100%;
   letter-spacing: 0.5px;
-  margin: 2rem 0 0 3rem;
+  margin: 4% 0 0 43%;
 }
 
 .popup-s .btn:hover{
@@ -202,36 +229,35 @@
 
 .popup-d{
   width: 100%;
-  height: 95.6rem;
+  height: 90.3vw;
   background: rgba(18, 22, 25, 0.65);
   position: absolute;
   top: 10%;
   text-align: center;
   left: 0%;
-  padding: 40%;
 }
 
 .popup-d .message{
-  width: 30rem;
-  height: 24rem;
+  width: 30%;
+  height: 21vw;
   background-color: white;
-  margin:15rem 0 0 -6rem;
+  margin:40% 0 0 36%;
 }
 
 .message .icon{
-  width: 3rem;
-  height: 3rem;
-  margin: 1rem ;
-  padding: 1rem;
+  width: 9%;
+  height: 3vw;
+  margin: 2% ;
+  padding: 1%;
   background-color: rgba(128, 128, 128, 0.39);
 }
 
 .message button{
   display: flex;
-  width: 7%;
-  height: 4%;
+  width: 9%;
+  height: 5%;
   background: none;
-  margin: -6rem 0 0 27rem;
+  margin: -14% 0 0 90%;
 }
 
 .message button:hover{
@@ -242,11 +268,11 @@
   color: #21272A;
   text-align: center;
   font-family: 'Roboto',sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-style: normal;
   font-weight: 700;
   line-height: 110%;
-  padding: 7rem 0 0 0 ;
+  padding: 12% 0 0 0 ;
 }
 
 .message p{
@@ -263,9 +289,9 @@
 .message .button{
   display: flex;
   min-height:5vh;
-  width: 28rem;
-  height: 3.5rem;
-  padding: 1rem;
+  width: 95%;
+  height: 3.5vw;
+  padding: 1%;
   justify-content: center;
   align-items: center;
   border-radius: 0.625rem;
@@ -278,7 +304,7 @@
   font-weight: 500;
   line-height: 100%;
   letter-spacing: 0.5px;
-  margin: 2rem 0 0 1rem;
+  margin: 4% 0 0 2%;
 }
 
 .message .button:hover{

@@ -24,12 +24,14 @@ const Profile = () => {
         
       <div className='profile-sec'>
         <img src={user_photo} alt='user_photo'/>
-        <div className='edit'>
-          <svg xmlns="http://www.w3.org/2000/svg" width="55" height="50" viewBox="0 0 45 40" fill="none">
-            <path d="M31.4304 26.9518L33.9304 24.4517C34.3211 24.0611 35.0008 24.3345 35.0008 24.897V36.2566C35.0008 38.327 33.321 40.0067 31.2507 40.0067H3.75008C1.67972 40.0067 0 38.327 0 36.2566V8.75605C0 6.68569 1.67972 5.00597 3.75008 5.00597H25.1177C25.6724 5.00597 25.9537 5.67786 25.5631 6.0763L23.063 8.57636C22.9458 8.69355 22.7896 8.75605 22.6177 8.75605H3.75008V36.2566H31.2507V27.3893C31.2507 27.2252 31.3132 27.0689 31.4304 26.9518ZM43.665 11.1858L23.1489 31.7019L16.0863 32.4831C14.0394 32.7097 12.2971 30.9831 12.5237 28.9205L13.305 21.8579L33.821 1.34183C35.6101 -0.447275 38.5008 -0.447275 40.2821 1.34183L43.6572 4.7169C45.4463 6.506 45.4463 9.4045 43.665 11.1858ZM35.9461 13.5999L31.4069 9.06074L16.891 23.5845L16.3207 28.6862L21.4223 28.1158L35.9461 13.5999ZM41.0087 7.37321L37.6336 3.99813C37.3133 3.67781 36.7899 3.67781 36.4774 3.99813L34.0632 6.41225L38.6024 10.9514L41.0165 8.53729C41.329 8.20916 41.329 7.69353 41.0087 7.37321Z" 
-            fill="#BE0202"/>
-          </svg>
-        </div>
+          <div className='edit'>
+            <button>
+              <svg xmlns="http://www.w3.org/2000/svg" width="55" height="50" viewBox="0 0 45 40" fill="none">
+              <path d="M31.4304 26.9518L33.9304 24.4517C34.3211 24.0611 35.0008 24.3345 35.0008 24.897V36.2566C35.0008 38.327 33.321 40.0067 31.2507 40.0067H3.75008C1.67972 40.0067 0 38.327 0 36.2566V8.75605C0 6.68569 1.67972 5.00597 3.75008 5.00597H25.1177C25.6724 5.00597 25.9537 5.67786 25.5631 6.0763L23.063 8.57636C22.9458 8.69355 22.7896 8.75605 22.6177 8.75605H3.75008V36.2566H31.2507V27.3893C31.2507 27.2252 31.3132 27.0689 31.4304 26.9518ZM43.665 11.1858L23.1489 31.7019L16.0863 32.4831C14.0394 32.7097 12.2971 30.9831 12.5237 28.9205L13.305 21.8579L33.821 1.34183C35.6101 -0.447275 38.5008 -0.447275 40.2821 1.34183L43.6572 4.7169C45.4463 6.506 45.4463 9.4045 43.665 11.1858ZM35.9461 13.5999L31.4069 9.06074L16.891 23.5845L16.3207 28.6862L21.4223 28.1158L35.9461 13.5999ZM41.0087 7.37321L37.6336 3.99813C37.3133 3.67781 36.7899 3.67781 36.4774 3.99813L34.0632 6.41225L38.6024 10.9514L41.0165 8.53729C41.329 8.20916 41.329 7.69353 41.0087 7.37321Z" 
+              fill="#BE0202"/>
+            </svg>
+            </button>
+          </div>
         <h4>User Name</h4>
       </div>
         
@@ -39,31 +41,34 @@ const Profile = () => {
         <h4>Edit Info</h4>
 
         <div className='inputs'>
-          <div className='f-name'>
-            <label>First Name</label>
-            <input placeholder='FName' type='text'/>
-          </div>
+          <div className='name'>
+            <div className='f-name'>
+              <label>First Name</label>
+              <input placeholder='FName' type='text'/>
+            </div>
 
-          <div className='l-name'>
-            <label>Last Name</label>
-            <input placeholder='LName' type='text' />
+            <div className='l-name'>
+              <label>Last Name</label>
+              <input placeholder='LName' type='text' />
+            </div>
           </div>
+          
+            <div className='pass'>
+              <label>Password</label>
+              <input placeholder='Your Password' type={showPassword ? "text" : "password"}/>
+                <button onClick={() => setShowPassword(!showPassword)}>
+                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                </button>
+            </div>
 
-          <div className='pass'>
-            <label>Password</label>
-            <input placeholder='Your Password' type={showPassword ? "text" : "password"}/>
+            <div className='confirm'>
+              <label>Confirm Password</label>
+              <input placeholder='Your Password' type={showPassword ? "text" : "password"}/> 
               <button onClick={() => setShowPassword(!showPassword)}>
                   <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
               </button>
-          </div>
-
-          <div className='confirm'>
-            <label>Confirm Password</label>
-            <input placeholder='Your Password' type={showPassword ? "text" : "password"}/> 
-            <button onClick={() => setShowPassword(!showPassword)}>
-                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-            </button>
-          </div>
+            </div>
+          
         </div>
         
                               {/* buttons */}
