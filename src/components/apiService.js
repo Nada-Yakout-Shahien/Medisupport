@@ -418,14 +418,6 @@ export const getAllBloodPressureMeasurements = async (accessToken) => {
   }
 };
 
-
-
-
-
-
-
-
-
 //chaaaaaaaaaaaaaaaaaaaaaaaaaatting
 // Function to get user contacts
 export const getUserContacts = async (accessToken) => {
@@ -485,7 +477,6 @@ export const userSendMessage = async (
     throw error;
   }
 };
-
 
 // Function to fetch user messages
 export const fetchUserMessages = async (accessToken, id) => {
