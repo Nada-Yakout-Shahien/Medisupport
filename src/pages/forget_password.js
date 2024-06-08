@@ -1,13 +1,28 @@
 import { Helmet } from "react-helmet-async";
 import "./forget_password.css";
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import axios from "axios";
+
 
 const ForgetPassword = () => {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post("https://your-api-endpoint.com/reset-password", { email });
+      setMessage(response.data.message);
+    } catch (error) {
+      setError("There was an error sending the reset link. Please try again.");
+    }
+  };
+
   return (
     <>
       <Helmet>
-        <title>forget_password ♥</title>
+        <title>Forget Password ♥</title>
         <meta name="description" content="forget_password" />
       </Helmet>
 
@@ -22,7 +37,7 @@ const ForgetPassword = () => {
           </div>
 
           <div className="form_box">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="input_box">
                 <label className="remailr">Email Address</label>
 
@@ -30,13 +45,18 @@ const ForgetPassword = () => {
                   className="remair"
                   type="email"
                   placeholder="Enter personal or work email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 ></input>
 
-                <NavLink to="/Verification_Code" className="rbtr">
+                <button type="submit" className="rbtr">
                   Send Reset Link
-                </NavLink>
+                </button>
               </div>
             </form>
+            {message && <p className="success_message">{message}</p>}
+            {error && <p className="error_message">{error}</p>}
           </div>
         </div>
       </section>

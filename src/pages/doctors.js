@@ -8,7 +8,7 @@ import doctors3 from "../images/doctors3.png";
 import right from "../images/right-arrow.png";
 import left from "../images/left-arrow.png";
 import { useRef, useEffect, useState } from "react";
-import { json } from "react-router-dom";
+
 
 const Doctors = ({ count, rating, color, onRating }) => {
 
