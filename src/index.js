@@ -268,9 +268,9 @@ const router = createBrowserRouter([
   {
     path: "/forget_password",
     element: (
-      <ProtectedRoute>
+      <>
         <ForgetPassword />
-      </ProtectedRoute>
+      </>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
