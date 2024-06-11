@@ -274,9 +274,9 @@ const router = createBrowserRouter([
   {
     path: "/Verification_Code",
     element: (
-      <ProtectedRoute>
+      <>
         <VerificationCode />
-      </ProtectedRoute>
+      </>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
