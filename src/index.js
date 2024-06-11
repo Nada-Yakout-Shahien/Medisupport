@@ -162,7 +162,7 @@ const router = createBrowserRouter([
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
-    path: "/pressure",
+    path: "/article/:id",
     element: (
       <ProtectedRoute>
         <Article />
