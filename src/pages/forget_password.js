@@ -12,8 +12,12 @@ const ForgetPassword = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://your-api-endpoint.com/reset-password", { email });
-      setMessage(response.data.message);
+      const response = await axios.post("http://127.0.0.1:8000/api/auth/user/forgot-password", { email }, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }});
+      //setMessage(response.data.message);
+      console.log(response)
     } catch (error) {
       setError("There was an error sending the reset link. Please try again.");
     }
