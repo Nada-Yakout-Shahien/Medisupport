@@ -419,6 +419,20 @@ export const getAllBloodPressureMeasurements = async (accessToken) => {
   }
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //chaaaaaaaaaaaaaaaaaaaaaaaaaatting
 // Function to get user contacts
 export const getUserContacts = async (accessToken) => {
@@ -575,6 +589,165 @@ export const userMakeMessageSeen = async (accessToken, id) => {
     handleRequestError(error);
   }
 };
+
+
+
+
+
+
+//shared
+// Function to add a new article by a doctor
+export const addNewArticle = async (accessToken, title, body, image) => {
+  const formData = new FormData();
+  formData.append('title', title);
+  formData.append('body', body);
+  formData.append('image', image);
+
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/articles`,
+      formData,
+      {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/vnd.api+json',
+        }
+      }
+    );
+    return response.data;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+// Function to update an existing article by a doctor
+export const updateArticle = async (accessToken, articleId, title, body, image) => {
+  const formData = new FormData();
+  formData.append('title', title);
+  formData.append('body', body);
+  formData.append('image', image);
+
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/articles/${articleId}`,
+      formData,
+      {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/vnd.api+json',
+        }
+      }
+    );
+    return response.data;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+// Function to get all articles by a user/admin
+export const getAllArticles = async (accessToken,page) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/articles?page=${page}`,
+      {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      }
+    );
+    return response.data;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+// Function to get all articles by a doctor
+export const getDoctorArticles = async (accessToken) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/doctor/articles`,
+      {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      }
+    );
+    return response.data;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+// Function to get the latest article by a doctor
+export const getLatestArticle = async (accessToken) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/doctor/latest-article`,
+      {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      }
+    );
+    return response.data;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+// Function to get a specific article by a user/doctor/admin
+export const getSpecificArticle = async (accessToken, articleId) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/articles/${articleId}`,
+      {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      }
+    );
+    return response.data;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+// Function to delete an article by a doctor/admin
+export const deleteArticle = async (accessToken, articleId) => {
+  try {
+    await axios.delete(
+      `${BASE_URL}/articles/${articleId}`,
+      {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      }
+    );
+    return true; 
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //loginWithGoogle
 export const loginWithGoogle = async (provider, accessProviderToken) => {
