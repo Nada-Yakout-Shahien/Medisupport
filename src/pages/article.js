@@ -5,7 +5,7 @@ import Pimg from "../images/ar_img_p.png";
 import Layout from '../components/Layout';
 
 
-const ArPressure = () => {
+const Article = () => {
   return (
     <Layout>
       <Helmet>
@@ -78,4 +78,4 @@ const ArPressure = () => {
   );
 };
 
-export default ArPressure;
+export default Article;

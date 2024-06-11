@@ -21,7 +21,7 @@ import Welcome from "./pages/Welcome";
 import FillInformation from "./pages/fill_information";
 import Resultsorry from "./pages/resultsorry";
 import Resultcongratulations from "./pages/resultcongratulations";
-import ArPressure from "./pages/ar_pressure";
+import Article from "./pages/article";
 import ArSugar from "./pages/ar_sugar";
 import ArBmi from "./pages/ar_bmi";
 import ArHeart from "./pages/ar_heart";
@@ -168,7 +168,7 @@ const router = createBrowserRouter([
     path: "/pressure",
     element: (
       <ProtectedRoute>
-        <ArPressure />
+        <Article />
       </ProtectedRoute>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,
