@@ -2,12 +2,15 @@ import { Helmet } from "react-helmet-async";
 import "./forget_password.css";
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  //const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+
+  const navigate=useNavigate()
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,6 +21,8 @@ const ForgetPassword = () => {
     }});
       //setMessage(response.data.message);
       console.log(response)
+      setError("")
+      navigate("/Verification_Code")
     } catch (error) {
       setError("There was an error sending the reset link. Please try again.");
     }
@@ -59,7 +64,7 @@ const ForgetPassword = () => {
                 </button>
               </div>
             </form>
-            {message && <p className="success_message">{message}</p>}
+           {/*{message && <p className="success_message">{message}</p>}*/}
             {error && <p className="error_message">{error}</p>}
           </div>
         </div>

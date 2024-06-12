@@ -3,6 +3,7 @@ import "./Verification_Code.css";
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import picture from "../images/picture.png";
+import axios from "axios";
 
 const VerificationCode = () => {
   const [code, setCode] = useState(["", "", "", ""]);
@@ -21,7 +22,7 @@ const VerificationCode = () => {
     event.preventDefault();
     const verificationCode = code.join("");
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/auth/user/verfiy-code", {
+      const response = await axios.post("http://127.0.0.1:8000/api/auth/user/verfiy-code", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
