@@ -329,6 +329,24 @@ flex-shrink: 0;
   color: var(--Red);
 }
 
+.h2onliner1{
+  color: #777474;
+font-family: Roboto;
+font-size: 2rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.h2onliner2{
+  color: #420000;
+font-family: Roboto;
+font-size: 2rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
 .right-part {
   display: none;
 }

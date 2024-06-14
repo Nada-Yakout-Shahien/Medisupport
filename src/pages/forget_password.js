@@ -22,6 +22,7 @@ const ForgetPassword = () => {
       //setMessage(response.data.message);
       console.log(response)
       setError("")
+      localStorage.setItem("resetemail", email)
       navigate("/Verification_Code")
     } catch (error) {
       setError("There was an error sending the reset link. Please try again.");

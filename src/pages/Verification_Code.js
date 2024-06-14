@@ -1,45 +1,47 @@
 import { Helmet } from "react-helmet-async";
 import "./Verification_Code.css";
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import picture from "../images/picture.png";
 import axios from "axios";
 
 const VerificationCode = () => {
-  const [code, setCode] = useState(["", "", "", ""]);
-  const [error, setError] = useState(null);
+  const [otp, setOtp] = useState(new Array(4).fill(""));
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleChange = (index, value) => {
-    if (value.length <= 1) {
-      const newCode = [...code];
-      newCode[index] = value;
-      setCode(newCode);
+  const handleChange = (element, index) => {
+    if (isNaN(element.value)) return false;
+    setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
+    if (element.nextSibling) {
+      element.nextSibling.focus();
     }
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const verificationCode = code.join("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const email = localStorage.getItem("resetemail");
+    setLoading(true);
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/auth/user/verfiy-code", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ code: verificationCode }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        // handle successful verification, e.g., navigate to the new password page
-        navigate("/New_Password");
-      } else {
-        const errorData = await response.json();
-        setError(errorData.message || "Verification failed");
-      }
+      const response = await axios.post("http://127.0.0.1:8000/api/auth/user/verfiy-code",
+        { otp: otp.join(""), email },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setLoading(false);
+      setMessage(response.data.message);
+      console.log(response);
+      setError("");
+      navigate("/New_Password"); // Navigate to the reset password page
     } catch (error) {
-      setError("An error occurred. Please try again.");
+      setLoading(false);
+      setError("Invalid OTP. Please try again.");
+      setMessage("");
     }
   };
 
@@ -57,25 +59,33 @@ const VerificationCode = () => {
         <div className="ver1">
           <div className="rrorr">
             <h2>Verification Code</h2>
-            <p>Please enter the verification code that we’ve sent to your phone.</p>
+            <p>
+              Please enter the verification code that we’ve sent to your phone.
+            </p>
           </div>
+
           <form onSubmit={handleSubmit}>
             <div className="rowr">
-              {code.map((digit, index) => (
+              {otp.map((data, index) => (
                 <input
+                  type="text"
+                  name="otp"
+                  maxLength="1"
                   key={index}
-                  type="number"
-                  value={digit}
-                  onChange={(e) => handleChange(index, e.target.value)}
-                  required
+                  value={data}
+                  onChange={(e) => handleChange(e.target, index)}
+                  onFocus={(e) => e.target.select()}
                 />
               ))}
             </div>
-            {error && <p className="error">{error}</p>}
             <div className="buttonr">
-              <button type="submit" className="rbtsd">Verify</button>
+              <button type="submit" className="rbtsd" disabled={loading}>
+                {loading ? "Loading..." : "Verify"}
+              </button>
             </div>
           </form>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          {message && <p style={{ color: "green" }}>{message}</p>}
         </div>
       </div>
     </>

@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+{/*import { Helmet } from "react-helmet-async";
 import "./New_Password.css";
 import newpassword from "../images/newpassword.png";
 import { NavLink, useHistory } from "react-router-dom";
@@ -23,11 +23,7 @@ const NewPassword = () => {
 
     try {
       const response = await fetch('https://yourapi.com/reset_password', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ password }),
+        
       });
 
       if (response.ok) {
@@ -91,4 +87,7 @@ const NewPassword = () => {
   );
 };
 
+export default NewPassword;*/}
+
+const NewPassword=()=>{return <h1>hellow</h1>}
 export default NewPassword;

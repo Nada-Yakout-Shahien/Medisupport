@@ -467,12 +467,6 @@ const Doctors = ({ count, rating, color, onRating }) => {
             <input className="buttonrr_r2" type="submit" value="Book Now" />
           </div>
 
-          <div className="online1r">
-              <h2 className="h2onliner1">Online Doctors</h2>
-              <h2 className="h2onliner2">Offline Doctors</h2>
-
-          </div>
-
           
           
           <div className="contain">
