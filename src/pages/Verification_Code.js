@@ -22,7 +22,7 @@ const VerificationCode = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const email = localStorage.getItem("resetemail");
+    const email = localStorage.getItem ("resetemail");
     setLoading(true);
     try {
       const response = await axios.post("http://127.0.0.1:8000/api/auth/user/verfiy-code",

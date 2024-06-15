@@ -45,6 +45,7 @@ const Login = () => {
       navigate("/Loading");
       login();
       event.target.reset();
+      
     } catch (error) {
       console.error(error);
       alert("Failed to login user. Please try again.");

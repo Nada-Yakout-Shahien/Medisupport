@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import "./doctors.css";
+
 import React from "react";
 import doctors from "../images/doctors.png";
 import doctors2 from "../images/doctors2.png";
@@ -10,7 +10,7 @@ import left from "../images/left-arrow.png";
 import { useRef, useEffect, useState } from "react";
 
 
-const Doctors = ({ count, rating, color, onRating }) => {
+const DoctorOnline = ({ count, rating, color, onRating }) => {
 
   const {input, setInput} = useState("")
   const [results, setResults] = useState([]);
@@ -989,4 +989,4 @@ const Doctors = ({ count, rating, color, onRating }) => {
   );
 };
 
-export default Doctors;
+export default DoctorOnline;
