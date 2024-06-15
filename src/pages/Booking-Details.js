@@ -39,13 +39,13 @@ const BookingDetails = () => {
 
   const [onlineBookings, setOnlineBookings] = useState([]);
   useEffect(() => {
-    const fetchonlineBookings = async () => {
+    const fetchOnlineBookings = async () => {
       try {
         const accessToken = localStorage.getItem("accessToken");
         let currentPage = 1;
         let totalPages = 1;
-        const uniqueBookings = new Set();
-
+        const fetchedBookings = []; 
+  
         while (currentPage <= totalPages) {
           const response = await getAllonlineBookings(accessToken, currentPage);
           console.log(
@@ -54,51 +54,30 @@ const BookingDetails = () => {
             "of online bookings:",
             response
           );
-
-          // Ensure response contains pagination data
+  
           if (response.data.pagination) {
-            // Update totalPages from the response
             totalPages = response.data.pagination.last_page;
-
-            // Loop through the bookings and add only the unique ones to the set
+  
+            // Loop through the bookings and add them to the fetchedBookings array
             response.data.data.forEach((booking) => {
-              if (!uniqueBookings.has(booking.id)) {
-                uniqueBookings.add(booking.id);
+              // Check if the booking id already exists in fetchedBookings
+              const existingBooking = fetchedBookings.find(b => b.bookingId === booking.id);
+              if (!existingBooking) {
+                fetchedBookings.push({
+                  bookingId: booking.id,
+                  name: booking.doctor_name,
+                  username: booking.username,
+                  status: booking.status,
+                });
               }
             });
-
-            // Map unique bookings inside the while loop
-            const allBookings = Array.from(uniqueBookings).map((bookingId) => {
-              const bookingData = response.data.data.find(
-                (booking) => booking.id === bookingId
-              );
-
-              // Check if bookingData exists before accessing its properties
-              if (bookingData) {
-                return {
-                  bookingId: bookingData.id,
-                  name: bookingData.doctor_name,
-                  username: bookingData.username,
-                  status: bookingData.status,
-                };
-              }
-            });
-
-            // Filter out undefined values before updating onlineBookings
-            const filteredBookings = allBookings.filter(
-              (booking) => booking !== undefined
-            );
-
-            // Update onlineBookings with all unique bookings after fetching each page
-            setOnlineBookings((prevBookings) => [
-              ...prevBookings,
-              ...filteredBookings,
-            ]);
           }
-
-          // Move to the next page
+  
           currentPage++;
         }
+  
+        // Update onlineBookings state with fetchedBookings after all pages are fetched
+        setOnlineBookings(fetchedBookings);
       } catch (error) {
         console.error(
           "An unexpected error occurred while fetching online bookings:",
@@ -106,9 +85,10 @@ const BookingDetails = () => {
         );
       }
     };
-
-    fetchonlineBookings();
+  
+    fetchOnlineBookings();
   }, []);
+  
 
   const [offlineBookings, setOfflineBookings] = useState([]);
 
@@ -177,11 +157,11 @@ const BookingDetails = () => {
       if (type === "online") {
         response = await deleteBookings(accessToken, bookingId);
         console.log("Successfully cancelled online booking");
-        setIsOverlayVisible(false)
+        setIsOverlayVisible(false);
       } else if (type === "offline") {
         response = await deleteBooking(accessToken, bookingId);
         console.log("Successfully cancelled offline booking", response);
-        setIsOverlayVisible(false)
+        setIsOverlayVisible(false);
       } else {
         console.error("Invalid booking type");
         return;
@@ -206,7 +186,6 @@ const BookingDetails = () => {
       );
     }
   }
-
 
   return (
     <Layout>
@@ -258,10 +237,10 @@ const BookingDetails = () => {
                   </p>
                   <div
                     className={`status ${
-                      bookings.status === "Accept" ? "Accept" : "Waiting"
+                      bookings.status === 1 ? "Accept" : "Waiting"
                     }`}
                   >
-                    {bookings.status}
+                    {bookings.status === 1 ? "Accept" : "Waiting"}
                   </div>
                   <div className="video">
                     <img src={video} alt="" className="cam" />

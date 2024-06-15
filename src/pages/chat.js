@@ -401,6 +401,9 @@ const Chat = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const messagesEndRef = useRef(null);
   const baseURL = "http://127.0.0.1:8000/";
+  const [selectedFile, setSelectedFile] = useState(null);
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -775,7 +778,7 @@ const Chat = () => {
                     />
                   </div>
                   <div className="input-icon">
-                    <input type="file" style={{ display: "none" }} />
+                    <input type="file" style={{ display: "none" }} id="fileInput"/>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="22"
@@ -793,7 +796,7 @@ const Chat = () => {
                     </svg>
                   </div>
                 </div>
-                <button>
+                <button className="record">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="40"
