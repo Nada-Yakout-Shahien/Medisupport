@@ -403,8 +403,6 @@ const Chat = () => {
   const baseURL = "http://127.0.0.1:8000/";
   const [selectedFile, setSelectedFile] = useState(null);
 
-
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -430,7 +428,6 @@ const Chat = () => {
     };
 
     fetchData();
-
     const interval = setInterval(fetchData, 60000);
 
     return () => clearInterval(interval);
@@ -471,6 +468,7 @@ const Chat = () => {
       setShowSidebar(true);
     }
   }, [selectedDoctorInfo, windowWidth]);
+
   useEffect(() => {
     if (selectedDoctorInfo) {
       const storedMessages = JSON.parse(localStorage.getItem("messages")) || {};
@@ -478,6 +476,7 @@ const Chat = () => {
       setCurrentDoctorMessages(doctorMessages);
     }
   }, [selectedDoctorInfo]);
+
   useEffect(() => {
     const authenticateUserForChat = async () => {
       try {
@@ -492,20 +491,26 @@ const Chat = () => {
     };
     authenticateUserForChat();
   }, []);
+
   useEffect(() => {
-    Pusher.logToConsole = true;
     const pusher = new Pusher("699bcc950016f00a1982", {
       cluster: "eu",
     });
-    const channel = pusher.subscribe("private-chatify"); 
+    const channel = pusher.subscribe("private-chatify");
     channel.bind("messaging", function (data) {
-      setInputMessage(prevMessages => [...prevMessages, data]);
+      if (selectedDoctorInfo && data.to_id === selectedDoctorInfo.id) {
+        setCurrentDoctorMessages((prevMessages) => [...prevMessages, data]);
+      }
     });
+  
     return () => {
-      pusher.unsubscribe("private-chatify"); 
+      pusher.unsubscribe("private-chatify");
       pusher.disconnect();
     };
-  }, []);
+  }, [selectedDoctorInfo]);
+  
+  
+
   const handleDoctorClick = async (doctor) => {
     try {
       const accessToken = localStorage.getItem("accessToken");
@@ -521,19 +526,42 @@ const Chat = () => {
         setShowChat(true);
       }
     } catch (error) {
-      console.error("An error occurred while fetching doctor information:", error);
+      console.error(
+        "An error occurred while fetching doctor information:",
+        error
+      );
     }
   };
-  const sendMessage = async (e) => {
-    e.preventDefault();
-    if (inputMessage.trim() !== "" && selectedDoctorInfo) {
-      try {
-        const accessToken = localStorage.getItem("accessToken");
-        await userSendMessage(accessToken, selectedDoctorInfo.id, inputMessage);
-        setInputMessage("");
-      } catch (error) {
-        console.error("An error occurred while sending the message:", error);
-      }
+  const handleSendMessage = async (event) => {
+    event.preventDefault();
+    if (!inputMessage.trim() && !selectedFile) return;
+
+    const temporaryMsgId = new Date().getTime().toString();
+    const newMessage = {
+      from_id: "yourUserId",
+      to_id: selectedDoctorInfo.id,
+      content: inputMessage,
+      temporary_msg_id: temporaryMsgId,
+    };
+
+    setCurrentDoctorMessages((prevMessages) => [...prevMessages, newMessage]);
+    setInputMessage("");
+
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      await userSendMessage(
+        accessToken,
+        selectedDoctorInfo.id,
+        inputMessage,
+        temporaryMsgId
+      );
+      const updatedMessages = await fetchUserMessages(
+        accessToken,
+        selectedDoctorInfo.id
+      );
+      setCurrentDoctorMessages(updatedMessages.messages);
+    } catch (error) {
+      console.error("An error occurred while sending message:", error);
     }
   };
   const handleArrowClick = async () => {
@@ -560,6 +588,24 @@ const Chat = () => {
   const selectEmoji = (emoji) => {
     setInputMessage((prevMessage) => prevMessage + emoji);
   };
+  const handleDeleteConversation = async () => {
+    if (window.confirm("Are you sure you want to delete this conversation?")) {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        await userDeleteConversation(accessToken, selectedDoctorInfo.id);
+        setCurrentDoctorMessages([]);
+        setSelectedDoctorInfo(null);
+        localStorage.removeItem("messages");
+      } catch (error) {
+        console.error(
+          "An error occurred while deleting the conversation:",
+          error
+        );
+      }
+    }
+  };
+
+
   return (
     <>
       <Helmet>
@@ -778,7 +824,11 @@ const Chat = () => {
                     />
                   </div>
                   <div className="input-icon">
-                    <input type="file" style={{ display: "none" }} id="fileInput"/>
+                    <input
+                      type="file"
+                      style={{ display: "none" }}
+                      id="fileInput"
+                    />
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="22"
@@ -813,7 +863,7 @@ const Chat = () => {
                     />
                   </svg>
                 </button>
-                <button type="submit" onClick={(e) => sendMessage(e)}>
+                <button type="submit" onClick={(e) => handleSendMessage(e)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="41"
@@ -842,5 +892,4 @@ const Chat = () => {
     </>
   );
 };
-
 export default Chat;
