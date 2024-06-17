@@ -69,6 +69,7 @@
   align-items: flex-start;
   gap: 2.5em;
   margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
 }
 
 .BP-page .day-container {
