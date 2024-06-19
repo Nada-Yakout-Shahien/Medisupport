@@ -203,6 +203,7 @@
 .bloodsugar .butn{
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 .bloodsugar .butn .addrec{
   display: flex;
@@ -221,6 +222,7 @@
   font-weight: 500;
   /* line-height: 100%;  */
   letter-spacing: 0.03125rem;
+  cursor: pointer;
 }
 .bloodsugar .butn .addrec:hover{
   opacity: 0.7;

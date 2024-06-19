@@ -421,6 +421,9 @@ export const getAllBloodPressureMeasurements = async (accessToken) => {
   }
 };
 
+
+
+
 // Chat API functions
 export const getUserContacts = async (accessToken) => {
   return await sendRequest(
@@ -500,6 +503,7 @@ export const userFetchDoctorByID = async (accessToken, id) => {
 export const userMakeMessageSeen = async (accessToken, id) => {
   return await sendRequest("POST", "/user/chat/makeSeen", { id }, accessToken);
 };
+
 
 //shared
 // Function to add a new article by a doctor
