@@ -4,6 +4,7 @@ import "./fill_information.css";
 import { NavLink } from "react-router-dom";
 import Layout from "../components/Layout";
 import { predict } from "../components/apiService";
+
 const FillInformation = () => {
   const totalSteps = 17;
   const [currentStep, setCurrentStep] = useState(1);
@@ -21,10 +22,42 @@ const FillInformation = () => {
   }, [currentStep]);
 
   const handleNextClick = () => {
-    if (currentStep < totalSteps) {
+    const currentForm = formRefs.current[currentStep - 1];
+    const inputs = currentForm.querySelectorAll("input, select");
+  
+    let isValid = true;
+  
+    inputs.forEach((input) => {
+      if (!input.checkValidity()) {
+        input.reportValidity();
+        isValid = false;
+      }
+      if (input.tagName === "INPUT" && input.type === "text") {
+        const numericPattern = /^[0-9]+$/;
+        if (!numericPattern.test(input.value.trim())) {
+          isValid = false;
+          input.setCustomValidity("Please enter a valid numeric input.");
+          input.reportValidity();
+        } else {
+          input.setCustomValidity("");
+        }
+      }
+      if (input.tagName === "SELECT") {
+        if (input.value === "Your info") {
+          isValid = false;
+          input.setCustomValidity("Please select an option other than 'Your info'.");
+          input.reportValidity();
+        } else {
+          input.setCustomValidity("");
+        }
+      }
+    });
+  
+    if (isValid && currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
     }
   };
+  
 
   const handleDropdownClick = (index) => {
     setDropdowns((prevDropdowns) =>
@@ -95,10 +128,13 @@ const FillInformation = () => {
         </svg>
         {dropdowns[index].isOpen && (
           <div className="dropdown-content">
-            {options.map((option) => (
+            {options.map((option, optionIndex) => (
               <div
                 key={option}
-                onClick={() => handleOptionClick(index, option)}
+                onClick={() =>
+                  optionIndex > 0 && handleOptionClick(index, option)
+                }
+                className={optionIndex === 0 ? "option-disabled" : ""}
               >
                 {option}
               </div>
@@ -143,10 +179,13 @@ const FillInformation = () => {
         </svg>
         {dropdowns[index].isOpen && (
           <div className="dropdown-content">
-            {options.map((option) => (
+            {options.map((option, optionIndex) => (
               <div
                 key={option}
-                onClick={() => handleOptionClick(index, option)}
+                onClick={() =>
+                  optionIndex > 0 && handleOptionClick(index, option)
+                }
+                className={optionIndex === 0 ? "option-disabled" : ""}
               >
                 {option}
               </div>
@@ -160,7 +199,7 @@ const FillInformation = () => {
   const renderInputField = (label, id, placeholder, index) => (
     <div className="infolbl" ref={(el) => (formRefs.current[index] = el)}>
       <label htmlFor={id}>{label}</label>
-      <input type="text" id={id} placeholder={placeholder} />
+      <input type="text" id={id} placeholder={placeholder} required />
       {currentStep === index + 1 && (
         <button type="button" className="btn" onClick={handleNextClick}>
           Next
@@ -169,26 +208,22 @@ const FillInformation = () => {
     </div>
   );
   
+
   const handleresultClick = async () => {
     if (currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
     } else {
       try {
-        const predictionData = {
-  
-        };
-  
+        const predictionData = {};
+
         const predictionResult = await predict(predictionData);
-  
+
         console.log("Prediction Result:", predictionResult);
-  
-  
       } catch (error) {
         console.error("Prediction Error:", error);
       }
     }
   };
-  
 
   return (
     <Layout>
@@ -324,28 +359,28 @@ const FillInformation = () => {
               renderSelectOption(
                 "Diff Walking",
                 "input13",
-                ["Enter do you have Diff Walking", "Yes", "No"],
+                ["Enter do you have Diff Walking?", "Yes", "No"],
                 12
               )}
             {currentStep >= 14 &&
               renderSelectOption(
                 "Physical Activity",
                 "input14",
-                ["Enter do you have Physical Activity", "Yes", "No"],
+                ["Enter do you have Physical Activity?", "Yes", "No"],
                 13
               )}
             {currentStep >= 15 &&
               renderSelectOption(
                 "Asthma",
                 "input15",
-                ["Enter do you have Asthma", "Yes", "No"],
+                ["Enter do you have Asthma?", "Yes", "No"],
                 14
               )}
             {currentStep >= 16 &&
               renderSelectOption(
                 "Kidney Disease",
                 "input16",
-                ["Enter do you have Kidney Disease", "Yes", "No"],
+                ["Enter do you have Kidney Disease?", "Yes", "No"],
                 15
               )}
           </div>
@@ -361,7 +396,7 @@ const FillInformation = () => {
           <NavLink
             to={currentStep < totalSteps ? "#" : "/Resultcongratulations"}
             className="btn"
-            onClick={handleNextClick}
+            onClick={handleresultClick}
             style={{
               display: currentStep === totalSteps ? "inline-block" : "none",
             }}
