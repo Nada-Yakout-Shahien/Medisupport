@@ -36,7 +36,7 @@
   align-items: center;
   padding: 1.1vh;
   font-size: clamp(0.5rem, calc(1vw + 3vw), 1.3rem);
-  color: #4b4b4b;
+  color: #6d6d6d;
 }
 .info .infolbl .menu{
   display: flex;
@@ -59,7 +59,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 1.45019rem; 
-  color: #4b4b4b;
+  color: #6d6d6d;
 }
 .info .infolbl .menu .dropdown-content  {
   position: absolute;
@@ -88,7 +88,7 @@
 }
 .info input::placeholder {
   font-size: clamp(1rem, calc(2vw + 4vw), 1rem);  
-  color: #373737;
+  color: #6d6d6d;
   /* font-style: italic;  */
 }
 .info label{
@@ -115,6 +115,7 @@
   margin: auto;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1rem;
 }
 .info .btn{
   background-color: var(--Red);

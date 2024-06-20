@@ -2,7 +2,14 @@ import axios from "axios";
 
 const BASE_URL = "http://127.0.0.1:8000/api";
 
-//handleRequestError
+const axiosInstance = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+});
+
 export const handleRequestError = (error) => {
   let errorMessage = "";
   if (error.response) {
@@ -22,12 +29,11 @@ export const handleRequestError = (error) => {
   throw new Error(errorMessage);
 };
 
-// send request with stored token for data
 export const sendRequest = async (method, url, data, accessToken) => {
   try {
-    const response = await axios({
+    const response = await axiosInstance({
       method: method,
-      url: `${BASE_URL}${url}`,
+      url: url,
       data: data,
       headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},
     });
@@ -37,52 +43,52 @@ export const sendRequest = async (method, url, data, accessToken) => {
   }
 };
 
-// loginUser
-export const loginUser = async (userloginData, setAccessToken) => {
+export const predict = async (predictionData) => {
   try {
-    const response = await axios.post(
-      `${BASE_URL}/auth/user/login`,
-      userloginData
-    );
-    console.log("Response data:", response.data);
-    const accessToken = response.data.access_token;
-    console.log("Access Token:", accessToken);
-    setAccessToken(accessToken);
-    return accessToken;
-  } catch (error) {
-    console.error("Error logging in:", error);
-    handleRequestError(error);
-  }
-};
-//saveTokenToLocalStorage
-export const saveTokenToLocalStorage = (accessToken) => {
-  localStorage.setItem("accessToken", accessToken);
-};
-//getAccessTokenFromLocalStorage
-export const getAccessTokenFromLocalStorage = () => {
-  return localStorage.getItem("accessToken");
-};
+    const accessToken = localStorage.getItem("accessToken");
 
-//sendContactMessage
-export const sendContactMessage = async (contactData) => {
-  try {
-    const response = await axios.post(
-      `${BASE_URL}/contact`,
-      JSON.stringify(contactData),
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
-    );
+    const response = await axiosInstance.post("/predict", predictionData, {
+      headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},
+    });
+
     return response.data;
   } catch (error) {
     handleRequestError(error);
   }
 };
 
-//registerUser
+export const loginUser = async (userloginData, setAccessToken) => {
+  try {
+    const response = await axiosInstance.post("/auth/user/login", userloginData);
+    console.log("Response data:", response.data);
+    const accessToken = response.data.access_token;
+    console.log("Access Token:", accessToken);
+    setAccessToken(accessToken);
+    saveTokenToLocalStorage(accessToken);
+    return accessToken;
+  } catch (error) {
+    console.error("Error logging in:", error);
+    handleRequestError(error);
+  }
+};
+
+export const saveTokenToLocalStorage = (accessToken) => {
+  localStorage.setItem("accessToken", accessToken);
+};
+
+export const getAccessTokenFromLocalStorage = () => {
+  return localStorage.getItem("accessToken");
+};
+
+export const sendContactMessage = async (contactData) => {
+  try {
+    const response = await axiosInstance.post("/contact", contactData);
+    return response.data;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+
 export const registerUser = async (userData) => {
   try {
     const response = await axios.post(
