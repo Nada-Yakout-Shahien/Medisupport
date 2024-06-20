@@ -211,7 +211,7 @@ const FillInformation = () => {
     if (!currentForm || !(currentForm instanceof HTMLFormElement)) {
       console.error("Form element not found or invalid.");
       return;
-    }
+    }    
 
     const inputs = currentForm.querySelectorAll("input, select");
 
