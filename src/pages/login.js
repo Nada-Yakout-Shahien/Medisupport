@@ -2,72 +2,103 @@ import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
-import { loginUser,saveTokenToLocalStorage } from "../components/apiService";
+import {
+  loginUser,
+  saveTokenToLocalStorage,
+  loginWithGoogle,
+  loginWithFacebook,
+} from "../components/apiService";
 import logInImage from "../images/logIn.png";
 import "./login.css";
-//import { GoogleLogin } from "react-google-login";
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
-const clientId =
+const googleClientId =
   "639786245015-q9agbhq4ekj8vhqu85jbvdg75er66dnh.apps.googleusercontent.com";
+const facebookAppId = "763487532477503";
+const BASE_URL = "http://127.0.0.1:8000/api";
 
 const Login = () => {
-  // State for password visibility and icon active status
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [iconActive, setIconActive] = useState(false);
+  const [accessToken, setAccessToken] = useState("");
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
-  // Function to toggle password visibility
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
     setIconActive(!iconActive);
   };
 
-  // Hooks for navigation and authentication
-  const navigate = useNavigate();
-  const { login } = useAuth();
-
-  const [accessToken, setAccessToken] = useState("");
-  
-
-  // Function to handle login form submission
   const handleLoginClick = async (event) => {
     event.preventDefault();
-
     try {
       const formData = new FormData(event.target);
       const userData = {
         email: formData.get("email"),
         password: formData.get("password"),
       };
-      const accessToken = await loginUser(userData, setAccessToken); 
-      saveTokenToLocalStorage(accessToken); 
-      setAccessToken(accessToken); 
+      const accessToken = await loginUser(userData, setAccessToken);
+      saveTokenToLocalStorage(accessToken);
+      setAccessToken(accessToken);
       console.log("access_token:", accessToken);
       navigate("/Loading");
       login();
       event.target.reset();
+      
     } catch (error) {
       console.error(error);
       alert("Failed to login user. Please try again.");
     }
   };
 
-  const handleLogingoogleClick = (googleData) => {
-    console.log("Google login success:", googleData);
+  const handleLogingoogleClick = async (response) => {
+    try {
+      const res = await loginWithGoogle("google", response.access_provider_token);
+      saveTokenToLocalStorage(res.access_provider_token);
+      setAccessToken(res.access_provider_token);
+      navigate("/Loading");
+      login();
+    } catch (error) {
+      console.error("Google login failed:", error);
+      alert("Failed to login with Google. Please try again.");
+    }
   };
+
   const handleLogingoogleFailure = (error) => {
     console.error("Google login failed:", error);
+    alert("Google login failed. Please try again.");
   };
- // useEffect to add Google Sign-In script dynamically
- useEffect(() => {
-  const script = document.createElement("script");
-  script.src = "https://accounts.google.com/gsi/client";
-  script.async = true;
-  document.head.appendChild(script);
 
-  return () => {
-    document.head.removeChild(script);
+  const handleLoginFacebookClick = async (facebookData) => {
+    try {
+      const response = await loginWithFacebook(
+        "facebook",
+        facebookData.access_provider_token
+      );
+      saveTokenToLocalStorage(response.access_provider_token);
+      setAccessToken(response.access_provider_token);
+      navigate("/Loading");
+      login();
+      console.log(response.access_provider_token);
+      console.log("Facebook login success");
+    } catch (error) {
+      console.error("Facebook login failed:", error);
+      alert("Failed to login with Facebook. Please try again.");
+    }
   };
-}, []);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://accounts.google.com/gsi/client";
+    script.async = true;
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -141,17 +172,16 @@ const Login = () => {
             </div>
           </form>
           <div className="btn-log">
-            <button className="blog">
-              {/* <GoogleLogin
-                clientId={clientId}
-                buttonText="Login in with Google"
-                onSuccess={handleLogingoogleClick}
-                onFailure={handleLogingoogleFailure}
-                cookiePolicy={"single_host_origin"}
-              />
-               */}
-            </button>
-            <button className="blog">
+            <div className="blog">
+              <GoogleOAuthProvider clientId={googleClientId}>
+                <GoogleLogin
+                  onSuccess={handleLogingoogleClick}
+                  onError={handleLogingoogleFailure}
+                  style={{ border: "none", backgroundColor: "transparent" }}
+                />
+              </GoogleOAuthProvider>
+            </div>
+            <div className="blog">
               <div className="svg">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -166,8 +196,19 @@ const Login = () => {
                   />
                 </svg>
               </div>
-              <p className="text"> Log in with Facebook</p>
-            </button>
+              <FacebookLogin
+                appId={facebookAppId}
+                callback={handleLoginFacebookClick}
+                render={(renderProps) => (
+                  <button
+                    onClick={renderProps.onClick}
+                    className="facebook-button"
+                  >
+                    Log in with Facebook
+                  </button>
+                )}
+              />{" "}
+            </div>
           </div>
           <hr />
           <div className="sign">

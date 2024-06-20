@@ -47,7 +47,7 @@ export const predict = async (predictionData) => {
   try {
     const accessToken = localStorage.getItem("accessToken");
 
-    const response = await axiosInstance.post("/predict", predictionData, {
+    const response = await axiosInstance.post("https://c58a-156-217-103-223.ngrok-free.app/api/predict", predictionData, {
       headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},
     });
 
@@ -656,7 +656,6 @@ export const loginWithGoogle = async (provider, accessProviderToken) => {
     throw new Error("Unable to login with Google. Please try again.");
   }
 };
-
 //loginWithFacebook
 export const loginWithFacebook = async (provider, accessProviderToken) => {
   try {
