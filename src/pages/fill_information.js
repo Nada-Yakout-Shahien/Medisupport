@@ -21,45 +21,6 @@ const FillInformation = () => {
     formRefs.current[currentStep - 1]?.scrollIntoView({ behavior: "smooth" });
   }, [currentStep]);
 
-  const handleNextClick = () => {
-    const currentForm = formRefs.current[currentStep - 1];
-    const inputs = currentForm.querySelectorAll("input, select");
-
-    let isValid = true;
-
-    inputs.forEach((input) => {
-      if (!input.checkValidity()) {
-        input.reportValidity();
-        isValid = false;
-      }
-      if (input.tagName === "INPUT" && input.type === "text") {
-        const numericPattern = /^[0-9]+$/;
-        if (!numericPattern.test(input.value.trim())) {
-          isValid = false;
-          input.setCustomValidity("Please enter a valid numeric input.");
-          input.reportValidity();
-        } else {
-          input.setCustomValidity("");
-        }
-      }
-      if (input.tagName === "SELECT") {
-        if (input.value === "Your info") {
-          isValid = false;
-          input.setCustomValidity(
-            "Please select an option other than 'Your info'."
-          );
-          input.reportValidity();
-        } else {
-          input.setCustomValidity("");
-        }
-      }
-    });
-
-    if (isValid && currentStep < totalSteps) {
-      setCurrentStep(currentStep + 1);
-    }
-  };
-
   const handleDropdownClick = (index) => {
     setDropdowns((prevDropdowns) =>
       prevDropdowns.map((dropdown, i) => ({
@@ -143,11 +104,6 @@ const FillInformation = () => {
           </div>
         )}
       </div>
-      {currentStep === index + 1 && (
-        <button type="button" className="btn" onClick={handleNextClick}>
-          Next
-        </button>
-      )}
     </div>
   );
 
@@ -209,14 +165,90 @@ const FillInformation = () => {
     </div>
   );
 
-  const handleresultClick = async (event) => {
-    if (currentStep < totalSteps) {
+  const handleNextClick = () => {
+    const currentForm = formRefs.current[currentStep - 1];
+    const inputs = currentForm.querySelectorAll("input, select");
+
+    let isValid = true;
+
+    inputs.forEach((input) => {
+      if (!input.checkValidity()) {
+        input.reportValidity();
+        isValid = false;
+      }
+      if (input.tagName === "INPUT" && input.type === "text") {
+        const numericPattern = /^[0-9]+$/;
+        if (!numericPattern.test(input.value.trim())) {
+          isValid = false;
+          input.setCustomValidity("Please enter a valid numeric input.");
+          input.reportValidity();
+        } else {
+          input.setCustomValidity("");
+        }
+      }
+      if (input.tagName === "SELECT") {
+        if (input.value === "Your info") {
+          isValid = false;
+          input.setCustomValidity(
+            "Please select an option other than 'Your info'."
+          );
+          input.reportValidity();
+        } else {
+          input.setCustomValidity("");
+        }
+      }
+    });
+
+    if (isValid && currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
-      event.preventDefault();
-    } else {
+    }
+  };
+
+  const handleresultClick = async (event) => {
+    event.preventDefault();
+    const currentForm = formRefs.current[totalSteps - 1];
+
+    if (!currentForm || !(currentForm instanceof HTMLFormElement)) {
+      console.error("Form element not found or invalid.");
+      return;
+    }
+
+    const inputs = currentForm.querySelectorAll("input, select");
+
+    let isValid = true;
+
+    inputs.forEach((input) => {
+      if (!input.checkValidity()) {
+        input.reportValidity();
+        isValid = false;
+      }
+      if (input.tagName === "INPUT" && input.type === "text") {
+        const numericPattern = /^[0-9]+$/;
+        if (!numericPattern.test(input.value.trim())) {
+          isValid = false;
+          input.setCustomValidity("Please enter a valid numeric input.");
+          input.reportValidity();
+        } else {
+          input.setCustomValidity("");
+        }
+      }
+      if (input.tagName === "SELECT") {
+        if (input.value === "Your info") {
+          isValid = false;
+          input.setCustomValidity(
+            "Please select an option other than 'Your info'."
+          );
+          input.reportValidity();
+        } else {
+          input.setCustomValidity("");
+        }
+      }
+    });
+
+    if (isValid) {
       try {
         const accessToken = localStorage.getItem("accessToken");
-        const formData = new FormData(event.target);
+        const formData = new FormData(currentForm);
         const predictionResult = {
           BMI: formData.get("BMI"),
           PhysicalHealth: formData.get("PhysicalHealth"),
@@ -259,44 +291,44 @@ const FillInformation = () => {
         <meta name="description" content="Fill Information" />
       </Helmet>
 
-      <div className="info">
+      <form className="info" onSubmit={handleresultClick}>
         <h3>Please fill in the information</h3>
         <div className="forms">
           <div className="form1">
             {currentStep >= 1 &&
-              renderInputField("BMI", "input1", "Enter your BMI", 0)}
+              renderInputField("BMI", "BMI", "Enter your BMI", 0)}
             {currentStep >= 2 &&
               renderSelectOption(
                 "Sex",
-                "input2",
+                "Sex",
                 ["Select your sex", "Male", "Female"],
                 1
               )}
             {currentStep >= 3 &&
               renderInputField(
                 "Physical Health",
-                "input3",
+                "PhysicalHealth",
                 "Enter your Physical Health",
                 2
               )}
             {currentStep >= 4 &&
               renderInputField(
                 "Mental Health",
-                "input4",
+                "MentalHealth",
                 "Enter your Mental Health",
                 3
               )}
             {currentStep >= 5 &&
               renderInputField(
                 "Sleep Time",
-                "input5",
+                "SleepTime",
                 "Enter your Sleep Time",
                 4
               )}
             {currentStep >= 6 &&
               renderSelectOption(
                 "Race",
-                "input6",
+                "Race",
                 [
                   "Select your Race",
                   "American Indian/Alaskan Native",
@@ -311,7 +343,7 @@ const FillInformation = () => {
             {currentStep >= 7 &&
               renderSelectOption(
                 "Diabetic",
-                "input7",
+                "Diabetic",
                 [
                   "Select your Diabetic",
                   "No",
@@ -324,7 +356,7 @@ const FillInformation = () => {
             {currentStep >= 8 &&
               renderSelectOption(
                 "Gen Health",
-                "input9",
+                "GenHealth",
                 [
                   "Your Gen Health",
                   "Poor",
@@ -341,7 +373,7 @@ const FillInformation = () => {
             {currentStep >= 9 &&
               renderSelectOption(
                 "Age Category",
-                "input8",
+                "AgeCategory",
                 [
                   "Enter your Age Category",
                   "18-24",
@@ -364,49 +396,49 @@ const FillInformation = () => {
             {currentStep >= 10 &&
               renderSelectOption(
                 "Smoking",
-                "input10",
+                "Smoking",
                 ["Select do you smoke?", "Yes", "No"],
                 9
               )}
             {currentStep >= 11 &&
               renderSelectOption(
                 "Alcohol Drinking",
-                "input11",
+                "AlcoholDrinking",
                 ["Select do you drink Alcohol?", "Yes", "No"],
                 10
               )}
             {currentStep >= 12 &&
               renderSelectOption(
                 "Stroke",
-                "input12",
+                "Stroke",
                 ["Select have you had a stroke?", "Yes", "No"],
                 11
               )}
             {currentStep >= 13 &&
               renderSelectOption(
                 "Diff Walking",
-                "input13",
+                "DiffWalking",
                 ["Enter do you have Diff Walking?", "Yes", "No"],
                 12
               )}
             {currentStep >= 14 &&
               renderSelectOption(
                 "Physical Activity",
-                "input14",
+                "PhysicalActivity",
                 ["Enter do you have Physical Activity?", "Yes", "No"],
                 13
               )}
             {currentStep >= 15 &&
               renderSelectOption(
                 "Asthma",
-                "input15",
+                "Asthma",
                 ["Enter do you have Asthma?", "Yes", "No"],
                 14
               )}
             {currentStep >= 16 &&
               renderSelectOption(
                 "Kidney Disease",
-                "input16",
+                "KidneyDisease",
                 ["Enter do you have Kidney Disease?", "Yes", "No"],
                 15
               )}
@@ -416,21 +448,21 @@ const FillInformation = () => {
           {currentStep >= 17 &&
             renderSelectOptions(
               "Skin Cancer",
-              "input17",
+              "SkinCancer",
               ["Do you have Skin Cancer?", "Yes", "No"],
               16
             )}
-          <NavLink
+          <button
+            type="submit"
             className="btn"
-            onClick={handleresultClick}
             style={{
               display: currentStep === totalSteps ? "inline-block" : "none",
             }}
           >
             {currentStep < totalSteps ? "Next" : "Result"}
-          </NavLink>
+          </button>
         </div>
-      </div>
+      </form>
     </Layout>
   );
 };
