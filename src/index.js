@@ -21,10 +21,7 @@ import Welcome from "./pages/Welcome";
 import FillInformation from "./pages/fill_information";
 import Resultsorry from "./pages/resultsorry";
 import Resultcongratulations from "./pages/resultcongratulations";
-import ArPressure from "./pages/ar_pressure";
-import ArSugar from "./pages/ar_sugar";
-import ArBmi from "./pages/ar_bmi";
-import ArHeart from "./pages/ar_heart";
+import Article from "./pages/article";
 import Activity from "./pages/Activity";
 import Profile from "./pages/Profile";
 import DetailsBS from "./pages/details-bloodsuger";
@@ -165,37 +162,10 @@ const router = createBrowserRouter([
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
-    path: "/pressure",
+    path: "/article/:id",
     element: (
       <ProtectedRoute>
-        <ArPressure />
-      </ProtectedRoute>
-    ),
-    errorElement: <h1>Sorry, No page to display....</h1>,
-  },
-  {
-    path: "/sugar",
-    element: (
-      <ProtectedRoute>
-        <ArSugar />
-      </ProtectedRoute>
-    ),
-    errorElement: <h1>Sorry, No page to display....</h1>,
-  },
-  {
-    path: "/ABmi",
-    element: (
-      <ProtectedRoute>
-        <ArBmi />
-      </ProtectedRoute>
-    ),
-    errorElement: <h1>Sorry, No page to display....</h1>,
-  },
-  {
-    path: "/heart",
-    element: (
-      <ProtectedRoute>
-        <ArHeart />
+        <Article />
       </ProtectedRoute>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,
@@ -268,9 +238,9 @@ const router = createBrowserRouter([
   {
     path: "/forget_password",
     element: (
-      <ProtectedRoute>
+      <>
         <ForgetPassword />
-      </ProtectedRoute>
+      </>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
@@ -304,9 +274,9 @@ const router = createBrowserRouter([
   {
     path: "/Verification_Code",
     element: (
-      <ProtectedRoute>
+      <>
         <VerificationCode />
-      </ProtectedRoute>
+      </>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },

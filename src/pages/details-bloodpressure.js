@@ -141,10 +141,6 @@ const DetailsBloodpressure = () => {
       },
     },
   };
-  
-  
-  
-
 
   return (
     <Layout>
@@ -159,15 +155,22 @@ const DetailsBloodpressure = () => {
           </div>
           <div className="dBP-status">
             <p>
-              Average 
+              Average
               {latestMeasurement && (
-                <span>{latestMeasurement.attributes.systolic}/{latestMeasurement.attributes.diastolic}</span> 
+                <span>
+                  {latestMeasurement.attributes.systolic}/
+                  {latestMeasurement.attributes.diastolic}
+                </span>
               )}
-
               mmHG
             </p>
             <button>
-              <p>Normal</p>
+              <p>
+                {latestMeasurement &&
+                latestMeasurement.attributes.pressure_advice_key
+                  ? latestMeasurement.attributes.pressure_advice_key
+                  : "No Key available"}
+              </p>
             </button>
           </div>
         </div>

@@ -7,13 +7,16 @@ export const handleRequestError = (error) => {
   let errorMessage = "";
   if (error.response) {
     errorMessage = `Error: ${error.response.status} - ${error.response.data.message}`;
+    console.error(errorMessage);
     alert(errorMessage);
     throw error;
   } else if (error.request) {
     errorMessage = "Network Error: No response received";
+    console.error(errorMessage);
     alert(errorMessage);
   } else {
     errorMessage = `Error: ${error.message}`;
+    console.error(errorMessage);
     alert(errorMessage);
   }
   throw new Error(errorMessage);
@@ -421,87 +424,46 @@ export const getAllBloodPressureMeasurements = async (accessToken) => {
 
 
 
-
-
-
-
-
-//chaaaaaaaaaaaaaaaaaaaaaaaaaatting
-// Function to get user contacts
+// Chat API functions
 export const getUserContacts = async (accessToken) => {
-  try {
-    const response = await sendRequest(
-      "GET",
-      "/user/chat/getUserContacts",
-      null,
-      accessToken
-    );
-    return response;
-  } catch (error) {
-    handleRequestError(error);
-  }
+  return await sendRequest(
+    "GET",
+    "/user/chat/getUserContacts",
+    null,
+    accessToken
+  );
 };
 
-// Function to authenticate user for chat
 export const userChatAuth = async (socketId, channelName, accessToken) => {
-  try {
-    const response = await sendRequest(
-      "POST",
-      "/user/chat/auth",
-      {
-        socket_id: socketId,
-        channel_name: channelName,
-      },
-      accessToken
-    );
-
-    return response;
-  } catch (error) {
-    handleRequestError(error);
-  }
+  return await sendRequest(
+    "POST",
+    "/user/chat/auth",
+    { socket_id: socketId, channel_name: channelName },
+    accessToken
+  );
 };
 
-// Function to send a message
 export const userSendMessage = async (
   accessToken,
   id,
   message,
   temporaryMsgId
 ) => {
-  try {
-    const response = await sendRequest(
-      "POST",
-      "/user/chat/sendMessage",
-      {
-        id,
-        message,
-        temporary_msg_id: temporaryMsgId,
-      },
-      accessToken
-    );
-    return response;
-  } catch (error) {
-    handleRequestError(error);
-    throw error;
-  }
+  return await sendRequest(
+    "POST",
+    "/user/chat/sendMessage",
+    { id, message, temporary_msg_id: temporaryMsgId },
+    accessToken
+  );
 };
 
-
-// Function to fetch user messages
 export const fetchUserMessages = async (accessToken, id) => {
-  try {
-    const response = await sendRequest(
-      "POST",
-      "/user/chat/fetchMessages",
-      {
-        id,
-      },
-      accessToken
-    );
-    return response;
-  } catch (error) {
-    handleRequestError(error);
-  }
+  return await sendRequest(
+    "POST",
+    "/user/chat/fetchMessages",
+    { id },
+    accessToken
+  );
 };
 
 // Function to download a file
@@ -516,69 +478,155 @@ export const userDownloadFile = async () => {
     handleRequestError(error);
   }
 };
-// Function to get user's shared photos
 export const getUserSharedPhotos = async (accessToken, userId) => {
-  try {
-    const response = await sendRequest(
-      "POST",
-      "/user/chat/shared",
-      {
-        user_id: userId,
-      },
-      accessToken
-    );
-    return response;
-  } catch (error) {
-    handleRequestError(error);
-  }
+  return await sendRequest(
+    "POST",
+    "/user/chat/shared",
+    { user_id: userId },
+    accessToken
+  );
 };
 
-// Function to delete a conversation
 export const userDeleteConversation = async (accessToken, id) => {
-  try {
-    const response = await sendRequest(
-      "POST",
-      "/user/chat/deleteConversation",
-      {
-        id,
-      },
-      accessToken
-    );
-    return response;
-  } catch (error) {
-    handleRequestError(error);
-  }
+  return await sendRequest(
+    "POST",
+    "/user/chat/deleteConversation",
+    { id },
+    accessToken
+  );
 };
 
-// Function to fetch doctor information by ID
 export const userFetchDoctorByID = async (accessToken, id) => {
+  return await sendRequest("POST", "/user/chat/idInfo", { id }, accessToken);
+};
+
+export const userMakeMessageSeen = async (accessToken, id) => {
+  return await sendRequest("POST", "/user/chat/makeSeen", { id }, accessToken);
+};
+
+
+//shared
+// Function to add a new article by a doctor
+export const addNewArticle = async (accessToken, title, body, image) => {
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("body", body);
+  formData.append("image", image);
+
   try {
-    const response = await sendRequest(
-      "POST",
-      "/user/chat/idInfo",
-      {
-        id,
+    const response = await axios.post(`${BASE_URL}/articles`, formData, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        Accept: "application/json",
+        "Content-Type": "application/vnd.api+json",
       },
-      accessToken
-    );
-    return response;
+    });
+    return response.data;
   } catch (error) {
     handleRequestError(error);
   }
 };
+// Function to update an existing article by a doctor
+export const updateArticle = async (
+  accessToken,
+  articleId,
+  title,
+  body,
+  image
+) => {
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("body", body);
+  formData.append("image", image);
 
-// Function to mark a message as seen
-export const userMakeMessageSeen = async (accessToken, id) => {
   try {
-    const response = await sendRequest(
-      "POST",
-      "/user/chat/makeSeen",
+    const response = await axios.post(
+      `${BASE_URL}/articles/${articleId}`,
+      formData,
       {
-        id,
-      },
-      accessToken
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          Accept: "application/json",
+          "Content-Type": "application/vnd.api+json",
+        },
+      }
     );
-    return response;
+    return response.data;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+// Function to get all articles by a user/admin
+export const getAllArticles = async (accessToken, page) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/articles?page=${page}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+// Function to get all articles by a doctor
+export const getDoctorArticles = async (accessToken) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/doctor/articles`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+// Function to get the latest article by a doctor
+export const getLatestArticle = async (accessToken) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/doctor/latest-article`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+// Function to get a specific article by a user/doctor/admin
+export const getSpecificArticle = async (accessToken, articleId) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/articles/${articleId}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    handleRequestError(error);
+  }
+};
+// Function to delete an article by a doctor/admin
+export const deleteArticle = async (accessToken, articleId) => {
+  try {
+    await axios.delete(`${BASE_URL}/articles/${articleId}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    return true;
   } catch (error) {
     handleRequestError(error);
   }

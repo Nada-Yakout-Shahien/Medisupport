@@ -1,12 +1,42 @@
 import { Helmet } from "react-helmet-async";
 import "./Reed_articles.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import article from "../images/article.jpg";
 import arrow from "../images/ri-arrow-for-article.svg";
 import { NavLink } from "react-router-dom";
-import Layout from '../components/Layout';
+import Layout from "../components/Layout";
+import { getAllArticles } from "../components/apiService";
 
 const Reed_articles = () => {
+  const [articles, setArticles] = useState([]);
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        let currentPage = 1;
+        let totalPages = 1;
+        let fetchedArticles = [];
+
+        while (currentPage <= totalPages) {
+          const response = await getAllArticles(accessToken, currentPage);
+
+          console.log("Fetched page", currentPage, "of Articles:", response);
+
+          totalPages = response.meta.last_page;
+
+          fetchedArticles = [...fetchedArticles, ...response.data];
+
+          setArticles(fetchedArticles);
+          currentPage++;
+        }
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      }
+    };
+    fetchArticles();
+  }, []);
+
+
   return (
     <Layout>
       <Helmet>
@@ -19,38 +49,16 @@ const Reed_articles = () => {
         </div>
         <div className="article2">
           <div className="word">Articles</div>
-          <div className="dis">
-            <div className="diseases">
-              <p>Blood pressure</p>
-              <NavLink to="/pressure">
-                <img src={arrow} alt="" />
-              </NavLink>{" "}
+          {articles.map((article, index) => (
+            <div className="dis" key={index}>
+              <div className="diseases">
+                <p>{article.title}</p>
+                <NavLink to={`/article/${article.id}`}>
+                  <img src={arrow} alt="" />
+                </NavLink>
+              </div>
             </div>
-          </div>
-          <div className="dis">
-            <div className="diseases">
-              <p>Blood sugar</p>
-              <NavLink to="/sugar">
-                <img src={arrow} alt="" />
-              </NavLink>
-            </div>
-          </div>
-          <div className="dis">
-            <div className="diseases">
-              <p>BMI</p>
-              <NavLink to="/ABmi">
-                <img src={arrow} alt="" />
-              </NavLink>{" "}
-            </div>
-          </div>
-          <div className="dis">
-            <div className="diseases">
-              <p>Heart</p>
-              <NavLink to="/heart">
-                <img src={arrow} alt="" />
-              </NavLink>{" "}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </Layout>

@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet-async";
-import "./Welcome.css";
 import React, { useState, useRef, useEffect } from "react";
 import "./chat.css";
 import Header from "../components/header";
@@ -11,8 +10,11 @@ import {
   userSendMessage,
   fetchUserMessages,
   userFetchDoctorByID,
+  userDownloadFile,
+  getUserSharedPhotos,
+  userDeleteConversation,
 } from "../components/apiService";
-import Pusher from 'pusher-js';
+import Pusher from "pusher-js";
 
 const emojis = [
   "😀",
@@ -399,6 +401,7 @@ const Chat = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const messagesEndRef = useRef(null);
   const baseURL = "http://127.0.0.1:8000/";
+  const [selectedFile, setSelectedFile] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -425,85 +428,19 @@ const Chat = () => {
     };
 
     fetchData();
-
-    const interval = setInterval(() => {
-      fetchData();
-    }, 60000);
+    const interval = setInterval(fetchData, 60000);
 
     return () => clearInterval(interval);
   }, []);
 
-  const handleDoctorClick = async (doctor) => {
-    try {
-      const accessToken = localStorage.getItem("accessToken");
-      const doctorInfo = await userFetchDoctorByID(accessToken, doctor.id);
-      setSelectedDoctorInfo(doctorInfo.fetch);
-      setCurrentDoctorMessages(doctor.messages);
-      setShowPicker(false);
-
-      const userMessages = await fetchUserMessages(accessToken, doctor.id);
-      setCurrentDoctorMessages(userMessages.messages);
-
-      await userMakeMessageSeen(accessToken, doctor.id);
-
-      if (windowWidth <= 750) {
-        setShowSidebar(false);
-        setShowChat(true);
-      } else {
-        setShowChat(true);
-      }
-    } catch (error) {
-      console.error("An error occurred while fetching doctor information:", error);
-    }
-  };
-
-  const sendMessage = async (e, message) => {
-    e.preventDefault();
-    if (inputMessage.trim() !== "" && selectedDoctorInfo) {
-      try {
-        const accessToken = localStorage.getItem("accessToken");
-        const response = await userSendMessage(
-          accessToken,
-          selectedDoctorInfo.id,
-          inputMessage
-        );
-        setInputMessage("");
-      } catch (error) {
-        console.error("An error occurred while sending the message:", error);
-      }
-    }
-  };
-
   useEffect(() => {
-    const storedMessages = JSON.parse(localStorage.getItem("messages")) || {};
-    const doctorMessages = storedMessages[selectedDoctorInfo?.id] || [];
-    setCurrentDoctorMessages(doctorMessages);
-  }, [selectedDoctorInfo]);
-
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-    if (window.innerWidth >= 750 && !selectedDoctorInfo) {
-      setShowSidebar(true);
-      setShowDefaultConversation(true);
-    }
-  };
-
-  const handleArrowClick = async () => {
-    try {
-      const accessToken = localStorage.getItem("accessToken");
-      if (selectedDoctorInfo) {
-        await userMakeMessageSeen(accessToken, selectedDoctorInfo.id);
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      if (window.innerWidth >= 750 && !selectedDoctorInfo) {
+        setShowSidebar(true);
+        setShowDefaultConversation(true);
       }
-
-      setSelectedDoctorInfo(null);
-      setShowChat(false);
-      setShowPicker(false);
-    } catch (error) {
-      console.error("An error occurred while marking messages as seen:", error);
-    }
-  };
-
-  useEffect(() => {
+    };
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -532,6 +469,114 @@ const Chat = () => {
     }
   }, [selectedDoctorInfo, windowWidth]);
 
+  useEffect(() => {
+    if (selectedDoctorInfo) {
+      const storedMessages = JSON.parse(localStorage.getItem("messages")) || {};
+      const doctorMessages = storedMessages[selectedDoctorInfo.id] || [];
+      setCurrentDoctorMessages(doctorMessages);
+    }
+  }, [selectedDoctorInfo]);
+
+  useEffect(() => {
+    const authenticateUserForChat = async () => {
+      try {
+        const socketId = "9013.50262712";
+        const channelName = "private-chatify";
+        const accessToken = localStorage.getItem("accessToken");
+        const response = await userChatAuth(socketId, channelName, accessToken);
+        console.log("Authentication response:", response);
+      } catch (error) {
+        console.error("An error occurred during chat authentication:", error);
+      }
+    };
+    authenticateUserForChat();
+  }, []);
+
+  useEffect(() => {
+    const pusher = new Pusher("699bcc950016f00a1982", {
+      cluster: "eu",
+    });
+    const channel = pusher.subscribe("private-chatify");
+    channel.bind("messaging", function (data) {
+      if (selectedDoctorInfo && data.to_id === selectedDoctorInfo.id) {
+        setCurrentDoctorMessages((prevMessages) => [...prevMessages, data]);
+      }
+    });
+  
+    return () => {
+      pusher.unsubscribe("private-chatify");
+      pusher.disconnect();
+    };
+  }, [selectedDoctorInfo]);
+  
+  
+
+  const handleDoctorClick = async (doctor) => {
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      const doctorInfo = await userFetchDoctorByID(accessToken, doctor.id);
+      setSelectedDoctorInfo(doctorInfo.fetch);
+      const userMessages = await fetchUserMessages(accessToken, doctor.id);
+      setCurrentDoctorMessages(userMessages.messages);
+      await userMakeMessageSeen(accessToken, doctor.id);
+      if (windowWidth <= 750) {
+        setShowSidebar(false);
+        setShowChat(true);
+      } else {
+        setShowChat(true);
+      }
+    } catch (error) {
+      console.error(
+        "An error occurred while fetching doctor information:",
+        error
+      );
+    }
+  };
+  const handleSendMessage = async (event) => {
+    event.preventDefault();
+    if (!inputMessage.trim() && !selectedFile) return;
+
+    const temporaryMsgId = new Date().getTime().toString();
+    const newMessage = {
+      from_id: "yourUserId",
+      to_id: selectedDoctorInfo.id,
+      content: inputMessage,
+      temporary_msg_id: temporaryMsgId,
+    };
+
+    setCurrentDoctorMessages((prevMessages) => [...prevMessages, newMessage]);
+    setInputMessage("");
+
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      await userSendMessage(
+        accessToken,
+        selectedDoctorInfo.id,
+        inputMessage,
+        temporaryMsgId
+      );
+      const updatedMessages = await fetchUserMessages(
+        accessToken,
+        selectedDoctorInfo.id
+      );
+      setCurrentDoctorMessages(updatedMessages.messages);
+    } catch (error) {
+      console.error("An error occurred while sending message:", error);
+    }
+  };
+  const handleArrowClick = async () => {
+    try {
+      const accessToken = localStorage.getItem("accessToken");
+      if (selectedDoctorInfo) {
+        await userMakeMessageSeen(accessToken, selectedDoctorInfo.id);
+      }
+      setSelectedDoctorInfo(null);
+      setShowChat(false);
+      setShowPicker(false);
+    } catch (error) {
+      console.error("An error occurred while marking messages as seen:", error);
+    }
+  };
   const formatTime = (createdAt) => {
     const date = new Date(createdAt);
     const hours = date.getHours();
@@ -540,46 +585,27 @@ const Chat = () => {
     const period = hours >= 12 ? "PM" : "AM";
     return `${displayHours}:${minutes} ${period}`;
   };
-
   const selectEmoji = (emoji) => {
-    setInputMessage(inputMessage + emoji);
+    setInputMessage((prevMessage) => prevMessage + emoji);
+  };
+  const handleDeleteConversation = async () => {
+    if (window.confirm("Are you sure you want to delete this conversation?")) {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        await userDeleteConversation(accessToken, selectedDoctorInfo.id);
+        setCurrentDoctorMessages([]);
+        setSelectedDoctorInfo(null);
+        localStorage.removeItem("messages");
+      } catch (error) {
+        console.error(
+          "An error occurred while deleting the conversation:",
+          error
+        );
+      }
+    }
   };
 
-  useEffect(() => {
-    const authenticateUserForChat = async () => {
-      try {
-        const socketId = "9013.50262712";
-        const channelName = "private-chatify";
-        const accessToken = localStorage.getItem("accessToken");
 
-        const response = await userChatAuth(socketId, channelName, accessToken);
-
-        console.log("Authentication response:", response);
-      } catch (error) {
-        console.error("An error occurred during chat authentication:", error);
-      }
-    };
-
-    authenticateUserForChat();
-  }, []);
-  
-  useEffect(() => {
-    const pusher = new Pusher('699bcc950016f00a1982', {
-      cluster: 'eu',
-    });
-  
-    const channel = pusher.subscribe('private-chatify');
-  
-    channel.bind('messaging', (data) => {
-      console.log('Received message:', data);
-      setInputMessage((prevMessages) => [...prevMessages, data]);
-    });
-  
-    return () => {
-      pusher.unsubscribe('private-chatify');
-    };
-  }, []);
-  
   return (
     <>
       <Helmet>
@@ -798,7 +824,11 @@ const Chat = () => {
                     />
                   </div>
                   <div className="input-icon">
-                    <input type="file" style={{ display: "none" }} />
+                    <input
+                      type="file"
+                      style={{ display: "none" }}
+                      id="fileInput"
+                    />
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="22"
@@ -816,7 +846,7 @@ const Chat = () => {
                     </svg>
                   </div>
                 </div>
-                <button>
+                <button className="record">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="40"
@@ -833,7 +863,7 @@ const Chat = () => {
                     />
                   </svg>
                 </button>
-                <button type="submit" onClick={(e) => sendMessage(e)}>
+                <button type="submit" onClick={(e) => handleSendMessage(e)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="41"
@@ -862,5 +892,4 @@ const Chat = () => {
     </>
   );
 };
-
 export default Chat;
