@@ -3,6 +3,8 @@ import "./Activity.css";
 import React, { useState, useEffect } from "react";
 import { eachDayOfInterval, format } from "date-fns";
 import Layout from "../components/Layout";
+import "chart.js/auto";
+import { Line } from "react-chartjs-2";
 import { NavLink } from "react-router-dom";
 
 //date show
@@ -18,6 +20,7 @@ const generateDays = (startDate, numberOfDays) => {
   }));
 };
 
+    
 const Activity = (props, { data }) => {
   const [selectedOption, setSelectedOption] = useState("Blood Pressure");
   const handleOptionChange = (event) => {
@@ -25,7 +28,7 @@ const Activity = (props, { data }) => {
   };
 
   //days
-  const startDate = new Date(2024, 5, 1);
+  const startDate = new Date(2024, 5, 21);
   const days = generateDays(startDate, 100);
 
   //on click day
@@ -33,6 +36,59 @@ const Activity = (props, { data }) => {
 
   const handleDayClick = (fullDate) => {
     setSelectedDay(fullDate);
+  };
+
+  // graph
+  const options = {
+    responsive: true,
+
+    scales: {
+      xAxes: [{
+        gridLines: {
+          color: 'rgba(190, 2, 2, 0.3)', 
+          borderDash: [5, 5], 
+          lineWidth: 2.77, 
+        },scaleLabel: {
+          display: true,
+          labelString: 'Day',
+        },
+      }],
+
+      yAxes: [{
+        gridLines: {
+          color: 'rgba(190, 2, 2, 0.3)', 
+          borderDash: [20, 20], 
+          lineWidth: 2.77, 
+        },
+        scaleLabel: {
+          display: true,
+          labelString: 'mmHg',
+        },
+      }],
+    },
+  };
+  const datau = {
+    labels: ["", "", "", "", "", "", ""],
+    datasets: [
+      {
+        label: "Upper Bound",
+        data: [110, 125, 110, 160, 140, 150, 110],
+        borderColor: "#be0202",
+        backgroundColor: "#be0202",
+      },
+    ],
+  };
+  const datal = {
+    labels: ["", "", "", "", "", "", ""],
+    display:false,
+    datasets: [
+      {
+        label: "Lower Bound",
+        data: [60, 80, 80, 100, 96, 95, 85],
+        borderColor: "#be0202",
+        backgroundColor: "#be0202",
+      },
+    ],
   };
 
   //diagram
@@ -53,13 +109,13 @@ const Activity = (props, { data }) => {
 
   //days-diagram
   const [dayValues, setDayValues] = useState([
-    { day: "Mon", value: 450 },
-    { day: "Tue", value: 225 },
-    { day: "Wed", value: 350 },
-    { day: "Thu", value: 299 },
-    { day: "Fri", value: 390 },
-    { day: "Sat", value: 250 },
-    { day: "Sun", value: 270 },
+    { day: "Mon", value: 280 },
+    { day: "Tue", value: 400 },
+    { day: "Wed", value: 240 },
+    { day: "Thu", value: 280 },
+    { day: "Fri", value: 360 },
+    { day: "Sat", value: 220 },
+    { day: "Sun", value: 250 },
   ]);
 
   useEffect(() => {
@@ -75,6 +131,67 @@ const Activity = (props, { data }) => {
       .catch((error) => console.error("Error fetching data: ", error));
   }, []);
 
+
+
+
+  //history//
+  const [dataList, setDataList] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const apiData = await new Promise((resolve) =>
+        setTimeout(
+          () =>
+            resolve([
+              {
+                status: "Normal",
+                mesure: "140/90",
+                unit: "mmHG",
+                date: "24/11/2023",
+                day: "Tue",
+
+                mesures: "120",
+                units: "mg/gl",
+                dates: "24/11/2023",
+                days: "Tue",
+              },
+
+              {
+                status: "Normal",
+                mesure: "140/90",
+                unit: "mmHG",
+                date: "24/11/2023",
+                day: "Tue",
+
+                mesures: "120",
+                units: "mg/gl",
+                dates: "24/11/2023",
+                days: "Tue",
+              },
+
+              {
+                status: "Normal",
+                mesure: "140/90",
+                unit: "mmHG",
+                date: "24/11/2023",
+                day: "Tue",
+
+                mesures: "120",
+                units: "mg/gl",
+                dates: "24/11/2023",
+                days: "Tue",
+              },
+
+            ]),
+          1000
+        )
+      );
+
+      setDataList(apiData);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <Layout>
       <Helmet>
@@ -82,7 +199,7 @@ const Activity = (props, { data }) => {
         <meta name="description" content="Activity" />
       </Helmet>
 
-      {/* section-1 */}
+                        {/* section-1 */}
 
       <div className="dropdown-menu">
         <select value={selectedOption} onChange={handleOptionChange}>
@@ -91,7 +208,7 @@ const Activity = (props, { data }) => {
         </select>
       </div>
 
-      {/* blood-pressure-sec */}
+                        {/* blood-pressure-sec */}
 
       {selectedOption === "Blood Pressure" && (
         <div className="detailsbpa">
@@ -105,6 +222,8 @@ const Activity = (props, { data }) => {
               </button>
             </div>
           </div>
+
+                        {/* date */}
 
           <div className="contant">
             <div className="dBP-date">
@@ -129,6 +248,8 @@ const Activity = (props, { data }) => {
               ))}
             </div>
 
+                        {/* graph */}
+
             <div className="dBP-diagram">
               <div className="diagrams">
                 <div className="dig">
@@ -141,7 +262,9 @@ const Activity = (props, { data }) => {
                       <p>mmHG</p>
                     </div>
                   </div>
-                  <div className="diagram"></div>
+                  <div className="diagram">
+                    <Line data={datau} options={options} />
+                  </div>
                 </div>
                 <div className="dig">
                   <div className="bound">
@@ -153,10 +276,14 @@ const Activity = (props, { data }) => {
                       <p>mmHG</p>
                     </div>
                   </div>
-                  <div className="diagram"></div>
+                  <div className="diagram">
+                    <Line data={datal} options={options} />
+                  </div>
                 </div>
               </div>
             </div>
+
+                          {/* reading */}
 
             <div className="inf-det">
               <h3>Recommended Reading</h3>
@@ -174,27 +301,51 @@ const Activity = (props, { data }) => {
               </p>
             </div>
             
-            {/* table */}
+                          {/* table */}
 
             <div className="table">
               <div className="head">
-                <h4>History</h4>
-                <NavLink to="" className="trans">
+                <p>History</p>
+                <NavLink to="/PressurHistory" className="trans">
                   See All
                 </NavLink>
               </div>
-            </div>
-            <div className="btn">
-              <NavLink to="/blood_pressure" className="addrec">
-                Add New Record
-              </NavLink>
+
+              <div className="his">
+                <div className="datah">
+                  {dataList.map((data, index) => (
+                  <div key={index} className="data">
+                    <p className="status">{data.status} : </p>
+                    <p className="mesure">
+                      {data.mesure}
+                      <p className="unit-p">mmHG</p>
+                    </p>
+                    <p className="line1-p">|</p>
+                    <p className="date-p">{data.date}</p>
+                    <p className="line2-p">|</p>
+                    <p className="day-p">{data.day}</p>
+                  </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
+
+                  {/* button */}
+
+          <div className="record">
+            <NavLink to="/blood_pressure" className="btn">
+              Add New Record
+            </NavLink>
+          </div>
+
         </div>
       )}
 
-      {/* blood-sugar-sec */}
+                        {/* blood-sugar-sec */}
 
+                        {/* date */}
+                        
       {selectedOption === "Blood Sugar" && (
         <div className="bloodsugarda">
           <div className="date">
@@ -222,6 +373,9 @@ const Activity = (props, { data }) => {
               <h5>mg/gl</h5>
             </div>
           </div>
+
+                                  {/* diagram */}
+
           <div className="diagram">
             <div className="chart-container">
               <div className="chart-box">
@@ -244,15 +398,11 @@ const Activity = (props, { data }) => {
                   <div className="lcp">
                     <div className="chart-bars">
                       {dayValues.map(({ day, value }, index) => (
-                        <div
-                          key={index}
-                          className="chart-bar-outer"
-                          style={{ height: `100%` }}
-                        >
-                          <div
-                            className="chart-bar-inner"
-                            style={{ height: `${(value / 500) * 100}%` }}
-                          ></div>
+                        <div key={index} className="chart-bar-outer"
+                            style={{ height: `100%` }}>
+                          <div className="chart-bar-inner"
+                            style={{ height: `${(value / 500) * 100}%` }}>
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -267,7 +417,10 @@ const Activity = (props, { data }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> 
+
+                                  {/* reading */}
+
           <div className="inf-det">
             <h3>Recommended Reading</h3>
             <h4>How To Loss Sugar ?</h4>
@@ -283,24 +436,46 @@ const Activity = (props, { data }) => {
             </p>
           </div>
 
-          {/* table */}
+                      {/* table */}
 
           <div className="table">
             <div className="head">
-              <h4>History</h4>
-              <NavLink to="" className="trans">
+              <p>History</p>
+              <NavLink to="/SugarHistory" className="trans">
                 See All
               </NavLink>
             </div>
+
+            <div className="his">
+              <div className="datah">
+                {dataList.map((data, index) => (
+                <div key={index} className="data">
+                  <p className="status">{data.status} : </p>
+                  <p className="mesure">
+                     {data.mesures}
+                    <p className="unit"> mg/gl</p>
+                  </p>
+                  <p className="line1">|</p>
+                  <p className="date"> {data.dates}</p>
+                  <p className="line2">|</p>
+                  <p className="day"> {data.days}</p>
+                </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div className="btn">
-            <NavLink to="/blood_sugar" className="addrec">
+                        {/* button */}
+
+          <div className="record">
+            <NavLink to="/blood_sugar" className="btn">
               Add New Record
             </NavLink>
           </div>
+
         </div>
       )}
+
     </Layout>
   );
 };

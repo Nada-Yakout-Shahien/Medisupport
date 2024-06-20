@@ -1,8 +1,9 @@
 .contact {
   position: relative;
   display: flex;
-  padding: 5rem;
+  padding: 4rem;
   gap: 3rem;
+  flex: 1;
 }
 .contact_img  ,.contact-form{
   display: flex;

@@ -195,8 +195,8 @@
 
 .popup-s .btn:hover{
   cursor: pointer;
-  background-color: var(--secondaryColor);
-  color: var(--Red);
+  background-color: var(--blackred);
+  color: var(--whiteColor);
   border: none;
 }
 

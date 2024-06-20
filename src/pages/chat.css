@@ -13,6 +13,12 @@
   flex: 2;
   gap: 1.5rem;
 }
+.chatting .sidebarchat-hidden {
+  display: none;
+}
+.hidden{
+  display: none;
+}
 .chatting .sidebarchat .sidebar {
   display: flex;
   flex-direction: column;
@@ -25,7 +31,7 @@
 .chatting .sidebarchat h3 {
   color: var(--Red);
   font-family: "Roboto", sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1rem, calc(1vw + 3vw), 1.8rem);
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -63,10 +69,10 @@
 }
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorAvatar .zoomedImage {
   object-fit: cover;
-  object-position: -16px center;
+  object-position: -2px center;
   width: auto;
-  height: 450%;
-  transform: translateY(31%);
+  height: 150%;
+  transform: translateY(3%);
   z-index: 1;
 }
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorInfo {
@@ -78,11 +84,11 @@
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorInfo .doctortext {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  justify-content: space-around;
 }
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorInfo .doctorName {
   color: #1c1f1e;
-  font-size: 20px;
+  font-size: clamp(0.5rem, calc(1vw + 3vw), 1.2rem);
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
@@ -96,12 +102,20 @@
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorInfo .lastMessage,
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorInfo .messageTime {
   color: #a7a6a5;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
 }
+
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorInfo .lastMessage {
   font-size: 0.9375rem;
+  width: 100%;
+  max-width: 19vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  flex-shrink: 0;
 }
 .chatting
   .sidebarchat
@@ -111,21 +125,24 @@
   .doctorInfo
   .unreadMessages {
   text-align: center;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
+  border: 0.1rem solid var(--Red);
   background-color: var(--Red);
   opacity: 0.7;
   border-radius: 50%;
   color: white;
-  font-size: 12px;
+  font-size: clamp(0.5rem, calc(1vw + 3vw), 0.7rem);
   font-family: "Inter", sans-serif;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 16px;
 }
 .chatting .sidebarchat .sidebar .doctorschat .slide .doctorInfo .mess {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   gap: 2.5rem;
+  align-items: stretch;
 }
 .chatting .sidebarchat .sidebar .doctorschat .slide .onlineIndicator {
   position: absolute;
@@ -202,24 +219,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 .chatm .imgd {
   position: relative;
   overflow: hidden;
-  width:4.5rem;
+  width: 4.5rem;
   height: 4.5rem;
-   border-radius: 50%;
+  border-radius: 50%;
 }
-.chatm .imgd img{
-   position: absolute;
-   object-fit: cover;
-   object-position: top right; 
-   top: 0;
-   left: 0;
-   width: 300%; 
-   height: 260%; 
-   transform: translate(-45%, -15% )scale(1);
+.chatm .imgd img {
+  position: absolute;
+  object-fit: cover;
+  object-position: top right;
+  top: 0;
+  left: 0;
+  width: 116%;
+  height: 114%;
+    transform: translate(-2%, -8%) scale(1);
 }
 .chatm .doctorinfor .contactimgchat .onlineIndicator {
   width: clamp(0.9rem, calc(1vw + 3vw), 1rem);
@@ -228,7 +244,7 @@
   border-radius: 50%;
   border: 1px solid white;
   position: absolute;
-  right:0.4em;
+  right: 0.4em;
   bottom: -0.1em;
   z-index: 2;
 }
@@ -252,6 +268,9 @@
 }
 .chatm .chat-messages .message {
   margin: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 .chatm .chat-messages .message.user {
   padding: 1rem;
@@ -285,6 +304,25 @@
   max-width: 50%;
 }
 
+.chatm .chat-messages .user-time svg{
+  color: #d9d9d9;
+
+}
+.chatm .chat-messages .user-time {
+  display: flex;
+  justify-content: right;
+  font-size: 0.7rem;
+  color: #c8c8c8;
+}
+.chatm .chat-messages .doctor-time {
+  display: flex;
+  justify-content: right;  
+  font-size: 0.7rem;
+  color: #8a8a8a;
+}
+.doctor-time svg {
+  display: none;
+}
 .input-area {
   display: flex;
   gap: 0.5rem;
@@ -296,7 +334,7 @@
 .input-area .input-container .input-icon {
   position: absolute;
   height: 100%;
-  top: -0.3em;
+  /* top: -0.3em; */
   bottom: 0;
   display: flex;
   align-items: center;
@@ -309,11 +347,11 @@
 }
 .input-area .input-container .textarea-custom {
   width: 100%;
-  height: 5.5vh;
+  /* height: 5.5vh; */
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius:0.5rem;
+  border-radius: 0.5rem;
   border: 1px solid var(--Red);
   background: #fff;
   box-sizing: border-box;
@@ -322,8 +360,8 @@
   padding: 0rem 2.5rem;
 }
 .input-area svg {
-  min-width: 30px; 
-  width: 4vw; 
+  min-width: 30px;
+  width: 4vw;
   height: 6vh;
 }
 .input-area .input-container svg:hover {
@@ -334,14 +372,14 @@
   border: 1px solid transparent;
 }
 .input-area .input-container .textarea::placeholder {
-  font-size: 80%; 
+  font-size: 80%;
 }
-
 .input-area .input-container .textarea {
   width: 100%;
   height: 100%;
   justify-content: center;
-  padding-top: 0.7rem;
+  padding-top: 1rem;
+  /* padding-left: 1rem; */
   box-sizing: border-box;
   border: none;
   resize: none;
@@ -359,7 +397,6 @@
 .input-area button:hover {
   opacity: 0.7;
 }
-
 .emoji-picker-position {
   position: relative;
   display: flex;
@@ -391,21 +428,20 @@
   display: none;
 }
 
-.chatm .convback{
-  margin-left: -2.7em;
+.chatm .convback {
+  /* margin-left: -2.7em; */
   margin-top: -1.9em;
 }
-.chatm .convback:hover{
+.chatm .convback:hover {
   opacity: 0.7;
 }
 .chatm .fa-solid.fa-arrow-left {
   cursor: pointer;
-  color: var(--Red); 
+  color: var(--Red);
   display: none;
   width: 1em;
-  padding: 0.5em;
+  padding: 1em 0.5em;
 }
-
 
 /*Res*/
 @media screen and (max-width: 750px) {
@@ -420,5 +456,9 @@
   }
   .conversation-default.active {
     padding: 16px;
+  }
+  .chatt header,
+  .chatt .footer {
+    display: none;
   }
 }

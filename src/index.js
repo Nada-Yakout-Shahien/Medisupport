@@ -21,10 +21,7 @@ import Welcome from "./pages/Welcome";
 import FillInformation from "./pages/fill_information";
 import Resultsorry from "./pages/resultsorry";
 import Resultcongratulations from "./pages/resultcongratulations";
-import ArPressure from "./pages/ar_pressure";
-import ArSugar from "./pages/ar_sugar";
-import ArBmi from "./pages/ar_bmi";
-import ArHeart from "./pages/ar_heart";
+import Article from "./pages/article";
 import Activity from "./pages/Activity";
 import Profile from "./pages/Profile";
 import DetailsBS from "./pages/details-bloodsuger";
@@ -40,6 +37,9 @@ import VerificationCode from "./pages/Verification_Code";
 import Loading from "./pages/loading";
 import Payment from "./pages/payment";
 import Chat from "./pages/chat";
+import BookingOffline from "./pages/Booking_Offline";
+import BookingOnline from "./pages/Booking_Online";
+import BMI1 from "./pages/BMI1";
 
 const router = createBrowserRouter([
   {
@@ -83,9 +83,9 @@ const router = createBrowserRouter([
   {
     path: "/Contact_us",
     element: (
-      <ProtectedRoute>
+      <>
         <Contactus />
-      </ProtectedRoute>
+      </>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
@@ -162,37 +162,10 @@ const router = createBrowserRouter([
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
-    path: "/pressure",
+    path: "/article/:id",
     element: (
       <ProtectedRoute>
-        <ArPressure />
-      </ProtectedRoute>
-    ),
-    errorElement: <h1>Sorry, No page to display....</h1>,
-  },
-  {
-    path: "/sugar",
-    element: (
-      <ProtectedRoute>
-        <ArSugar />
-      </ProtectedRoute>
-    ),
-    errorElement: <h1>Sorry, No page to display....</h1>,
-  },
-  {
-    path: "/ABmi",
-    element: (
-      <ProtectedRoute>
-        <ArBmi />
-      </ProtectedRoute>
-    ),
-    errorElement: <h1>Sorry, No page to display....</h1>,
-  },
-  {
-    path: "/heart",
-    element: (
-      <ProtectedRoute>
-        <ArHeart />
+        <Article />
       </ProtectedRoute>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,
@@ -240,6 +213,8 @@ const router = createBrowserRouter([
         <BmiHistory />
       </ProtectedRoute>
     ),
+    path: "/bmi_History",
+    element: <BmiHistory />,
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
   {
@@ -263,9 +238,9 @@ const router = createBrowserRouter([
   {
     path: "/forget_password",
     element: (
-      <ProtectedRoute>
+      <>
         <ForgetPassword />
-      </ProtectedRoute>
+      </>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
@@ -299,9 +274,9 @@ const router = createBrowserRouter([
   {
     path: "/Verification_Code",
     element: (
-      <ProtectedRoute>
+      <>
         <VerificationCode />
-      </ProtectedRoute>
+      </>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
@@ -348,6 +323,21 @@ const router = createBrowserRouter([
         <Chat />
       </ProtectedRoute>
     ),
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path:"/Book",
+    element:<BookingOffline/>,
+    errorElement:<h1>Sorry, No page to display....</h1>
+  },
+  {
+    path:"/BookOn",
+    element:<BookingOnline/>,
+    errorElement:<h1>Sorry, No page to display....</h1>
+  },
+  {
+    path: "/BMI1",
+    element: <BMI1 />,
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
 ]);

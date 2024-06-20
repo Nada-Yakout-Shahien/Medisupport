@@ -1,0 +1,154 @@
+.bmihistory{
+    width: 100%;
+    min-height: 100vh;
+}
+.rbmihistoryh2 h2{
+    color: #BE0202;
+font-family: Roboto;
+margin: 3rem 44rem;
+font-size: 2rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.historyp p{
+    color: #1F1F1F;
+    font-family: Roboto;
+    font-size: 2rem;
+    margin: -2rem 45rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.historypsvg svg{
+    width: 2.25rem;
+height: 2.25rem;
+margin: -1rem 50rem;
+flex-shrink: 0;
+}
+.tablex5{
+    width: 27.75rem;
+height: 4.125rem;
+flex-shrink: 0;
+margin: 5rem 34.5rem;
+    border: 1px solid #be0202;
+  border-radius: 0.625rem;
+  display: flex;
+}
+
+.tablex5 svg{
+    margin: 1.3rem 1.5rem;
+}
+
+.tablex5 p{
+    color: #1F1F1F;
+font-family: Roboto;
+margin: 1.3rem -1.1rem;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 400;
+line-height: 1.45019rem; /* 96.677% */
+}
+
+.svgtabel17 svg{
+    margin: 0.6rem 2rem;
+}
+
+.svgtable18 svg{
+    margin: 1.3rem -1rem;
+}
+
+.svgtabel19 svg{
+    margin: 0.6rem 2rem;
+}
+
+.svgtable20 svg{
+    margin: 1.5rem -1rem;
+}
+
+.tablex6{
+    width: 27.75rem;
+height: 4.125rem;
+flex-shrink: 0;
+margin: -3.9rem 34.5rem;
+    border: 1px solid #be0202;
+  border-radius: 0.625rem;
+  display: flex;
+}
+
+.tablex6 svg{
+     margin: 1.3rem 1.5rem;
+}
+
+.tablex6 p{
+    color: #1F1F1F;
+font-family: Roboto;
+margin: 1.3rem -1.1rem;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 400;
+line-height: 1.45019rem; /* 96.677% */
+}
+
+.svgtabel21 svg{
+    margin: 0.6rem 2rem;
+}
+
+.svgtable22 svg{
+    margin: 1.3rem -1rem;
+}
+
+.svgtabel23 svg{
+    margin: 0.6rem 2rem;
+}
+
+.svgtable24 svg{
+    margin: 1.5rem -1rem;
+}
+
+.tablex7{
+    width: 27.75rem;
+height: 4.125rem;
+flex-shrink: 0;
+margin: 5.3rem 34.5rem;
+    border: 1px solid #be0202;
+  border-radius: 0.625rem;
+  display: flex;
+}
+
+.tablex7 svg{
+    margin: 1.3rem 1.5rem;
+}
+
+.tablex7 p{
+    color: #1F1F1F;
+font-family: Roboto;
+margin: 1.3rem -1.1rem;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 400;
+line-height: 1.45019rem; /* 96.677% */
+}
+
+.svgtabel25 svg{
+    margin: 0.6rem 2rem;
+}
+
+.svgtable26 svg{
+    margin: 1.3rem -1rem;
+}
+
+.svgtabel27 svg{
+    margin: 0.6rem 2rem;
+}
+
+.svgtable28 svg{
+    margin: 1.5rem -1rem;
+}
+
+
+.bmihistory3r{
+    margin: -3.8rem 0.2rem;
+}

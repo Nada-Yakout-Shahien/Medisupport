@@ -4,6 +4,7 @@
   padding: 0 0 0 5vw;
   gap: 2.5rem;
   padding: 1rem 2rem 2.5rem 2rem;
+  flex: 1;
 }
 .detailsbp .headcon{
   display: flex;
@@ -126,14 +127,45 @@
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: row;
+  padding: 1.5rem;
+  gap: 2rem;
 }
 .detailsbp .dBP-diagram .diagramupper,
 .detailsbp .dBP-diagram .diagramlower{
   width: 50%;
 }
+.detailsbp .dBP-diagram .diagramupper .bound ,.detailsbp .dBP-diagram .diagramlower .bound{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.detailsbp .dBP-diagram .diagramupper .bound p ,.detailsbp .dBP-diagram .diagramlower .bound p  {
+  display: flex;
+  align-items: center;
+  color: var(--graycolor);
+  text-align: right;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.45019rem; /* 116.013% */
+}
 
+.detailsbp .dBP-diagram .diagramupper .bound .boun ,.detailsbp .dBP-diagram .diagramlower .bound .boun{
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}
 
+.detailsbp .dBP-diagram .diagramupper .bound .boun .rec ,.detailsbp .dBP-diagram .diagramlower .bound .boun .rec{
+  width: 1.84363rem;
+  height: 1.875rem;
+  flex-shrink: 0;
+  border-radius: 0.3125rem;
+  background-color:var(--Red);
+}
 
 
 
@@ -174,28 +206,28 @@
   line-height: normal;
 }
 /* btn */
-.detailsbp .btn {
+.detailsbp .butn {
   display: flex;
   justify-content: center;
 }
-.detailsbp .btn .addrec {
+.detailsbp .butn .addrec {
   display: flex;
   justify-content: center;
   text-align: center;
-  padding: 1rem 0.75rem;
+  max-height: 3rem;
+  padding: 1vh 18vw;
   align-items: center;
-  flex: 0.3;
   color: var(--whiteColor);
   border-radius: 0.625rem;
   background: var(--Red);
   font-family: "Roboto", sans-serif;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, calc(1vw + 3vw), 1.5rem);  
   font-style: normal;
   font-weight: 500;
   line-height: 100%;
   letter-spacing: 0.03125rem;
 }
-.detailsbp .btn .addrec:hover {
+.detailsbp .butn .addrec:hover {
   opacity: 0.7;
 }
 

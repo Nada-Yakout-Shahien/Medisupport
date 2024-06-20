@@ -16,7 +16,7 @@
 .bloodsugar .stb h3 {
   color: var(--Red);
   font-family: 'Roboto',sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1.3rem, calc(1vw + 3vw), 2rem);  
   font-style: normal;
   font-weight: 700;
 }
@@ -25,8 +25,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 2.5rem;
-  gap: 1.5rem;
+  padding: 0.5rem 2.5vw;
+  gap: clamp(0.5rem, calc(1vw + 1vw), 1.5rem);  
   border-radius: 1rem;
   background: var(--Red);
   cursor: pointer;
@@ -34,8 +34,7 @@
 .bloodsugar .stb .menu .txt{
   color: var(--whiteColor);
   font-family: 'Roboto',sans-serif;
-  font-size: 1.125rem;
-  font-style: normal;
+  font-size: clamp(0.9rem, calc(1vw + 3vw), 1.25rem);  font-style: normal; 
   font-weight: 400;
   line-height: 1.45019rem; 
 }
@@ -47,18 +46,19 @@
   width: 100%;
   /* min-width: 160px; */
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 1.5rem 1.5rem 0.5rem;
+  padding: 1rem 1rem 0rem;
   z-index: 1;
   border-radius: 0.5rem;
 }
 .bloodsugar .dropdown-content div {
   color: black;
-  padding: 0.5rem 1.2rem;
+  padding: 0.5rem 1vw;
   text-decoration: none;
   display: block;
   border: 1px solid var(--Red) ;
   border-radius: 0.5rem;
   margin-bottom: 1em;
+  font-size: clamp(0.1rem, calc(1vw + 2vw), 1rem); 
 }
 .bloodsugar .dropdown-content {
   display: block;
@@ -83,11 +83,18 @@
   align-items: flex-start;
   gap: 2.5em;
   margin-bottom: 2.5rem;
-  scrollbar-width: none;
+  padding-bottom: 1rem;
 }
-.bloodsugar .date::-webkit-scrollbar {
-  display: none;
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
 }
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .bloodsugar .day-container {
   flex: 0 0 auto;
   display: flex;
@@ -98,14 +105,14 @@
 }
 .bloodsugar .day-name {
   color: #1F1F1F;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, calc(1vw + 3vw), 2rem);  
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   word-wrap: break-word;
 }
 .bloodsugar .date-container {
-  width: 72px;
-  height: 72px;
+  width: clamp(3rem, calc(2vw + 4vw), 5vw);
+  height: clamp(3rem, calc(2vw + 4vw), 5vw);
   position: relative;
   border-radius: 3rem;
   cursor: pointer;
@@ -115,8 +122,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 2rem;
-  font-family: 'Roboto', sans-serif;
+  font-size: clamp(1rem, calc(1vw + 3vw), 2rem);  font-family: 'Roboto', sans-serif;
   font-weight: 700;
   word-wrap: break-word;
 }
@@ -151,7 +157,6 @@
 }
 .bloodsugar .dig{
   overflow-x: auto;
-  scrollbar-width: none;
 }
 .bloodsugar .dig::-webkit-scrollbar {
   display: none;
@@ -163,11 +168,8 @@
   min-height:15.625rem; 
   background-color: var(--whiteColor);
   overflow-x: auto;
-  scrollbar-width: none;
 }
-.bloodsugar .container::-webkit-scrollbar {
-  display: none;
-}
+
 .bloodsugar .mark-bar ,.red-bar{
   position: absolute;
   bottom: 1.5rem;
@@ -198,29 +200,31 @@
   display: none;
 }
 /* btn */
-.bloodsugar .btn{
+.bloodsugar .butn{
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
-.bloodsugar .btn .addrec{
+.bloodsugar .butn .addrec{
   display: flex;
   justify-content: center;
   text-align: center;
   max-height: 3rem;
-  padding: 1rem 0.75rem;
+  max-width: min-content;
+  padding: 1vh 7vw;
   align-items: center;
-  flex: 0.3;
   color: var(--whiteColor);
   border-radius: 0.625rem;
   background: var(--Red);
   font-family: 'Roboto',sans-serif;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, calc(1vw + 3vw), 1.5rem);  
   font-style: normal;
   font-weight: 500;
-  line-height: 100%; 
+  /* line-height: 100%;  */
   letter-spacing: 0.03125rem;
+  cursor: pointer;
 }
-.bloodsugar .btn .addrec:hover{
+.bloodsugar .butn .addrec:hover{
   opacity: 0.7;
 }
 /* after-click-btn */

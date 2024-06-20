@@ -4,8 +4,17 @@
   max-width: 90%;
   padding: 3vh 0vw 5vh 4.81vw;
   gap: 5vh;
+  flex: 1;
 }
-
+ .back{
+  display: flex;
+  padding: 0vh 3vh;
+  color: var(--Red);
+  cursor: pointer;
+}
+.back:hover{
+  opacity: 0.7;
+}
 .address {
   color: #be0202;
   font-family: "Roboto", sans-serif;

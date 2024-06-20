@@ -1,12 +1,17 @@
 import { Helmet } from "react-helmet-async";
 import "./details-bloodpressure.css";
-import React, { useState} from "react";
+import React, { useState, useEffect } from "react";
 import { eachDayOfInterval, format } from "date-fns";
 import "chart.js/auto";
 import { Line } from "react-chartjs-2";
 import Layout from "../components/Layout";
 import { NavLink } from "react-router-dom";
-
+import {
+  getAllBloodPressureMeasurements,
+  getLatestBloodPressureMeasurement,
+  getAllSystolicMeasurementsupper,
+  getAllDiastolicMeasurementslower,
+} from "../components/apiService";
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -34,60 +39,107 @@ const DetailsBloodpressure = () => {
   };
 
   //diagram
-  const options = {
-    responsive: true,
-    title: {
-      display: true,
-      text: "Blood Pressure",
-    },
-    scales: {
-      xAxes: [{
-        gridLines: {
-          color: 'rgba(190, 2, 2, 0.3)', 
-          borderDash: [5, 5], 
-          lineWidth: 2.77, 
-        },
-        scaleLabel: {
-          display: true,
-          labelString: 'Day',
-        },
-      }],
-      yAxes: [{
-        gridLines: {
-          color: 'rgba(190, 2, 2, 0.3)', 
-          borderDash: [5, 5], 
-          lineWidth: 2.77, 
-        },
-        scaleLabel: {
-          display: true,
-          labelString: 'mmHg',
-        },
-      }],
-    },
+  const [latestMeasurement, setLatestMeasurement] = useState(null);
+
+  useEffect(() => {
+    const fetchRecommendedAdvice = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const { data } = await getLatestBloodPressureMeasurement(accessToken);
+        console.log("Recommended blood pressure advice:", data);
+        setLatestMeasurement(data);
+      } catch (error) {
+        console.error(
+          "Error fetching recommended blood pressure advice:",
+          error
+        );
+      }
+    };
+
+    fetchRecommendedAdvice();
+  }, []);
+
+  const [systolicData, setSystolicData] = useState([]);
+  const [diastolicData, setDiastolicData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const accessToken = localStorage.getItem("accessToken");
+      try {
+        const systolicResponse = await getAllSystolicMeasurementsupper(
+          accessToken
+        );
+        const diastolicResponse = await getAllDiastolicMeasurementslower(
+          accessToken
+        );
+
+        // Extract data from the response
+        const systolicData = Object.entries(systolicResponse.data).map(
+          ([timestamp, value]) => ({
+            timestamp,
+            value,
+          })
+        );
+        const diastolicData = Object.entries(diastolicResponse.data).map(
+          ([timestamp, value]) => ({
+            timestamp,
+            value,
+          })
+        );
+
+        // Update state with the fetched data
+        setSystolicData(systolicData);
+        console.log("systolicData", systolicData);
+        setDiastolicData(diastolicData);
+        console.log("diastolicData", diastolicData);
+      } catch (error) {
+        console.error("Error fetching blood pressure data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const systolicChartData = {
+    labels: systolicData.map((entry) => entry.timestamp),
+    datasets: [
+      {
+        label: "Systolic",
+        data: systolicData.map((entry) => entry.value),
+        borderColor: "#be0202",
+        fill: false,
+        pointBackgroundColor: "white",
+        pointBorderColor: "#be0202",
+        yAxisID: "systolic-axis", // Assigning a unique ID to the y-axis
+      },
+    ],
   };
 
-  const datau = {
-    labels: ["", "", "", "", "", "", ""],
+  const diastolicChartData = {
+    labels: diastolicData.map((entry) => entry.timestamp),
     datasets: [
       {
-        label: "Upper Bound",
-        data: [100, 116, 100, 140, 120, 138, 100],
+        label: "Diastolic",
+        data: diastolicData.map((entry) => entry.value),
         borderColor: "#be0202",
-        backgroundColor: "#be0202",
+        fill: false,
+        pointBackgroundColor: "white",
+        pointBorderColor: "#be0202",
+        yAxisID: "diastolic-axis", // Assigning a unique ID to the y-axis
       },
     ],
   };
-  const datal = {
-    labels: ["", "", "", "", "", "", ""],
-    display:false,
-    datasets: [
-      {
-        label: "Lower Bound",
-        data: [90, 100, 89, 90, 69, 50, 91],
-        borderColor: "#be0202",
-        backgroundColor: "#be0202",
+
+  const chartOptions = {
+    responsive: true,
+    scales: {
+      x: {
+        display: false,
       },
-    ],
+      y: {
+        display: false,
+      },
+    },
   };
 
   return (
@@ -103,10 +155,22 @@ const DetailsBloodpressure = () => {
           </div>
           <div className="dBP-status">
             <p>
-              Average <span>140/90</span> mmHG
+              Average
+              {latestMeasurement && (
+                <span>
+                  {latestMeasurement.attributes.systolic}/
+                  {latestMeasurement.attributes.diastolic}
+                </span>
+              )}
+              mmHG
             </p>
             <button>
-              <p>Normal</p>
+              <p>
+                {latestMeasurement &&
+                latestMeasurement.attributes.pressure_advice_key
+                  ? latestMeasurement.attributes.pressure_advice_key
+                  : "No Key available"}
+              </p>
             </button>
           </div>
         </div>
@@ -132,27 +196,50 @@ const DetailsBloodpressure = () => {
 
           <div className="dBP-diagram">
             <div className="diagramupper">
-              <Line data={datau} options={options} />
+              <div className="bound">
+                <div className="boun">
+                  <div className="rec"></div>
+                  <p>Upper bound</p>
+                </div>
+                <div className="measure">
+                  <p>mmHG</p>
+                </div>
+              </div>
+              <Line data={systolicChartData} options={chartOptions} />
             </div>
             <div className="diagramlower">
-              <Line data={datal} options={options} />
+              <div className="bound">
+                <div className="boun">
+                  <div className="rec"></div>
+                  <p>Lower bound</p>
+                </div>
+                <div className="measure">
+                  <p>mmHG</p>
+                </div>
+              </div>
+              <Line data={diastolicChartData} options={chartOptions} />
             </div>
           </div>
-          <div className="inf-det">
-            <h3>Recommended Reading</h3>
-            <h4>How To Loss Sugar ?</h4>
-            <p>
-              Lorem ipsum, or lipsum as it is sometimes known, is dummy text
-              used in laying out print, graphic or web designs. The passage is
-              attributed to an unknown typesetter in the 15th century who is
-              thought to have scrambled parts of Cicero's De Finibus Bonorum et
-              Malorum for use in a type specimen book. It usually begins with:
-              <br />
-              “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.”
-            </p>
-          </div>
-          <div className="btn">
+
+          {latestMeasurement && (
+            <div className="inf-det">
+              <h3>Recommended Reading</h3>
+              <h4>
+                {latestMeasurement &&
+                latestMeasurement.attributes.pressure_advice_key
+                  ? latestMeasurement.attributes.pressure_advice_key
+                  : "No Key available"}
+              </h4>
+              <p>
+                {latestMeasurement &&
+                latestMeasurement.attributes.pressure_advice_advice
+                  ? latestMeasurement.attributes.pressure_advice_advice
+                  : "No advice available"}
+              </p>
+            </div>
+          )}
+
+          <div className="butn">
             <NavLink to="/blood_pressure" className="addrec">
               Add New Record
             </NavLink>

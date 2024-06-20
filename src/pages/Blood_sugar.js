@@ -4,6 +4,7 @@ import { eachDayOfInterval, format } from "date-fns";
 import "./Blood_sugar.css";
 import Layout from "../components/Layout";
 import { NavLink } from "react-router-dom";
+import { sendRequest ,getAccessTokenFromLocalStorage,getAllBloodSugarStatuses } from "../components/apiService";
 
 //date show
 const generateDays = (startDate, numberOfDays) => {
@@ -26,10 +27,6 @@ const Bloodsugar = () => {
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
-  };
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
   };
 
   //days
@@ -73,11 +70,12 @@ const Bloodsugar = () => {
   };
   const Bar = ({ id, type, left, value }) => {
     return (
-      <div className={`${type}`} style={{ left }} data-value={value}>
+      <div className={type} style={{ left }} data-value={value}>
         {value !== null && <div className="number">{value}</div>}
       </div>
     );
   };
+
   const marksLocations = [
     2, 12, 22, 32, 42, 52, 62, 72, 82, 92, 102, 112, 122, 132, 142, 152, 162,
     172, 182, 192, 202, 212, 222, 232, 242, 252, 262, 272, 282, 292, 302, 312,
@@ -120,9 +118,52 @@ const Bloodsugar = () => {
 
   //after-click-btn
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
-  const toggleOverlay = () => {
-    setIsOverlayVisible(!isOverlayVisible);
-  };
+
+
+const handleFormSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const accessToken = getAccessTokenFromLocalStorage(); 
+    if (!accessToken) {
+      console.error("Access token is missing");
+      return;
+    }
+    const bloodSugarData = {
+      level: averageValue.toFixed(2),
+      blood_sugar_statuses_id: 1,
+    };
+    await sendRequest(
+      "POST",
+      "/user/blood-sugar/store?level=89&blood_sugar_statuses_id=1",
+      bloodSugarData,
+      accessToken
+    );
+    setIsOverlayVisible(true);
+    console.log("Blood sugar data submitted successfully");
+  } catch (error) {
+    console.error("Error submitting blood sugar data:", error);
+  }
+};
+const [bloodSugarStatuses, setBloodSugarStatuses] = useState([]);
+
+const toggleMenu = async () => {
+  setIsOpen(!isOpen);
+  if (!isOpen) {
+    try {
+      const accessToken = getAccessTokenFromLocalStorage();
+      if (!accessToken) {
+        console.error("Access token is missing");
+        return;
+      }
+      const response = await getAllBloodSugarStatuses(accessToken);
+      setBloodSugarStatuses(response.data);
+      console.log("Blood sugar statuses:", response);
+    } catch (error) {
+      console.error("Error fetching blood sugar statuses:", error);
+    }
+  }
+};
+  
 
   return (
     <Layout>
@@ -130,7 +171,7 @@ const Bloodsugar = () => {
         <title>Blood Sugar ♥</title>
         <meta name="description" content="Manage your blood sugar levels" />
       </Helmet>
-      <div className="bloodsugar">
+      <form className="bloodsugar" onSubmit={handleFormSubmit}>
         <div className="stb">
           <h3>Blood Sugar</h3>
           <div className="menu" onClick={toggleMenu}>
@@ -149,25 +190,16 @@ const Bloodsugar = () => {
             </svg>
             {isOpen && (
               <div className="dropdown-content">
-                <div onClick={() => handleOptionClick("Default")}>Default</div>
-                <div onClick={() => handleOptionClick("During fasting")}>
-                  During fasting
-                </div>
-                <div onClick={() => handleOptionClick("Before eating (1h)")}>
-                  Before eating (1h)
-                </div>
-                <div onClick={() => handleOptionClick("After eating (2h)")}>
-                  After eating (2h)
-                </div>
-                <div onClick={() => handleOptionClick("Before bedtime")}>
-                  Before bedtime
-                </div>
-                <div onClick={() => handleOptionClick("Before workout")}>
-                  Before workout
-                </div>
-                <div onClick={() => handleOptionClick("After workout")}>
-                  After workout
-                </div>
+                {bloodSugarStatuses.map((status) => (
+                  <div
+                    key={status.id}
+                    onClick={() => handleOptionClick(status["status-name"])} 
+                    id={status.id}
+                    name="status-name"
+                  >
+                    {status["status-name"]} 
+                  </div>
+                ))}
               </div>
             )}
           </div>
@@ -192,7 +224,9 @@ const Bloodsugar = () => {
         </div>
         <div className="diagram">
           <div className="measure">
-            <p className="num">{averageValue.toFixed(2)}</p>
+            <p className="num" id="level" name="level">
+              {averageValue.toFixed(2)}
+            </p>
             <p>mg/dl</p>
           </div>
           <div className="dig" ref={digRef}>
@@ -210,10 +244,14 @@ const Bloodsugar = () => {
             </div>
           </div>
         </div>
-        <div className="btn" onClick={toggleOverlay}>
-          <NavLink to="" className="addrec">
-            Add To Record
-          </NavLink>
+
+        <div className="butn">
+          <input
+            type="submit"
+            name=""
+            value="Add To Record"
+            className="addrec"
+          />
         </div>
         {isOverlayVisible && (
           <div className="overlay">
@@ -248,7 +286,7 @@ const Bloodsugar = () => {
             </NavLink>{" "}
           </div>
         )}
-      </div>
+      </form>
     </Layout>
   );
 };
