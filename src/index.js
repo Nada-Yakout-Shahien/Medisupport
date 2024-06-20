@@ -41,7 +41,6 @@ import Chat from "./pages/chat";
 import BookingOffline from "./pages/Booking_Offline";
 import BookingOnline from "./pages/Booking_Online";
 import BMI1 from "./pages/BMI1";
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -109,6 +108,7 @@ const router = createBrowserRouter([
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
 
+ 
   {
     path: "/heart_rate",
     element: (
@@ -342,6 +342,7 @@ const router = createBrowserRouter([
     element: <BMI1 />,
     errorElement: <h1>Sorry, No page to display....</h1>,
   },
+
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

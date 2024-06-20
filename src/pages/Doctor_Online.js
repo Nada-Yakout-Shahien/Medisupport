@@ -1,33 +1,19 @@
 import { Helmet } from "react-helmet-async";
-import "./doctors.css";
+
 import React from "react";
-import {NavLink} from "react-router-dom";
 import doctors from "../images/doctors.png";
 import doctors2 from "../images/doctors2.png";
 import Layout from '../components/Layout';
-import { useSwipeable } from "react-swipeable";
 import doctors3 from "../images/doctors3.png";
 import right from "../images/right-arrow.png";
 import left from "../images/left-arrow.png";
-import axios from "axios";
 import { useRef, useEffect, useState } from "react";
 
 
-const Doctors = ({ count, rating, color, onRating }) => {
-  const [activeSection, setActiveSection] = useState("onlineDoctors");
+const DoctorOnline = ({ count, rating, color, onRating }) => {
+
   const {input, setInput} = useState("")
   const [results, setResults] = useState([]);
-
-  const Doctors=axios.get("http://127.0.0.1:8000/api/auth/user/get-all-doctors").then(data=>console.log(data))
-  const lineStyle = {
-    left: activeSection === "onlineDoctors" ? "0%" : "50%",
-  };
-  const handlers = useSwipeable({
-    onSwipedLeft: () => setActiveSection("offlineDoctors"),
-    onSwipedRight: () => setActiveSection("onlineDoctors"),
-    preventDefaultTouchmoveEvent: true,
-    trackMouse: true,
-  });
 
   const fetchData = (value) => {
     fetch("https://jsonplaceholder.typicode.com/users").then((response) => response.json()).then(json => {
@@ -480,30 +466,6 @@ const Doctors = ({ count, rating, color, onRating }) => {
             </div>
             <input className="buttonrr_r2" type="submit" value="Book Now" />
           </div>
-
-          {/*<div className="online1r">
-              <h2 className="h2onliner1">Online Doctors</h2>
-              <h2 className="h2onliner2">Offline Doctors</h2>
-
-          </div>*/}
-          <div className="navigation" {...handlers}>
-          <div className="status">
-            
-            <button to='/Doctor_Online' className={activeSection === "onlineDoctors" ? "active" : ""}
-            onClick={() => setActiveSection("onlineDoctors")}
-            >
-            Online Doctors
-              </button>
-            <button to='/doctors' className={activeSection === "offlineDoctors" ? "active" : ""}
-              onClick={() => setActiveSection("offlineDoctors")}
-            >
-              Offline Doctors
-            </button>
-          </div>
-          <div className="line">
-            <div className="lineafter" style={lineStyle}></div>
-          </div>
-        </div>
 
           
           
@@ -1027,4 +989,4 @@ const Doctors = ({ count, rating, color, onRating }) => {
   );
 };
 
-export default Doctors;
+export default DoctorOnline;
