@@ -9,6 +9,7 @@ import { useSwipeable } from "react-swipeable";
 import doctors3 from "../images/doctors3.png";
 import right from "../images/right-arrow.png";
 import left from "../images/left-arrow.png";
+import axios from "axios";
 import { useRef, useEffect, useState } from "react";
 
 
@@ -17,6 +18,7 @@ const Doctors = ({ count, rating, color, onRating }) => {
   const {input, setInput} = useState("")
   const [results, setResults] = useState([]);
 
+  const Doctors=axios.get("http://127.0.0.1:8000/api/auth/user/get-all-doctors").then(data=>console.log(data))
   const lineStyle = {
     left: activeSection === "onlineDoctors" ? "0%" : "50%",
   };
@@ -487,16 +489,16 @@ const Doctors = ({ count, rating, color, onRating }) => {
           <div className="navigation" {...handlers}>
           <div className="status">
             
-            <NavLink to='/Doctor_Online' className={activeSection === "onlineDoctors" ? "active" : ""}
+            <button to='/Doctor_Online' className={activeSection === "onlineDoctors" ? "active" : ""}
             onClick={() => setActiveSection("onlineDoctors")}
             >
             Online Doctors
-              </NavLink>
-            <NavLink to='/doctors' className={activeSection === "offlineDoctors" ? "active" : ""}
+              </button>
+            <button to='/doctors' className={activeSection === "offlineDoctors" ? "active" : ""}
               onClick={() => setActiveSection("offlineDoctors")}
             >
               Offline Doctors
-            </NavLink>
+            </button>
           </div>
           <div className="line">
             <div className="lineafter" style={lineStyle}></div>

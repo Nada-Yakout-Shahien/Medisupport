@@ -26,7 +26,7 @@
   flex-direction: row;
   gap: clamp(1rem, calc(1vw + 3vw), 4.25rem);
 }
-.details .navigation .status button {
+.details .navigation  {
   color: #777474;
   font-family: "Roboto", sans-serif;
   font-size: clamp(1rem, calc(1vw + 3vw), 2rem);
