@@ -24,9 +24,9 @@ const FillInformation = () => {
   const handleNextClick = () => {
     const currentForm = formRefs.current[currentStep - 1];
     const inputs = currentForm.querySelectorAll("input, select");
-  
+
     let isValid = true;
-  
+
     inputs.forEach((input) => {
       if (!input.checkValidity()) {
         input.reportValidity();
@@ -45,19 +45,20 @@ const FillInformation = () => {
       if (input.tagName === "SELECT") {
         if (input.value === "Your info") {
           isValid = false;
-          input.setCustomValidity("Please select an option other than 'Your info'.");
+          input.setCustomValidity(
+            "Please select an option other than 'Your info'."
+          );
           input.reportValidity();
         } else {
           input.setCustomValidity("");
         }
       }
     });
-  
+
     if (isValid && currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
     }
   };
-  
 
   const handleDropdownClick = (index) => {
     setDropdowns((prevDropdowns) =>
@@ -199,7 +200,7 @@ const FillInformation = () => {
   const renderInputField = (label, id, placeholder, index) => (
     <div className="infolbl" ref={(el) => (formRefs.current[index] = el)}>
       <label htmlFor={id}>{label}</label>
-      <input type="text" id={id} placeholder={placeholder} required />
+      <input type="number" id={id} placeholder={placeholder} required />
       {currentStep === index + 1 && (
         <button type="button" className="btn" onClick={handleNextClick}>
           Next
@@ -207,18 +208,44 @@ const FillInformation = () => {
       )}
     </div>
   );
-  
 
-  const handleresultClick = async () => {
+  const handleresultClick = async (event) => {
     if (currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
+      event.preventDefault();
     } else {
       try {
-        const predictionData = {};
+        const accessToken = localStorage.getItem("accessToken");
+        const formData = new FormData(event.target);
+        const predictionResult = {
+          BMI: formData.get("BMI"),
+          PhysicalHealth: formData.get("PhysicalHealth"),
+          MentalHealth: formData.get("MentalHealth"),
+          SleepTime: formData.get("SleepTime"),
+          AgeCategory: formData.get("AgeCategory"),
+          Race: formData.get("Race"),
+          Diabetic: formData.get("Diabetic"),
+          GenHealth: formData.get("GenHealth"),
+          Sex: formData.get("Sex"),
+          Smoking: formData.get("Smoking"),
+          AlcoholDrinking: formData.get("AlcoholDrinking"),
+          Stroke: formData.get("Stroke"),
+          DiffWalking: formData.get("DiffWalking"),
+          PhysicalActivity: formData.get("PhysicalActivity"),
+          Asthma: formData.get("Asthma"),
+          KidneyDisease: formData.get("KidneyDisease"),
+          SkinCancer: formData.get("SkinCancer"),
+        };
 
-        const predictionResult = await predict(predictionData);
+        const predictionResponse = await predict(predictionResult, accessToken);
 
-        console.log("Prediction Result:", predictionResult);
+        console.log("Prediction Result:", predictionResponse);
+
+        if (predictionResponse.prediction === 1) {
+          window.location.href = "/Resultcongratulations";
+        } else {
+          window.location.href = "/Resultsorry";
+        }
       } catch (error) {
         console.error("Prediction Error:", error);
       }
@@ -394,7 +421,6 @@ const FillInformation = () => {
               16
             )}
           <NavLink
-            to={currentStep < totalSteps ? "#" : "/Resultcongratulations"}
             className="btn"
             onClick={handleresultClick}
             style={{

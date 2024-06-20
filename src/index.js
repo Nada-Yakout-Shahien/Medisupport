@@ -34,6 +34,7 @@ import DetailsBloodpressure from "./pages/details-bloodpressure";
 import DoneNewPass from "./pages/done_new_pass";
 import NewPassword from "./pages/New_Password";
 import VerificationCode from "./pages/Verification_Code";
+import Videocall from "./pages/videocall";
 import Loading from "./pages/loading";
 import Payment from "./pages/payment";
 import Chat from "./pages/chat";
@@ -103,6 +104,15 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <Doctors />
+      </ProtectedRoute>
+    ),
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/videocall",
+    element: (
+      <ProtectedRoute>
+        <Videocall />
       </ProtectedRoute>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,
