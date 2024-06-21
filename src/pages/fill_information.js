@@ -169,10 +169,50 @@ const FillInformation = () => {
     </div>
   );
 
-  const handleresultClick = async () => {
-    if (currentStep < totalSteps) {
-      setCurrentStep(currentStep + 1);
-    } else {
+
+
+  const handleresultClick = async (event) => {
+    event.preventDefault();
+    const currentForm = formRefs.current[totalSteps - 1];
+
+    if (!currentForm || !(currentForm instanceof HTMLFormElement)) {
+      console.error("Form element not found or invalid.");
+      return;
+    }
+
+    const inputs = currentForm.querySelectorAll("input, select");
+
+    let isValid = true;
+
+    inputs.forEach((input) => {
+      if (!input.checkValidity()) {
+        input.reportValidity();
+        isValid = false;
+      }
+      if (input.tagName === "INPUT" && input.type === "text") {
+        const numericPattern = /^[0-9]+$/;
+        if (!numericPattern.test(input.value.trim())) {
+          isValid = false;
+          input.setCustomValidity("Please enter a valid numeric input.");
+          input.reportValidity();
+        } else {
+          input.setCustomValidity("");
+        }
+      }
+      if (input.tagName === "SELECT") {
+        if (input.value === "Your info") {
+          isValid = false;
+          input.setCustomValidity(
+            "Please select an option other than 'Your info'."
+          );
+          input.reportValidity();
+        } else {
+          input.setCustomValidity("");
+        }
+      }
+    });
+
+    if (isValid) {
       try {
         const predictionData = {};
 
