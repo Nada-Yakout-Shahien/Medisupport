@@ -2,7 +2,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   padding: 3vw 3vw 0vw 3vw;
   gap: 2em;
 }
@@ -30,8 +30,9 @@
   display: flex;
   flex-direction: column;
   gap: 2vh;
-  margin-bottom: 4vh;
+  margin-bottom: 3vh;
 }
+
 .info input{
   display: flex;
   border: 1px var(--Red) solid;
@@ -58,6 +59,38 @@
   font-size: clamp(0.5rem, calc(1vw + 3vw), 1.5rem);  position: relative;
   justify-content: space-between;
   gap: 1.5rem;
+  cursor: pointer;
+}
+.info .infolbl select {
+  display: flex;
+  border: 1px var(--Red) solid;
+  width: 100%;
+  min-width: 40vw;
+  min-height: 5vh;
+  flex-shrink: 0;
+  border-radius:0.625rem;
+  font-size: clamp(0.5rem, calc(1vw + 3vw), 1rem);
+  color: #6d6d6d;
+  padding: 1.3vh;
+}
+.info .infolbl option {
+  border-radius: var(--Red);
+}
+option {
+  font-size: 16px;
+  background-color: #ffffff;
+  border: 1rem solid var(--Red);
+  color: #4a4a4a;
+  padding: 8px;
+}
+
+option:checked {
+  background-color: #e0e0e0;
+  color: var(--Red);
+}
+
+option:hover {
+  background-color: var(--Red);
   cursor: pointer;
 }
 .info .infolbl .menu .txt{

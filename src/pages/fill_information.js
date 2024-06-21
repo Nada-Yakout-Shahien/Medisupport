@@ -1,198 +1,70 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import "./fill_information.css";
+import { NavLink } from "react-router-dom";
 import Layout from "../components/Layout";
-import { predict } from "../components/apiService";
 
 const FillInformation = () => {
   const totalSteps = 17;
   const [currentStep, setCurrentStep] = useState(1);
-  const [dropdowns, setDropdowns] = useState(
-    Array.from({ length: totalSteps }, () => ({
-      isOpen: false,
-      selectedOption: "Your info",
-    }))
+  const [formData, setFormData] = useState({
+    BMI: "",
+    Sex: "",
+    PhysicalHealth: "",
+    MentalHealth: "",
+    SleepTime: "",
+    Race: "",
+    Diabetic: "",
+    GenHealth: "",
+    AgeCategory: "",
+    Smoking: "",
+    AlcoholDrinking: "",
+    Stroke: "",
+    DiffWalking: "",
+    PhysicalActivity: "",
+    Asthma: "",
+    KidneyDisease: "",
+    SkinCancer: "",
+  });
+
+  const formRefs = useRef(
+    Array.from({ length: totalSteps }, () => React.createRef())
   );
-  const formRefs = useRef([]);
 
   useEffect(() => {
-    formRefs.current[currentStep - 1]?.scrollIntoView({ behavior: "smooth" });
+    if (
+      formRefs.current[currentStep - 1] &&
+      formRefs.current[currentStep - 1].current
+    ) {
+      formRefs.current[currentStep - 1].current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
   }, [currentStep]);
 
-  const handleDropdownClick = (index) => {
-    setDropdowns((prevDropdowns) =>
-      prevDropdowns.map((dropdown, i) => ({
-        ...dropdown,
-        isOpen: i === index ? !dropdown.isOpen : false,
-      }))
-    );
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [id]: value,
+    }));
   };
-
-  const handleOptionClick = (index, option) => {
-    setDropdowns((prevDropdowns) =>
-      prevDropdowns.map((dropdown, i) => ({
-        ...dropdown,
-        selectedOption: i === index ? option : dropdown.selectedOption,
-        isOpen: i === index ? false : dropdown.isOpen,
-      }))
-    );
-  };
-
-  const renderSelectOption = (label, id, options, index) => (
-    <div className="infolbl" ref={(el) => (formRefs.current[index] = el)}>
-      <label htmlFor={id}>{label}</label>
-      <div className="menu" onClick={() => handleDropdownClick(index)}>
-        <div
-          className={`txt ${
-            dropdowns[index].selectedOption === "Your info"
-              ? "option-default"
-              : "option-selected"
-          }`}
-        >
-          {dropdowns[index].selectedOption === "Your info"
-            ? options[0]
-            : dropdowns[index].selectedOption}
-        </div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="22"
-          height="24"
-          viewBox="0 0 22 24"
-          fill="none"
-        >
-          <path
-            d="M11.0818 13.3139L15.3588 8.36388C15.4385 8.26837 15.5339 8.19219 15.6393 8.13978C15.7447 8.08737 15.8581 8.05979 15.9728 8.05863C16.0875 8.05748 16.2013 8.08278 16.3075 8.13306C16.4137 8.18334 16.5101 8.25759 16.5913 8.35149C16.6724 8.44538 16.7365 8.55703 16.78 8.67993C16.8234 8.80282 16.8453 8.9345 16.8443 9.06728C16.8433 9.20006 16.8195 9.33128 16.7742 9.45329C16.7289 9.57529 16.6631 9.68564 16.5806 9.77788L11.6927 15.4349C11.5307 15.6224 11.3109 15.7277 11.0818 15.7277C10.8527 15.7277 10.633 15.6224 10.471 15.4349L5.58312 9.77788C5.50059 9.68564 5.43477 9.57529 5.38948 9.45329C5.3442 9.33128 5.32037 9.20006 5.31937 9.06728C5.31837 8.9345 5.34023 8.80282 5.38368 8.67993C5.42712 8.55703 5.49128 8.44538 5.57241 8.35149C5.65353 8.25759 5.75 8.18334 5.85619 8.13306C5.96238 8.08278 6.07615 8.05748 6.19088 8.05863C6.3056 8.05979 6.41898 8.08737 6.5244 8.13978C6.62981 8.19219 6.72516 8.26837 6.80486 8.36388L11.0818 13.3139Z"
-            fill="black"
-          />
-        </svg>
-        {dropdowns[index].isOpen && (
-          <div className="dropdown-content">
-            {options.map((option, optionIndex) => (
-              <div
-                key={option}
-                onClick={() =>
-                  optionIndex > 0 && handleOptionClick(index, option)
-                }
-                className={optionIndex === 0 ? "option-disabled" : ""}
-              >
-                {option}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-      {currentStep === index + 1 && (
-        <button type="button" className="btn" onClick={handleNextClick}>
-          Next
-        </button>
-      )}
-    </div>
-  );
-
-  const renderInputField = (label, id, placeholder, index) => (
-    <div className="infolbl" ref={(el) => (formRefs.current[index] = el)}>
-      <label htmlFor={id}>{label}</label>
-      <input type="number" id={id} placeholder={placeholder} required />
-      {currentStep === index + 1 && (
-        <button type="button" className="btn" onClick={handleNextClick}>
-          Next
-        </button>
-      )}
-    </div>
-  );
 
   const handleNextClick = () => {
-    const currentForm = formRefs.current[currentStep - 1];
-    const inputs = currentForm.querySelectorAll("input, select");
-
-    let isValid = true;
-
-    inputs.forEach((input) => {
-      if (!input.checkValidity()) {
-        input.reportValidity();
-        isValid = false;
+    setCurrentStep((prevStep) => {
+      const nextStep = prevStep + 1;
+      if (formRefs.current[nextStep - 1]?.current) {
+        formRefs.current[nextStep - 1].current.scrollIntoView({
+          behavior: "smooth",
+        });
       }
-      if (input.tagName === "INPUT" && input.type === "text") {
-        const numericPattern = /^[0-9]+$/;
-        if (!numericPattern.test(input.value.trim())) {
-          isValid = false;
-          input.setCustomValidity("Please enter a valid numeric input.");
-          input.reportValidity();
-        } else {
-          input.setCustomValidity("");
-        }
-      }
-      if (input.tagName === "SELECT") {
-        if (input.value === "Your info") {
-          isValid = false;
-          input.setCustomValidity(
-            "Please select an option other than 'Your info'."
-          );
-          input.reportValidity();
-        } else {
-          input.setCustomValidity("");
-        }
-      }
+      return nextStep;
     });
-
-    if (isValid && currentStep < totalSteps) {
-      setCurrentStep(currentStep + 1);
-    }
   };
 
-  const handleresultClick = async (event) => {
-    event.preventDefault();
-    const currentForm = formRefs.current[totalSteps - 1];
-
-    if (!currentForm || !(currentForm instanceof HTMLFormElement)) {
-      console.error("Form element not found or invalid.");
-      return;
-    }
-
-    const inputs = currentForm.querySelectorAll("input, select");
-
-    let isValid = true;
-
-    inputs.forEach((input) => {
-      if (!input.checkValidity()) {
-        input.reportValidity();
-        isValid = false;
-      }
-      if (input.tagName === "INPUT" && input.type === "text") {
-        const numericPattern = /^[0-9]+$/;
-        if (!numericPattern.test(input.value.trim())) {
-          isValid = false;
-          input.setCustomValidity("Please enter a valid numeric input.");
-          input.reportValidity();
-        } else {
-          input.setCustomValidity("");
-        }
-      }
-      if (input.tagName === "SELECT") {
-        if (input.value === "Your info") {
-          isValid = false;
-          input.setCustomValidity(
-            "Please select an option other than 'Your info'."
-          );
-          input.reportValidity();
-        } else {
-          input.setCustomValidity("");
-        }
-      }
-    });
-
-    if (isValid) {
-      try {
-        const accessToken = localStorage.getItem("accessToken");
-        const formData = new FormData(currentForm);
-        const data = Object.fromEntries(formData.entries());
-        console.log("Form Data: ", data);
-        const result = await predict(data, accessToken);
-        console.log("Prediction Result: ", result);
-      } catch (error) {
-        console.error("Error while predicting:", error);
-      }
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted with data:", formData);
   };
 
   return (
@@ -201,171 +73,453 @@ const FillInformation = () => {
         <title>Fill Information ♥</title>
         <meta name="description" content="Fill Information" />
       </Helmet>
-
       <div className="info">
         <h3>Please fill in the information</h3>
-        <form ref={(el) => (formRefs.current[totalSteps - 1] = el)}>
-          <div className="form1">
-            {currentStep >= 1 &&
-              renderInputField("BMI", "BMI", "Enter your BMI", 0)}
-            {currentStep >= 2 &&
-              renderSelectOption(
-                "Sex",
-                "Sex",
-                ["Select your sex", "Male", "Female"],
-                1
+        <form className="content" onSubmit={handleSubmit}>
+          <div className="forms">
+            <div className="form1">
+              {currentStep >= 1 && (
+                <div className="infolbl" ref={formRefs.current[0]}>
+                  <label htmlFor="BMI">BMI</label>
+                  <input
+                    type="number"
+                    id="BMI"
+                    placeholder="Enter your BMI"
+                    value={formData.BMI}
+                    onChange={handleChange}
+                    required
+                  />
+                  {currentStep === 1 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
               )}
-            {currentStep >= 3 &&
-              renderInputField(
-                "Physical Health",
-                "PhysicalHealth",
-                "Enter your Physical Health",
-                2
+
+              {currentStep >= 2 && (
+                <div className="infolbl" ref={formRefs.current[1]}>
+                  <label htmlFor="Sex">Sex</label>
+                  <select
+                    id="Sex"
+                    value={formData.Sex}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select your sex</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                  {currentStep === 2 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
               )}
-            {currentStep >= 4 &&
-              renderInputField(
-                "Mental Health",
-                "MentalHealth",
-                "Enter your Mental Health",
-                3
+
+              {currentStep >= 3 && (
+                <div className="infolbl" ref={formRefs.current[2]}>
+                  <label htmlFor="PhysicalHealth">Physical Health</label>
+                  <input
+                    type="text"
+                    id="PhysicalHealth"
+                    placeholder="Enter your Physical Health"
+                    value={formData.PhysicalHealth}
+                    onChange={handleChange}
+                    required
+                  />
+                  {currentStep === 3 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
               )}
-            {currentStep >= 5 &&
-              renderInputField(
-                "Sleep Time",
-                "SleepTime",
-                "Enter your Sleep Time",
-                4
+
+              {currentStep >= 4 && (
+                <div className="infolbl" ref={formRefs.current[3]}>
+                  <label htmlFor="MentalHealth">Mental Health</label>
+                  <input
+                    type="text"
+                    id="MentalHealth"
+                    placeholder="Enter your Mental Health"
+                    value={formData.MentalHealth}
+                    onChange={handleChange}
+                    required
+                  />
+                  {currentStep === 4 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
               )}
-            {currentStep >= 6 &&
-              renderSelectOption(
-                "Race",
-                "Race",
-                [
-                  "Select your Race",
-                  "American Indian/Alaskan Native",
-                  "Asian",
-                  "Black",
-                  "Hispanic",
-                  "White",
-                  "Other",
-                ],
-                5
+
+              {currentStep >= 5 && (
+                <div className="infolbl" ref={formRefs.current[4]}>
+                  <label htmlFor="SleepTime">Sleep Time</label>
+                  <input
+                    type="text"
+                    id="SleepTime"
+                    placeholder="Enter your Sleep Time"
+                    value={formData.SleepTime}
+                    onChange={handleChange}
+                    required
+                  />
+                  {currentStep === 5 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
               )}
-            {currentStep >= 7 &&
-              renderSelectOption(
-                "Diabetic",
-                "Diabetic",
-                [
-                  "Select your Diabetic",
-                  "No",
-                  "No, borderline diabetes",
-                  "Yes",
-                  "Yes (during pregnancy)",
-                ],
-                6
+
+              {currentStep >= 6 && (
+                <div className="infolbl" ref={formRefs.current[5]}>
+                  <label htmlFor="Race">Race</label>
+                  <select
+                    id="Race"
+                    value={formData.Race}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select your Race</option>
+                    <option value="American Indian/Alaskan Native">
+                      American Indian/Alaskan Native
+                    </option>
+                    <option value="Asian">Asian</option>
+                    <option value="Black">Black</option>
+                    <option value="Hispanic">Hispanic</option>
+                    <option value="White">White</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  {currentStep === 6 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
               )}
-            {currentStep >= 8 &&
-              renderSelectOption(
-                "Gen Health",
-                "GenHealth",
-                [
-                  "Your Gen Health",
-                  "Poor",
-                  "Fair",
-                  "Good",
-                  "Very Good",
-                  "Excellent",
-                ],
-                7
+
+              {currentStep >= 7 && (
+                <div className="infolbl" ref={formRefs.current[6]}>
+                  <label htmlFor="Diabetic">Diabetic</label>
+                  <select
+                    id="Diabetic"
+                    value={formData.Diabetic}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select your Diabetic</option>
+                    <option value="No">No</option>
+                    <option value="No, borderline diabetes">
+                      No, borderline diabetes
+                    </option>
+                    <option value="Yes">Yes</option>
+                    <option value="Yes (during pregnancy)">
+                      Yes (during pregnancy)
+                    </option>
+                  </select>
+                  {currentStep === 7 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
               )}
+
+              {currentStep >= 8 && (
+                <div className="infolbl" ref={formRefs.current[7]}>
+                  <label htmlFor="GenHealth">Gen Health</label>
+                  <select
+                    id="GenHealth"
+                    value={formData.GenHealth}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Your Gen Health</option>
+                    <option value="Poor">Poor</option>
+                    <option value="Fair">Fair</option>
+                    <option value="Good">Good</option>
+                    <option value="Very Good">Very Good</option>
+                    <option value="Excellent">Excellent</option>
+                  </select>
+                  {currentStep === 8 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
+
+            <div className="form2">
+              {currentStep >= 9 && (
+                <div className="infolbl" ref={formRefs.current[8]}>
+                  <label htmlFor="AgeCategory">Age Category</label>
+                  <select
+                    id="AgeCategory"
+                    value={formData.AgeCategory}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Enter your Age Category</option>
+                    <option value="18-24">18-24</option>
+                    <option value="25-29">25-29</option>
+                    <option value="30-34">30-34</option>
+                    <option value="35-39">35-39</option>
+                    <option value="40-44">40-44</option>
+                    <option value="45-49">45-49</option>
+                    <option value="50-54">50-54</option>
+                    <option value="55-59">55-59</option>
+                    <option value="60-64">60-64</option>
+                    <option value="65-69">65-69</option>
+                    <option value="70-74">70-74</option>
+                    <option value="75-79">75-79</option>
+                    <option value="80 or older">80 or older</option>
+                  </select>
+                  {currentStep === 9 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
+              )}
+
+              {currentStep >= 10 && (
+                <div className="infolbl" ref={formRefs.current[9]}>
+                  <label htmlFor="Smoking">Smoking</label>
+                  <select
+                    id="Smoking"
+                    value={formData.Smoking}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Your Smoking</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                  {currentStep === 10 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
+              )}
+
+              {currentStep >= 11 && (
+                <div className="infolbl" ref={formRefs.current[10]}>
+                  <label htmlFor="AlcoholDrinking">Alcohol Drinking</label>
+                  <select
+                    id="AlcoholDrinking"
+                    value={formData.AlcoholDrinking}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Your Alcohol Drinking</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                  {currentStep === 11 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
+              )}
+
+              {currentStep >= 12 && (
+                <div className="infolbl" ref={formRefs.current[11]}>
+                  <label htmlFor="Stroke">Stroke</label>
+                  <select
+                    id="Stroke"
+                    value={formData.Stroke}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Your Stroke</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                  {currentStep === 12 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
+              )}
+
+              {currentStep >= 13 && (
+                <div className="infolbl" ref={formRefs.current[12]}>
+                  <label htmlFor="DiffWalking">Difficulty Walking</label>
+                  <select
+                    id="DiffWalking"
+                    value={formData.DiffWalking}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Your Difficulty Walking</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                  {currentStep === 13 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
+              )}
+
+              {currentStep >= 14 && (
+                <div className="infolbl" ref={formRefs.current[13]}>
+                  <label htmlFor="PhysicalActivity">Physical Activity</label>
+                  <select
+                    id="PhysicalActivity"
+                    value={formData.PhysicalActivity}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Your Physical Activity</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                  {currentStep === 14 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
+              )}
+
+              {currentStep >= 15 && (
+                <div className="infolbl" ref={formRefs.current[14]}>
+                  <label htmlFor="Asthma">Asthma</label>
+                  <select
+                    id="Asthma"
+                    value={formData.Asthma}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Your Asthma</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                  {currentStep === 15 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
+              )}
+
+              {currentStep >= 16 && (
+                <div className="infolbl" ref={formRefs.current[15]}>
+                  <label htmlFor="KidneyDisease">Kidney Disease</label>
+                  <select
+                    id="KidneyDisease"
+                    value={formData.KidneyDisease}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Your Kidney Disease</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                  {currentStep === 16 && (
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleNextClick}
+                    >
+                      Next
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
-
-          <div className="form2">
-            {currentStep >= 9 &&
-              renderSelectOption(
-                "Age Category",
-                "AgeCategory",
-                [
-                  "Enter your Age Category",
-                  "18-24",
-                  "25-29",
-                  "30-34",
-                  "35-39",
-                  "40-44",
-                  "45-49",
-                  "50-54",
-                  "55-59",
-                  "60-64",
-                  "65-69",
-                  "70-74",
-                  "75-79",
-                  "80 or older",
-                ],
-                8
-              )}
-
-            {currentStep >= 10 &&
-              renderSelectOption(
-                "Smoking",
-                "Smoking",
-                ["Select do you smoke?", "Yes", "No"],
-                9
-              )}
-            {currentStep >= 11 &&
-              renderSelectOption(
-                "Alcohol Drinking",
-                "AlcoholDrinking",
-                ["Select do you drink Alcohol?", "Yes", "No"],
-                10
-              )}
-            {currentStep >= 12 &&
-              renderSelectOption(
-                "Stroke",
-                "Stroke",
-                ["Select have you had a stroke?", "Yes", "No"],
-                11
-              )}
-            {currentStep >= 13 &&
-              renderSelectOption(
-                "Diff Walking",
-                "DiffWalking",
-                ["Enter do you have Diff Walking?", "Yes", "No"],
-                12
-              )}
-            {currentStep >= 14 &&
-              renderSelectOption(
-                "Physical Activity",
-                "PhysicalActivity",
-                ["Enter do you have Physical Activity?", "Yes", "No"],
-                13
-              )}
-            {currentStep >= 15 &&
-              renderSelectOption(
-                "Asthma",
-                "Asthma",
-                ["Enter do you have Asthma?", "Yes", "No"],
-                14
-              )}
-            {currentStep >= 16 &&
-              renderSelectOption(
-                "Kidney Disease",
-                "KidneyDisease",
-                ["Enter do you have Kidney Disease?", "Yes", "No"],
-                15
-              )}
-          </div>
-
           <div className="form3">
-            {currentStep >= 17 &&
-              renderSelectOption(
-                "Skin Cancer",
-                "SkinCancer",
-                ["Do you have Skin Cancer?", "Yes", "No"],
-                16
-              )}
-            <button type="submit" className="btn" onClick={handleresultClick}>
-              {currentStep < totalSteps ? "Next" : "Result"}
-            </button>
+            {currentStep >= 17 && (
+              <div className="infolbl" ref={formRefs.current[16]}>
+                <label htmlFor="SkinCancer">Skin Cancer</label>
+                <select
+                  id="SkinCancer"
+                  value={formData.SkinCancer}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Your Skin Cancer</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+                {currentStep === 17 && (
+                  <button type="submit" className="btn">
+                    Submit
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         </form>
       </div>
