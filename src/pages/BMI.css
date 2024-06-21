@@ -5,6 +5,7 @@
 .bmi_r{
   padding: 1.5rem;
   min-height: 100vh; 
+  margin: 0rem 5rem;
   /* max-width: 63vw; */
   width: 100%;
   max-width: 59rem;
@@ -343,7 +344,7 @@ letter-spacing: 0.03125rem;
 }
 
 .rfotr{
-  width: 84.375rem;
+  width: 92.375rem;
 height: 16rem;
 margin: 2rem -13rem;
 gap: 4rem;

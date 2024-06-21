@@ -1,6 +1,5 @@
 .log {
   display: flex;
-  /*flex-direction: row;*/
   gap: 1em;
 }
 .log .flex2 {
@@ -164,7 +163,7 @@
   width: 100%;
   gap: 1em;
 }
-.log .blog{
+.log .blog {
   width: 100%;
   justify-content: center;
   display: flex;
@@ -174,47 +173,36 @@
   background-color: var(--whiteColor);
   border: 2px solid var(--Red);
 }
-.log .blog button{
-  width: 100%;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+.nsm7Bb-HzV7m-LgbsSe {
+  background: none;
+  border: none;
+  background-color: #ffffff;
+  border:1px solid #ffffff;
+  padding: 8px 16px;
+  color: #ffffff;
+  font-size: 16px;
 }
-.log .blog button div{
-  display: flex;
-  justify-content: center;
-}
-.log .blog span{
+
+
+.log .blog span {
   animation: none;
+}
+.facebook-button {
+  border: none;
+  background: none;
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--graycolor);
   font-family: "Roboto", sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-style: normal;
   font-weight: 500;
   line-height: 100%;
   letter-spacing: 0.5px;
+  padding: 2vh 1vh;
 }
-.log .text {
-  display: flex;
-  padding: 0vh 2vh;
-  justify-content: center;
-  align-items: center;
-  color: var(--graycolor);
-  font-family: "Roboto", sans-serif;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 100%;
-  letter-spacing: 0.5px;
-}
-.log .blog span:hover {
-  opacity: 0.7;
-}
-.log .text:hover {
+.facebook-button:hover {
   opacity: 0.7;
 }
 .log hr {
@@ -235,6 +223,14 @@
   font-weight: 400;
   line-height: 140%;
 }
+
+
+
+
+
+
+
+
 .log #nav:hover {
   opacity: 0.7;
 }
@@ -245,7 +241,7 @@
 /* PasswordInput.css */
 input::-ms-reveal,
 input::-ms-clear {
-    display: none;
+  display: none;
 }
 .password-input-container {
   position: relative;
@@ -259,14 +255,20 @@ input::-ms-clear {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  fill: #353535; 
+  fill: #353535;
 }
-.toggle-password-visibility.active { 
+.toggle-password-visibility.active {
   fill: var(--Red);
 }
 
+
 /* responsive */
-@media screen and (max-width: 1090px) {
+@media screen and (max-width: 450px) {
+  .log .btn-log {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 900px) {
   .log {
     flex-direction: column;
   }
@@ -277,9 +279,7 @@ input::-ms-clear {
   .log .flex2 {
     order: -1;
   }
-  .log .btn-log {
-    flex-direction: column;
-  }
+  
   .log .flex1 {
     padding-top: 0;
   }

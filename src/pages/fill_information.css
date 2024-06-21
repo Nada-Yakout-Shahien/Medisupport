@@ -6,6 +6,13 @@
   padding: 3vw 3vw 0vw 3vw;
   gap: 2em;
 }
+.option-disabled {
+  color: #999; 
+  pointer-events: none;
+  cursor: not-allowed; 
+}
+
+
 .info h3{
   display: flex;
   justify-content: center;
