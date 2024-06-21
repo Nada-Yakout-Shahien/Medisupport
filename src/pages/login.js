@@ -64,12 +64,10 @@ const Login = () => {
       alert("Failed to login with Google. Please try again.");
     }
   };
-
   const handleLogingoogleFailure = (error) => {
     console.error("Google login failed:", error);
     alert("Google login failed. Please try again.");
   };
-
   const handleLoginFacebookClick = async (facebookData) => {
     try {
       const response = await loginWithFacebook(
