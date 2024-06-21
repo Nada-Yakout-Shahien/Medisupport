@@ -196,7 +196,7 @@ const BookingDetails = () => {
       <div className="details">
         <h3>Details of Booking</h3>
         <div className="navigation" {...handlers}>
-          <div className="status_booking">
+          <div className="status">
             <button
               className={activeSection === "onlineDoctors" ? "active" : ""}
               onClick={() => setActiveSection("onlineDoctors")}
