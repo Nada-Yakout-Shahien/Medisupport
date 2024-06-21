@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import "./fill_information.css";
-import { NavLink } from "react-router-dom";
 import Layout from "../components/Layout";
 import { predict } from "../components/apiService";
 
@@ -14,7 +13,6 @@ const FillInformation = () => {
       selectedOption: "Your info",
     }))
   );
-  const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
   const formRefs = useRef([]);
 
   useEffect(() => {
@@ -25,7 +23,7 @@ const FillInformation = () => {
     setDropdowns((prevDropdowns) =>
       prevDropdowns.map((dropdown, i) => ({
         ...dropdown,
-        isOpen: i === index ? !dropdown.isOpen : dropdown.isOpen,
+        isOpen: i === index ? !dropdown.isOpen : false,
       }))
     );
   };
@@ -35,31 +33,10 @@ const FillInformation = () => {
       prevDropdowns.map((dropdown, i) => ({
         ...dropdown,
         selectedOption: i === index ? option : dropdown.selectedOption,
-        isOpen: dropdown.isOpen,
+        isOpen: i === index ? false : dropdown.isOpen,
       }))
     );
   };
-
-  useEffect(() => {
-    const closeDropdowns = () => {
-      setDropdowns((prevDropdowns) =>
-        prevDropdowns.map((dropdown) => ({
-          ...dropdown,
-          isOpen:
-            dropdown.selectedOption === "Your info" ? dropdown.isOpen : false,
-        }))
-      );
-    };
-
-    const hasDropdownChanged = dropdowns.some(
-      (dropdown, index) =>
-        dropdown.selectedOption !== dropdowns[index].selectedOption
-    );
-
-    if (hasDropdownChanged) {
-      closeDropdowns();
-    }
-  }, [dropdowns]);
 
   const renderSelectOption = (label, id, options, index) => (
     <div className="infolbl" ref={(el) => (formRefs.current[index] = el)}>
@@ -104,52 +81,11 @@ const FillInformation = () => {
           </div>
         )}
       </div>
-    </div>
-  );
-
-  const renderSelectOptions = (label, id, options, index) => (
-    <div className="infolbl" ref={(el) => (formRefs.current[index] = el)}>
-      <label htmlFor={id}>{label}</label>
-      <div className="menu" onClick={() => handleDropdownClick(index)}>
-        <div
-          className={`txt ${
-            dropdowns[index].selectedOption === "Your info"
-              ? "option-default"
-              : "option-selected"
-          }`}
-        >
-          {dropdowns[index].selectedOption === "Your info"
-            ? options[0]
-            : dropdowns[index].selectedOption}
-        </div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="22"
-          height="24"
-          viewBox="0 0 22 24"
-          fill="none"
-        >
-          <path
-            d="M11.0818 13.3139L15.3588 8.36388C15.4385 8.26837 15.5339 8.19219 15.6393 8.13978C15.7447 8.08737 15.8581 8.05979 15.9728 8.05863C16.0875 8.05748 16.2013 8.08278 16.3075 8.13306C16.4137 8.18334 16.5101 8.25759 16.5913 8.35149C16.6724 8.44538 16.7365 8.55703 16.78 8.67993C16.8234 8.80282 16.8453 8.9345 16.8443 9.06728C16.8433 9.20006 16.8195 9.33128 16.7742 9.45329C16.7289 9.57529 16.6631 9.68564 16.5806 9.77788L11.6927 15.4349C11.5307 15.6224 11.3109 15.7277 11.0818 15.7277C10.8527 15.7277 10.633 15.6224 10.471 15.4349L5.58312 9.77788C5.50059 9.68564 5.43477 9.57529 5.38948 9.45329C5.3442 9.33128 5.32037 9.20006 5.31937 9.06728C5.31837 8.9345 5.34023 8.80282 5.38368 8.67993C5.42712 8.55703 5.49128 8.44538 5.57241 8.35149C5.65353 8.25759 5.75 8.18334 5.85619 8.13306C5.96238 8.08278 6.07615 8.05748 6.19088 8.05863C6.3056 8.05979 6.41898 8.08737 6.5244 8.13978C6.62981 8.19219 6.72516 8.26837 6.80486 8.36388L11.0818 13.3139Z"
-            fill="black"
-          />
-        </svg>
-        {dropdowns[index].isOpen && (
-          <div className="dropdown-content">
-            {options.map((option, optionIndex) => (
-              <div
-                key={option}
-                onClick={() =>
-                  optionIndex > 0 && handleOptionClick(index, option)
-                }
-                className={optionIndex === 0 ? "option-disabled" : ""}
-              >
-                {option}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+      {currentStep === index + 1 && (
+        <button type="button" className="btn" onClick={handleNextClick}>
+          Next
+        </button>
+      )}
     </div>
   );
 
@@ -249,37 +185,12 @@ const FillInformation = () => {
       try {
         const accessToken = localStorage.getItem("accessToken");
         const formData = new FormData(currentForm);
-        const predictionResult = {
-          BMI: formData.get("BMI"),
-          PhysicalHealth: formData.get("PhysicalHealth"),
-          MentalHealth: formData.get("MentalHealth"),
-          SleepTime: formData.get("SleepTime"),
-          AgeCategory: formData.get("AgeCategory"),
-          Race: formData.get("Race"),
-          Diabetic: formData.get("Diabetic"),
-          GenHealth: formData.get("GenHealth"),
-          Sex: formData.get("Sex"),
-          Smoking: formData.get("Smoking"),
-          AlcoholDrinking: formData.get("AlcoholDrinking"),
-          Stroke: formData.get("Stroke"),
-          DiffWalking: formData.get("DiffWalking"),
-          PhysicalActivity: formData.get("PhysicalActivity"),
-          Asthma: formData.get("Asthma"),
-          KidneyDisease: formData.get("KidneyDisease"),
-          SkinCancer: formData.get("SkinCancer"),
-        };
-
-        const predictionResponse = await predict(predictionResult, accessToken);
-
-        console.log("Prediction Result:", predictionResponse);
-
-        if (predictionResponse.prediction === 1) {
-          window.location.href = "/Resultcongratulations";
-        } else {
-          window.location.href = "/Resultsorry";
-        }
+        const data = Object.fromEntries(formData.entries());
+        console.log("Form Data: ", data);
+        const result = await predict(data, accessToken);
+        console.log("Prediction Result: ", result);
       } catch (error) {
-        console.error("Prediction Error:", error);
+        console.error("Error while predicting:", error);
       }
     }
   };
@@ -291,9 +202,9 @@ const FillInformation = () => {
         <meta name="description" content="Fill Information" />
       </Helmet>
 
-      <form className="info" onSubmit={handleresultClick}>
+      <div className="info">
         <h3>Please fill in the information</h3>
-        <div className="forms">
+        <form ref={(el) => (formRefs.current[totalSteps - 1] = el)}>
           <div className="form1">
             {currentStep >= 1 &&
               renderInputField("BMI", "BMI", "Enter your BMI", 0)}
@@ -443,26 +354,21 @@ const FillInformation = () => {
                 15
               )}
           </div>
-        </div>
-        <div className="form3">
-          {currentStep >= 17 &&
-            renderSelectOptions(
-              "Skin Cancer",
-              "SkinCancer",
-              ["Do you have Skin Cancer?", "Yes", "No"],
-              16
-            )}
-          <button
-            type="submit"
-            className="btn"
-            style={{
-              display: currentStep === totalSteps ? "inline-block" : "none",
-            }}
-          >
-            {currentStep < totalSteps ? "Next" : "Result"}
-          </button>
-        </div>
-      </form>
+
+          <div className="form3">
+            {currentStep >= 17 &&
+              renderSelectOption(
+                "Skin Cancer",
+                "SkinCancer",
+                ["Do you have Skin Cancer?", "Yes", "No"],
+                16
+              )}
+            <button type="submit" className="btn" onClick={handleresultClick}>
+              {currentStep < totalSteps ? "Next" : "Result"}
+            </button>
+          </div>
+        </form>
+      </div>
     </Layout>
   );
 };
