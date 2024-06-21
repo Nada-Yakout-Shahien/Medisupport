@@ -10,7 +10,7 @@
 .res h3{
   color: var(--graycolor);
   font-family: 'Roboto',sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, calc(1vw + 3vw), 2rem);
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -19,7 +19,7 @@
   color: var(--darkgraycolor);
   text-align: center;
   font-family: 'Roboto',sans-serif;
-  font-size: 1.5rem;
+  font-size: clamp(0.5rem, calc(1vw + 3vw), 1.5rem);
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -27,14 +27,14 @@
 }
 .res .para span{
   color: var(--Red);
-  font-size: 1.5rem;
+  font-size: clamp(0.5rem, calc(1vw + 3vw), 1.5rem);
   font-style: normal;
   font-weight: 600;
   line-height: normal;
 }
 .res .para p{
   color: var(--darkgraycolor);
-  font-size: 1.5rem;
+  font-size: clamp(1rem, calc(1vw + 3vw), 2rem);
   font-style: normal;
   font-weight: 400;
   line-height: normal;

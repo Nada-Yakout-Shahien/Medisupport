@@ -21,7 +21,7 @@
   gap: 0.88rem;
   align-items: center;
 }
-.details .navigation .status {
+.details .navigation .status_booking {
   display: flex;
   flex-direction: row;
   gap: clamp(1rem, calc(1vw + 3vw), 4.25rem);
@@ -55,7 +55,11 @@
   background: var(--Red);
   transition: all 0.3s ease;
 }
-.details .navigation .status button.active {
+.details .navigation .status_booking button{
+  border: none;
+  background-color: transparent;
+}
+.details .navigation .status_booking button.active {
   color: #420000;
 }
 .details .doctor-info {
@@ -159,7 +163,7 @@
   font-weight: 400;
   line-height: normal;
 }
-.details .doctor-info .data .status.Accept {
+.details .doctor-info .data .status_booking.Accept {
   border-radius: 0.625rem;
   background: #8cffab;
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
@@ -172,7 +176,7 @@
   line-height: normal;
   padding: 0.2em 0.5em;
 }
-.details .doctor-info .data .status.Waiting {
+.details .doctor-info .data .status_booking.Waiting {
   border-radius: 0.625rem;
   background: #94c2ff;
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);

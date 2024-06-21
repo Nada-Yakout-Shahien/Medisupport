@@ -24,7 +24,7 @@
 .sb_footer-add h4 {
   color: var(--textColor);
   font-family: Arizonia;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, calc(1vw + 3vw), 2rem);
   font-weight: 400;
 }
 .socialmedia p{
@@ -56,7 +56,7 @@
   align-items: center; 
 }
 .sb_footer-copyright p {
-  font-size: 1rem;
+  font-size: clamp(0.5rem, calc(1vw + 3vw), 1rem);
   line-height: 1rem;
   color: var(--textColor);
   font-weight: 400;
@@ -66,7 +66,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  font-size: 1rem;
+  font-size: clamp(0.5rem, calc(1vw + 3vw), 1rem);
   font-weight: 500;
   font-family: "Roboto", sans-serif;
   font-style: normal;
