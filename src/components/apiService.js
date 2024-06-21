@@ -47,11 +47,11 @@ export const predict = async (predictionData) => {
   try {
     const accessToken = localStorage.getItem("accessToken");
 
-    const response = await axiosInstance.post("https://c58a-156-217-103-223.ngrok-free.app/api/predict", predictionData, {
+    const response = await axiosInstance.post(  `${BASE_URL}/predict`, predictionData, {
       headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},
     });
 
-    return response.data;
+    return response.data.prediction;
   } catch (error) {
     handleRequestError(error);
   }

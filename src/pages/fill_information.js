@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import "./fill_information.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
+import { predict } from "../components/apiService";
 
 const FillInformation = () => {
   const totalSteps = 17;
@@ -16,7 +17,7 @@ const FillInformation = () => {
     Race: "",
     Diabetic: "",
     GenHealth: "",
-    AgeCategory: "",
+    AgeCategory: 0,
     Smoking: "",
     AlcoholDrinking: "",
     Stroke: "",
@@ -26,7 +27,7 @@ const FillInformation = () => {
     KidneyDisease: "",
     SkinCancer: "",
   });
-
+  const navigate = useNavigate();
   const formRefs = useRef(
     Array.from({ length: totalSteps }, () => React.createRef())
   );
@@ -44,9 +45,30 @@ const FillInformation = () => {
 
   const handleChange = (e) => {
     const { id, value } = e.target;
+    let updatedValue = value;
+
+    // Convert specific fields to integer if necessary
+    if (
+      id === "AgeCategory" ||
+      id === "Race" ||
+      id === "Diabetic" ||
+      id === "GenHealth" ||
+      id === "Sex" ||
+      id === "Smoking" ||
+      id === "AlcoholDrinking" ||
+      id === "Stroke" ||
+      id === "DiffWalking" ||
+      id === "PhysicalActivity" ||
+      id === "Asthma" ||
+      id === "KidneyDisease" ||
+      id === "SkinCancer"
+    ) {
+      updatedValue = parseInt(value, 10);
+    }
+
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [id]: value,
+      [id]: updatedValue,
     }));
   };
 
@@ -62,9 +84,22 @@ const FillInformation = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted with data:", formData);
+    try {
+      const prediction = await predict(formData);
+      console.log("Prediction result:", prediction);
+
+      if (prediction === 0) {
+        navigate("/Resultsorry");
+      } else if (prediction === 1) {
+        navigate("/Resultcongratulations");
+      } else {
+        console.error("Invalid prediction result:", prediction);
+      }
+    } catch (error) {
+      console.error("Error during prediction:", error);
+    }
   };
 
   return (
@@ -100,7 +135,6 @@ const FillInformation = () => {
                   )}
                 </div>
               )}
-
               {currentStep >= 2 && (
                 <div className="infolbl" ref={formRefs.current[1]}>
                   <label htmlFor="Sex">Sex</label>
@@ -110,9 +144,9 @@ const FillInformation = () => {
                     onChange={handleChange}
                     required
                   >
-                    <option value="">Select your sex</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value={-1}>Select your sex</option>
+                    <option value={1}>Male</option>
+                    <option value={0}>Female</option>
                   </select>
                   {currentStep === 2 && (
                     <button
@@ -205,15 +239,14 @@ const FillInformation = () => {
                     required
                   >
                     <option value="">Select your Race</option>
-                    <option value="American Indian/Alaskan Native">
-                      American Indian/Alaskan Native
-                    </option>
-                    <option value="Asian">Asian</option>
-                    <option value="Black">Black</option>
-                    <option value="Hispanic">Hispanic</option>
-                    <option value="White">White</option>
-                    <option value="Other">Other</option>
+                    <option value={1}>American Indian/Alaskan Native</option>
+                    <option value={2}>Asian</option>
+                    <option value={3}>Black</option>
+                    <option value={4}>Hispanic</option>
+                    <option value={5}>White</option>
+                    <option value={6}>Other</option>
                   </select>
+
                   {currentStep === 6 && (
                     <button
                       type="button"
@@ -236,14 +269,10 @@ const FillInformation = () => {
                     required
                   >
                     <option value="">Select your Diabetic</option>
-                    <option value="No">No</option>
-                    <option value="No, borderline diabetes">
-                      No, borderline diabetes
-                    </option>
-                    <option value="Yes">Yes</option>
-                    <option value="Yes (during pregnancy)">
-                      Yes (during pregnancy)
-                    </option>
+                    <option value="0">No</option>
+                    <option value="1">No, borderline diabetes</option>
+                    <option value="2">Yes</option>
+                    <option value="3">Yes (during pregnancy)</option>
                   </select>
                   {currentStep === 7 && (
                     <button
@@ -267,11 +296,11 @@ const FillInformation = () => {
                     required
                   >
                     <option value="">Your Gen Health</option>
-                    <option value="Poor">Poor</option>
-                    <option value="Fair">Fair</option>
-                    <option value="Good">Good</option>
-                    <option value="Very Good">Very Good</option>
-                    <option value="Excellent">Excellent</option>
+                    <option value="0">Poor</option>
+                    <option value="1">Fair</option>
+                    <option value="2">Good</option>
+                    <option value="3">Very Good</option>
+                    <option value="4">Excellent</option>
                   </select>
                   {currentStep === 8 && (
                     <button
@@ -297,20 +326,21 @@ const FillInformation = () => {
                     required
                   >
                     <option value="">Enter your Age Category</option>
-                    <option value="18-24">18-24</option>
-                    <option value="25-29">25-29</option>
-                    <option value="30-34">30-34</option>
-                    <option value="35-39">35-39</option>
-                    <option value="40-44">40-44</option>
-                    <option value="45-49">45-49</option>
-                    <option value="50-54">50-54</option>
-                    <option value="55-59">55-59</option>
-                    <option value="60-64">60-64</option>
-                    <option value="65-69">65-69</option>
-                    <option value="70-74">70-74</option>
-                    <option value="75-79">75-79</option>
-                    <option value="80 or older">80 or older</option>
+                    <option value="1">18-24</option>
+                    <option value="2">25-29</option>
+                    <option value="3">30-34</option>
+                    <option value="4">35-39</option>
+                    <option value="5">40-44</option>
+                    <option value="6">45-49</option>
+                    <option value="7">50-54</option>
+                    <option value="8">55-59</option>
+                    <option value="9">60-64</option>
+                    <option value="10">65-69</option>
+                    <option value="11">70-74</option>
+                    <option value="12">75-79</option>
+                    <option value="13">80 or older</option>
                   </select>
+
                   {currentStep === 9 && (
                     <button
                       type="button"
@@ -332,9 +362,9 @@ const FillInformation = () => {
                     onChange={handleChange}
                     required
                   >
-                    <option value="">Your Smoking</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <option value={-1}>Your Smoking</option>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No</option>
                   </select>
                   {currentStep === 10 && (
                     <button
@@ -357,9 +387,9 @@ const FillInformation = () => {
                     onChange={handleChange}
                     required
                   >
-                    <option value="">Your Alcohol Drinking</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <option value={-1}>Your Alcohol Drinking</option>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No</option>
                   </select>
                   {currentStep === 11 && (
                     <button
@@ -382,9 +412,9 @@ const FillInformation = () => {
                     onChange={handleChange}
                     required
                   >
-                    <option value="">Your Stroke</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <option value={-1}>Your Stroke</option>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No</option>
                   </select>
                   {currentStep === 12 && (
                     <button
@@ -407,9 +437,9 @@ const FillInformation = () => {
                     onChange={handleChange}
                     required
                   >
-                    <option value="">Your Difficulty Walking</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <option value={-1}>Your Difficulty Walking</option>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No</option>
                   </select>
                   {currentStep === 13 && (
                     <button
@@ -432,9 +462,9 @@ const FillInformation = () => {
                     onChange={handleChange}
                     required
                   >
-                    <option value="">Your Physical Activity</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <option value={-1}>Your Physical Activity</option>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No</option>
                   </select>
                   {currentStep === 14 && (
                     <button
@@ -457,9 +487,9 @@ const FillInformation = () => {
                     onChange={handleChange}
                     required
                   >
-                    <option value="">Your Asthma</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <option value={-1}>Your Asthma</option>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No</option>
                   </select>
                   {currentStep === 15 && (
                     <button
@@ -482,9 +512,9 @@ const FillInformation = () => {
                     onChange={handleChange}
                     required
                   >
-                    <option value="">Your Kidney Disease</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <option value={-1}>Your Kidney Disease</option>
+                    <option value={1}>Yes</option>
+                    <option value={0}>No</option>
                   </select>
                   {currentStep === 16 && (
                     <button
@@ -509,9 +539,9 @@ const FillInformation = () => {
                   onChange={handleChange}
                   required
                 >
-                  <option value="">Your Skin Cancer</option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value={-1}>Your Skin Cancer</option>
+                  <option value={1}>Yes</option>
+                  <option value={0}>No</option>
                 </select>
                 {currentStep === 17 && (
                   <button type="submit" className="btn">
