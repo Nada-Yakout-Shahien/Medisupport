@@ -1,97 +1,211 @@
-import React ,{useState} from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Helmet } from "react-helmet-async";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Profile.css";
 import Layout from '../components/Layout';
 import user_photo from "../images/user-photo.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash,faCircleCheck} from '@fortawesome/free-regular-svg-icons';
+import { faEye, faEyeSlash, faCircleCheck, faEdit } from '@fortawesome/free-regular-svg-icons';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 const Profile = () => {
+  const [user, setUser] = useState(null);
+  const [imageSrc, setImageSrc] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [showPopupS, setShowPopupS] = useState(false);
   const [showPopupD, setShowPopupD] = useState(false);
+
+//image
+const handleFileChange = (event) => {
+  const file = event.target.files[0];
+  const formData = new FormData();
+  formData.append('image', file);
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    setImageSrc(reader.result);
+  };
+  reader.readAsDataURL(file);
+};
+  const openFileBrowser = () => {
+  document.getElementById('fileInput').click();
+};
+
+  //userData
+  useEffect(() => {
+    async function fetchUserProfile() {
+      try {
+        const token = localStorage.getItem('accessToken');  
+        const response = await axios.get('http://127.0.0.1:8000/api/auth/user/user-profile', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        setUser(response.data.data);
+        console.log('User Profile:', response.data.data);
+      } catch (error) {
+        console.error('Error fetching user profile:', error);
+      }
+    }
+       
+    fetchUserProfile();
+  },[]);
+
+  //updateuserData
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const token = localStorage.getItem('accessToken');
+      const axiosConfig = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      
+      const userDataForUpdate = {
+        first_name: user.first_name,
+        last_name: user.last_name,
+        password: user.password,
+        confirm_password: user.confirm_password,
+        
+      };
+      
+      await axios.post('http://127.0.0.1:8000/api/auth/user/update-profile', userDataForUpdate, axiosConfig);
+      console.log('Update profile Data Successfully');
+      console.log('Update Profile Response:', user);
+
+      setShowPopupS(true);
+
+    } catch (error) {
+      console.error('Error updating profile:', error);
+    }
+  }
+   
+  //deleteuserData
+  const deleteData = async () => {
+    try {
+      const token = localStorage.getItem('accessToken');
+      const axiosConfig = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      await axios.delete('http://127.0.0.1:8000/api/auth/user/delete-account',axiosConfig);
+      alert('Data has been deleted');
+      window.location.href = '/home';
+    } catch (error) {
+      console.error('Error deleting data:', error);
+    }
+  };
   
   return (
     <Layout>
       <Helmet>
-        <title>Profile ♥</title>
+        <title>Profile</title>
         <meta name="description" content="Profile" />
       </Helmet>
 
-                          {/* section1 */}
-        
       <div className='profile-sec'>
-        <img src={user_photo} alt='user_photo'/>
-          <div className='edit'>
-            <button>
-              <svg xmlns="http://www.w3.org/2000/svg" width="55" height="50" viewBox="0 0 45 40" fill="none">
-              <path d="M31.4304 26.9518L33.9304 24.4517C34.3211 24.0611 35.0008 24.3345 35.0008 24.897V36.2566C35.0008 38.327 33.321 40.0067 31.2507 40.0067H3.75008C1.67972 40.0067 0 38.327 0 36.2566V8.75605C0 6.68569 1.67972 5.00597 3.75008 5.00597H25.1177C25.6724 5.00597 25.9537 5.67786 25.5631 6.0763L23.063 8.57636C22.9458 8.69355 22.7896 8.75605 22.6177 8.75605H3.75008V36.2566H31.2507V27.3893C31.2507 27.2252 31.3132 27.0689 31.4304 26.9518ZM43.665 11.1858L23.1489 31.7019L16.0863 32.4831C14.0394 32.7097 12.2971 30.9831 12.5237 28.9205L13.305 21.8579L33.821 1.34183C35.6101 -0.447275 38.5008 -0.447275 40.2821 1.34183L43.6572 4.7169C45.4463 6.506 45.4463 9.4045 43.665 11.1858ZM35.9461 13.5999L31.4069 9.06074L16.891 23.5845L16.3207 28.6862L21.4223 28.1158L35.9461 13.5999ZM41.0087 7.37321L37.6336 3.99813C37.3133 3.67781 36.7899 3.67781 36.4774 3.99813L34.0632 6.41225L38.6024 10.9514L41.0165 8.53729C41.329 8.20916 41.329 7.69353 41.0087 7.37321Z" 
-              fill="#BE0202"/>
-            </svg>
-            </button>
-          </div>
-        <h4>User Name</h4>
+                                     {/* image */}
+
+            {imageSrc ? (
+              <img src={imageSrc} alt="Uploaded" />
+              ) : (
+              <img src={user_photo} alt='user_Avatar' />
+              )}
+              <div className='edit'>
+                <button onClick={openFileBrowser}>
+                  <FontAwesomeIcon className='upload' icon={faEdit} />
+                </button>
+                <input
+                  type="file"
+                  id="fileInput"
+                  style={{ display: 'none' }}
+                  accept="image/*"
+                  onChange={handleFileChange}
+                />
+              </div>
+                                          {/* user-name */}
+
+        {user && (
+          <h4>{`${user.first_name || ''} ${user.last_name || ''}`}</h4>
+        )}
       </div>
-        
-                          {/* section2 */}
+
+                                      {/* inputs-feilds */}
 
       <div className='info-sec'>
         <h4>Edit Info</h4>
-
-        <div className='inputs'>
-          <div className='name'>
-            <div className='f-name'>
-              <label>First Name</label>
-              <input placeholder='FName' type='text'/>
+        <form onSubmit={handleSubmit} >
+          <div className='inputs'>
+            <div className='name'>
+              <div className='f-name'>
+                <label>First Name</label>
+                <input
+                  placeholder='First Name'
+                  type='text'
+                  value={user ? user.first_name : ''}
+                  onChange={e => setUser({ ...user, first_name: e.target.value })}
+                />
+              </div>
+              <div className='l-name'>
+                <label>Last Name</label>
+                <input
+                  placeholder='Last Name'
+                  type='text'
+                  value={user ? user.last_name : ''}
+                  onChange={e => setUser({ ...user, last_name: e.target.value })}
+                />
+              </div>
             </div>
-
-            <div className='l-name'>
-              <label>Last Name</label>
-              <input placeholder='LName' type='text' />
-            </div>
-          </div>
-          
             <div className='pass'>
               <label>Password</label>
-              <input placeholder='Your Password' type={showPassword ? "text" : "password"}/>
-                <button onClick={() => setShowPassword(!showPassword)}>
-                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-                </button>
-            </div>
-
-            <div className='confirm'>
-              <label>Confirm Password</label>
-              <input placeholder='Your Password' type={showPassword ? "text" : "password"}/> 
+              <input
+                placeholder='Your Password'
+                type={showPassword ? "text" : "password"}
+                value={user ? user.password : ''}
+                onChange={e => setUser({ ...user, password: e.target.value })}
+              />
               <button onClick={() => setShowPassword(!showPassword)}>
-                  <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
               </button>
             </div>
-          
-        </div>
-        
-                              {/* buttons */}
+            <div className='confirm'>
+              <label>Confirm Password</label>
+              <input
+                placeholder='Confirm Password'
+                type={showPassword ? "text" : "password"}
+              />
+              <button onClick={() => setShowPassword(!showPassword)}>
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+              </button>
+            </div>
+          </div>
+          </form>
+                                      {/* buttons */}
 
         <div className='save'>
-          <button onClick={()=>setShowPopupS(true)}>Save</button>
-          {showPopupS && (<div className='popup-s'>
-            <FontAwesomeIcon className='check' icon={faCircleCheck} style={{color: "#4A963D",}}/>
+        <button type='submit' onClick={() => setShowPopupS(true)}>Save</button>
+          {showPopupS && (
+            <div className='popup-s'>
+              <FontAwesomeIcon className='check' icon={faCircleCheck} style={{ color: '#4A963D' }} />
               <NavLink to='/home' className='btn'>
                 Home Page
               </NavLink>
-          </div>
+            </div>
           )}
         </div>
-        
+
         <div className='delete'>
           <button onClick={() => setShowPopupD(true)}>
-            <FontAwesomeIcon className='warning' icon={faExclamationTriangle} style={{ color: "#fcfcfc" }}/>
-              Delete Account
+            <FontAwesomeIcon className='warning' icon={faExclamationTriangle} style={{ color: '#fcfcfc' }} />
+            Delete Account
           </button>
-          {showPopupD && (<div className='popup-d'>
-            <div className='message'>
-                <FontAwesomeIcon className='icon' icon={faExclamationTriangle} style={{color: "#697077",}}/>
+          {showPopupD && (
+            <div className='popup-d'>
+              <div className='message'>
+                <FontAwesomeIcon className='icon' icon={faExclamationTriangle} style={{ color: '#697077' }} />
                 <div className='close'>
                   <button onClick={() => setShowPopupD(false)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -100,12 +214,13 @@ const Profile = () => {
                   </button>
                 </div>
                 <h2>Delete Account</h2>
-                <p>Aliquam vivamus elementum dictum<br></br>suspendisse enim metus.</p>
-                <NavLink to="/home" className='button'>Delete</NavLink>
+                <p>Aliquam vivamus elementum dictum<br />suspendisse enim metus.</p>
+                <button className='button'onClick={deleteData}>Delete</button>
+              </div>
             </div>
-          </div>
           )}
         </div>
+          
       </div>
     </Layout>
   );

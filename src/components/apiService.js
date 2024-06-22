@@ -92,19 +92,6 @@ export const registerUser = async (userData) => {
   }
 };
 
-export const storeBloodSugarLevel = async (accessToken, level, statusId) => {
-  try {
-    const response = await sendRequest(
-      "POST",
-      `/user/blood-sugar/store?level=${level}&blood_sugar_statuses_id=${statusId}`,
-      null,
-      accessToken
-    );
-    return response;
-  } catch (error) {
-    handleRequestError(error);
-  }
-};
 
 export const getAllBloodSugarRecords = async (accessToken, page) => {
   try {
