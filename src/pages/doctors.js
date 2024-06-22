@@ -18,7 +18,7 @@ const Doctors = ({ count, rating, color, onRating }) => {
   const {input, setInput} = useState("")
   const [results, setResults] = useState([]);
 
-  const Doctors=axios.get("http://127.0.0.1:8000/api/auth/user/get-all-doctors").then(data=>console.log(data))
+  const Doctors=axios.get("http://127.0.0.1:8000/api/all-doctors").then(data=>console.log(data))
   const lineStyle = {
     left: activeSection === "onlineDoctors" ? "0%" : "50%",
   };
@@ -28,6 +28,18 @@ const Doctors = ({ count, rating, color, onRating }) => {
     preventDefaultTouchmoveEvent: true,
     trackMouse: true,
   });
+  
+ axios.get('http://127.0.0.1:8000/api/auth/user/search-doctors?page=1&search=de', {
+  headers: {
+    'Authorization': `Bearer YOUR_ACCESS_TOKEN`
+  }
+})
+.then(response => {
+  console.log(response.data);
+})
+.catch(error => {
+  console.error('Error:', error);
+});
 
   const fetchData = (value) => {
     fetch("https://jsonplaceholder.typicode.com/users").then((response) => response.json()).then(json => {
@@ -83,6 +95,14 @@ const Doctors = ({ count, rating, color, onRating }) => {
     if (ourFeaturesRef.current) {
       ourFeaturesRef.current.scrollLeft += 374;
     }
+  };
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showSearchList, setShowSearchList] = useState(false); // State to manage visibility
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+    setShowSearchList(event.target.value.trim() !== ''); // Show list only if search term is not empty
   };
 
 
@@ -147,14 +167,34 @@ const Doctors = ({ count, rating, color, onRating }) => {
               </svg>
              </div>
              
-            <input type="text" placeholder="Search" value={input} onChange={(e) => handleChange(e.target.value)}></input>
+            <div>
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={handleSearchChange}
+        placeholder="Search doctors..."
+      />
+
+      {showSearchList && (
+        <div className="search-list">
+          {/* Your list of doctors goes here */}
+          <div className="searchlist1">
+            {/* Doctor information */}
+          </div>
+          <div className="searchlist2">
+            {/* Doctor information */}
+          </div>
+        </div>
+      )}
+    </div>
+  
           </div>
       
           </section>
      
     
              
-
+          
           <div className="search-list">
             <div className="searchlist1">
             <img className="img6" src={doctors} alt="doctors" />
@@ -489,16 +529,16 @@ const Doctors = ({ count, rating, color, onRating }) => {
           <div className="navigation" {...handlers}>
           <div className="status">
             
-            <button to='/Doctor_Online' className={activeSection === "onlineDoctors" ? "active" : ""}
+            <NavLink to='/Doctor_Online' className={activeSection === "onlineDoctors" ? "active" : ""}
             onClick={() => setActiveSection("onlineDoctors")}
             >
             Online Doctors
-              </button>
-            <button to='/doctors' className={activeSection === "offlineDoctors" ? "active" : ""}
+              </NavLink>
+            <NavLink to='/doctors' className={activeSection === "offlineDoctors" ? "active" : ""}
               onClick={() => setActiveSection("offlineDoctors")}
             >
               Offline Doctors
-            </button>
+            </NavLink>
           </div>
           <div className="line">
             <div className="lineafter" style={lineStyle}></div>

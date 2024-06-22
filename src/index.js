@@ -40,6 +40,7 @@ import Payment from "./pages/payment";
 import Chat from "./pages/chat";
 import BookingOffline from "./pages/Booking_Offline";
 import BookingOnline from "./pages/Booking_Online";
+import DoctorOnline from "./pages/Doctor_Online";
 import BMI1 from "./pages/BMI1";
 const router = createBrowserRouter([
   {
@@ -323,6 +324,15 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <Chat />
+      </ProtectedRoute>
+    ),
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/Doctor_Online",
+    element: (
+      <ProtectedRoute>
+        <DoctorOnline />
       </ProtectedRoute>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,

@@ -10,13 +10,13 @@ import {
 } from "../components/apiService";
 import logInImage from "../images/logIn.png";
 import "./login.css";
-import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+/*import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
 const googleClientId =
   "639786245015-q9agbhq4ekj8vhqu85jbvdg75er66dnh.apps.googleusercontent.com";
 const facebookAppId = "763487532477503";
-const BASE_URL = "http://127.0.0.1:8000/api";
+const BASE_URL = "http://127.0.0.1:8000/api";*/
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -52,7 +52,7 @@ const Login = () => {
     }
   };
 
-  const handleLogingoogleClick = async (response) => {
+  /*const handleLogingoogleClick = async (response) => {
     try {
       const res = await loginWithGoogle("google", response.access_provider_token);
       saveTokenToLocalStorage(res.access_provider_token);
@@ -86,7 +86,7 @@ const Login = () => {
       console.error("Facebook login failed:", error);
       alert("Failed to login with Facebook. Please try again.");
     }
-  };
+  };*/
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -171,7 +171,7 @@ const Login = () => {
               </button>
             </div>
           </form>
-          <div className="btn-log">
+          {/*<div className="btn-log">
             <div className="blog">
               <GoogleOAuthProvider clientId={googleClientId}>
                 <GoogleLogin
@@ -219,7 +219,7 @@ const Login = () => {
                 Sign Up
               </NavLink>
             </p>
-          </div>
+          </div>*/}
         </div>
         <div className="flex2">
           <img src={logInImage} alt="log_in" />

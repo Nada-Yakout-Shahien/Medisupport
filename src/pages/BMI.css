@@ -50,13 +50,13 @@
 }
 
 .but_bmi{
-    width: 21.8125rem;
+    width: 24.8125rem;
 display: flex;
 margin-left: 2rem;
 flex-shrink: 0;
 border-radius: 0.625rem;
 border: 1px solid #BE0202;
-background: rgba(191, 23, 29, 0.76);
+
 
 }
 
@@ -82,6 +82,22 @@ flex-shrink: 0;
 margin: 0.2rem 2rem;
 }
 
+.rbutr,
+.rrrbur {
+  cursor: pointer;
+  
+}
+
+.selected {
+  background-color: white;
+  color: #BE0202; /* Assuming you want the text color to be red */
+}
+
+.unselected {
+  background-color: #BE0202;
+  color: white;
+}
+
 .rbutr p{
     color: #1F1F1F;
 text-align: center;
@@ -94,10 +110,13 @@ line-height: 110%; /* 1.375rem */
 }
 
 .rrrbur{
-  width: 5.68138rem;
-height: 1.875rem;
+  width: 12.375rem;
+height: 2.375rem;
 flex-shrink: 0;
 display: flex;
+border-radius: 0.625rem;
+border: 1px solid #BE0202;
+
 }
 
 .rrrbur svg{
@@ -106,7 +125,7 @@ margin: 0.2rem 2rem;
 }
 
 .rrrbur p{
-  color: #FFF;
+  color: #1F1F1F;
 text-align: center;
 margin: 0.55rem -1.3rem;
 font-family: Roboto;
@@ -115,6 +134,8 @@ font-style: normal;
 font-weight: 400;
 line-height: 110%; /* 1.375rem */
 }
+
+
 
 .heightr{
   width: 51.375rem;
@@ -144,28 +165,26 @@ font-weight: 500;
 line-height: 110%; /* 1.375rem */
 }
 
-.heightrsliper{
+
+
+.heightrsliper input{
   width: 45.125rem;
 height: 1.70138rem;
 flex-shrink: 0;
-border-radius: 0.3125rem;
+border-radius: 1.3125rem;
 display: flex;
 border: 1px solid #BE0202;
+background: #BE0202; 
 }
 
-.heightrsliper2{
+.heightrsliper2 input{
   width: 16.69313rem;
-height: 1.599rem;
+height: 5.599rem;
 flex-shrink: 0;
 background: rgba(190, 2, 2, 1);
 }
 
-.heightrsliper svg{
-  margin: -0.3rem -0.5rem;
-  width: 2.1875rem;
-height: 2.1875rem;
-flex-shrink: 0;
-}
+
 
 .heightrsliper5{
   color: #1F1F1F;
@@ -212,7 +231,7 @@ font-weight: 500;
 line-height: 110%; /* 1.375rem */
 }
 
-.slipersliper{
+.slipersliper input{
   width: 45.125rem;
   height: 1.70138rem;
 flex-shrink: 0;
@@ -280,7 +299,7 @@ font-weight: 500;
 line-height: 110%; /* 1.375rem */
 }
 
-.heihersliper{
+.heihersliper input{
   width: 45.125rem;
   height: 1.70138rem;
 flex-shrink: 0;

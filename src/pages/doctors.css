@@ -137,6 +137,7 @@ input:hover {
 }
 
 .search-list{
+  display: none;/*Initially hide the search list*/
   width: 34.5rem;
   height: 30rem;
   flex-shrink: 0;
@@ -366,7 +367,7 @@ line-height: normal;
   flex-direction: row;
   gap: clamp(1rem, calc(1vw + 3vw), 4.25rem);
 }
-.doctor-container .navigation .status button  {
+.doctor-container .navigation .status   {
   color: #777474;
   font-family: "Roboto", sans-serif;
   font-size: clamp(1rem, calc(1vw + 3vw), 2rem);
@@ -395,7 +396,7 @@ line-height: normal;
   background: var(--Red);
   transition: all 0.3s ease;
 }
-.doctor-container .navigation .status button.active {
+.doctor-container .navigation .status .active {
   color: #420000;
 }
 .doctor-container .doctor-info {

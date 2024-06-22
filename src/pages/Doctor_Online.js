@@ -1,19 +1,45 @@
 import { Helmet } from "react-helmet-async";
-
+import "./doctors.css";
 import React from "react";
+import {NavLink} from "react-router-dom";
 import doctors from "../images/doctors.png";
 import doctors2 from "../images/doctors2.png";
 import Layout from '../components/Layout';
+import { useSwipeable } from "react-swipeable";
 import doctors3 from "../images/doctors3.png";
 import right from "../images/right-arrow.png";
 import left from "../images/left-arrow.png";
+import axios from "axios";
 import { useRef, useEffect, useState } from "react";
 
 
-const DoctorOnline = ({ count, rating, color, onRating }) => {
-
+const Doctors = ({ count, rating, color, onRating }) => {
+  const [activeSection, setActiveSection] = useState("onlineDoctors");
   const {input, setInput} = useState("")
   const [results, setResults] = useState([]);
+
+  const Doctors=axios.get("http://127.0.0.1:8000/api/all-doctors").then(data=>console.log(data))
+  const lineStyle = {
+    left: activeSection === "onlineDoctors" ? "0%" : "50%",
+  };
+  const handlers = useSwipeable({
+    onSwipedLeft: () => setActiveSection("offlineDoctors"),
+    onSwipedRight: () => setActiveSection("onlineDoctors"),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
+  
+ axios.get('http://127.0.0.1:8000/api/auth/user/search-doctors?page=1&search=de', {
+  headers: {
+    'Authorization': `Bearer YOUR_ACCESS_TOKEN`
+  }
+})
+.then(response => {
+  console.log(response.data);
+})
+.catch(error => {
+  console.error('Error:', error);
+});
 
   const fetchData = (value) => {
     fetch("https://jsonplaceholder.typicode.com/users").then((response) => response.json()).then(json => {
@@ -69,6 +95,14 @@ const DoctorOnline = ({ count, rating, color, onRating }) => {
     if (ourFeaturesRef.current) {
       ourFeaturesRef.current.scrollLeft += 374;
     }
+  };
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showSearchList, setShowSearchList] = useState(false); // State to manage visibility
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+    setShowSearchList(event.target.value.trim() !== ''); // Show list only if search term is not empty
   };
 
 
@@ -133,14 +167,34 @@ const DoctorOnline = ({ count, rating, color, onRating }) => {
               </svg>
              </div>
              
-            <input type="text" placeholder="Search" value={input} onChange={(e) => handleChange(e.target.value)}></input>
+            <div>
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={handleSearchChange}
+        placeholder="Search doctors..."
+      />
+
+      {showSearchList && (
+        <div className="search-list">
+          {/* Your list of doctors goes here */}
+          <div className="searchlist1">
+            {/* Doctor information */}
+          </div>
+          <div className="searchlist2">
+            {/* Doctor information */}
+          </div>
+        </div>
+      )}
+    </div>
+  
           </div>
       
           </section>
      
     
              
-
+          
           <div className="search-list">
             <div className="searchlist1">
             <img className="img6" src={doctors} alt="doctors" />
@@ -466,6 +520,30 @@ const DoctorOnline = ({ count, rating, color, onRating }) => {
             </div>
             <input className="buttonrr_r2" type="submit" value="Book Now" />
           </div>
+
+          {/*<div className="online1r">
+              <h2 className="h2onliner1">Online Doctors</h2>
+              <h2 className="h2onliner2">Offline Doctors</h2>
+
+          </div>*/}
+          <div className="navigation" {...handlers}>
+          <div className="status">
+            
+            <NavLink to='/Doctor_Online' className={activeSection === "onlineDoctors" ? "active" : ""}
+            onClick={() => setActiveSection("onlineDoctors")}
+            >
+            Online Doctors
+              </NavLink>
+            <NavLink to='/doctors' className={activeSection === "offlineDoctors" ? "active" : ""}
+              onClick={() => setActiveSection("offlineDoctors")}
+            >
+              Offline Doctors
+            </NavLink>
+          </div>
+          <div className="line">
+            <div className="lineafter" style={lineStyle}></div>
+          </div>
+        </div>
 
           
           
@@ -989,4 +1067,4 @@ const DoctorOnline = ({ count, rating, color, onRating }) => {
   );
 };
 
-export default DoctorOnline;
+export default Doctors;
