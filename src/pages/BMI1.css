@@ -1,192 +1,169 @@
-.bmi1{
-    width: 100%;
-  height: 190vh; 
-  display: flex;
+/* BMI1.css */
 
+.bmi1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
-.bmir{
+.bmir p {
     color: #BE0202;
 font-family: Roboto;
-margin: 2rem 3rem;
 font-size: 2rem;
+margin: 2rem -47rem;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
 }
 
-.clockr2{
-margin: 6rem 28.5rem;
-flex-shrink: 0;
-width: 3rem;
-height: 23rem;
-display: flex;
+.clockr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.clockr2 h2{
+.clockr2 {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.clockr2 img {
+    width: 140%;
+    height: auto;
+    margin: -3rem -2.5rem;
+}
+
+.clockr2 h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 36px;
     color: #BE0202;
-text-align: center;
-margin: 10rem -15rem;
-font-family: Roboto;
-font-size: 3.125rem;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-letter-spacing: -0.03125rem;
 }
 
-.pclockp p{
+.pclockp p {
     color: #BE0202;
 font-family: Inter;
-margin: -4rem 37rem;
 font-size: 2rem;
+margin: 2rem;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
 }
 
-.rtabler{
+.rtabler {
+    margin-top: 30px;
     width: 40.8125rem;
-height: 20.8125rem;
-margin: 7rem 19.5rem;
+height: 24.8125rem;
 flex-shrink: 0;
-border: 1px solid #be0202;
-  border-radius: 0.625rem;
-  display: flex;
+border-radius: 0.3125rem;
+border: 1px solid #BE0202;
 }
 
-.svgtable svg{
-    margin: 1.6rem 4rem;
+.tablex {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.svgtable2 svg{
-    margin: 1.6rem 18rem;
+.tablex1{
+    display: flex;
+    width: 27.75rem;
+height: 4.125rem;
+flex-shrink: 0;
+margin: 3.5rem 6.5rem;
+border-radius: 0.3125rem;
+border: 1px solid #BE0202;
+}
+
+.svgtable{
+    width: 5.4925rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    font-size: 1.5rem;
+height: 1.0285rem;
+flex-shrink: 0;
+color: #BE0202;
+}
+
+.svgtable2{
+    color: #1F1F1F;
+font-family: Roboto;
+padding-left: 1rem;
+    padding-top: 1.3rem;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 400;
+line-height: 1.45019rem; /* 96.677% */
+}
+
+.svgtable3{
+    
+padding-left: 1rem;
+    padding-top: 0.8rem;
+    padding-bottom: 1rem;
+
+}
+
+.svgtable4{
+    color: #1F1F1F;
+font-family: Roboto;
+padding-left: 1rem;
+    padding-top: 1.3rem;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 400;
+line-height: 1.45019rem; /* 96.677% */
+}
+
+.svgtable6{
+    color: #1F1F1F;
+font-family: Roboto;
+padding-left: 1rem;
+    padding-top: 1.3rem;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 400;
+line-height: 1.45019rem; /* 96.677% */
 }
 
 .tablex2{
     width: 27.75rem;
-height: 4.125rem;
-flex-shrink: 0;
-margin: 5rem -47rem;
-    border: 1px solid #be0202;
-  border-radius: 0.625rem;
-  display: flex;
-}
-
-.tablex2 svg{
-    margin: 1.3rem 1.5rem;
-}
-
-.tablex2 p{
-    color: #1F1F1F;
-font-family: Roboto;
-margin: 1.3rem -1.1rem;
-font-size: 1.5rem;
-font-style: normal;
-font-weight: 400;
-line-height: 1.45019rem; /* 96.677% */
-}
-
-.svgtabel3 svg{
-    margin: 0.6rem 2rem;
-}
-
-.svgtable4 svg{
-    margin: 1.3rem -1rem;
-}
-
-.svgtabel5 svg{
-    margin: 0.6rem 2rem;
-}
-
-.svgtable6 svg{
-    margin: 1.5rem -1rem;
+    height: 4.125rem;
+    flex-shrink: 0;
+    display: flex;
+    margin: -2.5rem 6.5rem;
+    border-radius: 0.3125rem;
+    border: 1px solid #BE0202;
 }
 
 .tablex3{
     width: 27.75rem;
-height: 4.125rem;
-flex-shrink: 0;
-margin: 10rem 19.3rem;
-    border: 1px solid #be0202;
-  border-radius: 0.625rem;
-  display: flex;
-}
-
-.tablex3 svg{
-     margin: 1.3rem 1.5rem;
-}
-
-.tablex3 p{
-    color: #1F1F1F;
-font-family: Roboto;
-margin: 1.3rem -1.1rem;
-font-size: 1.5rem;
-font-style: normal;
-font-weight: 400;
-line-height: 1.45019rem; /* 96.677% */
-}
-
-.svgtabel9 svg{
-    margin: 0.6rem 2rem;
-}
-
-.svgtable10 svg{
-    margin: 1.3rem -1rem;
-}
-
-.svgtabel11 svg{
-    margin: 0.6rem 2rem;
-}
-
-.svgtable12 svg{
-    margin: 1.5rem -1rem;
+    height: 4.125rem;
+    display: flex;
+    flex-shrink: 0;
+    margin: 3.5rem 6.5rem;
+    border-radius: 0.3125rem;
+    border: 1px solid #BE0202;
 }
 
 .tablex4{
     width: 27.75rem;
-height: 4.125rem;
-flex-shrink: 0;
-margin: 15rem -47.1rem;
-    border: 1px solid #be0202;
-  border-radius: 0.625rem;
-  display: flex;
+    height: 4.125rem;
+    display: flex;
+    flex-shrink: 0;
+    margin: -2.5rem 6.5rem;
+    border-radius: 0.3125rem;
+    border: 1px solid #BE0202;
 }
 
-.tablex4 svg{
-    margin: 1.3rem 1.5rem;
-}
-
-.tablex4 p{
-    color: #1F1F1F;
-font-family: Roboto;
-margin: 1.3rem -1.1rem;
-font-size: 1.5rem;
-font-style: normal;
-font-weight: 400;
-line-height: 1.45019rem; /* 96.677% */
-}
-
-.svgtabel13 svg{
-    margin: 0.6rem 2rem;
-}
-
-.svgtable14 svg{
-    margin: 1.3rem -1rem;
-}
-
-.svgtabel15 svg{
-    margin: 0.6rem 2rem;
-}
-
-.svgtable16 svg{
-    margin: 1.5rem -1rem;
-}
 
 .rfotr1{
     width: 92.375rem;
   height: 16rem;
-  margin: -4.5rem -7rem;
+  margin: 2rem -13rem;
   gap: 4rem;
   flex-shrink: 0;
   border-radius: 0.625rem;
@@ -223,17 +200,27 @@ line-height: 1.45019rem; /* 96.677% */
   line-height: normal;
   }
 
-  .heiherebut23{
+
+.heiherebut23 {
     display: flex;
 width: 29.0625rem;
 height: 3rem;
-margin: 6.5rem 27rem;
+padding: 1rem 0.75rem;
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
 border-radius: 0.625rem;
 border: 2px solid #BE0202;
 background: #BE0202;
+color: var(--Default-White, #FFF);
+font-family: Roboto;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 500;
+line-height: 100%; /* 1.5rem */
+letter-spacing: 0.03125rem;
+}
 
-color: #fff;
-  }
+.heiherebut23:hover {
+    background-color: #a00101;
+}

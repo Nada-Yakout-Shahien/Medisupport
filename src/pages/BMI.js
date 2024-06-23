@@ -19,15 +19,21 @@ const BMI = () => {
   saveTokenToLocalStorage(accessToken);
   console.log("access_token:", accessToken);
 
+  // Function to calculate BMI
+  const calculateBMI = (weight, height) => {
+    const heightInMeters = height / 100; // Convert height from cm to meters
+    return (weight / (heightInMeters * heightInMeters)).toFixed(1); // Calculate BMI and round to 1 decimal place
+  };
+
   const handleCalculate = () => {
+    const bmi = calculateBMI(weight, height);
     const data = {
       age: age,
       height: height,
       weight: weight,
-      gender: gender // gender is now a boolean
+      gender: gender,
+      bmi: bmi // Include BMI in the data to be sent
     };
-
-    console.log("Sending data:", data);
 
     axios.post('http://127.0.0.1:8000/api/user/bmi/store', data, {
       headers: {
@@ -35,9 +41,9 @@ const BMI = () => {
       }
     })
     .then(response => {
-      setBmiResult(response.data.bmi);
+      setBmiResult(bmi); // Set the calculated BMI
       setError(null);
-      navigate("/BMI1"); // navigate after successful response
+      navigate("/BMI1"); // Navigate after successful response
     })
     .catch(error => {
       console.error('There was an error!', error);
