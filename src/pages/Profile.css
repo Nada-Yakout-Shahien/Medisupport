@@ -1,365 +1,222 @@
-                          /* f-section */
 
+/* Profile Section */
 .profile-sec {
   width: 100%;
-  height: 42.75vh;
-  flex-shrink: 0;
-}
-
-.profile-sec img{
-  display: flex;
-  width: 28%;
-  height: 25vw;
-  margin:7% 0 0 37%;
-  border-radius: 50%;
-  background-size: contain;
-  position: relative;
-}
-
-.profile-sec .edit{
-  display: flex;
-  width: 100%;
-  padding-left: 49rem;
-  margin-top: -5rem;
-  position: absolute;
-}
-
-.profile-sec .edit button{
-  display: flex;
-  position: absolute;
-  background: none;
-  border: none;
-}
-
-.profile-sec .edit button .upload{
-  color: var(--Red);
-  width: 17%;
-  height: 20%;
-  margin: 2% 0 0 2%;
-}
-
-.profile-sec h4{
-  display: flex;
-  width: 100%;
-  color: #BE0202;
-  font-family: 'Roboto',sans-serif;
-  font-size: 2.6rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  padding: 3% 0 0 43% ;
-}
- 
-                          /* section-info */
-
-.info-sec{
-  width: 100%;
-  gap: 1%;
-  padding: 23% 0 3% 45%;
-}
-
-.info-sec h4{
-  width: 47.875%;
-  height: 2.652%;
-  color: #1F1F1F;
-  font-family: 'Roboto',sans-serif;
-  font-size: 2.5rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 110%; /* 2.2rem */
-}
-
-.info-sec label{
-  color: #1F1F1F;
-  font-family: 'Roboto',sans-serif;
-  font-size: 1.3rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 140%; /* 1.225rem */
-}
-
-.info-sec input{
-  display: flex;
-  width: 20rem;
-  height: 3rem;
-  border: 0.12rem solid var(--Red);
-  border-radius: 0.6rem;
-  padding: 1.7rem;
-  margin-top: 1rem;
-}
-
-                          /* section-inputs */
-
-.info-sec .inputs{
-  width: 100%;
-  gap:2%;
-}
-
-.info-sec .inputs .name{
-  gap:2%;
-  width: 100%;
-}
-
-.f-name{
-  margin: 7% 0 0 -35%;
-}
-
-.l-name{
-  margin: -13.6% 0 0 15%;
-}
-
-.pass{
- position: relative;
- margin:3% 0 0 -35%;
-}
-
-.pass input{
-  width: 69%;
-}
-
-.pass button{
-  display: flex;
-  position: absolute;
-  margin: -3.4% 0 0 64%;
-  background: none;
-  border: none;
-}
-
-.confirm{
-  position: relative;
-  margin:3% 0 0 -35%;
-}
-
-.confirm input{
-  width: 69%;
-}
-
-.confirm button{
-  display: flex;
-  position: absolute;
-  margin: -3.4% 0 0 64%;
-  background: none;
-  border: none;
-}
-
-                          /* section-buttons */
-
-.save {
-  margin: 4% 0 0 -35%;
-}
-
-.save button{
-  width: 69%;
-  background-color: var(--Red);
-  color: white;
-  font-family: 'Roboto',sans-serif;
-  font-size: 1.3rem;
-  border: none;
-  border-radius: 0.6rem;
-  padding: 1% 0 ;
-  
-}
-
-.save button:hover{
-  cursor: pointer;
-  background-color: var(--secondaryColor);
-  color: var(--Red);
-  border: none;
-}
-
-.delete{
-  margin: 4% 0 0 -35%;
-}
-
-.delete button{
-  width: 69%;
-  background-color: var(--mainColorLight);
-  color: white;
-  font-family: 'Roboto',sans-serif;
-  font-size: 1.3rem;
-  border: none;
-  border-radius: 0.6rem;
-  padding: 1% 0 ;
-}
-
-.delete button:hover{
-  cursor: pointer;
-  background-color: var(--secondaryColor);
-  color: var(--Red);
-  border: none;
-}
-
-.delete button .warning{
-  padding-right: 1.3%;
-}
-
-                          /* popups */
-
-.popup-s{
-  width: 100%;
-  height: 89.5vw;
-  background: rgba(18, 22, 25, 0.65);
-  position: absolute;
-  top: 10%;
+  height: auto;
   text-align: center;
-  left: 0%;
+  padding: 20px 0;
 }
 
-.popup-s .check{
-  width: 50%;
-  height: 28%;
-  padding: 30% 0 0 0;
+.profile-sec img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-size: cover;
+  margin: 0 auto;
+  position: relative;
 }
 
-.popup-s .btn{
+.profile-sec .edit {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: -40px;
+}
+
+.profile-sec .edit button {
+  background: none;
+  border: none;
+}
+
+.profile-sec .edit button .upload {
+  color: var(--Red);
+  width: 24px;
+  height: 24px;
+}
+
+.profile-sec h4 {
+  color: var(--Red);
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+/* Info Section */
+.info-sec {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.info-sec h4 {
+  color: #1F1F1F;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.info-sec label {
+  color: #1F1F1F;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.info-sec input {
+  width: 100%;
+  height: 40px;
+  border: 2px solid var(--Red);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* Input fields */
+.info-sec .inputs .name {
   display: flex;
-  min-height:5vh;
-  width: 15%;
-  height: 3.5rem;
-  padding: 1rem;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.info-sec .inputs .name .f-name, .info-sec .inputs .name .l-name {
+  flex: 1;
+}
+
+.info-sec .inputs .pass, .info-sec .inputs .confirm {
+  position: relative;
+}
+
+.info-sec .inputs .pass input, .info-sec .inputs .confirm input {
+  width: calc(100% - 40px);
+}
+
+.info-sec .inputs .pass button, .info-sec .inputs .confirm button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+}
+
+/* Buttons */
+.save, .delete {
+  text-align: center;
+}
+
+.save button, .delete button {
+  width: 100%;
+  background-color: var(--Red);
+  color: var(--whiteColor);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.save button:hover, .delete button:hover {
+  cursor: pointer;
+  background-color: var(--secondaryColor);
+  color: var(--Red);
+}
+
+/* Popups */
+.popup-s, .popup-d {
+  width: 100%;
+  height: 100vh;
+  background: rgba(18, 22, 25, 0.65);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0.625rem;
+  z-index: 9999;
+}
+
+.popup-s .check, .popup-d .message .icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.popup-s .btn, .popup-d .message .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 40px;
+  margin: 20px auto;
   border: 2px solid var(--Red);
   background: var(--Red);
   color: var(--whiteColor);
-  font-family: 'Roboto',sans-serif;
-  font-size: 1.5em;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 100%;
-  letter-spacing: 0.5px;
-  margin: 4% 0 0 43%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  border-radius: 8px;
 }
 
-.popup-s .btn:hover{
+.popup-s .btn:hover, .popup-d .message .button:hover {
   cursor: pointer;
   background-color: var(--blackred);
   color: var(--whiteColor);
   border: none;
 }
 
-.popup-d{
-  width: 100%;
-  height: 89.5vw;
-  background: rgba(18, 22, 25, 0.65);
-  position: absolute;
-  top: 10%;
+/* Popup Message */
+.popup-d .message {
+  background: var(--whiteColor);
+  border-radius: 8px;
+  padding: 20px;
   text-align: center;
-  left: 0%;
 }
 
-                          /* popup-message */
-
-.popup-d .message{
-  width: 30%;
-  height: 21vw;
-  background-color: white;
-  margin:40% 0 0 36%;
-}
-
-.message .icon{
-  width: 9%;
-  height: 3vw;
-  margin: 2% ;
-  padding: 1%;
-  background-color: rgba(128, 128, 128, 0.39);
-}
-
-.message button{
-  display: flex;
-  width: 9%;
-  height: 5%;
-  background: none;
-  margin: -14% 0 0 90%;
-}
-
-.message button:hover{
-    background: none;
-}
-
-.message h2{
+.popup-d .message h2 {
   color: #21272A;
-  text-align: center;
-  font-family: 'Roboto',sans-serif;
-  font-size: 1.8rem;
-  font-style: normal;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
   font-weight: 700;
-  line-height: 110%;
-  padding: 12% 0 0 0 ;
+  margin-bottom: 10px;
 }
 
-.message p{
+.popup-d .message p {
   color: #21272A;
-  text-align: center;
-  font-family: 'Roboto',sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%;
-  padding: 1rem;
+  margin-bottom: 20px;
 }
 
-.message .button{
-  display: flex;
-  min-height:5vh;
-  width: 95%;
-  height: 3.5vw;
-  padding: 1%;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.625rem;
-  border: 2px solid var(--Red);
-  background: var(--Red);
-  color: var(--whiteColor);
-  font-family: 'Roboto',sans-serif;
-  font-size: 1.5em;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 100%;
-  letter-spacing: 0.5px;
-  margin: 4% 0 0 2%;
-}
- 
-.message .button:hover{
-  cursor: pointer;
-  background-color: var(--secondaryColor);
-  color: var(--Red);
-  border: none;
-}
+/* Media Queries */
+@media (max-width: 768px) {
+  .profile-sec img {
+    width: 100px;
+    height: 100px;
+  }
 
-                          /* media */
+  .profile-sec .edit {
+    margin-top: -30px;
+  }
 
-@media (max-width:1050px){
-  .profile-sec .edit button .upload{
-    width: 15%;
-    height: 15%;
-    margin: 5% 0 0 -62%;
+  .info-sec {
+    padding: 10px;
+  }
 
+  .info-sec h4 {
+    font-size: 1.5rem;
   }
-  .info-sec{
-    padding-top: 18%;
+
+  .info-sec input {
+    height: 35px;
+    padding: 8px;
   }
-  .f-name input{
-    width: 69%;
-  }
-  .l-name{
-    margin: 3.6% 0 0 -35%;
-  }
-  .l-name input{
-    width: 69%;
-  }
-  .popup-s{
-    height: 110vw;
-  }
-  .popup-s .btn{
-    width: 20%;
-    margin: 5% 0 0 40%;
-  }
-  .popup-d{
-    height: 110vw;
-  }
-  .popup-d .message{
-    height: 25vw; 
+
+  .save button, .delete button {
+    font-size: 1rem;
   }
 }
