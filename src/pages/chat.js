@@ -402,6 +402,10 @@ const Chat = () => {
   const messagesEndRef = useRef(null);
   const baseURL = "http://127.0.0.1:8000/";
   const [selectedFile, setSelectedFile] = useState(null);
+  const [recording, setRecording] = useState(false);
+  const [audioChunks, setAudioChunks] = useState([]);
+  const [audioURL, setAudioURL] = useState("");
+  const mediaRecorderRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -502,14 +506,12 @@ const Chat = () => {
         setCurrentDoctorMessages((prevMessages) => [...prevMessages, data]);
       }
     });
-  
+
     return () => {
       pusher.unsubscribe("private-chatify");
       pusher.disconnect();
     };
   }, [selectedDoctorInfo]);
-  
-  
 
   const handleDoctorClick = async (doctor) => {
     try {
@@ -532,9 +534,10 @@ const Chat = () => {
       );
     }
   };
+
   const handleSendMessage = async (event) => {
     event.preventDefault();
-    if (!inputMessage.trim() && !selectedFile) return;
+    if (!inputMessage.trim() && !audioURL && !selectedFile) return;
 
     const temporaryMsgId = new Date().getTime().toString();
     const newMessage = {
@@ -542,10 +545,14 @@ const Chat = () => {
       to_id: selectedDoctorInfo.id,
       content: inputMessage,
       temporary_msg_id: temporaryMsgId,
+      audio_url: audioURL ? audioURL : null,
+      file_url: selectedFile ? URL.createObjectURL(selectedFile) : null,
     };
 
     setCurrentDoctorMessages((prevMessages) => [...prevMessages, newMessage]);
     setInputMessage("");
+    setAudioURL("");
+    setSelectedFile(null);
 
     try {
       const accessToken = localStorage.getItem("accessToken");
@@ -553,17 +560,22 @@ const Chat = () => {
         accessToken,
         selectedDoctorInfo.id,
         inputMessage,
-        temporaryMsgId
+        temporaryMsgId,
+        audioURL,
+        selectedFile
       );
       const updatedMessages = await fetchUserMessages(
         accessToken,
         selectedDoctorInfo.id
       );
       setCurrentDoctorMessages(updatedMessages.messages);
+      console.log("currentDoctorMessages", currentDoctorMessages);
+
     } catch (error) {
       console.error("An error occurred while sending message:", error);
     }
   };
+
   const handleArrowClick = async () => {
     try {
       const accessToken = localStorage.getItem("accessToken");
@@ -577,6 +589,7 @@ const Chat = () => {
       console.error("An error occurred while marking messages as seen:", error);
     }
   };
+
   const formatTime = (createdAt) => {
     const date = new Date(createdAt);
     const hours = date.getHours();
@@ -585,9 +598,11 @@ const Chat = () => {
     const period = hours >= 12 ? "PM" : "AM";
     return `${displayHours}:${minutes} ${period}`;
   };
+
   const selectEmoji = (emoji) => {
     setInputMessage((prevMessage) => prevMessage + emoji);
   };
+
   const handleDeleteConversation = async () => {
     if (window.confirm("Are you sure you want to delete this conversation?")) {
       try {
@@ -605,6 +620,63 @@ const Chat = () => {
     }
   };
 
+  const startRecording = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorderRef.current = new MediaRecorder(stream);
+      mediaRecorderRef.current.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          setAudioChunks((prev) => [...prev, event.data]);
+        }
+      };
+      mediaRecorderRef.current.onstop = async () => {
+        const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
+        await uploadAudio(audioBlob);
+      };
+      mediaRecorderRef.current.start();
+      setRecording(true);
+    } catch (error) {
+      console.error("An error occurred while starting recording:", error);
+    }
+  };
+
+  const stopRecording = () => {
+    if (mediaRecorderRef.current) {
+      mediaRecorderRef.current.stop();
+      setRecording(false);
+    }
+  };
+
+  const uploadAudio = async (audioBlob) => {
+    try {
+      const formData = new FormData();
+      formData.append("audio", audioBlob, "recording.wav");
+
+      const response = await fetch("/api/upload_audio", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setAudioURL(data.audio_url);
+      } else {
+        console.error("An error occurred while uploading audio:", response);
+      }
+    } catch (error) {
+      console.error("An error occurred while uploading audio:", error);
+    }
+  };
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [currentDoctorMessages]);
 
   return (
     <>
@@ -717,6 +789,14 @@ const Chat = () => {
                     </p>
                   </div>
                 )}
+                {/* <button onClick={handleDeleteConversation}>
+                  <img
+                    width="48"
+                    height="48"
+                    src="https://img.icons8.com/sf-regular/48/000000/filled-trash.png"
+                    alt="filled-trash"
+                  />
+                </button> */}
               </div>
 
               {selectedDoctorInfo && showChat && (
@@ -761,6 +841,14 @@ const Chat = () => {
                                 <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z" />
                               </svg>
                             </span>
+                            {message.audio_url && (
+                              <audio controls src={message.audio_url} />
+                            )}
+                            {message.file_url && (
+                              <a href={message.file_url} download>
+                                Download File
+                              </a>
+                            )}
                           </div>
                         ))}
                         <div ref={messagesEndRef} />
@@ -824,44 +912,59 @@ const Chat = () => {
                     />
                   </div>
                   <div className="input-icon">
+                    <label className="file-upload-button" htmlFor="file-upload">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="22"
+                        height="40"
+                        viewBox="0 0 22 40"
+                        fill="none"
+                      >
+                        <path
+                          d="M12.619 13.9585L7.75719 23.1018C7.02517 24.4785 7.02517 26.7118 7.75719 28.0885V28.0885C8.48921 29.4651 9.67674 29.4651 10.4088 28.0885L16.8179 16.0351C18.1605 13.5101 18.1605 9.4168 16.8179 6.8918V6.8918C15.4753 4.3668 13.2987 4.3668 11.9561 6.8918L5.54695 18.9451C3.59372 22.6185 3.59372 28.5718 5.54695 32.2451V32.2451C7.50018 35.9185 10.6658 35.9185 12.619 32.2451L16.5086 24.9301"
+                          stroke="#BE0202"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>{" "}
+                    </label>
                     <input
                       type="file"
+                      id="file-upload"
                       style={{ display: "none" }}
-                      id="fileInput"
+                      onChange={handleFileChange}
                     />
+                  </div>
+                </div>
+                <button
+                  className="record"
+                  onClick={recording ? stopRecording : startRecording}
+                >
+                  {recording ? (
+                    <img
+                      width="64"
+                      height="64"
+                      src="https://img.icons8.com/laces/64/000000/circled-pause.png"
+                      alt="circled-pause"
+                    />
+                  ) : (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="22"
-                      height="40"
-                      viewBox="0 0 22 40"
+                      width="40"
+                      height="41"
+                      viewBox="0 0 40 41"
                       fill="none"
                     >
                       <path
-                        d="M12.619 13.9585L7.75719 23.1018C7.02517 24.4785 7.02517 26.7118 7.75719 28.0885V28.0885C8.48921 29.4651 9.67674 29.4651 10.4088 28.0885L16.8179 16.0351C18.1605 13.5101 18.1605 9.4168 16.8179 6.8918V6.8918C15.4753 4.3668 13.2987 4.3668 11.9561 6.8918L5.54695 18.9451C3.59372 22.6185 3.59372 28.5718 5.54695 32.2451V32.2451C7.50018 35.9185 10.6658 35.9185 12.619 32.2451L16.5086 24.9301"
+                        d="M31.6673 18.8335V20.5002C31.6673 26.9435 26.444 32.1668 20.0007 32.1668M8.33398 18.8335V20.5002C8.33398 26.9435 13.5573 32.1668 20.0007 32.1668M20.0007 32.1668V37.1668M20.0007 37.1668H25.0007M20.0007 37.1668H15.0007M20.0007 27.1668C16.3188 27.1668 13.334 24.1821 13.334 20.5002V10.5002C13.334 6.81826 16.3188 3.8335 20.0007 3.8335C23.6825 3.8335 26.6673 6.81826 26.6673 10.5002V20.5002C26.6673 24.1821 23.6825 27.1668 20.0007 27.1668Z"
                         stroke="#BE0202"
                         strokeWidth="1.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
                     </svg>
-                  </div>
-                </div>
-                <button className="record">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="40"
-                    height="41"
-                    viewBox="0 0 40 41"
-                    fill="none"
-                  >
-                    <path
-                      d="M31.6673 18.8335V20.5002C31.6673 26.9435 26.444 32.1668 20.0007 32.1668M8.33398 18.8335V20.5002C8.33398 26.9435 13.5573 32.1668 20.0007 32.1668M20.0007 32.1668V37.1668M20.0007 37.1668H25.0007M20.0007 37.1668H15.0007M20.0007 27.1668C16.3188 27.1668 13.334 24.1821 13.334 20.5002V10.5002C13.334 6.81826 16.3188 3.8335 20.0007 3.8335C23.6825 3.8335 26.6673 6.81826 26.6673 10.5002V20.5002C26.6673 24.1821 23.6825 27.1668 20.0007 27.1668Z"
-                      stroke="#BE0202"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  )}
                 </button>
                 <button type="submit" onClick={(e) => handleSendMessage(e)}>
                   <svg

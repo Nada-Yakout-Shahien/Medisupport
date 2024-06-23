@@ -442,6 +442,14 @@
   width: 1em;
   padding: 1em 0.5em;
 }
+.record img{
+  color: var(--Red);
+}
+button{
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
 
 /*Res*/
 @media screen and (max-width: 750px) {

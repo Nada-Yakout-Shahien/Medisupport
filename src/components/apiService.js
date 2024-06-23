@@ -47,9 +47,13 @@ export const predict = async (predictionData) => {
   try {
     const accessToken = localStorage.getItem("accessToken");
 
-    const response = await axiosInstance.post(  `${BASE_URL}/predict`, predictionData, {
-      headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},
-    });
+    const response = await axiosInstance.post(
+      `${BASE_URL}/predict`,
+      predictionData,
+      {
+        headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},
+      }
+    );
 
     return response.data.prediction;
   } catch (error) {
@@ -59,7 +63,10 @@ export const predict = async (predictionData) => {
 
 export const loginUser = async (userloginData, setAccessToken) => {
   try {
-    const response = await axiosInstance.post("/auth/user/login", userloginData);
+    const response = await axiosInstance.post(
+      "/auth/user/login",
+      userloginData
+    );
     console.log("Response data:", response.data);
     const accessToken = response.data.access_token;
     console.log("Access Token:", accessToken);
@@ -427,9 +434,6 @@ export const getAllBloodPressureMeasurements = async (accessToken) => {
   }
 };
 
-
-
-
 // Chat API functions
 export const getUserContacts = async (accessToken) => {
   return await sendRequest(
@@ -453,7 +457,9 @@ export const userSendMessage = async (
   accessToken,
   id,
   message,
-  temporaryMsgId
+  temporaryMsgId,
+  audio_url,
+  file_url
 ) => {
   return await sendRequest(
     "POST",
@@ -509,7 +515,6 @@ export const userFetchDoctorByID = async (accessToken, id) => {
 export const userMakeMessageSeen = async (accessToken, id) => {
   return await sendRequest("POST", "/user/chat/makeSeen", { id }, accessToken);
 };
-
 
 //shared
 // Function to add a new article by a doctor
