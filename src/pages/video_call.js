@@ -25,7 +25,7 @@ function App() {
     }, [localTrack]);
 
     const handleConnect = async () => {
-        const response = await fetch('YOUR_SERVER_URL/token'); // احصل على توكين من خادمك
+        const response = await fetch('YOUR_SERVER_URL/token'); 
         const data = await response.json();
         const room = await connect(data.token, { name: 'my-room' });
         setRoom(room);

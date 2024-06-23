@@ -34,7 +34,7 @@ import DetailsBloodpressure from "./pages/details-bloodpressure";
 import DoneNewPass from "./pages/done_new_pass";
 import NewPassword from "./pages/New_Password";
 import VerificationCode from "./pages/Verification_Code";
-//import Videocall from "./pages/videocall";
+import Videocall from "./pages/video_call";
 import Loading from "./pages/loading";
 import Payment from "./pages/payment";
 import Chat from "./pages/chat";
@@ -195,6 +195,15 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <SugarHistory />
+      </ProtectedRoute>
+    ),
+    errorElement: <h1>Sorry, No page to display....</h1>,
+  },
+  {
+    path: "/Videocall",
+    element: (
+      <ProtectedRoute>
+        <Videocall />
       </ProtectedRoute>
     ),
     errorElement: <h1>Sorry, No page to display....</h1>,

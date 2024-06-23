@@ -244,7 +244,7 @@ const BookingDetails = () => {
                   </div>
                   <div className="video">
                     <img src={video} alt="" className="cam" />
-                    <NavLink to="/videocall" className="vi">
+                    <NavLink to="/Videocall" className="vi">
                       Call the doctor
                     </NavLink>
                   </div>{" "}
