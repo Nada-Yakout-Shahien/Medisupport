@@ -47,13 +47,16 @@
     "socket.io": "^4.7.5",
     "socket.io-client": "^4.7.5",
     "swiper": "^11.0.6",
+    "twilio-video": "^2.28.1",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.15.7",
-    "eslint": "^7.32.0",
-    "eslint-config-react-app": "^6.0.0",
-    "eslint-scope": "^5.1.1"
+    "@babel/eslint-parser": "^7.24.7",
+    "@types/node": "^20.14.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-scope": "^8.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -83,13 +86,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@babel/eslint-parser": "^7.24.7",
-    "@types/node": "^20.14.2",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-scope": "^8.0.1"
-  }
+  "description": ""
 }
