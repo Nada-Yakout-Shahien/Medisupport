@@ -263,7 +263,7 @@
                             /*Doctors*/
 
 .doc-sec{
-  width: 100%;
+  width: auto;
   height: 105vh;
   display: flex;
   flex-shrink: 0;
@@ -277,13 +277,36 @@
 
 .doc-sec .title{
   display: flex;
-  gap: 56rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10rem;
+}
+
+.doc-sec .title .definition{
   font-family: 'Roboto',sans-serif;
   color: #1E1E1E;
   font-size: 2rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+.doc-sec .title button {
+  border: none;
+  background:none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 600;
+  align-self: center;
+}
+
+.doc-sec .title button:hover:not(.selected) {
+  color: var(--Red); /* لون النص عند التحويم إذا لم يكن محددًا */
+}
+
+.doc-sec .title button.selected {
+  color: var(--Red); /* لون النص عندما يكون محددًا */
 }
 
 .doc-sec .trans{
@@ -293,19 +316,20 @@
   align-items: center;
 }
 
-.doc-sec .title p{
+.doc-sec .title .see{
   color: #1E1E1E;
   font-family: Roboto;
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  align-items: center;
+  justify-content: center;
 }
 
-.doctors{
+.doc-sec .doctors{
   display: flex;
   width: 100%;
-  height: 66rem; 
+  height: 66vh; 
   justify-content: center;
   align-items: flex-start;
   gap: 1rem;
@@ -314,7 +338,7 @@
 
                             /* carousel */
 
-.carousel{
+.doc-sec .doctors .carousel{
   width: 100%;
   height: 80vh;
   overflow: hidden;
@@ -322,30 +346,31 @@
   overflow-x: auto;
 }
 
-.carousel::-webkit-scrollbar{
+.doc-sec .doctors .carousel::-webkit-scrollbar{
   display: none;
 }
 
-.inner-carousel{
+.doc-sec .doctors .inner-carousel{
   display: flex;
-  width: 100.25rem;
-  height: 26.375rem;
-  gap: 1.5rem;
+  width: 100%;
+  height: 26vh;
+  gap: 1rem;
   flex-shrink: 0;
   margin-left: 0.1rem;
 }
-.carousel .item{
+
+                              /* offline doctor*/
+
+.doc-sec .doctors .carousel .inner-carousel .item{
   display: flex;
   flex-direction: column;
   background-color: white;
-  width: 43vh;
-  height: 80vh;
+  width: 100%;
+  height: 70vh;
   padding-top: 2rem;
 }
 
-                          /* carousel-content*/
-
-.doc-name h4{
+.doc-sec .doctors .carousel .inner-carousel .item .doc-name h4{
   color:#21272A;
   font-family: 'Roboto',sans-serif;
   font-size: 1.25rem;
@@ -355,13 +380,13 @@
   padding: 1rem 0 0 1rem;
 }
 
-.t-work{
+.doc-sec .doctors .carousel .inner-carousel .item .t-work{
   padding: 0.6rem 0 0 1rem ;
   width: 12.875rem;
   height: 1.83081rem;
 }
 
-.t-work h6{
+.doc-sec .doctors .carousel .inner-carousel .item .t-work h6{
   margin: -1.4rem 0 0 2rem;
   color: #393939;
   font-family: 'Roboto',sans-serif;
@@ -371,13 +396,13 @@
   line-height: 110%; /* 0.825rem */
 }
 
-.location{
+.doc-sec .doctors .carousel .inner-carousel .item .location{
   padding: 0.6rem 0 0 1rem ;
   width: 12.875rem;
   height: 1.83081rem;
 }
 
-.location h6{
+.doc-sec .doctors .carousel .inner-carousel .item .location h6{
   margin: -1.4rem 0 0 2rem;
   color: #393939;
   font-family: 'Roboto',sans-serif;
@@ -387,25 +412,25 @@
   line-height: 110%; /* 0.9625rem */
 }
 
-.stars{
-  padding: 0.2rem 0 0 1rem;
+.doc-sec .doctors .carousel .inner-carousel .item .stars {
+  margin: 10% 0 0 12% ;
 }
 
-.doc-info{
+.doc-sec .doctors .carousel .inner-carousel .item .doc-info{
   display: flex;
   align-items: flex-start;
   flex-direction: row;
   padding: 4rem 0 0 1rem;
 }
 
-.doc-info .trans-doc{
+.doc-sec .doctors .carousel .inner-carousel .item .doc-info .trans-doc{
   display: flex;
   align-items: flex-start;
   flex-direction: row;
   gap: 1rem;
 }
 
-.doc-info p{
+.doc-sec .doctors .carousel .inner-carousel .item .doc-info p{
   color: var(--Red);
   font-family: 'Roboto',sans-serif;
   font-size: 1.25rem;
@@ -415,9 +440,144 @@
   letter-spacing: 0.03125rem;
 }
 
-.item:hover {
+.doc-sec .doctors .carousel .inner-carousel .item:hover {
   transform: scale(1.1);
 }
+
+                              /* online doctor */
+
+.doc-sec .doctors .carousel .inner-carousel .itemon{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 100%;
+  height: 90vh;
+  padding-top: 2rem;
+}
+
+.doc-sec .doctors .carousel .inner-carousel .itemon .doc-name{
+  margin-top: -55%;
+} 
+
+.doc-sec .doctors .carousel .inner-carousel .itemon .doc-name h4{
+  color:#21272A;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%; /* 1.375rem */
+  margin: 15% 0 0 6%;
+}
+
+.doc-sec .doctors .carousel .inner-carousel .itemon .doc-name p{
+  font-size: 1rem;
+  margin: -15% 0 0 85%;
+}
+
+.doc-sec .doctors .carousel .inner-carousel .itemon  .doc-name h3{
+  color:#21272A;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%; /* 1.375rem */
+  margin: 5% 0 0 4%;
+}
+
+.doc-sec .doctors .carousel .inner-carousel .itemon  .doc-name h2{
+  color:#21272A;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%; /* 1.375rem */
+  margin: 5% 0 0 4%;
+}
+
+.doc-sec .doctors .carousel .inner-carousel .itemon  .doc-name h5{
+  color:#21272A;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%; /* 1.375rem */
+  margin: 5% 0 0 4%;
+}
+
+.doc-sec .doctors .carousel .inner-carousel .itemon  .doc-name h6{
+  color:#21272A;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%; /* 1.375rem */
+  margin: 5% 0 0 4%;
+}
+
+.doc-sec .doctors .carousel .inner-carousel .itemon .t-work{
+  padding: 0.6rem 0 0 1rem ;
+  width: 12.875rem;
+  height: 1.83081rem;
+}
+
+.doc-sec .doctors .carousel .inner-carousel .itemon .t-work h6{
+  margin: -1.4rem 0 0 2rem;
+  color: #393939;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 110%; /* 0.825rem */
+}
+
+.doc-sec .doctors .carousel .inner-carousel .itemon .location{
+  padding: 0.6rem 0 0 1rem ;
+  width: 12.875rem;
+  height: 1.83081rem;
+}
+
+.doc-sec .doctors .carousel .inner-carousel .itemon .location h6{
+  margin: -1.4rem 0 0 2rem;
+  color: #393939;
+  font-family: 'Roboto',sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 110%; /* 0.9625rem */
+}
+
+.doc-sec .doctors .carousel .inner-carousel .itemon .stars {
+  margin: 2% 0 0 5% ;
+}
+
+.doc-sec .doctors .carousel .inner-carousel .itemon .doc-info{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  margin:4% 0 0 4%;
+}
+
+.doc-sec .doctors .carousel .inner-carousel .itemon .doc-info .trans-doc{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.doc-sec .doctors .carousel .inner-carousel .itemon .doc-info p{
+  color: var(--Red);
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; 
+  letter-spacing: 0.03125rem;
+}
+
+.doc-sec .doctors .carousel .inner-carousel .itemon:hover {
+  transform: scale(1.1);
+}
+
 
                               /* About */
 
@@ -565,9 +725,12 @@
     gap: 1%;
 
   }
+
+
 }
 @media (max-width: 450px) {
   .homesec1 .rightpart h2{
     font-size: 2.5em;
   }
+
 }

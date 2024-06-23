@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import "./doctors.css";
 import React from "react";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import doctors from "../images/doctors.png";
 import doctors2 from "../images/doctors2.png";
 import Layout from '../components/Layout';
@@ -677,8 +677,7 @@ const Doctors = ({ count, rating, color, onRating }) => {
                     />
                   </svg>
                 </div>
-              
-              <input className="buttonrr_r" type="submit" value="Book Now" />
+                <NavLink to="/Book" className="buttonrr_r"> Book Now </NavLink>
               </div>
             </div>
             <div className="left">
@@ -841,7 +840,7 @@ const Doctors = ({ count, rating, color, onRating }) => {
                   </svg>
                 </div>
               
-              <input className="buttonrr_r" type="submit" value="Book Now" />
+                <NavLink to="/BookOn" className="buttonrr_r"> Book Now </NavLink>
               </div>
             </div>        
             <div className="under">
@@ -1004,7 +1003,7 @@ const Doctors = ({ count, rating, color, onRating }) => {
                   </svg>
                 </div>
               
-              <input className="buttonrr_r" type="submit" value="Book Now" />
+                <NavLink to="/Book" className="buttonrr_r"> Book Now </NavLink>
               </div>
             </div>
             </div>
