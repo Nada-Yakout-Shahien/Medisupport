@@ -88,9 +88,16 @@ body .card .location p{
 
                         /* Card-doctor-rate */
 
-body .card .stars span{
+body .card .stars {
   display: flex;
-  padding: 0.6rem 0 0.3rem 1rem;
+  align-items: center;
+}
+body .card .stars span {
+  margin-left: 4%;
+}
+
+body .card .stars span .rating {
+  margin-left: 20%; /* إضافة مسافة يسار بين التقييم والنجوم */
 }
 
                         /* Card-doctor-about */
@@ -139,13 +146,13 @@ body .card .rate input {
 }
 
 body .card .rate .star{
-  margin-top: -1.4rem ;
+  margin-top: -0.1% ;
   padding-left: 0.5rem;
 }
 
-.card .rate  .popup-r{
+.card .popup-r{
   width: 100%;
-  height: 187vh;
+  height: 18%;
   background: rgba(18, 22, 25, 0.65);
   position: absolute;
   top: 10%;
@@ -154,7 +161,7 @@ body .card .rate .star{
   padding: 27%;
 }
 
-body .card .rate .popup-r p{
+.card .popup-r p{
   margin: 20% 0 0 10% ;
   color: var(--whiteColor);
   font-family: 'Roboto',sans-serif;
@@ -164,7 +171,8 @@ body .card .rate .popup-r p{
   line-height: 100%;
   letter-spacing: 0.5px;
 }
-body .card .rate  .popup-r .btn{
+
+.card  .popup-r .btn{
   display: flex;
   min-height:5vh;
   width: 9em;
@@ -184,7 +192,8 @@ body .card .rate  .popup-r .btn{
   letter-spacing: 0.5px;
   margin: 5% 0 0 33%;
 }
-body .card .rate .popup-r .btn:hover{
+
+.card  .popup-r .btn:hover{
   cursor: pointer;
   background-color: var(--blackred);
   color: var(--whiteColor);

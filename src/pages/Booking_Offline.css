@@ -27,7 +27,7 @@ body .card .d-img{
   display: flex;
 }
 
-body .card .d-img img{
+body .card .d-img input{
   width: 65%;
   height: 70vh;
 }
@@ -153,7 +153,7 @@ body .card .rate  .popup-r{
   padding: 27%;
 }
 
-body .card .rate .popup-r p{
+body .card  .popup-r p{
   margin: 16rem 0 0 0 ;
   color: var(--whiteColor);
   font-family: 'Roboto',sans-serif;
@@ -163,7 +163,7 @@ body .card .rate .popup-r p{
   line-height: 100%;
   letter-spacing: 0.5px;
 }
-body .card .rate  .popup-r .btn{
+body .card  .popup-r .btn{
   display: flex;
   min-height:5vh;
   width: 9em;
@@ -184,12 +184,13 @@ body .card .rate  .popup-r .btn{
   margin: 5rem 0 0 13rem;
 }
 
-body .card .rate .popup-r .btn:hover{
+body .card  .popup-r .btn:hover{
   cursor: pointer;
   background-color: var(--blackred);
   color: var(--whiteColor);
   border: none;
 }
+
                         /* Booking a Date */
 .card form .B-Date{
   margin: 3rem 0 0 -2.5rem;

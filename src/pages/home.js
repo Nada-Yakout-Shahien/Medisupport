@@ -15,6 +15,7 @@ import app from "../images/app.png";
 import google from "../images/google.png";
 import screen1 from "../images/screen1.png";
 import screen2 from "../images/screen2.png";
+import { FaStar } from "react-icons/fa";
 
 
 
@@ -367,7 +368,13 @@ const Home = () => {
                 <h6>{doctor.clinic_location} </h6>
               </div>
               <div className="stars">
-                <span>{doctor.rate}</span>
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <FaStar
+                    key={index}
+                    size={24}
+                    color={index < Math.round(doctor?.user_rating) ? '#FFD700' : '#C0C0C0'}
+                  />
+                ))}
               </div>
               <div className="doc-info">
                 <NavLink to="/doctors" className="trans-doc">

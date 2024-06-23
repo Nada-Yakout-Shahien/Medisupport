@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaStar } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { Input } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,7 +14,7 @@ const Booking_Offline = () => {
   const [hover, setHover] = useState(null);
   const [showPopupR, setShowPopupR] = useState(false);
   const [showPopupB, setShowPopupB] = useState(false);
-  const [errorRating, setErrorRating] = useState(null);
+  const { id } = useParams();
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const [times, setTimes] = useState([]);
@@ -27,29 +27,30 @@ const Booking_Offline = () => {
 };
 
 //fetch doctor data
-  useEffect(() => {
-    async function fetchDoctorProfile() {
-      try {
-        const token = localStorage.getItem('accessToken');
-        const response = await axios.get('http://127.0.0.1:8000/api/user/booking/get-doctor-details?id=30009', {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
-        setDoc(response.data.data);
-        console.log('Doctor Data:', response.data.data);
-        console.log('Doctor Avatar URL:', response.data.data.Avatar); // Print the URL to check it
-      } catch (error) {
-        console.error('Error fetching Doctor Data:', error);
+const fetchDoctorProfile = async () => {
+  try {
+    const token = localStorage.getItem('accessToken');
+    const response = await axios.get(`http://127.0.0.1:8000/api/user/booking/get-doctor-details?id=30009`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
       }
-    }
-    fetchDoctorProfile();
-  }, []);
+    });
+    setDoc(response.data.data);
+    console.log('Doctor Data:', response.data.data);
+  } catch (error) {
+    console.error('Error fetching Doctor Data:', error);
+  }
+};
+
+useEffect(() => {
+  fetchDoctorProfile();
+}, [id]);
 
 //time
   const handleTimeSelection = (time) => {
     setSelectedTime(time);
   };
+
   useEffect(() => {
     async function fetchtimes() {
       try {
@@ -73,29 +74,40 @@ const Booking_Offline = () => {
   const handleStarClick = (currentRating) => {
     setRating(currentRating);
     setHover(null);
-    setShowPopupR(true);
+    setShowPopupR(true); 
+    console.log('Selected rating:', currentRating);
   };
 
   const handleRating = async (e) => {
     e.preventDefault();
-    if (!rating) {
-      setErrorRating('Please select a rating before submitting.');
-      return;
-    }
-
     try {
       const token = localStorage.getItem('accessToken');
       const axiosConfig = {
         headers: {
           Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
         },
       };
 
-      const response = await axios.post('http://127.0.0.1:8000/api/auth/user/ratings', { rating }, axiosConfig);
-      console.log('Rating submitted:', response.data);
+      if (!doc?.id || !rating) {
+        console.error('Doctor ID or Rating is missing or invalid');
+        return;
+      }
+
+      const ratingData = {
+        doctor_id: doc.id,
+        rate: rating,
+      };
+
+      await axios.post('http://127.0.0.1:8000/api/auth/user/ratings', ratingData, axiosConfig);
+
       setShowPopupR(true);
+      fetchDoctorProfile(); 
     } catch (error) {
-      console.error('Error submitting rating:', error);
+      console.error('Error:', error);
+      console.error('Error Response Data:', error.response.data);
+      console.error('Error Response Status:', error.response.status);
+      console.error('Error Response Headers:', error.response.headers);
     }
   };
 
@@ -109,14 +121,25 @@ const Booking_Offline = () => {
           Authorization: `Bearer ${token}`,
         },
       };
-      
-      await axios.post('http://127.0.0.1:8000/api/user/booking/appointment', axiosConfig);
+      if (!selectedDate || !selectedTime) {
+        console.error('Selected Date or Time is missing');
+        return;
+      }
+      const bookData = {
+        doctor_id: doc.id,
+        date_id: selectedDate?.id, // استخدام id للتاريخ المحدد
+        time_id: selectedTime?.id,
+      };
+      await axios.post('http://127.0.0.1:8000/api/user/booking/appointment',bookData, axiosConfig);
       console.log('Appiontment booked Successfully');
      
       setShowPopupB(true);
 
     } catch (error) {
       console.error('Error booking appointment:', error);
+    console.error('Error Response Data:', error.response.data);
+    console.error('Error Response Status:', error.response.status);
+    console.error('Error Response Headers:', error.response.headers);
     }
   }
 
@@ -135,7 +158,19 @@ const Booking_Offline = () => {
         <div className='card'>
           {/* image */}
           <div className='d-img'>
-          {doc && <img src={doc.avatar} alt="Doctor Avatar" />}
+            <input
+              type="text"
+              readOnly
+              value=""
+              style={{
+              backgroundImage: `url(${doc.avatar})`,
+              backgroundSize:'cover',
+              backgroundPosition:'center',
+              border:'none',
+              marginRight:'10rem',
+              cursor:'default'
+              }}
+            />
           </div>
 
           {/* name */}
@@ -173,14 +208,25 @@ const Booking_Offline = () => {
 
           {/* rate-doctor */}
           <div className="stars">
-            <div className="rating">
-              <p>Rating:</p>
-              {doc.user_rating ? (
-                <p>{doc.user_rating} / 5.0</p>
-              ) : (
-                <p>No rating yet</p>
-              )}
-            </div>
+            {doc?.user_rating ? (
+              <>
+                {[...Array(5)].map((star, index) => {
+                  const ratingValue = index + 1;
+                  return (
+                    <label key={index}>
+                      <FaStar
+                        className="star"
+                        color={ratingValue <= doc.user_rating ? "#ffc107" : "#e4e5e9"}
+                        size={20}
+                      />
+                    </label>
+                  );
+                })}
+                <span className="rating">{doc?.user_rating.toFixed(1)}</span>
+              </>
+            ) : (
+              <span>No ratings yet</span>
+            )}
           </div>
 
           {/* about-doctor */}
@@ -190,22 +236,24 @@ const Booking_Offline = () => {
           </div>
           
           {/* rate-user */}
-          <div className='rate'>
-            <p>Rate </p>
+          <div className='rate' >
+            <p>Rate</p>
             {[...Array(5)].map((star, index) => {
               const currentRating = index + 1;
-
               return (
-                <label key={index}>
-                  <Input
+                <label key={index} className='star'>
+                  <input
                     type="radio"
                     name="Rating"
                     value={currentRating}
-                    onChange={() => handleStarClick(currentRating)}
+                    onClick={() => handleStarClick(currentRating)}
+                    onChange={() => {}} // تعيين `onChange` بدون أي عملية حاليًا
+                    checked={currentRating === rating}
                   />
+
                   <FaStar
                     className='star'
-                    size={33}
+                    size={34}
                     color={currentRating <= (hover || rating) ? '#FA8F21' : '#f8df95'}
                     onMouseEnter={() => setHover(currentRating)}
                     onMouseLeave={() => setHover(null)}
@@ -213,21 +261,21 @@ const Booking_Offline = () => {
                 </label>
               );
             })}
-            {errorRating && <p className="error-message">{errorRating}</p>}
-            {showPopupR && (
-              <div className='popup-r'>
-                <p>Thank You For Your Rating</p>
-                <NavLink to='/home' className='btn' onClick={handleRating}>
-                  Home Page
-                </NavLink>
-              </div>
-            )}
           </div>
+          {showPopupR && (
+            <div className='popup-r'>
+              <p>Thank You For Your Rating</p>
+              <NavLink to='/home' className='btn'>
+                Home Page
+              </NavLink>
+            </div>
+          )}
+
 
           {/* Booking a Date */}
           <div className='B-Date'>
             <p>Book a Date :</p>
-            {/*{doc && (
+            {doc && (
               <div className='dates'>
                 {doc.dates.map((date) => (
                   <label key={date.id} className={`l1 ${selectedDate === date.date ? 'selected' : ''}`}>
@@ -240,20 +288,28 @@ const Booking_Offline = () => {
                   </label>
                 ))}
               </div>
-            )}*/}
+            )}
           </div>
 
           {/* Booking a Time */}
           <div className='B-Time'>
             <p>Select a Time :</p>
-            <div className='Time'>
-              {/*{times.map((time, index) => (
-                <label key={time.id} className={`${selectedTime === time.time ? 'selected' : ''}`}>
-                  <input type='radio' onClick={() => handleTimeSelection(time.time)} /> {time.time}
-                </label>
-              ))}*/}
-            </div>
+            {times && (
+              <div className='Time'>
+                {times.map((timee) => (
+                  <label key={timee.id} className={`l1 ${selectedTime === timee.time ? 'selected' : ''}`}>
+                    <input
+                      type='radio'
+                      onClick={() => handleTimeSelection(timee.time)}
+                      checked={selectedTime === timee.time}
+                    /> 
+                    {timee.time}
+                  </label>
+                ))}
+              </div>
+            )}
           </div>
+          
 
           {/* Booking Button */}
           <div className='book'>
