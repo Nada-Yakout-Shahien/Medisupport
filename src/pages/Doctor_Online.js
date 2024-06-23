@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import "./doctors.css";
+import "./Doctor_Online.css";
 import React from "react";
 import {NavLink} from "react-router-dom";
 import doctors from "../images/doctors.png";
@@ -18,7 +18,7 @@ const Doctors = ({ count, rating, color, onRating }) => {
   const {input, setInput} = useState("")
   const [results, setResults] = useState([]);
 
-  const Doctors=axios.get("http://127.0.0.1:8000/api/all-doctors").then(data=>console.log(data))
+  const Doctors=axios.get("http://127.0.0.1:8000/api/auth/user/online-doctors").then(data=>console.log(data))
   const lineStyle = {
     left: activeSection === "onlineDoctors" ? "0%" : "50%",
   };
@@ -563,7 +563,9 @@ const Doctors = ({ count, rating, color, onRating }) => {
             
               <div className="rot">
             
-                <h2 className="zend">Dr: Mahmoud Ebrahim</h2>
+                <h2 className="zendr1">Dr: Mahmoud Ebrahim</h2><div className="zendererrrrr1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <circle cx="10" cy="10" r="10" fill="#75F94C"/>
+</svg></div>
                 <h6 className="xo">Cardiologist</h6>
                 <div className="bot">
                   <svg
@@ -718,7 +720,9 @@ const Doctors = ({ count, rating, color, onRating }) => {
                   </svg>
                 </div>
               
-              <input className="buttonrr_r" type="submit" value="Book Now" />
+              <NavLink to='/BookOn' className='buttonrr_r'>
+              Book Now
+              </NavLink>
               </div>
             </div>
             <div className="left">
@@ -726,7 +730,9 @@ const Doctors = ({ count, rating, color, onRating }) => {
             
               <div className="rot">
             
-                <h2 className="zend">Dr: Mohammed Ahmed </h2>
+                <h2 className="zendr1">Dr: Mohammed Ahmed </h2><div className="zendererrrrr2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <circle cx="10" cy="10" r="10" fill="#75F94C"/>
+</svg></div>
                 <h6 className="xo">Cardiologist</h6>
                 <div className="bot">
                   <svg
@@ -881,7 +887,9 @@ const Doctors = ({ count, rating, color, onRating }) => {
                   </svg>
                 </div>
               
-              <input className="buttonrr_r" type="submit" value="Book Now" />
+              <NavLink to='/BookOn' className='buttonrr_r'>
+              Book Now
+              </NavLink>
               </div>
             </div>        
             <div className="under">
@@ -889,7 +897,9 @@ const Doctors = ({ count, rating, color, onRating }) => {
             
               <div className="rot">
             
-                <h2 className="zend">Dr: Ehab Fayez </h2>
+                <h2 className="zendr1">Dr: Ehab Fayez </h2><div className="zendererrrrr"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <circle cx="10" cy="10" r="10" fill="#75F94C"/>
+</svg></div>
                 <h6 className="xo">Cardiologist</h6>
                 <div className="bot">
                   <svg
@@ -1044,7 +1054,9 @@ const Doctors = ({ count, rating, color, onRating }) => {
                   </svg>
                 </div>
               
-              <input className="buttonrr_r" type="submit" value="Book Now" />
+              <NavLink to='/BookOn' className='buttonrr_r'>
+              Book Now
+              </NavLink>
               </div>
             </div>
             </div>

@@ -718,7 +718,9 @@ const Doctors = ({ count, rating, color, onRating }) => {
                   </svg>
                 </div>
               
-              <input className="buttonrr_r" type="submit" value="Book Now" />
+                <NavLink to='/Book' className='buttonrr_r'>
+              Book Now
+              </NavLink>
               </div>
             </div>
             <div className="left">
@@ -881,7 +883,9 @@ const Doctors = ({ count, rating, color, onRating }) => {
                   </svg>
                 </div>
               
-              <input className="buttonrr_r" type="submit" value="Book Now" />
+                <NavLink to='/Book' className='buttonrr_r'>
+              Book Now
+              </NavLink>
               </div>
             </div>        
             <div className="under">
@@ -1044,7 +1048,9 @@ const Doctors = ({ count, rating, color, onRating }) => {
                   </svg>
                 </div>
               
-              <input className="buttonrr_r" type="submit" value="Book Now" />
+                <NavLink to='/Book' className='buttonrr_r'>
+              Book Now
+              </NavLink>
               </div>
             </div>
             </div>

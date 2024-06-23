@@ -63,6 +63,24 @@ border-radius: 0.3125rem;
 border: 1px solid #BE0202;
 }
 
+.heiherebut2r{
+    width: 4.2775rem;
+height: 0.9375rem;
+flex-shrink: 0;
+padding-left: 32rem;
+font-size: 1.5rem;
+color: #BE0202;
+}
+
+.heiherebut3r{
+    width: 4.2775rem;
+height: 0.9375rem;
+flex-shrink: 0;
+padding-left: 3rem;
+font-size: 1.5rem;
+color: #BE0202;
+}
+
 .tablex {
     width: 100%;
     border-collapse: collapse;

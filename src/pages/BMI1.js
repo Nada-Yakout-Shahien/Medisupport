@@ -65,10 +65,13 @@ const BMI1 = () => {
           </div>
 
           <div className="rtabler">
+
+          <NavLink to="/bmi_history" className="heiherebut2r">See All</NavLink>
+          <p className="heiherebut3r">History</p>
             <div className="tablex">
               <div className="tablex1">
                 <p className="svgtable">Normal: </p>
-                <p className="svgtable2">{bmiData.result_id} Kg</p>
+                <p className="svgtable2">{bmiData.result_id} 80Kg</p>
                 <img className="svgtable3" src={Line17} alt="Line17" />
                 <p className="svgtable4">{bmiData.created_at}</p>  {/* Display created_at */}
                 <img className="svgtable3" src={Line17} alt="Line17" />
